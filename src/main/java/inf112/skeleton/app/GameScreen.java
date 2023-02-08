@@ -13,6 +13,7 @@ public class GameScreen extends ScreenAdapter {
 
 	public GameScreen(OrthographicCamera camera) {
 		this.camera = camera;
+		int test = 8;
 	}
 
 }
