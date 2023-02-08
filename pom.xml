@@ -124,7 +124,22 @@
 			<artifactId>slf4j-simple</artifactId>
 			<version>${slf4j.version}</version>
 		</dependency>
-			</dependencies>
+		<dependency>
+			<groupId>com.badlogicgames.gdx</groupId>
+			<artifactId>gdx-box2d-platform</artifactId>
+			<version>${libgdx.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.badlogicgames.box2dlights</groupId>
+			<artifactId>box2dlights</artifactId>
+			<version>1.5</version>
+		</dependency>
+		<dependency>
+			<groupId>com.badlogicgames.gdx</groupId>
+			<artifactId>gdx-openal</artifactId>
+			<version>0.9.9</version>
+		</dependency>
+	</dependencies>
 	<build>
 		<plugins>
 			<!-- Run app through Maven -->
