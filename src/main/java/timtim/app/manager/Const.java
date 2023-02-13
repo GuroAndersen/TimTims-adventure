@@ -1,4 +1,4 @@
-package timtim.app.core;
+package timtim.app.manager;
 
 public class Const {
 
