@@ -20,6 +20,7 @@ public class BodyManager {
 		
 		FixtureDef fixtureDef = new FixtureDef();
 		fixtureDef.shape = shape;
+		fixtureDef.friction = 0; // avoids sticking to walls
 		body.createFixture(fixtureDef);
 		shape.dispose();
 		return body;

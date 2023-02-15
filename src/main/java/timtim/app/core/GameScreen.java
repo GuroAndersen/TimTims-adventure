@@ -63,6 +63,7 @@ public class GameScreen extends ScreenAdapter {
 	private void update() {
 		world.step(1/60f, 6, 2);
 		updateCamera();
+		player.update();
 		
 		batch.setProjectionMatrix(camera.combined);
 		mapRenderer.setView(camera);
@@ -74,7 +75,7 @@ public class GameScreen extends ScreenAdapter {
 
 	private void updateCamera() {
 		Vector3 pos = camera.position;
-		// takes player position and multipl by PPM for real world position, 
+		// takes player position and multiply by PPM for real world position, 
 		// 		multiply by 10 and divide by 10 for smoother camera movement
 		pos.x = Math.round(player.getBody().getPosition().x * Const.PPM * 10) / 10f;
 		pos.y = Math.round(player.getBody().getPosition().y * Const.PPM * 10) / 10f;
