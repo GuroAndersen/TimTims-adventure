@@ -97,6 +97,7 @@ Målet er at spillet skal ha 3 nivåer som hver har egne NPCs, og til sist et li
 |:--------------:|:-------------------:|:---------------:|:-----|
 | Som spiller skal jeg kunne flytte på spilleren | Gitt at jeg trykker “pil opp” skal spilleren bevege seg oppover | Metode som gjør at spilleren beveger på seg | 1 |
 | Som spiller skal jeg skille mellom bakgrunn og fysiske objekter | Gitt at jeg går bortover skal det være tydelig hva som er fysisk og hva som er bakgrunn | Bakgrunn tegnes bak fysiske objekter | 1 |
+|
 
 ## A4 - kode
 
