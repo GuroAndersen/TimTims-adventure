@@ -15,6 +15,7 @@ import com.badlogic.gdx.physics.box2d.World;
 
 import timtim.app.manager.Const;
 import timtim.app.manager.TileMapManager;
+import timtim.app.objects.Player;
 
 public class GameScreen extends ScreenAdapter {
 
@@ -26,10 +27,13 @@ public class GameScreen extends ScreenAdapter {
 	private OrthogonalTiledMapRenderer mapRenderer;
 	private TileMapManager mapManager;
 	
+	// objects
+	Player player;
+	
 	public GameScreen(OrthographicCamera camera) {
 		this.camera = camera;
 		this.batch = new SpriteBatch();
-		this.world = new World(new Vector2(0,0), false);
+		this.world = new World(new Vector2(0,-9.81f), false);
 		this.B2DDebugRenderer = new Box2DDebugRenderer();
 		
 		// MAP INIT
@@ -69,7 +73,12 @@ public class GameScreen extends ScreenAdapter {
 	}
 
 	private void updateCamera() {
-		camera.position.set(new Vector3(0,0,0));
+		Vector3 pos = camera.position;
+		// takes player position and multipl by PPM for real world position, 
+		// 		multiply by 10 and divide by 10 for smoother camera movement
+		pos.x = Math.round(player.getBody().getPosition().x * Const.PPM * 10) / 10f;
+		pos.y = Math.round(player.getBody().getPosition().y * Const.PPM * 10) / 10f;
+		camera.position.set(pos);
 		camera.update();
 	}
 
@@ -78,5 +87,9 @@ public class GameScreen extends ScreenAdapter {
 	 */
 	public World getWorld() {
 		return world;
+	}
+	
+	public void setPlayer(Player p) {
+		this.player = p;
 	}
 }

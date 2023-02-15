@@ -3,9 +3,11 @@ package timtim.app.manager;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.objects.PolygonMapObject;
+import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
@@ -13,6 +15,7 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.Shape;
 
 import timtim.app.core.GameScreen;
+import timtim.app.objects.Player;
 
 public class TileMapManager {
 
@@ -24,7 +27,7 @@ public class TileMapManager {
 	}
 	
 	public OrthogonalTiledMapRenderer mapSetup() {
-		tiledMap = new TmxMapLoader().load("testMap.tmx");
+		tiledMap = new TmxMapLoader().load("testMap.tmx"); // gets map from resource folder
 		parseMapObjects(tiledMap.getLayers().get("objects").getObjects()); //gets objects in the "objects" layer of the tiledmap.
 		return new OrthogonalTiledMapRenderer(tiledMap);
 	}
@@ -34,6 +37,23 @@ public class TileMapManager {
 			
 			if (o instanceof PolygonMapObject) {
 				createStaticBody((PolygonMapObject) o);
+			}
+			
+			if (o instanceof RectangleMapObject) {
+				Rectangle rect = ((RectangleMapObject) o).getRectangle();
+				String rectName = o.getName();
+				
+				if (rectName.equals("player")) {
+					Body body  = BodyManager.createBody(
+							rect.getX() + rect.getWidth() / 2,
+							rect.getY() + rect.getHeight() / 2,
+							rect.getWidth(), 
+							rect.getHeight(), 
+							false, 
+							screen.getWorld()
+						);
+					screen.setPlayer(new Player(body, rect.getWidth(), rect.getHeight()));
+				}
 			}
 		}
 	}
@@ -57,7 +77,7 @@ public class TileMapManager {
 		}
 		
 		PolygonShape shape = new PolygonShape();
-		shape.set(vertices);
+		shape.set(worldVertices);
 		return shape;
 	}
 }
