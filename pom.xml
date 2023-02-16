@@ -272,7 +272,7 @@
 		</pluginManagement>
 		<resources>
 	     <resource>
-	       <directory>/src/resources</directory>
+	       <directory>src/resources</directory>
 	     </resource>
 	   </resources>
 	</build>
