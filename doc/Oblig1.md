@@ -128,7 +128,7 @@ Målet er at spillet skal ha 3 nivåer som hver har egne NPCs, og til sist et li
 | Som spiller skal jeg se at jeg mister liv dersom jeg faller for høyt | Gitt at spilleren faller en viss distanse <br> -skal spilleren tydelig se at den dør | Metode som --- | 8|
 
 ## A4 - kode
-I denne delen har vi på å utarbeide et minimumsprodukt. Det inneholder ......
+I denne delen har vi på å utarbeide et minimumsprodukt. Det inneholder ...
 
 Dette er et testprodukt, og har ikke en direkte tilknytning til vår mvp. Likevel er den relevant, og kan knyttes til mvp krav x, y og z
 
