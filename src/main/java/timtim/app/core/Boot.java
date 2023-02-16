@@ -21,7 +21,7 @@ public class Boot extends Game {
 		this.screenH = Gdx.graphics.getHeight();
 		this.camera = new OrthographicCamera();
 		this.camera.setToOrtho(false, screenW, screenH);
-		setScreen(new GameScreen(camera));
+		setScreen(new GameView(camera));
 	}
 
 }

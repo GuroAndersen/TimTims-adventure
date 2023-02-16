@@ -17,7 +17,7 @@ import timtim.app.manager.Const;
 import timtim.app.manager.TileMapManager;
 import timtim.app.objects.Player;
 
-public class GameScreen extends ScreenAdapter {
+public class GameView extends ScreenAdapter {
 
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
@@ -30,7 +30,7 @@ public class GameScreen extends ScreenAdapter {
 	// objects
 	Player player;
 	
-	public GameScreen(OrthographicCamera camera) {
+	public GameView(OrthographicCamera camera) {
 		this.camera = camera;
 		this.batch = new SpriteBatch();
 		this.world = new World(new Vector2(0,-9.81f), false);
