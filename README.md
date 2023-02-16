@@ -11,15 +11,15 @@ Timtim trenger å skaffe informasjon for å bli mer opplyst. Informasjonen kan h
 
 Men, Timtim må passe seg. For i hans jakt på å finne verdifull informasjon, truer det farer. Pass på!
 
+I spillet beveger man seg til venstre med "A", høyre med "D" og hopper med "W". 
+
 
 ## Kjøring
-* Kompileres med `mvn package`.
-* Kjøres med `java -jar target/kurt-mario-1.0-SNAPSHOT-fat.jar`
-* Krever Java 15 eller senere
+* Kjøres med launcher i pakken src/main/java/timtim.app/core/launcher
+* Krever Java 17 eller senere
 
 ## Kjente feil
-* Feil 1
+* Inkonsistent hopping
 
 ## Credits
-* Grafikk hentet fra...
-* Lyd hentet fra
+* Ikke hentet grafikk eller lyd eksternt enda
