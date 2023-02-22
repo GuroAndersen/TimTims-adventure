@@ -3,8 +3,6 @@ package timtim.app.core;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 
-import inf112.skeleton.app.HelloWorld;
-
 public class Launcher {
 
 	public static void main(String[] args) {
