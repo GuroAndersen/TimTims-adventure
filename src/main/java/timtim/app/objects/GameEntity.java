@@ -9,6 +9,12 @@ public abstract class GameEntity {
 	protected float width, height;
 	protected Body body;
 	
+	public GameEntity() {
+		this.velX = 0;
+		this.velY = 0;
+		this.speed = 0;
+	}
+	
 	public GameEntity(Body body, float w, float h) {
 		this.x = body.getPosition().x;
 		this.y = body.getPosition().y;
@@ -18,8 +24,6 @@ public abstract class GameEntity {
 		this.velY = 0;
 		this.speed = 0;
 		this.body = body;
-		
-		
 	}
 	 /**
 	  * Updates the entity
@@ -37,5 +41,20 @@ public abstract class GameEntity {
 	 */
 	public Body getBody() {
 		return this.body;
+	}
+	 /**
+	  * Set a body for this GameEntity along with width and height
+	  * @param body
+	  * @param w
+	  * @param h
+	  */
+	public void setBody(Body body, float w, float h) {
+		this.x = body.getPosition().x;
+		this.y = body.getPosition().y;
+		this.width = w;
+		this.height = h;
+		this.velX = 0;
+		this.velY = 0;
+		this.body = body;
 	}
 }

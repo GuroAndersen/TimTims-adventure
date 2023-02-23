@@ -50,9 +50,9 @@ public class TileMapManager {
 							rect.getWidth(), 
 							rect.getHeight(), 
 							false, 
-							screen.getWorld()
+							screen.getModel().getWorld()
 						);
-					screen.setPlayer(new Player(body, rect.getWidth(), rect.getHeight()));
+					screen.getModel().getPlayer().setBody(body, rect.getWidth(), rect.getHeight());
 				}
 			}
 		}
@@ -61,7 +61,7 @@ public class TileMapManager {
 	private void createStaticBody(PolygonMapObject o) {
 		BodyDef bodydef = new BodyDef();
 		bodydef.type = BodyDef.BodyType.StaticBody;
-		Body body = screen.getWorld().createBody(bodydef);
+		Body body = screen.getModel().getWorld().createBody(bodydef);
 		Shape shape = createPolyShape(o);
 		body.createFixture(shape, 1000);
 		shape.dispose();
