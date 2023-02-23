@@ -2,21 +2,82 @@
 
 ## **Møtereferat**
 
-| Dato | Beskrivelse | Deltakere |
-|:-----|:------|:---------|
-| Torsdag <br> 16.02 | - Refleksjon rundt Oblig 1. Diskusjon rundt hva som gikk bra, hva som kunne gått bedre og hvordan vi tar med oss erfaringene i oblig 2 <br> - Utarbeidet skisse til hvordan klassediagrammet skal se ut <br> <br> Til neste gang jobber vi videre med hvordan planlegge videre arbeid og fordele roller| Mattias <br> Hilde <br> Cecilie <br> Guro <br> Sandra |
-| Torsdag <br> 23.02 | - Fordeling av roller for Oblig 2 <br> - Opplæring av programvare for utarbeidelse av grafikk <br> - Sett på hvordan vi utarbeider "fiender" og "venner" i spillet <br> <br> Til neste gang skal grafikk for 4 level være klart, samt koden til hvordan fiender og venner oppfører seg skal være på plass | Mattias <br> Hilde <br> Cecilie <br> Guro <br> Sandra |
+**Dato: Torsdag 16.02.2021** <br>
+**Sted: Vilvite** <br>
+**Deltagere: Sandra, Hilde, Guro, Cecilie, Mattias** <br>
+**Referent: Mattias** <br>
+
+*Oppsummering:* <br>
+I hovedsak omhandlet dette møte oblig 1. Vi diskuterte hva som gikk bra, hva som kunne gått bedre og hvordan vi tar med oss erfaringene i oblig 2. Vi ser at vi har fått en god struktur på prosjektet, og at vi har fått en god forståelse for hvordan vi skal jobbe fremover. Vi har også fått en god forståelse for hvordan vi skal jobbe med git. Fundamentet vi har laget i "minispillet" vil være viktig for veien videre.
+
+*Diskusjoner:* <br>
+Vi diskuterte hvordan vi skulle bygge koden videre. For å visulisere dette utabarbeidet vi en skisse på et klassediagram. Koden vil antageligvis ikke ende opp med å bygge på dette, men det ga samtlige en god forståelse for hvordan vi arbeider videre. 
+
+*Neste møte* <br>
+Torsdag 23.02.2021 <br>
+
+*Oppgaver til neste gang:* <br>
+Til neste gang jobber vi videre med hvordan planlegge videre arbeid og fordele roller
 
 
+___
+
+**Dato: Torsdag 23.02.2021** <br>
+**Sted: Vilvite** <br>
+**Deltagere: Sandra, Hilde, Guro, Cecilie, Mattias** <br>
+**Referent: Mattias** <br>
+
+*Oppsummering:* <br>
+Dette møte startet med en felles opplæring av hvordan utarbeide grafikken til spillet. Tanken her var ikke å bruke mye tid på hvordan spille skal se ut. Vi tenkte heller det var viktig å ha et et grunnfundament for spillet, før videre koding. Ved å ha noe grafikk, eksempelvis en bakgrunn, kan vi begynne å kode hvordan spilleren skal bevege seg rundt i spillet. Hilde har fra tidligere erfaring jobbet med programmet "Tiled", og har derfor tatt på seg ansvaret for å lære opp resten av gruppen.
+
+*Diskusjoner:* <br>
+Vi har diskutert fysikken og bevegelsen til spillfiguren vår. I og med at vi vil påbegynne grafikken har vi blant annet diskutert hvordan figuren skal bevege seg, hvor langt den kan hoppe etc. Videre har vi diskuterte hva som skal være "background", "foreground" og "objects" i graffikken.
+
+*Neste møte* <br>
+Torsdag 02.03.2021 <br>
+
+*Oppgaver til neste gang:* <br>
+Til neste gang skal grafikk for 4 level være klart, samt koden til hvordan fiender og venner oppfører seg skal være på plass
+
+_______
 ## **Prosjektrapport**
 
 ### **Roller**
 Rollene i teamet har fungert bra så langt. Vi ser at frem til nå har mye av arbeidet blitt gjort i fellesskap. Det vil si at hvert medlem har bidratt til det meste av arbeid, uavhengig av rolle. Likevel ser vi viktigheten av å delegere ansvar. Det være seg at gitmaster sørger for at alle har pushet til git og merge request går knirkefritt, front-end ansvarlig sørger for at grafikken er på plass og at det er en god brukeropplevelse, eller at back-end ansvarlig sørger for at koden er ryddig og at det er en god struktur på koden. Vi har derfor valgt å beholde disse rollene fremover i prosjektet, og ser at de kommer til å bli enda viktigere fremover. 
 
 Per nå ser vi ingen grunn til å endre teamlead. Sandra har gjort en strålende jobb med å sørge for fremgang i prosjektet, og at alle gjør jobbene sine. Vi har per nå ikke valgt ut en spesifikk kundekontakt. Grunnen til dette er at alle deltar på gruppetimer og kan i fellesskap ha dialog med gruppeleder/foreleser.
+___
 
 ### **Rollebeskrivelse**
+I denne avsnittet vil vi beskrive de forskjellige rollene i taemet. Det er i stor grad vektlagt hvordan vi har jobbet frem til nå, og hvordan vi ser for oss at vi skal jobbe fremover. Beskrivelse av hvilke oppgaver de forskjellige rollene har står beskrevet i Oblig1.md. Vi har foreløpig bestemt oss for å ikke utarbeide nye roller, da vi ser at de som ble definert tidligere har fungert til nå.
 
+*Utvikler* <br>
+Utover de beskrevne rollene under har hele teamet fungert som utviklere. Det har vært fokus på å kode i fellesskap når vi møtes, slik at alle er oppdatert på koden.
+
+
+*Teamleder:* <br>
+Rollen som teamleder har fungert svært bra. Frem til nå har det i stor grad vært enighet i gruppen, og alle har bidratt. Dette har gjort at Sandra ikke har måtte ta noen store avgjørelser der gruppen er uenig. Likevel har hun vært flink på å holde orden på prosjektet og sørger for stabil fremgang.
+
+*Front-end:* <br>
+Som front-end ansvarlig har Guro tatt ansvar for at spillfiguren og fiender er på plass. Her har hun fokusert på at brukervennligheten skal være bra, og enkel. I tillegg til å bygge et bra fundament for videre koding. Siden dette har vært en stor oppgave har hun fått god assistanse fra Hilde.
+
+
+*Gitmaster:* <br> 
+Rollen til gitmaster har vært svært viktig frem til nå. Det er viktig at alle har pushet til git, og at alle har fått med seg endringer som er gjort i koden. Hilde har god kontroll på git, og vært flink til å lære opp resten av gruppen.
+
+*Designansvarlig:* <br>
+Designansvarlig har hatt en viktig rolle frem til nå. Det er viktig at vi har en god grafikk, og at det er en god brukeropplevelse. Nå som spillbrettet begynner å ta form, har designansvarlig hatt en viktig rolle i å utforme hvordan spillet skal se ut. Cecilie har utformet et bra utgangspunkt for spillet. Siden dette og har vært en stor oppgave har hun fått hjelp fra teamleder.
+
+
+*Rapportansvarlig:* <br>
+Som hovedansvarlig for rapporten har Mattias sørget for at møterefeferatene er på plass, og at alle har fått med seg hva som har blitt diskutert. Han har også tatt hovedansvaret for å skrive rapporten. Som rollen er beskrevet har Mattias og sørget for at teamet følger gitt prosjektmetodikk. Dette innebærer at vi har prøvd å holde oss til de satte stegene i sprinten, samt bruke kanban-boardet aktivt.
+
+
+*Testansvarlig:* <br>
+Samtlige i gruppen har ansvar for å utvikle tester. Vi har fokusert på å først utarbeide interface, deretter tester. Til slutt har vi laget kode basert på dette. 
+
+___
+### **Erfaringer rundt gruppen og prosjektmetodikk**
 
 
 
