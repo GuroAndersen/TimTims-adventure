@@ -56,7 +56,7 @@ public class GameScreen extends ScreenAdapter {
 		// Render map
 		mapRenderer.setView(camera);
 		mapRenderer.render();
-		
+		model.getPlayer().render(batch);
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
 		//render objects
