@@ -79,7 +79,25 @@ Samtlige i gruppen har ansvar for å utvikle tester. Vi har fokusert på å før
 ___
 ### **Erfaringer rundt gruppen og prosjektmetodikk**
 
+***TODO***
 
+### **Gruppedynamikk**
+Gruppedynamikken har vært veldig god, og medlemmene har samarbeidet godt med hverandre og skapt en positiv arbeidsatmosfære. Vi har oppnådd dette ved å bruke den første delen av hvert møte til å bli kjent og sosialisere oss. Vi har også avtalt at det er oppmuntret til sunn diskusjon, der medlemmene utfordrer hverandres løsninger på en konstruktiv måte. Dette har ført til forbedret kvalitet på koden uten noen negative situasjoner. Så langt har det ikke vært noen betydelige uenigheter i gruppen, sannsynligvis på grunn av vår åpne diskusjonskultur.
+___
+### **Kommunikasjon**
+Kommunikasjonen i gruppen har i sin helhelt vært veldig god. Her vil vi skille mellom digital og fysisk kommuniasjon. Den digitalen delen gjelder henholsvis de tidspunkt vi ikke jobber sammen. Her har vibrukt Discord som hovedkommunikasjonskanal. Vi har opprettholdt en ryddig struktur, som har bidratt til å redusere uklarheter og misforståelser. I tillegg har vi vært flink til bruke de innebygde funksjonene i Discord, eksempelvis skjermdeling og kodedeling, for å gjøre kommunikasjonen mer effektiv. <br> <br>
+Den fysiske kommunikasjonen angår samhandling og kommunikasjon når vi jobber sammen. Her er mye nevnt i avsnittet over, men det viktigste er at det har vært en lav terskel for å stille spørsmål, og alle har vært åpne for å svare på spørsmål og gi hjelp når det har vært nødvendig. 
+___
+
+### ***Retroperspektiv***
+***TODO***
+___
+
+### **Bidrag tili kodebasen**
+***TODO***
+
+### **Forbedringspunkter**
+***TODO***
 
 
 ## Krav og spesifikasjon
@@ -87,3 +105,7 @@ ___
 
 
 ## Produkt og kode
+
+
+TODO
+
