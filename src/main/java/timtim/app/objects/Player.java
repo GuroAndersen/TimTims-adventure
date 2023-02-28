@@ -8,7 +8,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 
 import timtim.app.manager.Const;
 
-public class Player extends GameEntity implements IPlayer {
+public class Player extends CombatEntity implements IPlayer {
 
 	public Player() {
 		super();

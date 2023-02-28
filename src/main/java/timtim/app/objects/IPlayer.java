@@ -13,4 +13,6 @@ public interface IPlayer {
 	 * Performs a jump for this player
 	 */
 	public void jump();
+	
+
 }
