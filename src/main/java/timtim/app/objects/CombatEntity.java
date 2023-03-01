@@ -10,6 +10,7 @@ public abstract class CombatEntity extends GameEntity {
 	protected int strength;
 	
 	public CombatEntity() {
+		super();
 		this.maxHealth = 1;
 		this.health = 1;
 		this.strength = 0;
