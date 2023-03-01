@@ -5,6 +5,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 
 import timtim.app.core.GameScreen;
+import timtim.app.manager.Const;
 import timtim.app.manager.TileMapManager;
 import timtim.app.objects.Player;
 
@@ -17,7 +18,7 @@ public class GameModel implements IGameModel {
 	
 	public GameModel(GameScreen gameScreen) {
 		this.gameScreen = gameScreen;
-		this.world = new World(new Vector2(0,-9.81f), false);
+		this.world = new World(new Vector2(0,Const.GRAVITY), false);
 		this.tileMapManager = new TileMapManager(gameScreen);
 		this.player = new Player();
 	}
@@ -41,9 +42,6 @@ public class GameModel implements IGameModel {
 	@Override
 	public void update() {
 		this.player.update();
-		this.world.step(1/60f, 6, 2);
+		this.world.step(Const.FPS, 6, 2);
 	}
-
-
-
 }
