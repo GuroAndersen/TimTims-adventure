@@ -57,4 +57,10 @@ public abstract class GameEntity {
 		this.velY = 0;
 		this.body = body;
 	}
+	
+	void resetVelocity() {
+		velX = 0;
+		velY = 0;
+	}
+	
 }
