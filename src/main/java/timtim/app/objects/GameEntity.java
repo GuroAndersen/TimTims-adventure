@@ -5,9 +5,9 @@ import com.badlogic.gdx.physics.box2d.Body;
 
 public abstract class GameEntity {
 
-	protected float x, y, velX, velY, speed;
-	protected float width, height;
-	protected Body body;
+	float x, y, velX, velY, speed;
+	float width, height;
+	Body body;
 	
 	public GameEntity() {
 		this.velX = 0;
@@ -57,4 +57,10 @@ public abstract class GameEntity {
 		this.velY = 0;
 		this.body = body;
 	}
+	
+	void resetVelocity() {
+		velX = 0;
+		velY = 0;
+	}
+	
 }
