@@ -1,4 +1,4 @@
-# INF112 Project – *Navn på spill*
+# INF112 Project – *TimTim's Adventure in Wonderland*
 
 * Team: *Team Team* (Gruppe 8): *Sandra S, Guro Hosøy Andersen, Hilde Jordal, Cecilie Efford, Mattias Nordahl*
 * Git: https://git.app.uib.no/team-team/team-team-2023-platformer-project
