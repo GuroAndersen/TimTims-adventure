@@ -17,4 +17,9 @@ public class Const {
 	 * The gravity of the Box2D world
 	 */
 	public static final float GRAVITY = -9.81f;
+
+	/**
+	 * Jump constant multiplied with mass to get jump force
+	 */
+	public static final float JUMPCONSTANT = 9f;
 }

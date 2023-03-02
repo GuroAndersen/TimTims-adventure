@@ -44,7 +44,7 @@ public class Player extends CombatEntity implements IPlayer {
 	@Override
 	public void jump() {
 		if(!isJumping) {
-			float force = body.getMass() * 6;
+			float force = body.getMass() * Const.JUMPCONSTANT;
 			body.applyLinearImpulse(new Vector2(0, force), body.getPosition(), true);
 			isJumping = true;
 		}
