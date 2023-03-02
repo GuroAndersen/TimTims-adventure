@@ -2,12 +2,12 @@ package timtim.app.objects;
 
 public abstract class CombatEntity extends GameEntity {
 
-	protected int maxHealth;
-	protected int health;
+	private int maxHealth;
+	private int health;
 	/**
 	 * The amount of damage this entity can perform on another CombatEntity
 	 */
-	protected int strength;
+	private int strength;
 	
 	public CombatEntity() {
 		super();

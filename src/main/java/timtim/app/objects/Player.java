@@ -1,10 +1,7 @@
 package timtim.app.objects;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Body;
 
 import timtim.app.manager.Const;
 
@@ -33,6 +30,7 @@ public class Player extends CombatEntity implements IPlayer {
 		y = body.getPosition().y * Const.PPM;
 		body.setLinearVelocity(velX * speed, body.getLinearVelocity().y < maxJumpVel ? body.getLinearVelocity().y : maxJumpVel);
 		if (body.getLinearVelocity().y == 0) isJumping = false;
+		resetVelocity();
 	}
 
 	@Override
