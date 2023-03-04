@@ -19,7 +19,7 @@ public class GameModel implements IGameModel {
 	public GameModel(GameScreen gameScreen) {
 		this.gameScreen = gameScreen;
 		this.world = new World(new Vector2(0,Const.GRAVITY), false);
-		this.tileMapManager = new TileMapManager(gameScreen);
+		this.tileMapManager = new TileMapManager(this);
 		this.player = new Player();
 	}
 	

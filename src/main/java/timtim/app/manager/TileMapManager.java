@@ -15,15 +15,16 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.Shape;
 
 import timtim.app.core.GameScreen;
+import timtim.app.model.GameModel;
 import timtim.app.objects.Player;
 
 public class TileMapManager {
 
 	private TiledMap tiledMap;
-	private GameScreen screen;
+	private GameModel model;
 	
-	public TileMapManager(GameScreen screen) {
-		this.screen = screen;
+	public TileMapManager(GameModel model) {
+		this.model = model;
 	}
 	
 	public OrthogonalTiledMapRenderer mapSetup() {
@@ -50,9 +51,9 @@ public class TileMapManager {
 							rect.getWidth(), 
 							rect.getHeight(), 
 							false, 
-							screen.getModel().getWorld()
+							model.getWorld()
 						);
-					screen.getModel().getPlayer().setBody(body, rect.getWidth(), rect.getHeight());
+					model.getPlayer().setBody(body, rect.getWidth(), rect.getHeight());
 				}
 			}
 		}
@@ -61,7 +62,7 @@ public class TileMapManager {
 	private void createStaticBody(PolygonMapObject o) {
 		BodyDef bodydef = new BodyDef();
 		bodydef.type = BodyDef.BodyType.StaticBody;
-		Body body = screen.getModel().getWorld().createBody(bodydef);
+		Body body = model.getWorld().createBody(bodydef);
 		Shape shape = createPolyShape(o);
 		body.createFixture(shape, 1000);
 		shape.dispose();

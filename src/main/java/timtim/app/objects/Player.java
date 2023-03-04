@@ -7,7 +7,7 @@ import timtim.app.manager.Const;
 
 public class Player extends CombatEntity implements IPlayer {
 	
-	final float maxJumpVel = 25;
+	private final float maxJumpVel = 25;
 	private boolean isJumping;
 
 	public Player() {
