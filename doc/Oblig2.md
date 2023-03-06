@@ -39,6 +39,42 @@ Torsdag 02.03.2021 <br>
 *Oppgaver til neste gang:* <br>
 Til neste gang skal grafikk for 4 level være klart, samt koden til hvordan fiender og venner oppfører seg skal være på plass
 
+___
+**Dato: Torsdag 02.03.2021** <br>
+**Sted: Vilvite** <br>
+**Deltagere: Sandra, Hilde, Guro, Cecilie** <br>
+**Referent: TODO** <br>
+
+*Oppsummering:* <br>
+TODO
+
+*Diskusjoner:* <br>
+TODO
+
+*Neste møte* <br>
+Torsdag 09.03.2021 <br>
+
+*Oppgaver til neste gang:* <br>
+TODO
+
+_______
+**Dato: Torsdag 02.03.2021** <br>
+**Sted: Vilvite** <br>
+**Deltagere: Sandra, Hilde, Guro, Cecilie, Mattias** <br>
+**Referent: Mattias** <br>
+
+*Oppsummering:* <br>
+TODO
+
+*Diskusjoner:* <br>
+TODO
+
+*Neste møte* <br>
+Torsdag 09.03.2021 <br>
+
+*Oppgaver til neste gang:* <br>
+TODO
+
 _______
 ## **Prosjektrapport**
 
@@ -81,7 +117,7 @@ ___
 
 Så langt har Project Boardet fungert bra, og de detaljerte brukerhistoriene har sørget for at alle i teamet kan følge med på fremgangen og vite hva som skal inkluderes i metodene. Imidlertid har vi erfart at Project Boardet ikke alltid er egnet for å planlegge arbeidet fremover, og det har vært vanskelig å planlegge hvor vi skal være i prosjektet om en uke. Derfor er synes vi at kombinasjoen med project board og sprintene vi utredet i oblig 1 er viktig. Dette har gitt god flyt i prosjektet, og vi har laget en rekkefølge for funksjonaliteter som må implementeres for å unngå problemer med ikke-implementerte funksjonaliteter. Vi har imidlertid innsett at vi ikke har tenkt nok på lengden av sprintene og vil prøve kortere sprinter på en uke til neste Oblig for å øke forutsigbarheten og bruke mindre tid på planlegging underveis.
 
-Til tider har vi også hatt behov for å endre innholdet i sprintene på grunn av uoverensstemmelse mellom forventninger og realitet. Vi har kombinert elementer fra både Scrum og Kanban for å håndtere disse situasjonene, men vi innser nå at innholdet i sprintene ikke har vært planlagt godt nok. Vi vil derfor bruke mer tid på å tenke over hva som skal være med i sprintene og hvorfor for å øke forutsigbarheten. 
+Til tider har vi også hatt behov for å endre innholdet i sprintene på grunn av uoverensstemmelse mellom forventninger og realitet. Vi har kombinert elementer fra både Agile og Kanban for å håndtere disse situasjonene, men vi innser nå at innholdet i sprintene ikke har vært planlagt godt nok. Vi vil derfor bruke mer tid på å tenke over hva som skal være med i sprintene og hvorfor, for å øke forutsigbarheten. 
 
 Vi har også brukt parprogrammering aktivt, og dette har ført til utvikling av koden og diskusjoner om forskjellige løsninger. Vi vil fortsette med denne tilnærmingen til neste Oblig.
 
@@ -94,8 +130,13 @@ Kommunikasjonen i gruppen har i sin helhelt vært veldig god. Her vil vi skille 
 Den fysiske kommunikasjonen angår samhandling og kommunikasjon når vi jobber sammen. Her er mye nevnt i avsnittet over, men det viktigste er at det har vært en lav terskel for å stille spørsmål, og alle har vært åpne for å svare på spørsmål og gi hjelp når det har vært nødvendig. 
 ___
 
-### ***Retroperspektiv***
-***TODO***
+### ***Retroperspektiv/forbedringspunkter***
+Retroperspektivet har i stor grad blitt beskrevet i avsnittene over. Det er imidlertid viktig å nevne at vi har hatt en god dialog om hvordan vi kan forbedre oss, og hvordan vi kan forbedre prosjektmetodikken. Vi har også diskutert hvordan vi kan forbedre kommunikasjonen, og hvordan vi kan forbedre arbeidsflyten. De viktigste punktene vi tar med oss inn i neste Oblig er:
+* Lage mer konkrete planer for videre arbeid
+* Bruke mer tid på å dele i detalj hva man har gjort mellom hvert møte slik at alle er oppdatert til enhver tid
+* Være bevisst på prosjektmetodikken mens vi jobber. 
+
+Siste punktet handler om at gruppen som helhet skal bevisstgjøres på hvordan vi jobber i henhold til en agil prosjektmetodikk, og hvorfor. Dette tror vi vil bedre effektiviteten i gruppen, samt kvaliteten på produktet.
 ___
 
 ### **Bidrag til kodebasen**
@@ -104,14 +145,12 @@ I denne obligen er det blitt noe forskjell i antall commits fra forskjellige tea
 * Det har under denne obligen vært stort fokus på å utarbeide grafikken til spillet. Dette er gjort i Tiled. Dvs at her er mye arbeid gjort, og mange timers arbeid lagt ned, uten at det resulterer i commits. 
 * Selv om gruppen som helhet har forbedret sine GIT-kunnskaper, er det fortsatt noen av oss som sliter litt. Det gjør at antall commits er færre, på dem med lavere kompetanse. 
 * Mye av koden er skrevet ved parprogrammering. Her har vi over tid da brukt en og samme PC. Det har ført til at den som eier PCen som ble brukt, har fått mange commits. Her kunne vi byttet på hvem som commitet, men ser på den som ineffektivt.
-__
-### **Forbedringspunkter**
-***TODO***
 ___
+
 
 ## Krav og spesifikasjon
 
-
+TODO
 
 ## Produkt og kode
 
