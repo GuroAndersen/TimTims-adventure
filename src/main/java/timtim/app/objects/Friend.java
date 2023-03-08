@@ -3,10 +3,13 @@ package timtim.app.objects;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Friend extends GameEntity implements IFriend {
+    // DENNE KODEN SKAL IKKE VÆRE HER MEN DEN ER PLACEHOLDER FOR NÅ!!!!!
+    public String itemName = "jakke";
 
     private String[] dialogueOptions = { "Hei", "Kan du hjelpe meg?", "Jeg trenger en jakke", "Se etter kister" };
     private int dialogueCounter = 0;
     private String[] giftDialogueOptions = { "Takk for jakken!", "Takk for medaljongen", "Takk for boken" };
+    private String giftDialogue = "Takk for " + itemName + "n!";
     private int interactionCounter = 0;
 
     /**
@@ -30,7 +33,7 @@ public class Friend extends GameEntity implements IFriend {
 
         // Second or more interaction between Player and Friend
         // Will only show the relevant parts of dialogue needed
-        if (interactionCounter > 0) {
+        if (interactionCounter > 0 && hasRecievedGift() == false) {
             int relevantDialogueCounter = 3;
             String relevantDialogue = dialogueOptions[relevantDialogueCounter];
             relevantDialogueCounter++;
@@ -55,7 +58,7 @@ public class Friend extends GameEntity implements IFriend {
          * If (player has item) {
          * return true;
          * }
-         * else {
+         * if (player does not have item) {
          * return false;
          * }
          * 
@@ -65,9 +68,8 @@ public class Friend extends GameEntity implements IFriend {
     }
 
     public String giftToNpc() {
-
         if (hasRecievedGift() == true)
-            return giftDialogueOptions[0];
+            return giftDialogue;
 
         return null;
     }
