@@ -1,3 +1,4 @@
+package timtim.app.objects;
 
 public interface IFriend {
     
@@ -8,12 +9,19 @@ public interface IFriend {
     public void move();
 
     /**
-     * After interaction is started a conversation will be started.
+     * After interaction is started getConversation will get strings 
+     * to be printed from a list of string options.
      */
-    public void getConversation();
+    public String getConversation();
+
+    /**
+     * 
+     * 
+     */
+    public boolean hasRecievedGift();
 
     /**
      * Friend can recieve gift from user
      */
-    public String giftToNpc(String gift);
+    public String giftToNpcDialogue();
 }

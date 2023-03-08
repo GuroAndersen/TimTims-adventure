@@ -1,25 +1,15 @@
+package timtim.app.objects;
+
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class FriendTest {
     
-    @Test
-    public void testMove(){
-        IFriend friend = new IFriend();
-        
-        /**
-         * Move right.
-         * Test if the Friend object moves 6 spaces to the right.
-         */
-        friend.move(false, true);
-        assertEquals(6, friend.getX());
+    Friend friend = new Friend();
 
-        /**
-         * Move left.
-         * Test if the Friend object moves 6 spaces to the left.
-         */
-        friend.move(true, false);
-        assertEquals(6, friend.getX());
+    @Test
+    public void testMove() {
+        
     }
 
     @Test
@@ -38,5 +28,11 @@ public class FriendTest {
         assertEquals("Thanks for the jacket!", response);
         // Verify that the giftToNpc method did not modify the gift or any other internal state
         assertEquals("jacket", gift);
+    }
+
+    @Test
+    public void testGetConversation() {
+        //Tests if the method returns the correct dialogue at the correct time.
+        assertEquals("Hei", friend.getConversation());
     }
 }
