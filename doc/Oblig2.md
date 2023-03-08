@@ -150,10 +150,45 @@ ___
 
 ## Krav og spesifikasjon
 
+### **Prioriterte krav i Oblig 2**
+TODO
+___
+### **Nye MVP krav**
+TODO
+___
+### **Oversikt over brukerhistorier**
+*Fullførte brukerhistorier*
+TODO
+___
+*Påbegynte brukerhistorier*
+TODO
+___
+*Ikke-påbegynte brukerhistorier*
+TODO
+___
+*Nye MVP brukerhistorier*
+TODO
+___
+
+### **Prioritering av oppgaver fremover**
+TODO
+### **Bugs**
+Totaloversikt over kjente bugs ligger i README. De viktigtse er:
 TODO
 
 ## Produkt og kode
+### **Utbedring av feil**
+Har vi mottat noen tilbakemeldinger?
+__
+### **Kjøre koden**
+Se README
 
-
+### **Klassediagram**
+Se ....
+___
+### **Tester**
 TODO
-
+___
+### **Analyseverktøy**
+TODO
+__
