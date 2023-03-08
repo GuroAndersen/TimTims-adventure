@@ -4,12 +4,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Friend extends GameEntity implements IFriend {
     // DENNE KODEN SKAL IKKE VÆRE HER MEN DEN ER PLACEHOLDER FOR NÅ!!!!!
-    public String itemName = "jakke";
+    public Item item;
 
     private String[] dialogueOptions = { "Hei", "Kan du hjelpe meg?", "Jeg trenger en jakke", "Se etter kister" };
     private int dialogueCounter = 0;
     private String[] giftDialogueOptions = { "Takk for jakken!", "Takk for medaljongen", "Takk for boken" };
-    private String giftDialogue = "Takk for " + itemName + "n!";
     private int interactionCounter = 0;
 
     /**
@@ -67,9 +66,14 @@ public class Friend extends GameEntity implements IFriend {
         return true;
     }
 
-    public String giftToNpc() {
+    public String giftDialogue() {
+        return "Takk for " + item.getName() + "!";
+    }
+
+    public String giftToNpc(Item item) {
+        this.item = item;
         if (hasRecievedGift() == true)
-            return giftDialogue;
+            return giftDialogue();
 
         return null;
     }
