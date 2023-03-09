@@ -75,7 +75,7 @@ Vi har diskutert de forskjellige grafikkene til de forksjellige levelene. Det er
 Torsdag 16.03.2021 <br>
 
 *Oppgaver til neste gang:* <br>
-TODO
+Til neste gang skal vi ha implementert grafikken i koden, og vi skal ha utarbeidet tester for de forskjellige klassene.
 
 _______
 ## **Prosjektrapport**
@@ -149,7 +149,6 @@ I denne obligen er det blitt noe forskjell i antall commits fra forskjellige tea
 * Mye av koden er skrevet ved parprogrammering. Her har vi over tid da brukt en og samme PC. Det har ført til at den som eier PCen som ble brukt, har fått mange commits. Her kunne vi byttet på hvem som commitet, men ser på den som ineffektivt.
 ___
 
-
 ## Krav og spesifikasjon
 
 ### **Prioriterte krav i Oblig 2**
@@ -196,7 +195,6 @@ ___
 | Brukerhistorie | Akseptansekriterier | Arbeidsoppgaver | Krav |
 |:--------------:|:-------------------:|:---------------:|:-----|
 
-TODO
 ___
 
 ### **Prioritering av oppgaver fremover**
@@ -206,13 +204,13 @@ Totaloversikt over kjente bugs ligger i README.
 
 ## Produkt og kode
 ### **Utbedring av feil**
-Siden forrige oblig har vi ikke fått påpekt noen feil vi bør jobbe med. Dog fikk vi høre at vi må være flinkere på å ha jevne commits innad i gruppen, og dersom vi parprogrammerer må dette vises i commitet. Dette har vært et stort fokus i denne obligen. 
+Siden forrige oblig har vi ikke fått påpekt noen feil vi bør jobbe med. Dog fikk vi høre at vi må være flinkere på å ha jevne commits innad i gruppen, og dersom vi parprogrammerer må dette vises i commitet. I denne oppgaven har vi større grad jevnere commits. Men som nevnt over har flere jobbet med grafikken, som ikke resulterer i commits. Derfor vil det fortsatt være en viss skjevfordeling. 
 __
 ### **Kjøre koden**
 Se README
 
 ### **Klassediagram**
-Se ....
+Se ClassDiagramOblig2.png
 ___
 ### **Tester**
 Det er utarbeidet tester for player og enemy. Disse finnes .... Vi mangler tester for andre klasser, og har som mål å få på plass tester for disse i fremtiden.
