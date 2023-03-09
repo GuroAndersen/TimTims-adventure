@@ -22,7 +22,12 @@ public interface IFriend {
     public boolean hasRecievedGift();
 
     /**
-     * Friend can recieve gift from user
+     * Generates a string responce with the relevant item
      */
-    public String giftToNpcDialogue();
+    public String giftDialogue();
+
+    /** 
+     * 
+     */
+    public String giftToNpc();
 }

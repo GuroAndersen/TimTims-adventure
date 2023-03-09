@@ -5,11 +5,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import timtim.app.objects.Inventory.Item;
 
 
-public class Friend extends GameEntity implements IFriend {
+public class Friend implements IFriend {
     
     public Item item; 
 
-    private String[] dialogueOptions = { "Hei", "Kan du hjelpe meg?", "Jeg trenger en jakke", "Se etter kister" };
+    private String[] dialogueOptions = { "Hei", "Kan du hjelpe meg?", "Jeg trenger en " + item.name(), "Se etter kister" };
     private int dialogueCounter = 0;
     private int interactionCounter = 0;
 
@@ -91,21 +91,4 @@ public class Friend extends GameEntity implements IFriend {
         throw new UnsupportedOperationException("Unimplemented method 'move'");
     }
 
-    @Override
-    public String giftToNpcDialogue() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'giftToNpcDialogue'");
-    }
-
-    @Override
-    public void update() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
-    }
-
-    @Override
-    public void render(SpriteBatch batch) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'render'");
-    }
 }
