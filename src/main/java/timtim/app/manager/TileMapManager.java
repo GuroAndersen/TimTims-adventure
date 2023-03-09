@@ -27,7 +27,7 @@ public class TileMapManager {
 	}
 	
 	public OrthogonalTiledMapRenderer mapSetup() {
-		tiledMap = new TmxMapLoader().load("level1.tmx"); // gets map from resource folder
+		tiledMap = new TmxMapLoader().load("level_3.tmx"); // gets map from resource folder
 		parseMapObjects(tiledMap.getLayers().get("static").getObjects()); //gets objects in the "objects" layer of the tiledmap.
 		return new OrthogonalTiledMapRenderer(tiledMap);
 	}

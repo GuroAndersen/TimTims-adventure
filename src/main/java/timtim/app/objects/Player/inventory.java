@@ -6,7 +6,7 @@ import java.util.NoSuchElementException;
 public class inventory {
 
     int max_size = 5;
-    ArrayList<Items> items = new ArrayList <Items>();
+    ArrayList<Item> items = new ArrayList <Item>();
 
     public int inventoryMaxSize(){
         return max_size;
@@ -16,7 +16,16 @@ public class inventory {
         return items.size();
     }
 
-    public boolean placeInInventory(Items item){
+    public boolean contains(Item item){
+        if (items.contains(item)){
+            return true;
+        }
+        else {
+            return false;
+        }
+        
+    }
+    public boolean placeInInventory(Item item){
         if (items.size()>= inventoryMaxSize()){
             return false;
         }
@@ -25,7 +34,7 @@ public class inventory {
             return true; 
     }
 
-    public void takeOutItem(Items item){
+    public void takeOutItem(Item item){
         if(items.contains(item)){
             items.remove(item);
         }
