@@ -3,12 +3,11 @@ package timtim.app.objects;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Friend extends GameEntity implements IFriend {
-    // DENNE KODEN SKAL IKKE VÆRE HER MEN DEN ER PLACEHOLDER FOR NÅ!!!!!
+    
     public Item item;
 
     private String[] dialogueOptions = { "Hei", "Kan du hjelpe meg?", "Jeg trenger en jakke", "Se etter kister" };
     private int dialogueCounter = 0;
-    private String[] giftDialogueOptions = { "Takk for jakken!", "Takk for medaljongen", "Takk for boken" };
     private int interactionCounter = 0;
 
     /**
