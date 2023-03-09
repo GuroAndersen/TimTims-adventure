@@ -38,7 +38,7 @@ public class FriendTest {
         assertEquals("Takk for jakken!", response);
         // Verify that the giftToNpc method did not modify the gift or any other
         // internal state
-        assertEquals("jakke", item.getName());
+        assertEquals("jakke", item.name());
     }
 
     @Test

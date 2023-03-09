@@ -66,7 +66,7 @@ public class Friend extends GameEntity implements IFriend {
     }
 
     public String giftDialogue() {
-        return "Takk for " + item.getName() + "!";
+        return "Takk for " + item.name() + "!";
     }
 
     public String giftToNpc(Item item) {
