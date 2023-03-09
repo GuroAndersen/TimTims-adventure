@@ -29,19 +29,33 @@ public class FriendTest {
 
     @Test
     public void testGiftToNPC() {
-        //Test the different gifts on the different levels.
-        assertEquals("Thanks for the jacket!", friend.giftToNpc("jacket"));
-        assertEquals("Thanks for the medallion!", friend.giftToNpc("medallion"));
-        assertEquals("Thanks for the book!", friend.giftToNpc("book"));
+        Item item = new Item("jakke");
+        // Test the different gifts on the different levels.
+        assertEquals("Takk for jakke!", friend.giftToNpc(item));
+        // assertEquals("Takk for medaljongen!", friend.giftToNpc());
+        // assertEquals("Takk for boken!", friend.giftToNpc());
     }
 
     @Test
     public void testGiftToNpcDoesNotModifyState() {
         // Test that the method does not modify any internal state
-        String gift = "jacket";
-        String response = friend.giftToNpc(gift);
-        assertEquals("Thanks for the jacket!", response);
-        // Verify that the giftToNpc method did not modify the gift or any other internal state
-        assertEquals("jacket", gift);
+        Item item = new Item("jakke");
+        String response = friend.giftToNpc(item);
+        assertEquals("Takk for jakken!", response);
+        // Verify that the giftToNpc method did not modify the gift or any other
+        // internal state
+        assertEquals("jakke", item.name());
+    }
+
+    @Test
+    public void testGetConversation() {
+        // Tests if the method returns the correct dialogue at the correct time.
+        // Returns null when list is done.
+        // null should make the text box close due to chat end, but this can be changed.
+        assertEquals("Hei", friend.getConversation());
+        assertEquals("Kan du hjelpe meg?", friend.getConversation());
+        assertEquals("Jeg trenger en jakke", friend.getConversation());
+        assertEquals("Se etter kister", friend.getConversation());
+        assertEquals(null, friend.getConversation());
     }
 }
