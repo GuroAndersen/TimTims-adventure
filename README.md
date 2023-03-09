@@ -19,7 +19,8 @@ I spillet beveger man seg til venstre med "A", høyre med "D" og hopper med "W".
 * Krever Java 17 eller senere
 
 ## Kjente feil
-* Inkonsistent hopping
+* Kan dobbelhoppe når man er borti et tak
+* Avhengig av vindustørrelse vises svarte vertikale striper når man beveger seg
 
 ## Credits
 * Ikke hentet grafikk eller lyd eksternt enda
