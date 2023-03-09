@@ -2,9 +2,12 @@ package timtim.app.objects;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import timtim.app.objects.Inventory.Item;
+
+
 public class Friend extends GameEntity implements IFriend {
     
-    public Item item;
+    public Item item; 
 
     private String[] dialogueOptions = { "Hei", "Kan du hjelpe meg?", "Jeg trenger en jakke", "Se etter kister" };
     private int dialogueCounter = 0;
