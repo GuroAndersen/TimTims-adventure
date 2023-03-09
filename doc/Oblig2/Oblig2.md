@@ -17,7 +17,7 @@ Vi diskuterte hvordan vi skulle bygge koden videre. For å visulisere dette utab
 Torsdag 23.02.2021 <br>
 
 *Oppgaver til neste gang:* <br>
-Til neste gang jobber vi videre med hvordan planlegge videre arbeid og fordele roller
+Til neste gang jobber vi videre med hvordan planlegge videre arbeid og fordele roller.
 
 
 ___
@@ -164,17 +164,18 @@ Disse kravene er viktig da de bygger fundamentet for videre koding, og de muligh
 Vi har utarbeidet en del nye MVP krav. Siden vi er godt i gang med logikken i spillet, handler flere av kravene om det grafiske. Vi har også lagt til noen krav som er relatert til spillets funksjonalitet.
 
 9. Vise grafikk til spilleren
-10. Vise grafikk til venner
-11. Vise grafik til fiender
-12. Lage en "boss"
-13. Få kamera til å stoppe før man ser den sorte kantet rundt spillbrettet
+10. Lage en "boss"
+11. Få kamera til å stoppe før man ser den sorte kantet rundt spillbrettet
 ___
 ### **Oversikt over brukerhistorier**
+Vi har endret noen av brukerhistoriene siden sist. Årsaken til dette er at noen av dem ble litt for åpne, og dekket litt mye. Her har vi nå skilt det logiske fra det grafiske. Eksempelvis på spiller skiller vi nå mellom at man ser et objekt som er spilleren, til at man ser det grafiske som skal være den faktiske spillere. Per nå har vi implementer spillen som en firkant. Dette var bare en midlertidig løsning for å teste logikken. Videre vil vi ha som et annet mål å se hvordan spilleren skal se ut, grafisk sett. 
+
+
 *Fullførte brukerhistorier*
 | Brukerhistorie | Akseptansekriterier | Arbeidsoppgaver | Krav |
 |:--------------:|:-------------------:|:---------------:|:-----|
 | Som spiller skal jeg kunne se et spillbrett når jeg starter spillet. | Gitt at spilleren starter et spill: <br> -Bakken, taket være tydelig markert <br> -Hindringer være tydelig adskilt fra bakgrunnen | Metode som viser spillbrettet når spiller starter spillet fra menyen | 2 |
-| Som spiller skal jeg til enhver se spilleren og tydelig skille den fra andre objekter | Gitt at spillet spilles skal: <br> - spillfiguren til envher være synlig <br> -spillfiguren skille seg fra andre objekter | Lage en spillfigur som tydelig skiller seg fra bakgrunnen <br> Metode som viser spiller på spillbrettet | 3 |
+| Som spiller skal jeg til enhver se en spiller-objekt og tydelig skille den fra andre objekter | Gitt at spillet spilles skal: <br> - spillfiguren til envher være synlig <br> -spillfiguren skille seg fra andre objekter | Lage en spillfigur som tydelig skiller seg fra bakgrunnen <br> Metode som viser spiller på spillbrettet | 3 |
 | Som spiller skal jeg kunne flytte på spilleren | Gitt at spilleren trykker “W”: <br> -skal spilleren hoppe <br> Gitt at spilleren trykker "A" skal: <br> -skal spilleren bevege seg til venstre <br> Gitt at spilleren trykker "D" <br> -skal spilleren bevege seg til høyre | Metode i controller som registrerer tastetrykk <br> Metode som beveger spilleren basert på tastetrykk | 4 |
 ___
 *Påbegynte brukerhistorier* <br>
@@ -194,11 +195,15 @@ ___
 *Nye MVP brukerhistorier* <br>
 | Brukerhistorie | Akseptansekriterier | Arbeidsoppgaver | Krav |
 |:--------------:|:-------------------:|:---------------:|:-----|
+| Som spiller skal jeg se den grafiske fremstillingen av spillfiguren | Gitt at spillet spilles <br> -skal spilleren se en figur som tydelig markerer seg som "hovedkarakteren" i spillet | Metode som implementerer spillfiguren | 10|
+| Som spiller skal jeg se en siste "boss" på siste level | Gitt at spilleren kommer til siste level <br> -skal spilleren se en figur som tydelig er en "boss" <br> -skal spilleren kunne kjempe mot denne "bossen" | Metode som implementerer "boss" | 11|
+| Som spiller skal jeg ikke se den sorte kanten rundt spillbrettet | Gitt at spilleren beveger seg til kanten av spillbrettet<br> -skal kameratet stoppe <br> -skal spilleren IKKE se den svarte kanten rundt spillbrettet | Metode som implementerer kamera | 12|
 
 ___
 
 ### **Prioritering av oppgaver fremover**
-TODO
+Fremover vil vi fokusere på å få integrert grafikken, med alt det tilhører. På kort sikt handler det om å integrere de 4 levelene i koden. Videre er det å få på plass logikken til de forskjellige levelene. Parallelt med dette vil vi fokusere på å få kameraet til å fungere. Det vil si at det følger spillere "riktig", samt ikke viser svart utenfor spillbrettet. Når dette begynner å komme på plass vil vi fokusere på å videre implementere fiender og venner. 
+
 ### **Bugs**
 Totaloversikt over kjente bugs ligger i README. 
 
@@ -207,13 +212,15 @@ Totaloversikt over kjente bugs ligger i README.
 Siden forrige oblig har vi ikke fått påpekt noen feil vi bør jobbe med. Dog fikk vi høre at vi må være flinkere på å ha jevne commits innad i gruppen, og dersom vi parprogrammerer må dette vises i commitet. I denne oppgaven har vi større grad jevnere commits. Men som nevnt over har flere jobbet med grafikken, som ikke resulterer i commits. Derfor vil det fortsatt være en viss skjevfordeling. 
 __
 ### **Kjøre koden**
-Se README
+Se README.
+
+Vi har så langt kun testet koden på windows og mac. Her kjører den fint. Vi har ikke hatt mulighet til å teste på linux. Årsaken til dette er at ingen i gruppen har tilgang til Linux. Vi vil til neste gang finne en løsning på dette, og få testet på Linux.
 
 ### **Klassediagram**
 Se ClassDiagramOblig2.png
 ___
 ### **Tester**
-Det er utarbeidet tester for player og enemy. Disse finnes .... Vi mangler tester for andre klasser, og har som mål å få på plass tester for disse i fremtiden.
+Det er utarbeidet tester for player og enemy, se FriendTest og PlayerTest Vi mangler tester for andre klasser, og har som mål å få på plass tester for disse i fremtiden. I tillegg vil vi fremover se på muligheter for å teste GUI-et. Vi vil her se på både manuelle tester og automatiserte tester.
 ___
 ### **Analyseverktøy**
 Vi har per nå valgt å ikke ta i bruk et analyseverktøy. Årsaken til dette er at vi er fokusert på selve koden, og ikke prioritert å sette oss inn i eksempelvis SonarQube. Likevel ser vi verdien av slike analyseverktøy, og har som mål å sette oss inn i dette i fremtiden.
