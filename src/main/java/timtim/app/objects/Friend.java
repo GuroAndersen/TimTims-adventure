@@ -68,10 +68,12 @@ public class Friend implements IFriend {
         return true;
     }
 
+    @Override
     public String giftDialogue() {
         return "Takk for " + item.name() + "!";
     }
 
+    @Override
     public String giftToNpc(Item item) {
         this.item = item;
         if (hasRecievedGift() == true)
