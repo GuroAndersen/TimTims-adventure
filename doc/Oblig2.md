@@ -159,6 +159,8 @@ I denne obligen har vi i hovedsak fokusert på de grunnlegende kravene. Dette gj
 3. Vise spiller på spillbrettet
 4. Flytte spiller rundt brettet
 
+Disse kravene er viktig da de bygger fundamentet for videre koding, og de muligher manuelle tester for andre aspekter av koden. 
+
 ### **Nye MVP krav**
 Vi har utarbeidet en del nye MVP krav. Siden vi er godt i gang med logikken i spillet, handler flere av kravene om det grafiske. Vi har også lagt til noen krav som er relatert til spillets funksjonalitet.
 
@@ -170,27 +172,40 @@ Vi har utarbeidet en del nye MVP krav. Siden vi er godt i gang med logikken i sp
 ___
 ### **Oversikt over brukerhistorier**
 *Fullførte brukerhistorier*
-TODO
+| Brukerhistorie | Akseptansekriterier | Arbeidsoppgaver | Krav |
+|:--------------:|:-------------------:|:---------------:|:-----|
+| Som spiller skal jeg kunne se et spillbrett når jeg starter spillet. | Gitt at spilleren starter et spill: <br> -Bakken, taket være tydelig markert <br> -Hindringer være tydelig adskilt fra bakgrunnen | Metode som viser spillbrettet når spiller starter spillet fra menyen | 2 |
+| Som spiller skal jeg til enhver se spilleren og tydelig skille den fra andre objekter | Gitt at spillet spilles skal: <br> - spillfiguren til envher være synlig <br> -spillfiguren skille seg fra andre objekter | Lage en spillfigur som tydelig skiller seg fra bakgrunnen <br> Metode som viser spiller på spillbrettet | 3 |
+| Som spiller skal jeg kunne flytte på spilleren | Gitt at spilleren trykker “W”: <br> -skal spilleren hoppe <br> Gitt at spilleren trykker "A" skal: <br> -skal spilleren bevege seg til venstre <br> Gitt at spilleren trykker "D" <br> -skal spilleren bevege seg til høyre | Metode i controller som registrerer tastetrykk <br> Metode som beveger spilleren basert på tastetrykk | 4 |
 ___
-*Påbegynte brukerhistorier*
-TODO
+*Påbegynte brukerhistorier* <br>
+| Brukerhistorie | Akseptansekriterier | Arbeidsoppgaver | Krav |
+|:--------------:|:-------------------:|:---------------:|:-----|
+| Som spiller jeg kunne interagere med terenget | Gitt at spilleren går bort til et hinder skal: <br> - spillfiguren stoppe <br> Gitt at spilleren hopper på et objekt: <br> -skal spilleren kunne lande på et objekt | Metode som gjør gjør at spilleren stopper når den interagerer med terrenget | 5 |
+| Som spiller skal jeg kunne hente gjenstander fra kister | Gitt at spillfiguren åpner en kiste: <br> -skal enten spilleren få en "power-up" <br> -eller motta informasjon som senere kan byttes | Metode som gir spilleren gjenstander når den åpner en kiste <br> Metode som gir spilleren våpen når den åpner en kiste | 6 |
 ___
 *Ikke-påbegynte brukerhistorier*
-TODO
+| Brukerhistorie | Akseptansekriterier | Arbeidsoppgaver | Krav |
+|:--------------:|:-------------------:|:---------------:|:-----|
+| Som spiller skal jeg se en meny når jeg starter spillet. Der skal jeg ha mulighet til å velge mellom å starte spille, eller se informasjon om spillet | Gitt at spillet startes skal: <br> -spilleren måte en meny med forskjellige valg <br>- Hvert valg skal ta spilleren til et nytt vindu | Metode som viser menyen når programet starter <br> Metode som kan kjøre andre klasser | 1 |
+| Som spiller skal jeg kunne se fiender og allierte | Gitt at spilleren er på et sted i spillbrettet der det er fiender eller alierte <br> -skal spilleren tydelig klare å skille fiender/alierte fra bakgrunnen <br> -skal spilleren vite forskjell på fiende og alliert | Metode som som lager fiender <br> Metode som lager allierte | 7 |
+| Som spiller skal jeg se at jeg mister liv når jeg jeg interagerer med en fiende | Gitt at spilleren interagerer med en fiende <br> -skal spilleren tydelig se hvor mye liv den mister <br> -skal spilleren tydelig se hvor mye liv den har igjen | Metode som gjør at spilleren mister liv ved kontakt med fiender <br> Metode som gjør at spilleren dør når den er tom for liv | 8 |
+| Som spiller skal jeg se at jeg mister liv dersom jeg faller ut av brettet | Gitt at spilleren faller en viss distanse <br> -skal spilleren tydelig se at den dør | Metode som gjør at spiller dør og spillet starter på nytt dersom spiller faller ut av brettet | 8|
 ___
-*Nye MVP brukerhistorier*
-TODO
+*Nye MVP brukerhistorier* <br>
+| Brukerhistorie | Akseptansekriterier | Arbeidsoppgaver | Krav |
+|:--------------:|:-------------------:|:---------------:|:-----|
+
 ___
 
 ### **Prioritering av oppgaver fremover**
 TODO
 ### **Bugs**
-Totaloversikt over kjente bugs ligger i README. De viktigtse er:
-TODO
+Totaloversikt over kjente bugs ligger i README. 
 
 ## Produkt og kode
 ### **Utbedring av feil**
-Har vi mottat noen tilbakemeldinger?
+Siden forrige oblig har vi ikke fått påpekt noen feil vi bør jobbe med. Dog fikk vi høre at vi må være flinkere på å ha jevne commits innad i gruppen, og dersom vi parprogrammerer må dette vises i commitet. Dette har vært et stort fokus i denne obligen. 
 __
 ### **Kjøre koden**
 Se README
@@ -199,8 +214,9 @@ Se README
 Se ....
 ___
 ### **Tester**
-TODO
+Det er utarbeidet tester for player og enemy. Disse finnes .... Vi mangler tester for andre klasser, og har som mål å få på plass tester for disse i fremtiden.
 ___
 ### **Analyseverktøy**
-TODO
+Vi har per nå valgt å ikke ta i bruk et analyseverktøy. Årsaken til dette er at vi er fokusert på selve koden, og ikke prioritert å sette oss inn i eksempelvis SonarQube. Likevel ser vi verdien av slike analyseverktøy, og har som mål å sette oss inn i dette i fremtiden.
+
 __
