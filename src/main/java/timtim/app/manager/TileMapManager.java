@@ -28,34 +28,36 @@ public class TileMapManager {
 	}
 	
 	public OrthogonalTiledMapRenderer mapSetup() {
-		tiledMap = new TmxMapLoader().load("level1.tmx"); // gets map from resource folder
-		parseMapObjects(tiledMap.getLayers().get("static").getObjects()); //gets objects in the "objects" layer of the tiledmap.
+		tiledMap = new TmxMapLoader().load("level_3.tmx"); // gets map from resource folder
+		parseStaticMapObjects(tiledMap.getLayers().get("static").getObjects()); //gets objects in the "objects" layer of the tiledmap.
+		parsePlayerObject(tiledMap.getLayers().get("player").getObjects());
 		return new OrthogonalTiledMapRenderer(tiledMap);
 	}
 	
-	private void parseMapObjects(MapObjects objects) {
+	private void parseStaticMapObjects(MapObjects objects) {
 		for (MapObject o : objects) {
-			
 			if (o instanceof PolygonMapObject) {
 				createStaticBody((PolygonMapObject) o);
 			}
-			
-			if (o instanceof RectangleMapObject) {
-				Rectangle rect = ((RectangleMapObject) o).getRectangle();
-				String rectName = o.getName();
-				
-				if (rectName.equals("player")) {
-					Body body  = BodyManager.createBody(
-							rect.getX() + rect.getWidth() / 2,
-							rect.getY() + rect.getHeight() / 2,
-							rect.getWidth(), 
-							rect.getHeight(), 
-							false, 
-							model.getWorld()
-						);
-					model.getPlayer().setBody(body, rect.getWidth(), rect.getHeight());
-				}
-			}
+		}
+	}
+
+	private void parsePlayerObject(MapObjects objects){
+		MapObject o = objects.get(0);
+		if (o instanceof RectangleMapObject) {
+			Rectangle rect = ((RectangleMapObject) o).getRectangle();
+			String rectName = o.getName();
+			Body body  = BodyManager.createBody(
+					rect.getX() + rect.getWidth() / 2,
+					rect.getY() + rect.getHeight() / 2,
+					rect.getWidth(), 
+					rect.getHeight(), 
+					false, 
+					model.getWorld()
+				);
+			model.getPlayer().setBody(body, rect.getWidth(), rect.getHeight());
+		} else {
+			throw new IllegalArgumentException("Player map object not found or is not a RectangleMapObject");
 		}
 	}
 	
