@@ -37,40 +37,42 @@ Vi har diskutert fysikken og bevegelsen til spillfiguren vår. I og med at vi vi
 Torsdag 02.03.2021 <br>
 
 *Oppgaver til neste gang:* <br>
-Til neste gang skal grafikk for 4 level være klart, samt koden til hvordan fiender og venner oppfører seg skal være på plass
+Utarbeide interface for venner og fiender i spillet.
 
 ___
 **Dato: Torsdag 02.03.2021** <br>
 **Sted: Vilvite** <br>
 **Deltagere: Sandra, Hilde, Guro, Cecilie** <br>
-**Referent: TODO** <br>
+**Referent: Sandra** <br>
 
 *Oppsummering:* <br>
-TODO
+Det ble gjennomgått og forklart hva hvert gruppemedlem hadde utført i løpet av uken. Det ble sett på utførelsen av interface til både IEnemy og IFriend, samt tilhørende tester.Vi implementerte et av de fullførte kartene til Cecilie inn i spillet, slik at det nå dukker opp istedenfor testMap når vi kjører Launcher.
+Hilde presentert en melodi som kan brukes til spillet. Når vi kjørte Launcher med det nye kartet oppdaget vi noen bugs som må fikses på uti fra størrelsen til spiller objektet og hvordan statiske objekter er tegnet inn i kartet. Samt at vi måtte endre på hvor høyt spilleren kunne hoppe.
+
 
 *Diskusjoner:* <br>
-TODO
+Det har vært en diskusjon på hvordan "kameraet skal følge spilleren. Per nå viser kameraet svart skjerm rundt selve kartet. Vi har derfor laget flere forslag til hvordan vi skal ordne dette.
 
 *Neste møte* <br>
 Torsdag 09.03.2021 <br>
 
 *Oppgaver til neste gang:* <br>
-TODO
+Til neste gang skal grafikk for 4 level være klart, samt koden til hvordan fiender og venner oppfører seg skal være på plass
 
 _______
-**Dato: Torsdag 02.03.2021** <br>
+**Dato: Torsdag 09.03.2021** <br>
 **Sted: Vilvite** <br>
 **Deltagere: Sandra, Hilde, Guro, Cecilie, Mattias** <br>
 **Referent: Mattias** <br>
 
 *Oppsummering:* <br>
-TODO
+Møte startet med en presentasjon av grafikken. Videre jobbet vi sammen som gruppe for å få implementert grafikken i koden. Videre har vi og diskutert tester. Vi har sett på de testene som allerede er utarbeidet, og hvorvidt de faktisk tester det vi er ute etter. Videre har vi sett på hvilke tester som er formålstjenlig å lage videre.
 
 *Diskusjoner:* <br>
-TODO
+Vi har diskutert de forskjellige grafikkene til de forksjellige levelene. Det er utarbeidet 4 forskjellet level, og her er målet at de skal stige i vanskelighetstgrad. Det er tiltenkt 3 "vanlige" level, og en boss. Vi har diskutert hvordan vi skal få til dette, og hvordan vi skal få til en god overgang mellom levelene.
 
 *Neste møte* <br>
-Torsdag 09.03.2021 <br>
+Torsdag 16.03.2021 <br>
 
 *Oppgaver til neste gang:* <br>
 TODO
@@ -151,10 +153,20 @@ ___
 ## Krav og spesifikasjon
 
 ### **Prioriterte krav i Oblig 2**
-TODO
-___
+I denne obligen har vi i hovedsak fokusert på de grunnlegende kravene. Dette gjelder da:
+
+2. Vise spillbrettet
+3. Vise spiller på spillbrettet
+4. Flytte spiller rundt brettet
+
 ### **Nye MVP krav**
-TODO
+Vi har utarbeidet en del nye MVP krav. Siden vi er godt i gang med logikken i spillet, handler flere av kravene om det grafiske. Vi har også lagt til noen krav som er relatert til spillets funksjonalitet.
+
+9. Vise grafikk til spilleren
+10. Vise grafikk til venner
+11. Vise grafik til fiender
+12. Lage en "boss"
+13. Få kamera til å stoppe før man ser den sorte kantet rundt spillbrettet
 ___
 ### **Oversikt over brukerhistorier**
 *Fullførte brukerhistorier*
