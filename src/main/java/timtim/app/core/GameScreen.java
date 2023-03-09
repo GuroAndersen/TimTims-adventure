@@ -13,8 +13,6 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 
-import timtim.app.controller.GameController;
-import timtim.app.controller.IGameController;
 import timtim.app.manager.Const;
 import timtim.app.manager.TileMapManager;
 import timtim.app.model.GameModel;
@@ -24,7 +22,6 @@ import timtim.app.objects.Player;
 public class GameScreen extends ScreenAdapter {
 
 	IGameModel model;
-	IGameController controller;
 	
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
@@ -34,7 +31,6 @@ public class GameScreen extends ScreenAdapter {
 	
 	public GameScreen(OrthographicCamera camera) {
 		this.model = new GameModel(this);
-		this.controller = new GameController(this);
 		this.camera = camera;
 		this.batch = new SpriteBatch();
 
@@ -44,10 +40,15 @@ public class GameScreen extends ScreenAdapter {
 		this.mapRenderer = this.model.getMapRenderer();
 	}
 	
+	private void update() {
+		model.update();
+		handlePlayerInput();
+		updateCamera();
+	}
+	
 	@Override
 	public void render(float delta) {
-		this.controller.update();
-		updateCamera();
+		update();
 		
 		// Removes all graphics and animations from last frame
 		Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -74,8 +75,23 @@ public class GameScreen extends ScreenAdapter {
 		camera.position.set(pos);
 		camera.update();
 	}
-	
-	public IGameModel getModel() {
-		return this.model;
+
+	private void handlePlayerInput() {
+		// Exit
+		if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) { //  Closes game if escape is pressed
+			Gdx.app.exit();
+		}
+		
+		// Horizontal movement
+		boolean moveLeft = false;
+		boolean moveRight = false;
+		if (Gdx.input.isKeyPressed(Input.Keys.D)) moveRight = true;
+		if (Gdx.input.isKeyPressed(Input.Keys.A)) moveLeft = true;
+		model.getPlayer().move(moveLeft, moveRight);
+		
+		// Jump
+		if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
+			model.getPlayer().jump();
+		}
 	}
 }

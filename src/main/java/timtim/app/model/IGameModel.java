@@ -33,7 +33,7 @@ public interface IGameModel {
 	public OrthogonalTiledMapRenderer getMapRenderer();
 	
 	/**
-	 * Update the world and its contents
+	 * Update the player, the world and its contents
 	 */
 	public void update();
 }
