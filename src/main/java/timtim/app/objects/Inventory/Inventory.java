@@ -1,9 +1,9 @@
-package timtim.app.objects.Player;
+package timtim.app.objects.Inventory;
 
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
-public class inventory {
+public class Inventory {
 
     int max_size = 5;
     ArrayList<Item> items = new ArrayList <Item>();
