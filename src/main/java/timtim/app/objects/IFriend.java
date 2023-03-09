@@ -1,5 +1,6 @@
 package timtim.app.objects;
 
+
 public interface IFriend {
     
     /**

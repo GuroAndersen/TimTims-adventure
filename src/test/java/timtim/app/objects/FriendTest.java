@@ -4,21 +4,27 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-import timtim.app.objects.Friend;
-import timtim.app.objects.Item;
-
 public class FriendTest {
-
-    Friend friend = new Friend();
-
-    /**
-     * Should test that the friend only moves a certain ammout to the left and
-     * right.
-     * Should also test that the Friend is moving at all.
-     */
+    
+	IFriend friend;
+	
     @Test
-    public void testMove() {
+    public void testMove(){
+        //IFriend friend = new IFriend();
+        
+        /**
+         * Move right.
+         * Test if the Friend object moves 6 spaces to the right.
+         */
+        //friend.move(false, true);
+        //assertEquals(6, friend.getX());
 
+        /**
+         * Move left.
+         * Test if the Friend object moves 6 spaces to the left.
+         */
+        //friend.move(true, false);
+        //assertEquals(6, friend.getX());
     }
 
     @Test

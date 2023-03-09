@@ -7,7 +7,7 @@ import timtim.app.manager.Const;
 
 public class Player extends CombatEntity implements IPlayer {
 	
-	final float maxJumpVel = 25;
+	private final float maxJumpVel = 25;
 	private boolean isJumping;
 
 	public Player() {
@@ -26,8 +26,6 @@ public class Player extends CombatEntity implements IPlayer {
 	}
 
 	private void updateMovement() {
-		x = body.getPosition().x * Const.PPM;
-		y = body.getPosition().y * Const.PPM;
 		body.setLinearVelocity(velX * speed, body.getLinearVelocity().y < maxJumpVel ? body.getLinearVelocity().y : maxJumpVel);
 		if (body.getLinearVelocity().y == 0) isJumping = false;
 		resetVelocity();
@@ -44,7 +42,7 @@ public class Player extends CombatEntity implements IPlayer {
 	@Override
 	public void jump() {
 		if(!isJumping) {
-			float force = body.getMass() * 6;
+			float force = body.getMass() * Const.JUMPCONSTANT;
 			body.applyLinearImpulse(new Vector2(0, force), body.getPosition(), true);
 			isJumping = true;
 		}
