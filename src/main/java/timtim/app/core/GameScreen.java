@@ -7,7 +7,9 @@ import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
@@ -68,10 +70,23 @@ public class GameScreen extends ScreenAdapter {
 
 	private void updateCamera() {
 		Vector3 pos = camera.position;
-		// takes player position and multiply by PPM for real world position, 
-		// 		multiply by 10 and divide by 10 for smoother camera movement
+		
+		// sets camera to player
 		pos.x = Math.round(model.getPlayer().getBody().getPosition().x * Const.PPM * 10) / 10f;
 		pos.y = Math.round(model.getPlayer().getBody().getPosition().y * Const.PPM * 10) / 10f;
+		
+		float camViewportHalfX = camera.viewportWidth/2;
+		float camViewportHalfY = camera.viewportHeight/2;
+		MapProperties prop = mapRenderer.getMap().getProperties();
+		float mapWidth = Math.round(prop.get("width", Integer.class) 
+				* prop.get("tilewidth", Integer.class) 
+				* Const.PPM * 10) / 10f;
+		float mapHeight = Math.round(prop.get("height", Integer.class) 
+				* prop.get("tileheight", Integer.class) 
+				* Const.PPM * 10) / 10f;
+		
+		pos.x = MathUtils.clamp(camera.position.x, camViewportHalfX, mapWidth - camViewportHalfX);
+		pos.y = MathUtils.clamp(camera.position.y, camViewportHalfY, mapHeight - camViewportHalfY);
 		camera.position.set(pos);
 		camera.update();
 	}
