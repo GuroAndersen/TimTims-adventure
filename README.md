@@ -11,7 +11,7 @@ Timtim trenger å skaffe informasjon for å bli mer opplyst. Informasjonen kan h
 
 Men, Timtim må passe seg. For i hans jakt på å finne verdifull informasjon, truer det farer. Pass på!
 
-I spillet beveger man seg til venstre med "A", høyre med "D" og hopper med "W". 
+I spillet beveger man seg til venstre med "A", høyre med "D" og hopper med "space". 
 
 
 ## Kjøring
@@ -19,6 +19,10 @@ I spillet beveger man seg til venstre med "A", høyre med "D" og hopper med "W".
 * Krever Java 17 eller senere
 
 ## Kjente feil
+* Det er mulig å gå utenfor brettet på noen nivå
+* Man dør ikke eller begynner ikke på nytt når man faller i et hull
+* Kamera følger ikke spiller ut til venstre, men gjør det til høyre.
+* Terrenget har inkonsistent kollisjon
 * Kan dobbelhoppe når man er borti et tak
 * Avhengig av vindustørrelse vises svarte vertikale striper når man beveger seg
 
