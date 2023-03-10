@@ -7,7 +7,9 @@ import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
@@ -15,82 +17,96 @@ import com.badlogic.gdx.physics.box2d.World;
 
 import timtim.app.manager.Const;
 import timtim.app.manager.TileMapManager;
+import timtim.app.model.GameModel;
+import timtim.app.model.IGameModel;
 import timtim.app.objects.Player;
 
 public class GameScreen extends ScreenAdapter {
 
+	IGameModel model;
+	
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
-	private World world;
 	private Box2DDebugRenderer B2DDebugRenderer;
 	
 	private OrthogonalTiledMapRenderer mapRenderer;
-	private TileMapManager mapManager;
-	
-	// objects
-	Player player;
 	
 	public GameScreen(OrthographicCamera camera) {
+		this.model = new GameModel(this);
 		this.camera = camera;
 		this.batch = new SpriteBatch();
-		this.world = new World(new Vector2(0,-9.81f), false);
+
 		this.B2DDebugRenderer = new Box2DDebugRenderer();
 		
 		// MAP INIT
-		this.mapManager = new TileMapManager(this);
-		this.mapRenderer = mapManager.mapSetup();
+		this.mapRenderer = this.model.getMapRenderer();
+	}
+	
+	private void update() {
+		model.update();
+		handlePlayerInput();
+		updateCamera();
 	}
 	
 	@Override
 	public void render(float delta) {
-		this.update();
+		update();
 		
 		// Removes all graphics and animations from last frame
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
 		// Render map
+		mapRenderer.setView(camera);
 		mapRenderer.render();
-		
+		model.getPlayer().render(batch);
+		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
 		//render objects
 		
 		batch.end();
-		B2DDebugRenderer.render(world, camera.combined.scl(Const.PPM));
-	}
-
-	
-	private void update() {
-		world.step(1/60f, 6, 2);
-		updateCamera();
-		player.update();
-		
-		batch.setProjectionMatrix(camera.combined);
-		mapRenderer.setView(camera);
-		
-		if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) { //  Closes game if escape is pressed
-			Gdx.app.exit();
-		}
+		B2DDebugRenderer.render(model.getWorld(), camera.combined.scl(Const.PPM));
 	}
 
 	private void updateCamera() {
 		Vector3 pos = camera.position;
-		// takes player position and multiply by PPM for real world position, 
-		// 		multiply by 10 and divide by 10 for smoother camera movement
-		pos.x = Math.round(player.getBody().getPosition().x * Const.PPM * 10) / 10f;
-		pos.y = Math.round(player.getBody().getPosition().y * Const.PPM * 10) / 10f;
+		
+		// sets camera to player
+		pos.x = Math.round(model.getPlayer().getBody().getPosition().x * Const.PPM * 10) / 10f;
+		pos.y = Math.round(model.getPlayer().getBody().getPosition().y * Const.PPM * 10) / 10f;
+		
+		float camViewportHalfX = camera.viewportWidth/2;
+		float camViewportHalfY = camera.viewportHeight/2;
+		MapProperties prop = mapRenderer.getMap().getProperties();
+		float mapWidth = Math.round(prop.get("width", Integer.class) 
+				* prop.get("tilewidth", Integer.class) 
+				* Const.PPM * 10) / 10f;
+		float mapHeight = Math.round(prop.get("height", Integer.class) 
+				* prop.get("tileheight", Integer.class) 
+				* Const.PPM * 10) / 10f;
+		
+		pos.x = MathUtils.clamp(camera.position.x, camViewportHalfX, mapWidth - camViewportHalfX);
+		pos.y = MathUtils.clamp(camera.position.y, camViewportHalfY, mapHeight - camViewportHalfY);
 		camera.position.set(pos);
 		camera.update();
 	}
 
-	/**
-	 * @return the world
-	 */
-	public World getWorld() {
-		return world;
-	}
-	
-	public void setPlayer(Player p) {
-		this.player = p;
+	private void handlePlayerInput() {
+		// Exit
+		if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) { //  Closes game if escape is pressed
+			Gdx.app.exit();
+		}
+		
+		// Horizontal movement
+		boolean moveLeft = false;
+		boolean moveRight = false;
+		if (Gdx.input.isKeyPressed(Input.Keys.D)) moveRight = true;
+		if (Gdx.input.isKeyPressed(Input.Keys.A)) moveLeft = true;
+		model.getPlayer().move(moveLeft, moveRight);
+		
+		// Jump
+		if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
+			model.getPlayer().jump();
+		}
 	}
 }

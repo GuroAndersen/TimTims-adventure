@@ -1,4 +1,4 @@
-# INF112 Project – *Navn på spill*
+# INF112 Project – *TimTim's Adventure in Wonderland*
 
 * Team: *Team Team* (Gruppe 8): *Sandra S, Guro Hosøy Andersen, Hilde Jordal, Cecilie Efford, Mattias Nordahl*
 * Git: https://git.app.uib.no/team-team/team-team-2023-platformer-project
@@ -19,9 +19,12 @@ I spillet beveger man seg til venstre med "A", høyre med "D" og hopper med "spa
 * Krever Java 17 eller senere
 
 ## Kjente feil
-* Det er nå mulig å gå utenfor brettet
+* Det er mulig å gå utenfor brettet på noen nivå
+* Man dør ikke eller begynner ikke på nytt når man faller i et hull
+* Kamera følger ikke spiller ut til venstre, men gjør det til høyre.
 * Terrenget har inkonsistent kollisjon
-* Kamera følger spiller ut av brettet
+* Kan dobbelhoppe når man er borti et tak
+* Avhengig av vindustørrelse vises svarte vertikale striper når man beveger seg
 
 ## Credits
 * Ikke hentet grafikk eller lyd eksternt enda
