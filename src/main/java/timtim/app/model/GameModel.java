@@ -20,6 +20,7 @@ public class GameModel implements IGameModel, EntityWorld {
 
 	private GameScreen gameScreen;
 	private TileMapManager tileMapManager;
+	private OrthogonalTiledMapRenderer currentMapRenderer;
 	private World world;
 	private Player player;
 	
@@ -35,6 +36,8 @@ public class GameModel implements IGameModel, EntityWorld {
 		// ENTITY LIST INIT
 		 friendList = new ArrayList<Friend>();
 		 entityList = new ArrayList<GameEntity>();
+		 
+		 currentMapRenderer = this.tileMapManager.mapSetup("level_3");
 	}
 	
 	
@@ -50,7 +53,7 @@ public class GameModel implements IGameModel, EntityWorld {
 	
 	@Override
 	public OrthogonalTiledMapRenderer getMapRenderer() {
-		return this.tileMapManager.mapSetup();
+		return this.currentMapRenderer;
 	}
 	
 	@Override
