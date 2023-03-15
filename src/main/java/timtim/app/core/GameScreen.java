@@ -40,6 +40,7 @@ public class GameScreen extends ScreenAdapter {
 		
 		// MAP INIT
 		this.mapRenderer = this.model.getMapRenderer();
+		
 	}
 	
 	private void update() {

@@ -14,9 +14,7 @@ import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.Shape;
 
-import timtim.app.core.GameScreen;
 import timtim.app.model.GameModel;
-import timtim.app.objects.Player;
 
 public class TileMapManager {
 

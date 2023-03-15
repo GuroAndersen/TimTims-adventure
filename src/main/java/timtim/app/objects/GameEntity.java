@@ -1,10 +1,13 @@
 package timtim.app.objects;
 
+import java.util.Random;
+
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.Body;
 
 public abstract class GameEntity {
 
+	public int[] xMovementCases = {-1,0,1};
 	float velX, velY, speed;
 	float width, height;
 	Body body;
@@ -84,5 +87,15 @@ public abstract class GameEntity {
 	 */
 	protected void setYVelocity(float velY) {
 		this.velY = velY;
+	}
+	
+	/**
+	 * Do random movement horizontal movement
+	 * for this GameEntity object.
+	 */
+	protected void doRandomXMovement() {
+		Random r = new Random();
+		int i = r.nextInt(-1, 2);
+		body.setLinearVelocity(xMovementCases[i] * speed, 0);
 	}
 }
