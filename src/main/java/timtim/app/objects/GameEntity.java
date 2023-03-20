@@ -39,10 +39,12 @@ public abstract class GameEntity {
 	/**
 	 * 
 	 * @return body of this entity
+	 * @throws Exception 
 	 */
 	public Body getBody() {
 		return this.body;
 	}
+	
 	 /**
 	  * Set a body for this GameEntity along with width and height
 	  * @param body

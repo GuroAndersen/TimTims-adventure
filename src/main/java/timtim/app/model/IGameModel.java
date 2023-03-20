@@ -15,20 +15,14 @@ import timtim.app.objects.Player;
 public interface IGameModel {
 
 	/**
-	 * Get the models World object
-	 * @return
-	 */
-	public World getWorld();
-	
-	/**
 	 * get the models Player object
-	 * @return
+	 * @return player
 	 */
 	public Player getPlayer();
 	
 	/**
 	 * get the current maps renderer
-	 * @return
+	 * @return renderer
 	 */
 	public OrthogonalTiledMapRenderer getMapRenderer();
 	
@@ -36,4 +30,10 @@ public interface IGameModel {
 	 * Update the player, the world and its contents
 	 */
 	public void update();
+
+	/**
+	 * Get the world of the current game map
+	 * @return world
+	 */
+	public World getCurrentWorld();
 }
