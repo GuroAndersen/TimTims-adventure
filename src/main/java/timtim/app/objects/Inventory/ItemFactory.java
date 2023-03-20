@@ -16,6 +16,9 @@ public class ItemFactory {
         parseItemFile();
     }
 
+    /**
+     * parses the textfile into a hashmap, with the values itemname and description
+     */
     private void parseItemFile() {
         BufferedReader reader;
         try {
@@ -31,8 +34,12 @@ public class ItemFactory {
             e.printStackTrace();
         }
     }
-
+    /**
+     * returns a new item with name and description
+     * @param itemName
+     * @return
+     */
     public Item newItem (String itemName){
-        return new Item(itemName, itemName);
+        return new Item(itemName, items.get(itemName));
     }
 }
