@@ -1,22 +1,45 @@
 package timtim.app.objects.Inventory;
 
+import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.Scanner;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ItemFactory {
     
-    public ItemFactory (){
-        Scanner sc = new Scanner(new FileReader("ItemDescription.txt"));
+    Map<String, String> items;
+    private final String file = "ItemDescription.txt";
 
+    public ItemFactory (){
+        items = new HashMap<String,String>();
+        parseItemFile();
     }
 
     /**
-     * en konstruktør som lager en dict/hashmap av item key og description value
-     * en public Item metode som tar et item navn og returner et nytt item objekt med det navnet og riktig description
+     * parses the textfile into a hashmap, with the values itemname and description
      */
-
-    public Item produceItem (String name){
-        return null;
+    private void parseItemFile() {
+        BufferedReader reader;
+        try {
+            reader = new BufferedReader(new FileReader(file));
+            String line; 
+            while ((line = reader.readLine()) != null){
+                String[] elements = line.split(",");
+                String itemName = elements[0].trim();
+                String description = elements[1].trim();
+                items.put(itemName, description);
+        }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-    
+    /**
+     * returns a new item with name and description
+     * @param itemName
+     * @return
+     */
+    public Item newItem (String itemName){
+        return new Item(itemName, items.get(itemName));
+    }
 }
