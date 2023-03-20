@@ -24,7 +24,7 @@ ___
 
 **Dato: Mandag 20.03.2023** <br>
 **Sted: Vilvite** <br>
-**Deltagere: Sandra, Hilde, Guro, Cecilie Mattias** <br>
+**Deltagere: Sandra, Hilde, Guro, Cecilie, Mattias** <br>
 **Referent: Mattias** <br>
 
 *Oppsummering:* <br>
@@ -40,3 +40,91 @@ TODO <br>
 TODO
 
 ___
+
+## **Prosjektrapport**
+
+### **Roller**
+TODO
+___
+
+### **Rollebeskrivelse**
+TODO
+
+*Utvikler* <br>
+TODO
+
+
+*Teamleder:* <br>
+TODO
+
+*Front-end:* <br>
+TODO
+
+
+*Gitmaster:* <br> 
+TODO
+
+*Designansvarlig:* <br>
+TODO
+
+
+*Rapportansvarlig:* <br>
+TODO
+
+___
+### **Erfaringer rundt gruppen og prosjektmetodikk**
+
+TODO
+
+___
+### **Gruppedynamikk**
+TODO
+___
+### **Kommunikasjon**
+TODO
+___
+
+### ***Retroperspektiv/forbedringspunkter***
+TODO
+___
+
+### **Bidrag til kodebasen**
+TODO
+___
+
+## Krav og spesifikasjon
+
+### **Prioriterte krav i Oblig 2**
+TODO
+
+### **Nye MVP krav**
+TODO
+___
+### **Oversikt over brukerhistorier**
+TODO
+
+___
+
+### **Prioritering av oppgaver fremover**
+TODO
+
+### **Bugs**
+TODO
+
+## Produkt og kode
+### **Utbedring av feil**
+TODO
+__
+### **Kjøre koden**
+TODO
+
+### **Klassediagram**
+TODO
+___
+### **Tester**
+TODO
+___
+### **Analyseverktøy**
+TODO
+
+__
