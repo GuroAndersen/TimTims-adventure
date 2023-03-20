@@ -1,3 +1,0 @@
-juicebox,a cold refreshing beverage
-jumper,a warm comforting piece of clothing
-ball,a bouncy round toy 

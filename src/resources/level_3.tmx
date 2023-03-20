@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="100" height="50" tilewidth="32" tileheight="32" infinite="0" nextlayerid="12" nextobjectid="153">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="100" height="50" tilewidth="32" tileheight="32" infinite="0" nextlayerid="12" nextobjectid="155">
  <tileset firstgid="1" source="TileKit.tsx"/>
  <tileset firstgid="229" source="castledoors.tsx"/>
  <tileset firstgid="235" source="chest.tsx"/>
@@ -385,8 +385,9 @@
   <object id="148" x="2562.67" y="706.333" width="24.6667" height="25"/>
   <object id="150" x="1985.67" y="578" width="24" height="24.6667"/>
   <object id="151" x="1509.5" y="1093" width="23" height="23.5"/>
+  <object id="154" x="2214" y="388" width="19" height="24"/>
  </objectgroup>
- <objectgroup id="5" name="flowers&amp;mushrooms">
+ <objectgroup id="5" name="flora">
   <object id="42" x="256" y="1120">
    <polygon points="0,0 32,0 32,32 0,32 0,0"/>
   </object>
