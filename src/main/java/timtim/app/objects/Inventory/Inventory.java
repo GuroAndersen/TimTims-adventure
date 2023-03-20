@@ -5,8 +5,8 @@ import java.util.NoSuchElementException;
 
 public class Inventory {
 
-    int max_size = 5;
-    ArrayList<Item> items = new ArrayList <Item>();
+    private int max_size = 5;
+    private ArrayList<Item> items = new ArrayList <Item>();
 
     /**
     * returns the max size of the inventory
