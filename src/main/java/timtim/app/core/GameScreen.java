@@ -7,14 +7,14 @@ import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 
-import timtim.app.controller.GameController;
-import timtim.app.controller.IGameController;
 import timtim.app.manager.Const;
 import timtim.app.manager.TileMapManager;
 import timtim.app.model.GameModel;
@@ -24,7 +24,6 @@ import timtim.app.objects.Player;
 public class GameScreen extends ScreenAdapter {
 
 	IGameModel model;
-	IGameController controller;
 	
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
@@ -34,7 +33,6 @@ public class GameScreen extends ScreenAdapter {
 	
 	public GameScreen(OrthographicCamera camera) {
 		this.model = new GameModel(this);
-		this.controller = new GameController(this);
 		this.camera = camera;
 		this.batch = new SpriteBatch();
 
@@ -44,10 +42,15 @@ public class GameScreen extends ScreenAdapter {
 		this.mapRenderer = this.model.getMapRenderer();
 	}
 	
+	private void update() {
+		model.update();
+		handlePlayerInput();
+		updateCamera();
+	}
+	
 	@Override
 	public void render(float delta) {
-		this.controller.update();
-		updateCamera();
+		update();
 		
 		// Removes all graphics and animations from last frame
 		Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -67,15 +70,43 @@ public class GameScreen extends ScreenAdapter {
 
 	private void updateCamera() {
 		Vector3 pos = camera.position;
-		// takes player position and multiply by PPM for real world position, 
-		// 		multiply by 10 and divide by 10 for smoother camera movement
+		
+		// sets camera to player
 		pos.x = Math.round(model.getPlayer().getBody().getPosition().x * Const.PPM * 10) / 10f;
 		pos.y = Math.round(model.getPlayer().getBody().getPosition().y * Const.PPM * 10) / 10f;
+		
+		float camViewportHalfX = camera.viewportWidth/2;
+		float camViewportHalfY = camera.viewportHeight/2;
+		MapProperties prop = mapRenderer.getMap().getProperties();
+		float mapWidth = Math.round(prop.get("width", Integer.class) 
+				* prop.get("tilewidth", Integer.class) 
+				* Const.PPM * 10) / 10f;
+		float mapHeight = Math.round(prop.get("height", Integer.class) 
+				* prop.get("tileheight", Integer.class) 
+				* Const.PPM * 10) / 10f;
+		
+		pos.x = MathUtils.clamp(camera.position.x, camViewportHalfX, mapWidth - camViewportHalfX);
+		pos.y = MathUtils.clamp(camera.position.y, camViewportHalfY, mapHeight - camViewportHalfY);
 		camera.position.set(pos);
 		camera.update();
 	}
-	
-	public IGameModel getModel() {
-		return this.model;
+
+	private void handlePlayerInput() {
+		// Exit
+		if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) { //  Closes game if escape is pressed
+			Gdx.app.exit();
+		}
+		
+		// Horizontal movement
+		boolean moveLeft = false;
+		boolean moveRight = false;
+		if (Gdx.input.isKeyPressed(Input.Keys.D)) moveRight = true;
+		if (Gdx.input.isKeyPressed(Input.Keys.A)) moveLeft = true;
+		model.getPlayer().move(moveLeft, moveRight);
+		
+		// Jump
+		if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
+			model.getPlayer().jump();
+		}
 	}
 }

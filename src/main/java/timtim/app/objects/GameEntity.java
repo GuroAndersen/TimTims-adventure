@@ -5,7 +5,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 
 public abstract class GameEntity {
 
-	float x, y, velX, velY, speed;
+	float velX, velY, speed;
 	float width, height;
 	Body body;
 	
@@ -16,8 +16,6 @@ public abstract class GameEntity {
 	}
 	
 	public GameEntity(Body body, float w, float h) {
-		this.x = body.getPosition().x;
-		this.y = body.getPosition().y;
 		this.width = w;
 		this.height = h;
 		this.velX = 0;
@@ -49,8 +47,6 @@ public abstract class GameEntity {
 	  * @param h
 	  */
 	public void setBody(Body body, float w, float h) {
-		this.x = body.getPosition().x;
-		this.y = body.getPosition().y;
 		this.width = w;
 		this.height = h;
 		this.velX = 0;
@@ -58,9 +54,35 @@ public abstract class GameEntity {
 		this.body = body;
 	}
 	
-	void resetVelocity() {
+	/**
+	 * Resets the X and Y velocity of this object.
+	 */
+	protected void resetVelocity() {
 		velX = 0;
 		velY = 0;
 	}
 	
+	/**
+	 * Sets the speed of this object.
+	 * @param speed
+	 */
+	protected void setSpeed(float speed) {
+		this.speed = speed;
+	}
+	
+	/**
+	 * Sets the X velocity of this object.
+	 * @param velX
+	 */
+	protected void setXVelocity(float velX) {
+		this.velX = velX;
+	}
+	
+	/**
+	 * Sets the Y velocity of this object.
+	 * @param velY
+	 */
+	protected void setYVelocity(float velY) {
+		this.velY = velY;
+	}
 }
