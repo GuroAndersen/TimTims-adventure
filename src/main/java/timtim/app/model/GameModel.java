@@ -29,8 +29,8 @@ public class GameModel implements IGameModel, EntityWorld {
 	List<GameEntity> entityList;
 
 	public GameModel() {
-		this.tileMapManager = new TileMapManager(this);
 		this.player = new Player();
+		this.tileMapManager = new TileMapManager(this);
 
 		// ENTITY LIST INIT
 		friendList = new ArrayList<Friend>();
