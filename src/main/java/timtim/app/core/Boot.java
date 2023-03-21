@@ -9,11 +9,14 @@ public class Boot extends Game {
 	public static Boot INSTANCE;
 	private int screenW,screenH;
 	private OrthographicCamera camera;
-	
-	
+	private GameScreen gameScreen;
+	private PauseScreen pauseScreen;
+
+
 	public Boot() {
 		INSTANCE = this;
 	}
+
 	
 	@Override
 	public void create() {
@@ -21,7 +24,13 @@ public class Boot extends Game {
 		this.screenH = Gdx.graphics.getHeight();
 		this.camera = new OrthographicCamera();
 		this.camera.setToOrtho(false, screenW, screenH);
-		setScreen(new GameScreen(camera));
+		this.gameScreen = new GameScreen(camera, this);
+		this.pauseScreen = new PauseScreen(gameScreen);
+		setScreen(gameScreen);
+	}
+
+	public void pause() {
+		setScreen(pauseScreen);
 	}
 
 }
