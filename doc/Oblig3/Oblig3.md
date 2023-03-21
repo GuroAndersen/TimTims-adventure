@@ -1,5 +1,8 @@
 # **Oblig 3**
 
+HUSK:
+Stretch goal - BOSS!
+
 ## **Møtereferat**
 
 **Dato: Torsdag 16.03.2023** <br>
@@ -23,6 +26,25 @@ Lage objektlag for friends og enemies i Tiled.
 ___
 
 **Dato: Mandag 20.03.2023** <br>
+**Sted: Vilvite** <br>
+**Deltagere: Sandra, Hilde, Guro, Cecilie, Mattias** <br>
+**Referent: Mattias** <br>
+
+*Oppsummering:* <br>
+Vi startet møtet med å se litt på hvordan vi ligger ann og hva vi har igjen. Dette gjelder både i henhold til oblig 3, og til det endelige resultatet. Vi hadde som utgangspunkt at vi skulle klare å lage 3 level + et "boss" level. Vi ser dog per nå at dette kan være litt overambisiøst, og at vi heller skal sette "boss" level som et stretch goal. Dette diskuteres nøyere i ...TODO... Videre har vi og i fellesskap sørget for at det ligger inne riktige lag i kartet.
+
+*Diskusjoner:* <br>
+Under møte ble det diskutert hvordan vi skal løse kollisjon og inventory. Vi kom frem til at vi skal ha en egen klasse som håndterer kollisjon og inventory. Dette er for å unngå at vi skal ha for mye kode i klassene til hovedkarakter og fiender.
+
+*Neste møte* <br>
+Torsdag 23.03.2023 <br>
+
+*Oppgaver til neste gang:* <br>
+Begynne welcome screen og pause screen.
+
+___
+
+**Dato: Torsdag 23.03.2023** <br>
 **Sted: Vilvite** <br>
 **Deltagere: Sandra, Hilde, Guro, Cecilie, Mattias** <br>
 **Referent: Mattias** <br>
@@ -94,9 +116,9 @@ ___
 
 ## Krav og spesifikasjon
 
-### **Prioriterte krav i Oblig 2**
+### **Prioriterte krav i Oblig 3**
 TODO
-
+___
 ### **Nye MVP krav**
 TODO
 ___
@@ -107,17 +129,19 @@ ___
 
 ### **Prioritering av oppgaver fremover**
 TODO
-
+___
 ### **Bugs**
 TODO
-
+___
 ## Produkt og kode
+TODO
+___
 ### **Utbedring av feil**
 TODO
-__
+___
 ### **Kjøre koden**
 TODO
-
+___
 ### **Klassediagram**
 TODO
 ___
@@ -127,4 +151,4 @@ ___
 ### **Analyseverktøy**
 TODO
 
-__
+___
