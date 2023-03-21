@@ -18,7 +18,7 @@ import timtim.app.model.IGameModel;
 
 public class GameScreen extends ScreenAdapter {
 
-	private final Boot boot;
+	final Boot boot;
 	IGameModel model;
 
 	private OrthographicCamera camera;
@@ -27,7 +27,7 @@ public class GameScreen extends ScreenAdapter {
 
 	private OrthogonalTiledMapRenderer mapRenderer;
 
-	private boolean paused = false;
+	boolean paused = false;
 
 	public GameScreen(OrthographicCamera camera, Boot boot) {
 		this.boot = boot;
@@ -41,7 +41,7 @@ public class GameScreen extends ScreenAdapter {
 		this.mapRenderer = this.model.getMapRenderer();
 	}
 
-	private void update() {
+	void update() {
 		if (!paused) {
 			model.update();
 			handlePlayerInput();
@@ -71,7 +71,7 @@ public class GameScreen extends ScreenAdapter {
 		B2DDebugRenderer.render(model.getWorld(), camera.combined.scl(Const.PPM));
 	}
 
-	private void updateCamera() {
+	void updateCamera() {
 		Vector3 pos = camera.position;
 
 		// sets camera to player
@@ -118,12 +118,16 @@ public class GameScreen extends ScreenAdapter {
 				// freeze game
 				boot.pause();
 				Gdx.input.setCursorCatched(false); // show cursor
+
 			} else {
 				// resume game
-				Gdx.input.setCursorCatched(true); // hide cursor
+				Gdx.input.setCursorCatched(true);// hide cursor
+				boot.resumeGame();
+
 			}
 		}
-	}
 
-	}
+	}}
+
+
 

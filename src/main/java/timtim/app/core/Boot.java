@@ -33,4 +33,9 @@ public class Boot extends Game {
 		setScreen(pauseScreen);
 	}
 
+	public void resumeGame(){
+		setScreen(gameScreen);
+
+	}
+
 }
