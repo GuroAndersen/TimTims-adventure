@@ -1,9 +1,6 @@
 package timtim.app.core;
 
-import com.badlogic.gdx.physics.box2d.Contact;
-import com.badlogic.gdx.physics.box2d.ContactImpulse;
-import com.badlogic.gdx.physics.box2d.ContactListener;
-import com.badlogic.gdx.physics.box2d.Manifold;
+import com.badlogic.gdx.physics.box2d.*;
 
 public class MyContactListener implements ContactListener {
 
@@ -13,7 +10,12 @@ public class MyContactListener implements ContactListener {
         Fixture fa = contact.getFixtureA();
         Fixture fb = contact.getFixtureB();
 
-        
+        if (fa == null || fb == null)
+            return;
+        if (fa.getUserData() == null || fb.getUserData() == null)
+            return;
+
+        System.out.println("A collision happened!");
     }
 
     // Gets activated when two objects stop having contact with eachother.
