@@ -23,9 +23,7 @@ public class Door extends GameObject {
     public Body getBody() {
         return super.body;
     }
-
-    public boolean isSensor() {
-        return fixture.isSensor();
-    }
     
 }
+
+

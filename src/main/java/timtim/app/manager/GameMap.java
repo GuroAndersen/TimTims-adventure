@@ -67,6 +67,7 @@ public class GameMap implements IGameMap {
 	}
 
 	private void createDoorObject(RectangleMapObject o) {
+		System.out.println("createDoorObject called");
 		Rectangle rect = o.getRectangle();
 		float x = rect.getX();
 		float y = rect.getY();
@@ -75,18 +76,20 @@ public class GameMap implements IGameMap {
 		Body body = BodyManager.createBody(x + width / 2, y + height / 2, width,
 				height, false, world);
 		body.setUserData(body);
-		String imagePath = "/src/resources/castledoors.png";
+		String imagePath = "/src/resources/castledoors.tsx";
 		Door door = new Door(body, x, y, width, height, imagePath);
 		Fixture doorFixture = body.getFixtureList().get(0);
 		doorFixture.setUserData(door);
 		doors.add(door);
-		
+
 	}
 
 	private void parseDoorObject(MapObjects objects) {
 		for (MapObject o : objects) {
+			System.out.println("Parsing door object...");
 			if (o instanceof RectangleMapObject) {
 				createDoorObject((RectangleMapObject) o);
+				System.out.println("Door created");
 			}
 		}
 	}

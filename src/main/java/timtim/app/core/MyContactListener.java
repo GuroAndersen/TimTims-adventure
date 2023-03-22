@@ -13,8 +13,8 @@ public class MyContactListener implements ContactListener {
         System.out.println("CONTACT!");
         Fixture fa = contact.getFixtureA();
         Fixture fb = contact.getFixtureB();
-        System.out.println("Fixtures!");
         Door door = (Door) fa.getUserData();
+        System.out.println(door);
 
         if (fa == null || fb == null)
             return;
