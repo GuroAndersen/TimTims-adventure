@@ -56,4 +56,5 @@ public abstract class CombatEntity extends GameEntity {
 	public int getHealth() {
 		return health;
 	}
-}
+
+ }

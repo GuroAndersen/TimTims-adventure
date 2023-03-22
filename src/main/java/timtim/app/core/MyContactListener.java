@@ -2,20 +2,40 @@ package timtim.app.core;
 
 import com.badlogic.gdx.physics.box2d.*;
 
+import timtim.app.objects.Player;
+import timtim.app.objects.GameObjects.Door;
+
 public class MyContactListener implements ContactListener {
 
     // Gets activated when two objects make contact with eachother.
     @Override
     public void beginContact(Contact contact) {
+        System.out.println("CONTACT!");
         Fixture fa = contact.getFixtureA();
         Fixture fb = contact.getFixtureB();
+        System.out.println("Fixtures!");
+        Door door = (Door) fa.getUserData();
 
         if (fa == null || fb == null)
             return;
-        if (fa.getUserData() == null || fb.getUserData() == null)
-            return;
 
-        System.out.println("A collision happened!");
+        if (fa.getUserData() == null || fb.getUserData() == null) {
+            System.out.println("BOOM!");
+            System.out.println(fa.getUserData());
+            System.out.println(fb.getUserData());
+            return;
+        }
+
+        if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Door)
+                || (fa.getUserData() instanceof Door && fb.getUserData() instanceof Player)) {
+            System.out.println("Player and door collided!");
+            System.out.println("Fixture A user data: " + fa.getUserData());
+            System.out.println("Fixture B user data: " + fb.getUserData());
+        } else {
+            System.out.println("A collision happened!");
+
+        }
+
     }
 
     // Gets activated when two objects stop having contact with eachother.
