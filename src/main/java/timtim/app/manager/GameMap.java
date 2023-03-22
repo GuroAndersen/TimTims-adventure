@@ -16,6 +16,7 @@ import com.badlogic.gdx.physics.box2d.Shape;
 import com.badlogic.gdx.physics.box2d.World;
 
 import timtim.app.objects.Player;
+import timtim.app.objects.GameObjects.Door;
 
 public class GameMap implements IGameMap {
 
@@ -25,6 +26,7 @@ public class GameMap implements IGameMap {
 	Player player;
 	// Chest chest;
 	OrthogonalTiledMapRenderer renderer;
+	private Door door;
 
 	/**
 	 * Completion criteria
@@ -45,7 +47,29 @@ public class GameMap implements IGameMap {
 		parseStaticMapObjects(tiledMap.getLayers().get("static").getObjects()); // gets objects in the "objects" layer
 																				// of the tiledmap.
 		parsePlayerObject(tiledMap.getLayers().get("player").getObjects());
+		parseDoorObject(tiledMap.getLayers().get("door").getObjects());
+		// createDoorObject();
 		renderer = new OrthogonalTiledMapRenderer(tiledMap);
+	}
+
+	private void createDoorObject(RectangleMapObject o) {
+		Rectangle rect = o.getRectangle();
+		float x = rect.getX();
+		float y = rect.getY();
+		float width = rect.getWidth();
+		float height = rect.getHeight();
+		Body body = BodyManager.createBody(x + width / 2, y + height / 2, width, height, false, world);
+		String imagePath = "/src/resources/castledoors.png";
+		Door door = new Door(body, x, y, width, height, imagePath);
+		// Add the door to some collection or handle it as needed
+	}
+
+	private void parseDoorObject(MapObjects objects) {
+		for (MapObject o : objects) {
+			if (o instanceof RectangleMapObject) {
+				createDoorObject((RectangleMapObject) o);
+			}
+		}
 	}
 
 	private void parseStaticMapObjects(MapObjects objects) {
