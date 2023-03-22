@@ -71,19 +71,20 @@ public class GameMap implements IGameMap {
 	private void createDoorObject(PolygonMapObject o) {
 		System.out.println("createDoorObject called");
 		float[] vertices = o.getPolygon().getTransformedVertices();
-		for (int i = 0; i < vertices.length; ++i) {
-			vertices[i] /= Const.PPM;
-		}
+
 		Rectangle bounds = o.getPolygon().getBoundingRectangle();
-		float x = bounds.x / Const.PPM;
-		float y = bounds.y / Const.PPM;
-		float width = bounds.width / Const.PPM;
-		float height = bounds.height / Const.PPM;
-		Body body = BodyManager.createBody(x + width / 2, y + height / 2, width, height, false, world);
-		body.setUserData(body);
+		float x = bounds.x;
+		float y = bounds.y;
+		float width = bounds.width;
+		float height = bounds.height;
+		Body body = BodyManager.createBody(x + width / 2, y + height / 2, width, height, true, world);
+		// Body body = BodyManager.createBody(1000, 1000, 10, 10, true, world);
+		System.out.println(x + ", " + y + ", " + width + ", " + height);
+
 		System.out.println(body.getPosition());
 		String imagePath = "castledoors.png";
 		Door door = new Door(body, vertices, imagePath);
+		body.setUserData(door);
 		Texture doorTexture = new Texture(Gdx.files.internal(imagePath));
 		Fixture doorFixture = body.getFixtureList().get(0);
 		doorFixture.setUserData(door);
