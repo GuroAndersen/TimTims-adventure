@@ -17,6 +17,7 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.Shape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
@@ -71,11 +72,17 @@ public class GameMap implements IGameMap {
 		System.out.println("createDoorObject called");
 		float[] vertices = o.getPolygon().getTransformedVertices();
 		for (int i = 0; i < vertices.length; ++i) {
-			vertices[i] /= 20;
+			vertices[i] /= Const.PPM;
 		}
-		Body body = BodyManager.createBody(vertices[0], vertices[1], 0, 0, false, world);
+		Rectangle bounds = o.getPolygon().getBoundingRectangle();
+		float x = bounds.x / Const.PPM;
+		float y = bounds.y / Const.PPM;
+		float width = bounds.width / Const.PPM;
+		float height = bounds.height / Const.PPM;
+		Body body = BodyManager.createBody(x + width / 2, y + height / 2, width, height, false, world);
 		body.setUserData(body);
-		String imagePath = "/src/resources/castledoors.png";
+		System.out.println(body.getPosition());
+		String imagePath = "castledoors.png";
 		Door door = new Door(body, vertices, imagePath);
 		Texture doorTexture = new Texture(Gdx.files.internal(imagePath));
 		Fixture doorFixture = body.getFixtureList().get(0);

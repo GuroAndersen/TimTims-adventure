@@ -10,19 +10,16 @@ public class MyContactListener implements ContactListener {
     // Gets activated when two objects make contact with eachother.
     @Override
     public void beginContact(Contact contact) {
-        System.out.println("CONTACT!");
         Fixture fa = contact.getFixtureA();
         Fixture fb = contact.getFixtureB();
         Door door = (Door) fa.getUserData();
         System.out.println(door);
 
-        if (fa == null || fb == null)
-            return;
+        System.out.println("a: " + fa.getBody().getPosition() + ", " + "b: " + fb.getBody().getPosition());
 
-        if (fa.getUserData() == null || fb.getUserData() == null) {
-            System.out.println("BOOM!");
-            System.out.println(fa.getUserData());
-            System.out.println(fb.getUserData());
+        if ((fa.getUserData() == null || fb.getUserData() == null) || fa == null || fb == null) {
+            System.out.println("fa: " + fa.getUserData());
+            System.out.println("fb: " + fb.getUserData());
             return;
         }
 
