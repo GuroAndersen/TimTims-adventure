@@ -16,8 +16,9 @@ import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.Shape;
 import com.badlogic.gdx.physics.box2d.World;
-
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.Fixture;
 
@@ -66,30 +67,28 @@ public class GameMap implements IGameMap {
 		camera = new OrthographicCamera();
 	}
 
-	private void createDoorObject(RectangleMapObject o) {
+	private void createDoorObject(PolygonMapObject o) {
 		System.out.println("createDoorObject called");
-		Rectangle rect = o.getRectangle();
-		float x = rect.getX();
-		float y = rect.getY();
-		float width = rect.getWidth();
-		float height = rect.getHeight();
-		Body body = BodyManager.createBody(x + width / 2, y + height / 2, width,
-				height, false, world);
+		float[] vertices = o.getPolygon().getTransformedVertices();
+		for (int i = 0; i < vertices.length; ++i) {
+			vertices[i] /= 20;
+		}
+		Body body = BodyManager.createBody(vertices[0], vertices[1], 0, 0, false, world);
 		body.setUserData(body);
-		String imagePath = "/src/resources/castledoors.tsx";
-		Door door = new Door(body, x, y, width, height, imagePath);
+		String imagePath = "/src/resources/castledoors.png";
+		Door door = new Door(body, vertices, imagePath);
+		Texture doorTexture = new Texture(Gdx.files.internal(imagePath));
 		Fixture doorFixture = body.getFixtureList().get(0);
 		doorFixture.setUserData(door);
 		doors.add(door);
-
 	}
 
 	private void parseDoorObject(MapObjects objects) {
 		for (MapObject o : objects) {
 			System.out.println("Parsing door object...");
-			if (o instanceof RectangleMapObject) {
-				createDoorObject((RectangleMapObject) o);
-				System.out.println("Door created");
+			System.out.println(o.getClass().getName());
+			if (o instanceof PolygonMapObject) {
+				createDoorObject((PolygonMapObject) o);
 			}
 		}
 	}
