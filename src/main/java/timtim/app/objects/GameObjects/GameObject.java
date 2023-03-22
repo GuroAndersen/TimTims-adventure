@@ -1,7 +1,5 @@
 package timtim.app.objects.GameObjects;
 
-import org.w3c.dom.css.Rect;
-
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.math.Rectangle;
