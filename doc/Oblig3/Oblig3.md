@@ -123,14 +123,14 @@ Prosjektmetodikken begynner i større grad å bli en naturlig arbeidsmåte for t
 
 Projectboardet har blitt flittig brukt siden sist gang, og vi føler som gruppe at dette er en natulig det av prosjektmetodikken. 
 
-
-
 ____
 ### **Gruppedynamikk**
-TODO
+Dynamikken i gruppen fortsetter å være svært god. Etter å ha jobbet sammen i noen måneder nå begynner gruppen å kjenne hverandre bedre, og føle seg mer trygge på hverandre. Dette fører til at vi i større grad har en åpen dialog, og at gruppen tør i gi direkte tilbakemeldinger til hverandre. Dette aspektet er svært viktig, spesielt når man har en agil prosjektmetodikk. Det at individere i gruppen våger å si ifra når hen føler at vi bør prøve andre løsninger, eller pivotere inn på et annet spor, er helt avgjørende for å lykkes med en slik prosjektmetodikk. Dette føler vi at at vi i større grad mestre nå enn tidligere.
 ___
 ### **Kommunikasjon**
-TODO
+Kommunikasjonen i gruppen har vært veldig god, men kontra tidligere har vi fått brynt oss på noen utfordringer. Ved flere anledninger har utvalgte i gruppen vært syk under gruppetimer og team-møter. Dette har ført til at vi har måtte prøve å finne en måte få de til å være oppdatert på hva som er blitt gjort siden sist, samt hva de bør gjøre til neste gang. I starten gjorde vi dette i sin helhet over Discord. Dette ser vi etterkant fungerte helt middels. Selv Discord er en fin plattform å snakke sammen på, vil noe informasjon forsvinne kontra å snakke sammen fysisk. Derfor valgte vi etterhvert å heller løse det ved at enten en på teamet som var på gruppetimen ringer den som var syk og forteller hva som ble gjort og hva vi anbefaler å gjøre videre, eller ved å sette opp ett ekstra team-møte. Dette har fungert veldig bra, og vi føler at vi har fått en god måte å håndtere dette på. <br>
+
+Utover dette er i fornøyd med dynamikken i gruppen. Alle får komme til ordet, alle meninger blir hørt, og den generelle kommunikasjonen er veldig god.
 ___
 
 ### ***Retroperspektiv/forbedringspunkter***
