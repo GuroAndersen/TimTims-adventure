@@ -2,7 +2,6 @@ package timtim.app.core;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -10,19 +9,20 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import com.badlogic.gdx.physics.box2d.World;
 
+import timtim.app.core.state.PlayState;
+import timtim.app.core.state.State;
 import timtim.app.manager.Const;
-import timtim.app.manager.TileMapManager;
 import timtim.app.model.GameModel;
 import timtim.app.model.IGameModel;
-import timtim.app.objects.Player;
 
-public class GameScreen extends ScreenAdapter {
+import java.util.HashMap;
 
+public class GameScreen extends ScreenAdapter implements AccessibleGame {
+
+	private HashMap<State, StateHandler> states;
 	private IGameModel model;
 
 	private State state;
@@ -44,19 +44,37 @@ public class GameScreen extends ScreenAdapter {
 		// MAP INIT
 		this.mapRenderer = this.model.getMapRenderer();
 
+		this.states = new HashMap<>();
+		initStates();
+
+	}
+
+	private void initStates() {
+		states.put(State.PLAY, new PlayState(this));
 	}
 
 	@Override
 	public void render(float delta) {
-		switch (state) {
-			case PLAY -> renderPLAY();
-			case PAUSE -> renderPAUSE();
-			case START -> renderSTART();
-			case GAMEOVER -> renderGAMEOVER();
-		}
+		states.get(state).render();
 	}
 
-	private void updateCamera() {
+	@Override
+	public IGameModel getModel() {
+		return this.model;
+	}
+
+	@Override
+	public void playerMove(boolean left, boolean right) {
+		model.getPlayer().move(left, right);
+	}
+
+	@Override
+	public void playerJump() {
+		model.getPlayer().jump();
+	}
+
+	@Override
+	public void updateCamera() {
 		Vector3 pos = camera.position;
 
 		// sets camera to player
@@ -77,20 +95,8 @@ public class GameScreen extends ScreenAdapter {
 		camera.update();
 	}
 
-	////////////////////////////
-	////// render methods //////
-	private void renderSTART() {
-		updateSTART();
-	}
-
-	private void renderPLAY() {
-		updatePLAY();
-
-		// Removes all graphics and animations from last frame
-		Gdx.gl.glClearColor(0, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-		// Render map
+	@Override
+	public void renderMap() {
 		mapRenderer.setView(camera);
 		mapRenderer.render();
 		batch.setProjectionMatrix(camera.combined);
@@ -102,68 +108,10 @@ public class GameScreen extends ScreenAdapter {
 		B2DDebugRenderer.render(model.getCurrentWorld(), camera.combined.scl(Const.PPM));
 	}
 
-	private void renderPAUSE() {
-		updatePAUSE();
+	@Override
+	public void switchState(State state) {
+		this.state = state;
 	}
 
-	private void renderGAMEOVER() {
-		updateGAMEOVER();
-	}
-
-	//////////////////////////
-	///// Update methods /////
-	private void updateSTART() {
-
-	}
-
-	private void updatePLAY() {
-		model.update();
-		handleInputPLAY();
-		updateCamera();
-	}
-
-	private void updatePAUSE() {
-		updateCamera();
-	}
-
-	private void updateGAMEOVER() {
-
-	}
-
-	//////////////////////////
-	///// Input methods //////
-
-	private void handleInputSTART() {
-
-	}
-
-	private void handleInputPLAY() {
-		// Exit
-		if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) { // Closes game if escape is pressed
-			Gdx.app.exit();
-		}
-
-		// Horizontal movement
-		boolean moveLeft = false;
-		boolean moveRight = false;
-		if (Gdx.input.isKeyPressed(Input.Keys.D))
-			moveRight = true;
-		if (Gdx.input.isKeyPressed(Input.Keys.A))
-			moveLeft = true;
-		model.getPlayer().move(moveLeft, moveRight);
-
-		// Jump
-		if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
-			model.getPlayer().jump();
-		}
-	}
-
-	private void handleInputPAUSE() {
-
-	}
-
-	private void handleInputGAMEOVER() {
-
-	}
 
 }
