@@ -24,8 +24,8 @@ public class Boot extends Game {
 		this.screenH = Gdx.graphics.getHeight();
 		this.camera = new OrthographicCamera();
 		this.camera.setToOrtho(false, screenW, screenH);
-		this.gameScreen = new GameScreen(camera, this);
-		this.pauseScreen = new PauseScreen(gameScreen);
+		this.gameScreen = new GameScreen(camera, INSTANCE);
+		this.pauseScreen = new PauseScreen(gameScreen, INSTANCE);
 		setScreen(gameScreen);
 	}
 
@@ -35,7 +35,6 @@ public class Boot extends Game {
 
 	public void resumeGame(){
 		setScreen(gameScreen);
-
 	}
 
 }

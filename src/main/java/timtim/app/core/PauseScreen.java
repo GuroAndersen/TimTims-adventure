@@ -6,12 +6,14 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class PauseScreen extends ScreenAdapter {
+    private final Boot boot;
     private GameScreen gameScreen;
     private SpriteBatch batch;
     private BitmapFont font;
 
-    public PauseScreen(GameScreen gameScreen) {
+    public PauseScreen(GameScreen gameScreen, Boot boot) {
         this.gameScreen = gameScreen;
+        this.boot = boot;
 
         // create SpriteBatch and BitmapFont
         batch = new SpriteBatch();
@@ -20,6 +22,7 @@ public class PauseScreen extends ScreenAdapter {
 
     @Override
     public void render(float delta) {
+
         handleInput();
         // render game in paused state
         gameScreen.render(delta);
@@ -38,11 +41,8 @@ public class PauseScreen extends ScreenAdapter {
     private void setGameScreen() {
         // switch back to game screen
         gameScreen.paused = false;
-        gameScreen.boot.resumeGame();
-        Gdx.input.setCursorCatched(true);
-        gameScreen.updateCamera();
         gameScreen.update();
-        ((Game) Gdx.app.getApplicationListener()).setScreen(gameScreen);
+        boot.setScreen(gameScreen);
     }
 
 

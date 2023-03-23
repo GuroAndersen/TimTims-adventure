@@ -53,6 +53,7 @@ public class GameScreen extends ScreenAdapter {
 
 	@Override
 	public void render(float delta) {
+
 		update();
 
 		// Removes all graphics and animations from last frame
