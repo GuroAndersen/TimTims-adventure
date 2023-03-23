@@ -1,5 +1,7 @@
 package timtim.app.core;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.physics.box2d.*;
 
 import timtim.app.objects.Player;
@@ -33,6 +35,10 @@ public class MyContactListener implements ContactListener {
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Chest)
                 || (fa.getUserData() instanceof Chest && fb.getUserData() instanceof Player)) {
             System.out.println("YOU FOUND GOLD!");
+            // if (Gdx.input.isKeyPressed(Input.Keys.F)) {
+            Chest chest = (Chest) (fa.getUserData() instanceof Chest ? fa.getUserData() : fb.getUserData());
+            chest.open();
+            // }
         }
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Flora)
                 || (fa.getUserData() instanceof Flora && fb.getUserData() instanceof Player)) {

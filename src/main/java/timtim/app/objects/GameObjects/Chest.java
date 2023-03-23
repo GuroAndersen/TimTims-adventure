@@ -8,9 +8,16 @@ public class Chest extends GameObject {
 
     public Fixture fixture;
     public Body body;
+    private Texture closedTexture;
+    private Texture openTexture;
 
-    public Chest(Body body, float[] vertices, String imagePath) {
-        super(body, new Texture(imagePath), vertices);
+    public Chest(Body body, float[] vertices, String closedImagePath, String openImagePath) {
+        super(body, new Texture(closedImagePath), vertices);
+        if (closedImagePath != null) {
+            closedTexture = new Texture(closedImagePath);
+        }
+
+        openTexture = new Texture(openImagePath);
         fixture = body.getFixtureList().get(0);
         fixture.setUserData(this);
     }
@@ -22,4 +29,16 @@ public class Chest extends GameObject {
     public Body getBody() {
         return super.body;
     }
+
+    public void open() {
+        System.out.println("Chest opened!");
+        super.texture = openTexture;
+        if (closedTexture != null) {
+            closedTexture.dispose();
+            closedTexture = null;
+        }
+        // Additional logic to perform when the chest is opened, such as playing a sound
+        // effect or spawning items
+    }
+
 }

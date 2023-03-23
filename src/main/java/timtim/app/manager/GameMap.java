@@ -152,7 +152,7 @@ public class GameMap implements IGameMap {
 
 		System.out.println(body.getPosition());
 		String imagePath = "chest2.png";
-		Chest chest = new Chest(body, vertices, imagePath);
+		Chest chest = new Chest(body, vertices, imagePath, imagePath);
 		body.setUserData(chest);
 		Texture chestTexture = new Texture(Gdx.files.internal(imagePath));
 		Fixture chestFixture = body.getFixtureList().get(0);

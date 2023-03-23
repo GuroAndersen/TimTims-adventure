@@ -18,4 +18,5 @@ public class GameObject {
     public Polygon getBounds() {
         return bounds;
     }
+
 }
