@@ -3,6 +3,7 @@ package timtim.app.objects;
 import java.util.Random;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 
 public abstract class GameEntity {
@@ -75,20 +76,8 @@ public abstract class GameEntity {
 		this.speed = speed;
 	}
 	
-	/**
-	 * Sets the X velocity of this object.
-	 * @param velX
-	 */
-	protected void setXVelocity(float velX) {
-		this.velX = velX;
-	}
-	
-	/**
-	 * Sets the Y velocity of this object.
-	 * @param velY
-	 */
-	protected void setYVelocity(float velY) {
-		this.velY = velY;
+	public Vector2 getPosition() {
+		return this.body.getPosition();
 	}
 	
 	/**
