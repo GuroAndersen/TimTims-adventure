@@ -3,6 +3,7 @@ package timtim.app.core;
 import com.badlogic.gdx.physics.box2d.*;
 
 import timtim.app.objects.Player;
+import timtim.app.objects.GameObjects.Chest;
 import timtim.app.objects.GameObjects.Door;
 
 public class MyContactListener implements ContactListener {
@@ -25,9 +26,15 @@ public class MyContactListener implements ContactListener {
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Door)
                 || (fa.getUserData() instanceof Door && fb.getUserData() instanceof Player)) {
             System.out.println("Player and door collided!");
-            System.out.println("Fixture A user data: " + fa.getUserData());
-            System.out.println("Fixture B user data: " + fb.getUserData());
-        } else {
+            // System.out.println("Fixture A user data: " + fa.getUserData());
+            // System.out.println("Fixture B user data: " + fb.getUserData());
+        }
+        if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Chest)
+                || (fa.getUserData() instanceof Chest && fb.getUserData() instanceof Player)) {
+            System.out.println("YOU FOUND GOLD!");
+        }
+
+        else {
             System.out.println("A collision happened!");
 
         }

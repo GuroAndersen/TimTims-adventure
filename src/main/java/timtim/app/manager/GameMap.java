@@ -25,7 +25,9 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 
 import timtim.app.core.MyContactListener;
 import timtim.app.objects.Player;
+import timtim.app.objects.GameObjects.Chest;
 import timtim.app.objects.GameObjects.Door;
+import timtim.app.objects.GameObjects.Flora;
 
 public class GameMap implements IGameMap {
 
@@ -36,6 +38,8 @@ public class GameMap implements IGameMap {
 	// Chest chest;
 	OrthogonalTiledMapRenderer renderer;
 	private ArrayList<Door> doors;
+	// private ArrayList<Flora> floras;
+	private ArrayList<Chest> chests;
 
 	private Box2DDebugRenderer debugRenderer;
 	private OrthographicCamera camera;
@@ -49,6 +53,7 @@ public class GameMap implements IGameMap {
 		this.player = player;
 		this.mapName = mapName;
 		doors = new ArrayList<Door>();
+		chests = new ArrayList<Chest>();
 		complete = false;
 		mapSetup();
 
@@ -62,6 +67,8 @@ public class GameMap implements IGameMap {
 																				// of the tiledmap.
 		parsePlayerObject(tiledMap.getLayers().get("player").getObjects());
 		parseDoorObject(tiledMap.getLayers().get("door").getObjects());
+		parseChestObject(tiledMap.getLayers().get("chest").getObjects());
+		// parseFloraObject(tiledMap.getLayers().get("flora").getObjects());
 		// createDoorObject();
 		renderer = new OrthogonalTiledMapRenderer(tiledMap);
 		debugRenderer = new Box2DDebugRenderer();
@@ -69,7 +76,7 @@ public class GameMap implements IGameMap {
 	}
 
 	private void createDoorObject(PolygonMapObject o) {
-		System.out.println("createDoorObject called");
+		// System.out.println("createDoorObject called");
 		float[] vertices = o.getPolygon().getTransformedVertices();
 
 		Rectangle bounds = o.getPolygon().getBoundingRectangle();
@@ -98,6 +105,72 @@ public class GameMap implements IGameMap {
 			System.out.println(o.getClass().getName());
 			if (o instanceof PolygonMapObject) {
 				createDoorObject((PolygonMapObject) o);
+			}
+		}
+	}
+
+	/**
+	 * private void createFloraObject(PolygonMapObject o) {
+	 * System.out.println("createFloraObject called");
+	 * float[] vertices = o.getPolygon().getTransformedVertices();
+	 * 
+	 * Rectangle bounds = o.getPolygon().getBoundingRectangle();
+	 * float x = bounds.x;
+	 * float y = bounds.y;
+	 * float width = bounds.width;
+	 * float height = bounds.height;
+	 * Body body = BodyManager.createBody(x + width / 2, y + height / 2, width,
+	 * height, true, world);
+	 * 
+	 * String imagePath = "TileKit.png";
+	 * Flora flora = new Flora(body, vertices, imagePath);
+	 * body.setUserData(flora);
+	 * Texture floraTexture = new Texture(Gdx.files.internal(imagePath));
+	 * Fixture floraFixture = body.getFixtureList().get(0);
+	 * floraFixture.setUserData(flora);
+	 * floraFixture.setSensor(true);
+	 * floras.add(flora);
+	 * }
+	 * 
+	 * private void parseFloraObject(MapObjects objects) {
+	 * for (MapObject o : objects) {
+	 * if (o instanceof PolygonMapObject) {
+	 * createFloraObject((PolygonMapObject) o);
+	 * }
+	 * }
+	 * }
+	 * 
+	 */
+
+	private void createChestObject(PolygonMapObject o) {
+		System.out.println("createChest has been called..");
+		float[] vertices = o.getPolygon().getTransformedVertices();
+
+		Rectangle bounds = o.getPolygon().getBoundingRectangle();
+		float x = bounds.x;
+		float y = bounds.y;
+		float width = bounds.width;
+		float height = bounds.height;
+		Body body = BodyManager.createBody(x + width / 2, y + height / 2, width, height, true, world);
+		// Body body = BodyManager.createBody(1000, 1000, 10, 10, true, world);
+		// System.out.println(x + ", " + y + ", " + width + ", " + height);
+
+		System.out.println(body.getPosition());
+		String imagePath = "chest2.png";
+		Chest chest = new Chest(body, vertices, imagePath);
+		body.setUserData(chest);
+		Texture chestTexture = new Texture(Gdx.files.internal(imagePath));
+		Fixture chestFixture = body.getFixtureList().get(0);
+		chestFixture.setUserData(chest);
+		chestFixture.setSensor(true);
+		chests.add(chest);
+	}
+
+	private void parseChestObject(MapObjects objects) {
+		System.out.println("parseChest has been reached");
+		for (MapObject o : objects) {
+			if (o instanceof PolygonMapObject) {
+				createChestObject((PolygonMapObject) o);
 			}
 		}
 	}
