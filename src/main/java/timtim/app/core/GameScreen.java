@@ -23,7 +23,9 @@ import timtim.app.objects.Player;
 
 public class GameScreen extends ScreenAdapter {
 
-	IGameModel model;
+	private IGameModel model;
+
+	private State state;
 
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
@@ -32,6 +34,7 @@ public class GameScreen extends ScreenAdapter {
 	private OrthogonalTiledMapRenderer mapRenderer;
 
 	public GameScreen(OrthographicCamera camera) {
+		this.state = State.PLAY; // currently PLAY but should be START
 		this.model = new GameModel();
 		this.camera = camera;
 		this.batch = new SpriteBatch();
@@ -43,30 +46,14 @@ public class GameScreen extends ScreenAdapter {
 
 	}
 
-	private void update() {
-		model.update();
-		handlePlayerInput();
-		updateCamera();
-	}
-
 	@Override
 	public void render(float delta) {
-		update();
-
-		// Removes all graphics and animations from last frame
-		Gdx.gl.glClearColor(0, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-		// Render map
-		mapRenderer.setView(camera);
-		mapRenderer.render();
-		batch.setProjectionMatrix(camera.combined);
-		batch.begin();
-		// render objects
-		model.getPlayer().render(batch);
-
-		batch.end();
-		B2DDebugRenderer.render(model.getCurrentWorld(), camera.combined.scl(Const.PPM));
+		switch (state) {
+			case PLAY -> renderPLAY();
+			case PAUSE -> renderPAUSE();
+			case START -> renderSTART();
+			case GAMEOVER -> renderGAMEOVER();
+		}
 	}
 
 	private void updateCamera() {
@@ -90,7 +77,67 @@ public class GameScreen extends ScreenAdapter {
 		camera.update();
 	}
 
-	private void handlePlayerInput() {
+	////////////////////////////
+	////// render methods //////
+	private void renderSTART() {
+		updateSTART();
+	}
+
+	private void renderPLAY() {
+		updatePLAY();
+
+		// Removes all graphics and animations from last frame
+		Gdx.gl.glClearColor(0, 0, 0, 1);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+		// Render map
+		mapRenderer.setView(camera);
+		mapRenderer.render();
+		batch.setProjectionMatrix(camera.combined);
+		batch.begin();
+		// render objects
+		model.getPlayer().render(batch);
+
+		batch.end();
+		B2DDebugRenderer.render(model.getCurrentWorld(), camera.combined.scl(Const.PPM));
+	}
+
+	private void renderPAUSE() {
+		updatePAUSE();
+	}
+
+	private void renderGAMEOVER() {
+		updateGAMEOVER();
+	}
+
+	//////////////////////////
+	///// Update methods /////
+	private void updateSTART() {
+
+	}
+
+	private void updatePLAY() {
+		model.update();
+		handleInputPLAY();
+		updateCamera();
+	}
+
+	private void updatePAUSE() {
+		updateCamera();
+	}
+
+	private void updateGAMEOVER() {
+
+	}
+
+	//////////////////////////
+	///// Input methods //////
+
+	private void handleInputSTART() {
+
+	}
+
+	private void handleInputPLAY() {
 		// Exit
 		if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) { // Closes game if escape is pressed
 			Gdx.app.exit();
@@ -110,4 +157,13 @@ public class GameScreen extends ScreenAdapter {
 			model.getPlayer().jump();
 		}
 	}
+
+	private void handleInputPAUSE() {
+
+	}
+
+	private void handleInputGAMEOVER() {
+
+	}
+
 }
