@@ -54,6 +54,7 @@ TODO
 
 *Diskusjoner:* <br>
 TODO
+Vi har endret fra klasser til states.
 
 *Neste møte* <br>
 TODO <br>
@@ -116,7 +117,9 @@ TODO
 ___
 
 ### **Bidrag til kodebasen**
-TODO
+Under oblig 1 fikk vi tilbakemelding å at vi hadde for ujevne commits. Dette har vært et stort fokus i denne obligen. Vi har oppnådd et mye jevnere nivå denne gangen. Årsaken til dete er for det første at samtlige i gruppen har blit bedre på git. Dette gjør at gruppen som helhet har blitt tryggere på å pushe kode. Videre har flere nå jobbet med koden selvstendig som fører til flere commits per person. <br>
+
+Likevel vil det også denne gangen være noen ujevnheter. Årsaken til dette er blant annet at individer på gruppen har forskjellige git-vaner, samt at noen fortsatt har jobbet med det grafiske som ikke fører til commits. Dog er vi fornøyd med fordelingen av commits, og anser den som naturlig.
 ___
 
 ## Krav og spesifikasjon
