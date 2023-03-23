@@ -41,4 +41,9 @@ public interface AccessibleGame {
      * to the given state
      */
     public void switchState(State state);
+
+    /**
+     * Get the game's camera
+     */
+    public OrthographicCamera getCamera();
 }

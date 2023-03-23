@@ -12,6 +12,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 
+import timtim.app.core.state.PauseState;
 import timtim.app.core.state.PlayState;
 import timtim.app.core.state.State;
 import timtim.app.manager.Const;
@@ -51,6 +52,7 @@ public class GameScreen extends ScreenAdapter implements AccessibleGame {
 
 	private void initStates() {
 		states.put(State.PLAY, new PlayState(this));
+		states.put(State.PAUSE, new PauseState(this));
 	}
 
 	@Override
@@ -111,6 +113,11 @@ public class GameScreen extends ScreenAdapter implements AccessibleGame {
 	@Override
 	public void switchState(State state) {
 		this.state = state;
+	}
+
+	@Override
+	public OrthographicCamera getCamera() {
+		return this.camera;
 	}
 
 
