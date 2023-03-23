@@ -12,14 +12,13 @@ public class MyContactListener implements ContactListener {
     public void beginContact(Contact contact) {
         Fixture fa = contact.getFixtureA();
         Fixture fb = contact.getFixtureB();
-        Door door = (Door) fa.getUserData();
-        System.out.println(door);
 
-        System.out.println("a: " + fa.getBody().getPosition() + ", " + "b: " + fb.getBody().getPosition());
+        // System.out.println("a: " + fa.getBody().getPosition() + ", " + "b: " +
+        // fb.getBody().getPosition());
 
         if ((fa.getUserData() == null || fb.getUserData() == null) || fa == null || fb == null) {
-            System.out.println("fa: " + fa.getUserData());
-            System.out.println("fb: " + fb.getUserData());
+            // System.out.println("fa: " + fa.getUserData());
+            // System.out.println("fb: " + fb.getUserData());
             return;
         }
 

@@ -113,7 +113,10 @@ public class GameMap implements IGameMap {
 		MapObject o = objects.get(0);
 		if (o instanceof RectangleMapObject) {
 			Rectangle rect = ((RectangleMapObject) o).getRectangle();
-			Body body = BodyManager.createBody(rect.getX() + rect.getWidth() / 2, rect.getY() + rect.getHeight() / 2,
+			// Body body = BodyManager.createBody(rect.getX() + rect.getWidth() / 2,
+			// rect.getY() + rect.getHeight() / 2,
+			// rect.getWidth(), rect.getHeight(), false, world);
+			Body body = BodyManager.createBody(100 * 30.4f, 37 * 30.4f,
 					rect.getWidth(), rect.getHeight(), false, world);
 			player.setBody(body, rect.getWidth(), rect.getHeight());
 			Fixture fixture = body.getFixtureList().get(0);

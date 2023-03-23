@@ -106,7 +106,7 @@ public class GameScreen extends ScreenAdapter {
 		model.getPlayer().move(moveLeft, moveRight);
 
 		// Jump
-		if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
+		if (Gdx.input.isKeyJustPressed(Input.Keys.W)) {
 			model.getPlayer().jump();
 		}
 	}
