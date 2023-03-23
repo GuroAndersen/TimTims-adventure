@@ -5,6 +5,7 @@ import com.badlogic.gdx.physics.box2d.*;
 import timtim.app.objects.Player;
 import timtim.app.objects.GameObjects.Chest;
 import timtim.app.objects.GameObjects.Door;
+import timtim.app.objects.GameObjects.Flora;
 
 public class MyContactListener implements ContactListener {
 
@@ -33,9 +34,11 @@ public class MyContactListener implements ContactListener {
                 || (fa.getUserData() instanceof Chest && fb.getUserData() instanceof Player)) {
             System.out.println("YOU FOUND GOLD!");
         }
-
-        else {
-            System.out.println("A collision happened!");
+        if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Flora)
+                || (fa.getUserData() instanceof Flora && fb.getUserData() instanceof Player)) {
+            System.out.println("OH NO I HAVE A POLLEN ALLERGY!");
+        } else {
+            System.out.println("Nothing!");
 
         }
 

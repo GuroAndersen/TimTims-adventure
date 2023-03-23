@@ -38,7 +38,7 @@ public class GameMap implements IGameMap {
 	// Chest chest;
 	OrthogonalTiledMapRenderer renderer;
 	private ArrayList<Door> doors;
-	// private ArrayList<Flora> floras;
+	private ArrayList<Flora> floras;
 	private ArrayList<Chest> chests;
 
 	private Box2DDebugRenderer debugRenderer;
@@ -54,6 +54,7 @@ public class GameMap implements IGameMap {
 		this.mapName = mapName;
 		doors = new ArrayList<Door>();
 		chests = new ArrayList<Chest>();
+		floras = new ArrayList<Flora>();
 		complete = false;
 		mapSetup();
 
@@ -68,7 +69,7 @@ public class GameMap implements IGameMap {
 		parsePlayerObject(tiledMap.getLayers().get("player").getObjects());
 		parseDoorObject(tiledMap.getLayers().get("door").getObjects());
 		parseChestObject(tiledMap.getLayers().get("chest").getObjects());
-		// parseFloraObject(tiledMap.getLayers().get("flora").getObjects());
+		parseFloraObject(tiledMap.getLayers().get("flora").getObjects(), null);
 		// createDoorObject();
 		renderer = new OrthogonalTiledMapRenderer(tiledMap);
 		debugRenderer = new Box2DDebugRenderer();
@@ -109,41 +110,35 @@ public class GameMap implements IGameMap {
 		}
 	}
 
-	/**
-	 * private void createFloraObject(PolygonMapObject o) {
-	 * System.out.println("createFloraObject called");
-	 * float[] vertices = o.getPolygon().getTransformedVertices();
-	 * 
-	 * Rectangle bounds = o.getPolygon().getBoundingRectangle();
-	 * float x = bounds.x;
-	 * float y = bounds.y;
-	 * float width = bounds.width;
-	 * float height = bounds.height;
-	 * Body body = BodyManager.createBody(x + width / 2, y + height / 2, width,
-	 * height, true, world);
-	 * 
-	 * String imagePath = "TileKit.png";
-	 * Flora flora = new Flora(body, vertices, imagePath);
-	 * body.setUserData(flora);
-	 * Texture floraTexture = new Texture(Gdx.files.internal(imagePath));
-	 * Fixture floraFixture = body.getFixtureList().get(0);
-	 * floraFixture.setUserData(flora);
-	 * floraFixture.setSensor(true);
-	 * floras.add(flora);
-	 * }
-	 * 
-	 * private void parseFloraObject(MapObjects objects) {
-	 * for (MapObject o : objects) {
-	 * if (o instanceof PolygonMapObject) {
-	 * createFloraObject((PolygonMapObject) o);
-	 * }
-	 * }
-	 * }
-	 * 
-	 */
+	private void createFloraObject(PolygonMapObject o, Texture floraTexture) {
+		// System.out.println("createFloraObject called");
+		float[] vertices = o.getPolygon().getTransformedVertices();
+
+		Rectangle bounds = o.getPolygon().getBoundingRectangle();
+		float x = bounds.x;
+		float y = bounds.y;
+		float width = bounds.width;
+		float height = bounds.height;
+		Body body = BodyManager.createBody(x + width / 2, y + height / 2, width,
+				height, true, world);
+
+		Flora flora = new Flora(body, vertices, floraTexture);
+		body.setUserData(flora);
+		Fixture floraFixture = body.getFixtureList().get(0);
+		floraFixture.setUserData(flora);
+		floraFixture.setSensor(true);
+		floras.add(flora);
+	}
+
+	private void parseFloraObject(MapObjects objects, Texture floraTexture) {
+		for (MapObject o : objects) {
+			if (o instanceof PolygonMapObject) {
+				createFloraObject((PolygonMapObject) o, floraTexture);
+			}
+		}
+	}
 
 	private void createChestObject(PolygonMapObject o) {
-		System.out.println("createChest has been called..");
 		float[] vertices = o.getPolygon().getTransformedVertices();
 
 		Rectangle bounds = o.getPolygon().getBoundingRectangle();
