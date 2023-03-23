@@ -79,7 +79,7 @@ public class GameMap implements IGameMap {
 		float height = bounds.height;
 		Body body = BodyManager.createBody(x + width / 2, y + height / 2, width, height, true, world);
 		// Body body = BodyManager.createBody(1000, 1000, 10, 10, true, world);
-		System.out.println(x + ", " + y + ", " + width + ", " + height);
+		// System.out.println(x + ", " + y + ", " + width + ", " + height);
 
 		System.out.println(body.getPosition());
 		String imagePath = "castledoors.png";
@@ -88,6 +88,7 @@ public class GameMap implements IGameMap {
 		Texture doorTexture = new Texture(Gdx.files.internal(imagePath));
 		Fixture doorFixture = body.getFixtureList().get(0);
 		doorFixture.setUserData(door);
+		doorFixture.setSensor(true);
 		doors.add(door);
 	}
 
