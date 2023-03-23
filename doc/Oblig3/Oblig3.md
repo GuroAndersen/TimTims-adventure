@@ -46,7 +46,7 @@ ___
 
 **Dato: Torsdag 23.03.2023** <br>
 **Sted: Vilvite** <br>
-**Deltagere: Sandra, Hilde, Guro, Cecilie, Mattias** <br>
+**Deltagere: Hilde, Guro, Cecilie, Mattias** <br>
 **Referent: Mattias** <br>
 
 *Oppsummering:* <br>
@@ -66,32 +66,37 @@ ___
 ## **Prosjektrapport**
 
 ### **Roller**
-TODO
+Under denne obligene har rollene vært mer flytende enn tidligere. I løpet av første uke av obligen ble mye av det grafiske noen lunde ferdigstillt. Det har ført til at flere har jobbet med back-end/jobbet som utvikler. Vi har likevell valgt å beholde de eksisterende rollene, da vi anser det som nødvendig å ha en ansvarlig innenfor hvert punkt.
+
+Prosjektleder Sandra gjør fortsatt en god jobb. Vi har derfor heller ikke valgt å endre teamlead. Likevel ser at helle gruppen bidrar like mye, og at de fleste avgjørelser blir tatt i fellesskap. Det vil si at teamlead ikke har hatt behov for å gripe inn, og overstyre gruppen. Som forrige oblig ser vi ingen grunn til å utnevne en spesifikk kundekontakt, da samtlige i gruppen deltar i gruppetimen og har i fellesskap dialog med gruppeleder/foreleser.
 ___
 
 ### **Rollebeskrivelse**
-TODO
+I denne avsnittet vil vi beskrive de forskjellige rollene i taemet. Det er i stor grad vektlagt hvordan vi har jobbet frem til nå, og hvordan vi ser for oss at vi skal jobbe fremover. Beskrivelse av hvilke oppgaver de forskjellige rollene har står beskrevet i Oblig1.md. Vi har foreløpig bestemt oss for å ikke utarbeide nye roller, da vi ser at de som ble definert tidligere har fungert til nå. Derfor vil avsnittet under være svært likt som ved forrige oblig. 
 
 *Utvikler* <br>
-TODO
+Utover de beskrevne rollene under har hele teamet fungert som utviklere. Det har vært fokus på å kode i fellesskap når vi møtes, slik at alle er oppdatert på koden. Kontra tidligere oblig har gruppen som helhet hatt større fokus på å jobbe som utvikler, da det har vært det viktigste fokuset.
 
 
 *Teamleder:* <br>
-TODO
+Rollen som teamleder har fungert svært bra. Frem til nå har det i stor grad vært enighet i gruppen, og alle har bidratt. Dette har gjort at Sandra ikke har måtte ta noen store avgjørelser der gruppen er uenig. Likevel har hun vært flink på å holde orden på prosjektet og sørger for stabil fremgang.
 
 *Front-end:* <br>
-TODO
+Som front-end ansvarlig har Guro tatt ansvar for at spillfiguren og fiender er på plass. Her har hun fokusert på at brukervennligheten skal være bra, og enkel. I tillegg til å bygge et bra fundament for videre koding. Siden dette har vært en stor oppgave har hun fått god assistanse fra spesielt Hilde, men og resten av gruppen.
 
 
 *Gitmaster:* <br> 
-TODO
+Rollen til gitmaster har vært svært viktig frem til nå. Det er viktig at alle har pushet til git, og at alle har fått med seg endringer som er gjort i koden. Utvalgte i gruppen sliter fortsatt litt med Git, så dette har gjort rollen til Gitmaster ekstremt viktig. Hilde har god kontroll på git, og vært flink til å lære opp resten av gruppen.
 
 *Designansvarlig:* <br>
-TODO
-
+Designansvarlig har hatt en viktig rolle frem til nå. Det er viktig at vi har en god grafikk, og at det er en god brukeropplevelse. Nå som spillbrettet begynner å ta form, har designansvarlig hatt en viktig rolle i å utforme hvordan spillet skal se ut. Cecilie har utformet et bra utgangspunkt for spillet. Siden dette og har vært en stor oppgave har hun fått hjelp fra teamleder.
 
 *Rapportansvarlig:* <br>
-TODO
+Som hovedansvarlig for rapporten har Mattias sørget for at møterefeferatene er på plass, og at alle har fått med seg hva som har blitt diskutert. Han har også tatt hovedansvaret for å skrive rapporten. Som rollen er beskrevet har Mattias og sørget for at teamet følger gitt prosjektmetodikk. Dette innebærer at vi har prøvd å holde oss til de satte stegene i sprinten, samt bruke kanban-boardet aktivt.
+
+
+*Testansvarlig:* <br>
+Samtlige i gruppen har ansvar for å utvikle tester. Vi har fokusert på å først utarbeide interface, deretter tester. Til slutt har vi laget kode basert på dette. Ved forrige oblig fikk vi noen trekk i poeng grunnet mangel på tester. Derfor har det vært enda større fokus enn tidligere på dette. 
 
 ___
 ### **Erfaringer rundt gruppen og prosjektmetodikk**
