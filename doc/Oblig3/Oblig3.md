@@ -50,11 +50,29 @@ ___
 **Referent: Mattias** <br>
 
 *Oppsummering:* <br>
+Møte startet med å oppsumere hva de enkelte de har gjort siden sist. Her ble det blant annet presentert hvordan vi har løst kollisjon med objekter. Eksemepelvis når spillkarakteren kolliderer med døresn som skal ta spilleren til neste level. I tilegg har vi i stor grad diskutert hvordan vi videre skal utarbeide welcome screen og pause screen.
+
+*Diskusjoner:* <br>
+Som beskrevet over har vi i stor grad jobbet med welcome screen og pause screen. Her har vi møtt på noen problemer. Planen var i utgangspunktet å ha ulike skjermer/klasser for pause og welcome. Dette har dog bydd på problemer dypere ned i biblioteket. Derfor gitt mye av dette møte til å diskutere hvordan vi skal løse dette. Løsningen vi ser som mest hensiktsmessig er å samle dette i gameScreen som forskjellig states.
+
+*Neste møte* <br>
+30.03.2023 <br>
+
+*Oppgaver til neste gang:* <br>
+TODO
+
+___
+
+**Dato: Torsdag 30.03.2023** <br>
+**Sted: Vilvite** <br>
+**Deltagere: Sandra, Hilde, Guro, Cecilie, Mattias** <br>
+**Referent: Mattias** <br>
+
+*Oppsummering:* <br>
 TODO
 
 *Diskusjoner:* <br>
 TODO
-Vi har endret fra klasser til states.
 
 *Neste møte* <br>
 TODO <br>
@@ -101,10 +119,13 @@ Samtlige i gruppen har ansvar for å utvikle tester. Vi har fokusert på å før
 
 ___
 ### **Erfaringer rundt gruppen og prosjektmetodikk**
+Prosjektmetodikken begynner i større grad å bli en naturlig arbeidsmåte for teamet som helhet. Selv om flere synes den agile tilnærmingen var uvant i start, begynner det nå falle på plass. Vi er blitt mer bevisste enn tidligere på følge de satte stegene i hver sprint (planlegge, designe, kode og teste, diskutere veien videre). Men det viktigste læringsmomentet vi har hatt til nå er at vi er blitt mye mer smidig på å tørre å pivotere til andre retninger dersom vi ser det nødvendig. Eksempelvis jobbet gruppen lenge med å implementere welcome screen og pause screen som egne klasser. Da vi så at det ville skape videre problemer i koden, og vi fant en bedre løsning, nølte ikke gruppen med å prøve et annet alternativ. Dette viser en agil tilnærming som vi føler vi mestrer. 
 
-TODO
+Projectboardet har blitt flittig brukt siden sist gang, og vi føler som gruppe at dette er en natulig det av prosjektmetodikken. 
 
-___
+
+
+____
 ### **Gruppedynamikk**
 TODO
 ___
