@@ -36,7 +36,7 @@ public abstract class GameEntity {
 	/**
 	 * Renders the entity
 	 */
-	public abstract void render(SpriteBatch batch, TextureAtlas atlas);
+	public abstract void render(SpriteBatch batch);
 	
 	/**
 	 * 

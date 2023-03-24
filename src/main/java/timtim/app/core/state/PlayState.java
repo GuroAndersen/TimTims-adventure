@@ -26,9 +26,6 @@ public class PlayState implements StateHandler {
 
         // Render map and player and objects
         game.renderMap();
-        game.getBatch().begin();
-        game.getModel().getPlayer().render(game.getBatch(), game.getAtlas());
-        game.getBatch().end();
         
     }
 

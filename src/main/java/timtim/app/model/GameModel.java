@@ -21,15 +21,15 @@ public class GameModel implements IGameModel, EntityWorld {
 
 	private TileMapManager tileMapManager;
 	private GameMap currentMap;
-	private Timtim player;
+	private Timtim timtim;
 
 	private List<GameMap> maps;
 
 	List<Friend> friendList;
 	List<GameEntity> entityList;
 
-	public GameModel() {
-		this.player = new Timtim();
+	public GameModel(GameScreen gameScreen) {
+		this.timtim = new Timtim(gameScreen);
 		this.tileMapManager = new TileMapManager(this);
 
 		// ENTITY LIST INIT
@@ -41,7 +41,7 @@ public class GameModel implements IGameModel, EntityWorld {
 
 	@Override
 	public Timtim getPlayer() {
-		return this.player;
+		return this.timtim;
 	}
 
 	public GameMap getCurrentMap() {
@@ -66,7 +66,7 @@ public class GameModel implements IGameModel, EntityWorld {
 
 	@Override
 	public void update() {
-		this.player.update();
+		this.timtim.update();
 		updateEntities(entityList);
 		this.currentMap.update();
 	}

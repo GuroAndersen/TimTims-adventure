@@ -101,7 +101,7 @@ public class Friend extends GameEntity implements IFriend {
 	}
 
 	@Override
-	public void render(SpriteBatch batch, TextureAtlas atlas) {
+	public void render(SpriteBatch batch) {
 		// TODO Auto-generated method stub
 		
 	}

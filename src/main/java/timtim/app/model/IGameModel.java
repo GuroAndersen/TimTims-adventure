@@ -3,6 +3,7 @@ package timtim.app.model;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 
+import timtim.app.objects.IPlayer;
 import timtim.app.objects.Timtim;
 
 

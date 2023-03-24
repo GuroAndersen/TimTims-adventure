@@ -41,12 +41,12 @@ public class GameScreen extends ScreenAdapter implements AccessibleGame {
 
 	public GameScreen(OrthographicCamera camera) {
 		this.state = State.PLAY; // currently PLAY but should be START
-		this.model = new GameModel();
 		this.batch = new SpriteBatch();
-		this.camera = camera;
 		this.atlas = new TextureAtlas("timtimSprite.atlas");
-
+		this.camera = camera;
 		this.B2DDebugRenderer = new Box2DDebugRenderer();
+		
+		this.model = new GameModel(this);
 
 		// MAP INIT
 		this.mapRenderer = this.model.getMapRenderer();
@@ -122,7 +122,7 @@ public class GameScreen extends ScreenAdapter implements AccessibleGame {
 		getBatch().setProjectionMatrix(camera.combined);
 		getBatch().begin();
 		// render objects
-		model.getPlayer().render(getBatch(), getAtlas());
+		model.getPlayer().render(getBatch());
 		getBatch().end();
 		B2DDebugRenderer.render(model.getCurrentWorld(), camera.combined.scl(Const.PPM));
 	}
