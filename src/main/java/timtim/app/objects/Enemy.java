@@ -12,7 +12,7 @@ public class Enemy extends CombatEntity {
 	}
 	
 	@Override
-	public void update() {
+	public void update(float delta) {
 		doRandomXMovement();
 	}
 

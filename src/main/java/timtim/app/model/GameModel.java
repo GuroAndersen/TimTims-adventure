@@ -65,15 +65,15 @@ public class GameModel implements IGameModel, EntityWorld {
 	}
 
 	@Override
-	public void update() {
-		this.timtim.update();
+	public void update(float delta) {
+		this.timtim.update(delta);
 		updateEntities(entityList);
 		this.currentMap.update();
 	}
 
 	private void updateEntities(List<GameEntity> entityList) {
 		for (GameEntity e : entityList)
-			e.update();
+			e.update(1);
 	}
 
 	@Override

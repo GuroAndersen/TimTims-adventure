@@ -3,33 +3,36 @@ package timtim.app.objects;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Array;
 
 import timtim.app.core.GameScreen;
 import timtim.app.manager.Const;
 
 public class Timtim extends CombatEntity implements IPlayer {
 	
-	private Animation timtimRun;
-	
 	private final float maxJumpVel = 25;
 	private boolean isJumping;
 	private Sprite sprite;
 	
+	
+	private Animation<TextureRegion> runAnimation;
+	private Array<TextureRegion> jumpCells;
+	private TextureRegion standing;
+	private float stateTimer;
+	
 	private GameScreen gameScreen;
-	TextureRegion timtimStand;
 
+	/**
+	 * Testing constructor.
+	 * Does not set up the sprite.
+	 */
 	public Timtim() {
 		super();
 		baseSetup();
 	}
 	
-	/**
-	 * Testing constructor.
-	 * Does not set up the sprite.
-	 */
 	private void baseSetup() {
 		this.speed = 4f;
 	}
@@ -39,21 +42,67 @@ public class Timtim extends CombatEntity implements IPlayer {
 		baseSetup();
 		this.gameScreen = gameScreen;
 		this.sprite = new Sprite(gameScreen.getAtlas().findRegion("timtimSprite"));
-		timtimStand = new TextureRegion(sprite.getTexture(),0,0,32,32);
-		sprite.setBounds(0,0,32 / Const.PPM, 32/ Const.PPM);
-		sprite.setRegion(timtimStand);
+		setupAnimation();
+		sprite.setBounds(0, 0, 32 / Const.PPM, Const.PPM);
+		sprite.setRegion(standing);
+	}
+
+	
+	private void setupAnimation() {
+		stateTimer = 0;
+		// setup run animation
+		Array<TextureRegion> frames = new Array<TextureRegion>();
+		for (int i = 1; i < 9; i++) {
+			frames.add(new TextureRegion(sprite.getTexture(), i * 32, 0, 32, 32));
+		}
+		runAnimation = new Animation<TextureRegion>(0.1f, frames);
+		frames.clear();
+		
+		// setup jump animation
+		for (int i = 9; i < 13; i++) {
+			frames.add(new TextureRegion(sprite.getTexture(), i * 32, 0, 32, 32));
+		}
+		jumpCells = new Array<TextureRegion>(frames);
+		frames.clear();
+		
+		standing = new TextureRegion(sprite.getTexture(), 0, 0, 32, 32);
 	}
 
 	@Override
-	public void update() {
+	public void update(float delta) {
+		
 		updateMovement();
-		updateSprite();
+		updateSprite(delta);
 	}
 
-	private void updateSprite() {
+	private void updateSprite(float delta) {
 		float spriteX = (body.getPosition().x * Const.PPM - sprite.getWidth()/2);
 		float spriteY = (body.getPosition().y * Const.PPM - sprite.getHeight()/2);
 		sprite.setBounds(spriteX, spriteY, sprite.getRegionWidth(), sprite.getRegionHeight());
+		sprite.setRegion(getFrame(delta));
+
+	}
+
+	private TextureRegion getFrame(float delta) {
+		// jumping cases
+		stateTimer += delta;
+		
+		TextureRegion frame;
+		if (this.body.getLinearVelocity().y > -3 && this.body.getLinearVelocity().y < 3 && isJumping) {
+			frame = jumpCells.get(2);
+	    } else if (this.body.getLinearVelocity().y > 0) {
+			frame = jumpCells.get(1);
+		} else if (this.body.getLinearVelocity().y < 0){
+			frame = jumpCells.get(3);
+		} else if (this.body.getLinearVelocity().x != 0) {
+			frame = runAnimation.getKeyFrame(stateTimer, true);
+		} else {
+			frame = standing;
+		}
+		if (this.body.getLinearVelocity().x < 0 && !frame.isFlipX()) frame.flip(true, false);
+		if (this.body.getLinearVelocity().x > 0 && frame.isFlipX()) frame.flip(true, false);
+		
+		return frame;
 	}
 
 	@Override

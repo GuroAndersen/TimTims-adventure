@@ -63,7 +63,7 @@ public class GameScreen extends ScreenAdapter implements AccessibleGame {
 
 	@Override
 	public void render(float delta) {
-		states.get(state).render();
+		states.get(state).render(delta);
 	}
 
 	@Override

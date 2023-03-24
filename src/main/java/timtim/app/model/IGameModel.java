@@ -29,8 +29,9 @@ public interface IGameModel {
 	
 	/**
 	 * Update the player, the world and its contents
+	 * @param delta, the time since last update in seconds
 	 */
-	public void update();
+	public void update(float delta);
 
 	/**
 	 * Get the world of the current game map

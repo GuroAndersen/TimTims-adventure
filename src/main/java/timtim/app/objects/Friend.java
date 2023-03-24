@@ -95,7 +95,7 @@ public class Friend extends GameEntity implements IFriend {
     }
 
 	@Override
-	public void update() {
+	public void update(float delta) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -31,7 +31,7 @@ public abstract class GameEntity {
 	 /**
 	  * Updates the entity
 	  */
-	public abstract void update();
+	public abstract void update(float delta);
 	
 	/**
 	 * Renders the entity

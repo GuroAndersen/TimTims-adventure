@@ -72,7 +72,7 @@ public class PlayerTest {
 	public void testPlayerMoveRight() {
 		float playerVelX1 = player.body.getLinearVelocity().x;
 		player.move(false, true);
-		player.update();
+		player.update(Const.FPS);
 		float playerVelX2 = player.body.getLinearVelocity().x;
 		assertNotEquals(playerVelX1, playerVelX2);
 		assertEquals(playerVelX1, 0);
@@ -83,7 +83,7 @@ public class PlayerTest {
 	public void testPlayerMoveLeft() {
 		float playerVelX1 = player.body.getLinearVelocity().x;
 		player.move(true, false);
-		player.update();
+		player.update(Const.FPS);
 		float playerVelX2 = player.body.getLinearVelocity().x;
 		assertNotEquals(playerVelX1, playerVelX2);
 		assertEquals(playerVelX1, 0);
@@ -94,7 +94,7 @@ public class PlayerTest {
 	public void testPlayerMoveBoth() {
 		float playerVelX1 = player.body.getLinearVelocity().x;
 		player.move(true, true);
-		player.update();
+		player.update(Const.FPS);
 		float playerVelX2 = player.body.getLinearVelocity().x;
 		assertEquals(playerVelX1, playerVelX2);
 		assertEquals(playerVelX1, 0);
