@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.utils.Align;
 import timtim.app.core.AccessibleGame;
 import timtim.app.core.StateHandler;
 import com.badlogic.gdx.graphics.Color;
@@ -32,6 +33,7 @@ public class PauseState implements StateHandler {
     public void render() {
         // render game in paused state
         update();
+
         // draw black transparent background
         game.renderMap();
         Gdx.gl.glClearColor(100, 0, 100, 0.5f);
@@ -39,18 +41,18 @@ public class PauseState implements StateHandler {
         // draw pause menu
         batch.begin();
 
-        //shape.setProjectionMatrix(game.getCamera().combined);
-        //shape.begin(ShapeRenderer.ShapeType.Line);
-        //shape.setColor(Color.RED);
-        //shape.rect(0, 0, 100, 100);
-        //shape.end();
+        // Calculate the center position of the screen
+        float centerX = game.getCamera().viewportWidth / 2f;
+        float centerY = game.getCamera().viewportHeight / 2f;
 
-        font.draw(batch, "Game Paused", 100, 200);
-        font.draw(batch, "Press 'P' to resume", 100, 150);
-        
+        // Draw "game over" centered on the screen
+
+        font.draw(batch, "Game Over", centerX, centerY, 0, Align.center, false);
+    
+        font.draw(batch, "Press 'P' to resume", centerX, centerY - 20, 0, Align.center, false);
+
         batch.end();
-
-    }
+        }
 
     @Override
     public State getState() {
