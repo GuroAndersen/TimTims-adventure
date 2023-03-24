@@ -34,12 +34,17 @@ public class PauseState implements StateHandler {
         // render game in paused state
         update();
 
-        // draw black transparent background
-        game.renderMap();
-        Gdx.gl.glClearColor(100, 0, 100, 0.5f);
+    // enable blending and draw black transparent background
+        Gdx.gl.glEnable(GL20.GL_BLEND);
+        Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
+        ShapeRenderer shapeRenderer = new ShapeRenderer();
+        shapeRenderer.setProjectionMatrix(batch.getProjectionMatrix());
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        shapeRenderer.setColor(0, 0, 0, 0.5f);
+        shapeRenderer.rect(0, 0, game.getCamera().viewportWidth, game.getCamera().viewportHeight);
+        shapeRenderer.end();
 
-        // draw pause menu
-        batch.begin();
+        batch.begin();        
 
         // Calculate the center position of the screen
         float centerX = game.getCamera().viewportWidth / 2f;
@@ -47,8 +52,8 @@ public class PauseState implements StateHandler {
 
         // Draw "game over" centered on the screen
 
-        font.draw(batch, "Game Over", centerX, centerY, 0, Align.center, false);
-    
+        font.draw(batch, "TimTim is having a break!", centerX, centerY, 0, Align.center, false);
+
         font.draw(batch, "Press 'P' to resume", centerX, centerY - 20, 0, Align.center, false);
 
         batch.end();
