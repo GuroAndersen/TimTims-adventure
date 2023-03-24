@@ -1,6 +1,7 @@
 package timtim.app.objects;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
 public class Enemy extends CombatEntity {
 
@@ -16,7 +17,7 @@ public class Enemy extends CombatEntity {
 	}
 
 	@Override
-	public void render(SpriteBatch batch) {
+	public void render(SpriteBatch batch, TextureAtlas atlas) {
 		// TODO Auto-generated method stub
 		
 	}

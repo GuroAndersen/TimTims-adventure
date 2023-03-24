@@ -15,14 +15,14 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.Shape;
 import com.badlogic.gdx.physics.box2d.World;
 
-import timtim.app.objects.Player;
+import timtim.app.objects.Timtim;
 
 public class GameMap implements IGameMap {
 
 	String mapName;
 	TiledMap tiledMap;
 	World world;
-	Player player;
+	Timtim player;
 	// Chest chest;
 	OrthogonalTiledMapRenderer renderer;
 
@@ -31,7 +31,7 @@ public class GameMap implements IGameMap {
 	 */
 	private boolean complete;
 
-	public GameMap(String mapName, Player player) {
+	public GameMap(String mapName, Timtim player) {
 		this.player = player;
 		this.mapName = mapName;
 		complete = false;

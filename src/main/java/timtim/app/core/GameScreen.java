@@ -6,6 +6,7 @@ import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.MathUtils;
@@ -24,22 +25,26 @@ import java.util.HashMap;
 
 public class GameScreen extends ScreenAdapter implements AccessibleGame {
 
+	// Model and state variables
+	private State state;
 	private HashMap<State, StateHandler> states;
 	private IGameModel model;
 
-	private State state;
-
+	// Map rendering variables
 	private OrthographicCamera camera;
-	private SpriteBatch batch;
 	private Box2DDebugRenderer B2DDebugRenderer;
-
 	private OrthogonalTiledMapRenderer mapRenderer;
+	
+	// Sprite rendering variables
+	private TextureAtlas atlas;
+	private SpriteBatch batch;
 
 	public GameScreen(OrthographicCamera camera) {
 		this.state = State.PLAY; // currently PLAY but should be START
 		this.model = new GameModel();
-		this.camera = camera;
 		this.batch = new SpriteBatch();
+		this.camera = camera;
+		this.atlas = new TextureAtlas("timtimSprite.atlas");
 
 		this.B2DDebugRenderer = new Box2DDebugRenderer();
 
@@ -114,12 +119,11 @@ public class GameScreen extends ScreenAdapter implements AccessibleGame {
 	public void renderMap() {
 		mapRenderer.setView(camera);
 		mapRenderer.render();
-		batch.setProjectionMatrix(camera.combined);
-		batch.begin();
+		getBatch().setProjectionMatrix(camera.combined);
+		getBatch().begin();
 		// render objects
-		model.getPlayer().render(batch);
-
-		batch.end();
+		model.getPlayer().render(getBatch(), getAtlas());
+		getBatch().end();
 		B2DDebugRenderer.render(model.getCurrentWorld(), camera.combined.scl(Const.PPM));
 	}
 
@@ -131,6 +135,14 @@ public class GameScreen extends ScreenAdapter implements AccessibleGame {
 	@Override
 	public OrthographicCamera getCamera() {
 		return this.camera;
+	}
+
+	public SpriteBatch getBatch() {
+		return batch;
+	}
+
+	public TextureAtlas getAtlas() {
+		return atlas;
 	}
 
 
