@@ -57,6 +57,11 @@ public class PlayState implements StateHandler {
         if (Gdx.input.isKeyJustPressed(Input.Keys.P)) {
             game.switchState(State.PAUSE);
         }
+
+        //remember to edit this if statement when gameover is properly implemented
+        if (Gdx.input.isKeyJustPressed(Input.Keys.G)) {
+            game.switchState(State.GAMEOVER);
+        }
     }
 
     @Override
