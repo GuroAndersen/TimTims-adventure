@@ -2,26 +2,21 @@ package timtim.app.core.state;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Align;
 import timtim.app.core.AccessibleGame;
 import timtim.app.core.StateHandler;
-import com.badlogic.gdx.graphics.Color;
 
-import java.awt.*;
-
-public class PauseState implements StateHandler {
+public class StartState implements StateHandler {
 
     ShapeRenderer shape;
     SpriteBatch batch;
     BitmapFont font;
     private final AccessibleGame game;
 
-    public PauseState (AccessibleGame game) {
+    public StartState (AccessibleGame game) {
         this.game = game;
         shape = new ShapeRenderer();
 
@@ -29,10 +24,11 @@ public class PauseState implements StateHandler {
         this.font = new BitmapFont();
 
     }
+
     @Override
     public void render() {
         // render game in paused state
-        update();
+        handleInput();
 
         batch.begin();
 
@@ -47,25 +43,22 @@ public class PauseState implements StateHandler {
         font.draw(batch, "Press 'P' to resume", centerX, centerY - 40, 0, Align.center, false);
 
         batch.end();
-        }
+    }
+
+
 
     @Override
     public State getState() {
-        return State.PAUSE;
-    }
-
-    private void update() {
-        handleInput();
-        game.updateCamera();
+        return State.START;
     }
 
     private void handleInput() {
-        if (Gdx.input.isKeyJustPressed(Input.Keys.P)){
-            resume();
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)){
+            startGame();
         }
     }
 
-    private void resume() {
+    private void startGame(){
         game.switchState(State.PLAY);
     }
 }
