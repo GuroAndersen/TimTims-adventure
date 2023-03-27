@@ -22,6 +22,7 @@ public class Boot extends Game {
 		this.camera = new OrthographicCamera();
 		this.camera.setToOrtho(false, screenW, screenH);
 		setScreen(new GameScreen(camera));
+
 	}
 
 }

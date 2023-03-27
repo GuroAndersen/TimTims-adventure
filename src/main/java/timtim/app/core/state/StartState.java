@@ -27,7 +27,7 @@ public class StartState implements StateHandler {
 
     @Override
     public void render() {
-        // render game in paused state
+        // render game in start state
         handleInput();
 
         batch.begin();
@@ -36,11 +36,10 @@ public class StartState implements StateHandler {
         float centerX = game.getCamera().viewportWidth / 2f;
         float centerY = game.getCamera().viewportHeight / 2f;
 
-        // Draw PauseScreen centered on the screen
+        // Draw Start Screen centered on the screen
 
-        font.draw(batch, "TimTim is having a break!", centerX, centerY, 0, Align.center, false);
+        font.draw(batch, "Press ENTER to start TimTim's adventure!", centerX, centerY, 0, Align.center, false);
 
-        font.draw(batch, "Press 'P' to resume", centerX, centerY - 40, 0, Align.center, false);
 
         batch.end();
     }

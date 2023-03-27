@@ -33,7 +33,7 @@ public class GameScreen extends ScreenAdapter implements AccessibleGame {
 	private OrthogonalTiledMapRenderer mapRenderer;
 
 	public GameScreen(OrthographicCamera camera) {
-		this.state = State.PLAY; // currently PLAY but should be START
+		this.state = State.START; // currently PLAY but should be START
 		this.model = new GameModel();
 		this.camera = camera;
 		this.batch = new SpriteBatch();
@@ -99,6 +99,7 @@ public class GameScreen extends ScreenAdapter implements AccessibleGame {
 
 	@Override
 	public void renderMap() {
+
 		mapRenderer.setView(camera);
 		mapRenderer.render();
 		batch.setProjectionMatrix(camera.combined);
