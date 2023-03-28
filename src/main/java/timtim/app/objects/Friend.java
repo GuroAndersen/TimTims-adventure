@@ -1,8 +1,10 @@
 package timtim.app.objects;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
 import timtim.app.objects.Inventory.Item;
 
-public class Friend implements IFriend {
+public class Friend extends GameEntity implements IFriend {
 
     public Item item;
 
@@ -85,10 +87,22 @@ public class Friend implements IFriend {
         // TODO Auto-generated method stub
         // This method is supposed to be a restricted move method where the Friend
         // object can only move a certain way.
-        // A starter coordinate and then move x ammount of steps in left and right
+        // A starter coordinate and then move x amount of steps in left and right
         // direction.
 
         throw new UnsupportedOperationException("Unimplemented method 'move'");
     }
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void render(SpriteBatch batch) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
