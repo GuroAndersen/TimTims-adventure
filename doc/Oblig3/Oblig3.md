@@ -1,8 +1,5 @@
 # **Oblig 3**
 
-HUSK:
-Stretch goal - BOSS!
-
 ## **Møtereferat**
 
 **Dato: Torsdag 16.03.2023** <br>
@@ -31,7 +28,7 @@ ___
 **Referent: Mattias** <br>
 
 *Oppsummering:* <br>
-Vi startet møtet med å se litt på hvordan vi ligger ann og hva vi har igjen. Dette gjelder både i henhold til oblig 3, og til det endelige resultatet. Vi hadde som utgangspunkt at vi skulle klare å lage 3 level + et "boss" level. Vi ser dog per nå at dette kan være litt overambisiøst, og at vi heller skal sette "boss" level som et stretch goal. Dette diskuteres nøyere i ...TODO... Videre har vi og i fellesskap sørget for at det ligger inne riktige lag i kartet.
+Vi startet møtet med å se litt på hvordan vi ligger ann og hva vi har igjen. Dette gjelder både i henhold til oblig 3, og til det endelige resultatet. Vi hadde som utgangspunkt at vi skulle klare å lage 3 level + et "boss" level. Vi ser dog per nå at dette kan være litt overambisiøst, og at vi heller skal sette "boss" level som et stretch goal. Dette diskuteres nøyere i avsnitet **Stretch goal** under **Krav og spesifikasjoner**. Videre har vi og i fellesskap sørget for at det ligger inne riktige lag i kartet.
 
 *Diskusjoner:* <br>
 Under møte ble det diskutert hvordan vi skal løse kollisjon og inventory. Vi kom frem til at vi skal ha en egen klasse som håndterer kollisjon og inventory. Dette er for å unngå at vi skal ha for mye kode i klassene til hovedkarakter og fiender.
@@ -59,11 +56,30 @@ Som beskrevet over har vi i stor grad jobbet med welcome screen og pause screen.
 30.03.2023 <br>
 
 *Oppgaver til neste gang:* <br>
-TODO
+Til neste gang vil hovedfokuset være videre arbeidet med welcome screen og pause screen. 
 
 ___
 
 **Dato: Torsdag 30.03.2023** <br>
+**Sted: Vilvite** <br>
+**Deltagere: Sandra, Hilde, Guro, Cecilie, Mattias** <br>
+**Referent: Mattias** <br>
+
+*Oppsummering:* <br>
+TODO
+
+*Diskusjoner:* <br>
+TODO
+
+*Neste møte* <br>
+13.04.2023 <br>
+
+*Oppgaver til neste gang:* <br>
+TODO
+
+___
+
+**Dato: Torsdag 13.04.2023** <br>
 **Sted: Vilvite** <br>
 **Deltagere: Sandra, Hilde, Guro, Cecilie, Mattias** <br>
 **Referent: Mattias** <br>
@@ -81,7 +97,6 @@ TODO <br>
 TODO
 
 ___
-
 ## **Prosjektrapport**
 
 ### **Roller**
@@ -121,7 +136,7 @@ ___
 ### **Erfaringer rundt gruppen og prosjektmetodikk**
 Prosjektmetodikken begynner i større grad å bli en naturlig arbeidsmåte for teamet som helhet. Selv om flere synes den agile tilnærmingen var uvant i start, begynner det nå falle på plass. Vi er blitt mer bevisste enn tidligere på følge de satte stegene i hver sprint (planlegge, designe, kode og teste, diskutere veien videre). Men det viktigste læringsmomentet vi har hatt til nå er at vi er blitt mye mer smidig på å tørre å pivotere til andre retninger dersom vi ser det nødvendig. Eksempelvis jobbet gruppen lenge med å implementere welcome screen og pause screen som egne klasser. Da vi så at det ville skape videre problemer i koden, og vi fant en bedre løsning, nølte ikke gruppen med å prøve et annet alternativ. Dette viser en agil tilnærming som vi føler vi mestrer. 
 
-Projectboardet har blitt flittig brukt siden sist gang, og vi føler som gruppe at dette er en natulig det av prosjektmetodikken. 
+Projectboardet har blitt flittig brukt siden sist gang, og vi føler som gruppe at dette er en natulig det av prosjektmetodikken. Vi har siden sist gang fått inn flere rutiner hva gjelder Projectboardet som gjør arbeidet mer effektivt. Med en gang et team-medlem kommer på en oppgave som burde vært gjort skrives den opp i projectboardet. Videre vil gruppen i fellesskap diskutere hvorvidt dette bør gjennomføres, hvor høy prioritet den oppgaven har, og hvem som skal gjennomføre den. På denne måten sikrer vi at vi ikke glemmer noe, samt at vi i fellesskap blir enighet om hvordan det er mest hensiktsmessig å gjennomføre en oppgave. 
 
 ____
 ### **Gruppedynamikk**
@@ -134,7 +149,12 @@ Utover dette er i fornøyd med dynamikken i gruppen. Alle får komme til ordet, 
 ___
 
 ### ***Retroperspektiv/forbedringspunkter***
-TODO
+Som ved forrige oblig blir mye av retroperspektivet diskutert under avsnittene Prosjektmetodikk, gruppedynamikk og kommunikasjon. 
+
+Likevel er det verdt å nevne at vi til enhver tid har vært bevist på, og diskutert, hva som fungerer og hva som kan forbedres. Dette gjelder prosjektmetodikk, roller i teamet, kommunikasjon og selve koden. Det at vi har denne dialogen i gruppen gjør at vi sørger for at vi til enhver til er effektive, samt at trivselen på gruppen er på topp. <br>
+
+Det vi ønser å forbedre under neste oblig er tydelig kommunisere og bevisstgjøre hverander på hvilken del av sprinten vi er på til ethvert tidspunkt. Selv om vi gjennomføre en sprint som en gruppe, vil team-medlemmene jobbe på forskjellige deler av koden, og vil til tider være på forskjellige deler av sprinten. Spesielt i tilfeller hvor vi pivoterer, kan det være vanskelig å vite om vi er på planleggingsstadiet, eller om vi er i designstadiet. Dette kan føre til at vi ikke er like effektive som vi kunne vært. 
+
 ___
 
 ### **Bidrag til kodebasen**
@@ -145,6 +165,11 @@ ___
 
 ## Krav og spesifikasjon
 
+### **Strech goal**
+Som diskutert i møtereferatet fra 20.03.2023 har vi besluttet at det å lage et "boss" level blir et stretch goal. Utgangspunktet vårt var å ha 3 vanlige level, i stigende vanskelighetsgrad, før vi til slutt har et "boss" level. Dette "boss" levelet er noe vi ønsker å få på plass ved siste oblig, men vil ikke bli førsteprioritet. <br>
+
+Et "boss" level vil si at det vil være en større fiende som hovedkarakterer må kjempe mot. Dette kan sammenlignes med en "boss" i eksempelvis Super Mario. 
+___
 ### **Prioriterte krav i Oblig 3**
 TODO
 ___
@@ -160,24 +185,36 @@ ___
 TODO
 ___
 ### **Bugs**
-TODO
+Totaloversikt over kjente bugs ligger i README.
 ___
 ## Produkt og kode
-TODO
-___
+
 ### **Utbedring av feil**
-TODO
+Siden forrige oblig har vi ikke fått påpekt noen feil vi bør jobbe med eller noen bugs med koden som bør fikses. Det eneste vi fikk påpekt var at vi hadde litt for lite tester. Dette har vi derfor hatt større fokus på under denne obligen. Per nå har vi tester til følgende klasser: <br>
+* TODO
+* TODO
+
+Vi har fortsatt ikke laget tester for hele spillet, men dette er noe vi skal ha på plass til den neste og endelige innleveringen. 
 ___
 ### **Kjøre koden**
 TODO
+
+Får vi testet at den kjører på Linux?
 ___
 ### **Klassediagram**
 TODO
+
+Cecilie fix?
 ___
 ### **Tester**
 TODO
+
+Får vi testet GUI?
+Hvilke tester har vi?
+Knytte mot "Utbedring av feil"
 ___
 ### **Analyseverktøy**
 TODO
 
+Noen som har brukt dette?
 ___
