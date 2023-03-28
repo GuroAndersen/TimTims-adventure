@@ -2,7 +2,9 @@ package timtim.app.core.state;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Align;
@@ -32,14 +34,27 @@ public class StartState implements StateHandler {
 
         batch.begin();
 
+        // Load the image
+        Texture imgage = new Texture(Gdx.files.internal("timtimArt.png"));
+        Sprite imgSprite = new Sprite(imgage);
+
         // Calculate the center position of the screen
-        float centerX = game.getCamera().viewportWidth / 2f;
-        float centerY = game.getCamera().viewportHeight / 2f;
+        float centerXtext = game.getCamera().viewportWidth / 2f;
+        float centerYtext = game.getCamera().viewportHeight / 2f ;
+        float imageX = game.getCamera().viewportWidth / 5f;
+        float imageY = game.getCamera().viewportHeight / 2f;
 
-        // Draw Start Screen centered on the screen
+        // Set the position of the image to be centered on the screen
+        imgSprite.setPosition(imageX - imgSprite.getWidth() / 2f -20,
+                imageY - imgSprite.getHeight() / 2f );
 
-        font.draw(batch, "Press ENTER to start TimTim's adventure!", centerX, centerY, 0, Align.center, false);
+        // Set the scale of the image
+        imgSprite.setScale(0.2f); // Scale the image by half
 
+        // Draw the image and the text
+        imgSprite.draw(batch);
+        font.draw(batch, "Press ENTER to start TimTim's adventure!", centerXtext + 35, centerYtext + 50, 0, Align.center, false);
+        font.draw(batch, "If you ever want to give TimTim a break, just press 'P' !", centerXtext + 55, centerYtext, 0, Align.center, false);
 
         batch.end();
     }
