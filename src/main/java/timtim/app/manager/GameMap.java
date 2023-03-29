@@ -76,7 +76,7 @@ public class GameMap implements IGameMap {
 		camera = new OrthographicCamera();
 	}
 
-	private void createDoorObject(PolygonMapObject o) {
+	private Body createObject(PolygonMapObject o) {
 		float[] vertices = o.getPolygon().getTransformedVertices();
 
 		Rectangle bounds = o.getPolygon().getBoundingRectangle();
@@ -86,9 +86,16 @@ public class GameMap implements IGameMap {
 		float height = bounds.height;
 		Body body = BodyManager.createBody(x + width / 2, y + height / 2, width, height, true, world);
 
+		return body;
+	}
+
+	private void createDoorObject(PolygonMapObject o) {
+
+		Body body = createObject(o);
+
 		System.out.println(body.getPosition());
 		String imagePath = "castledoors.png";
-		Door door = new Door(body, vertices, imagePath);
+		Door door = new Door(body, o.getPolygon().getTransformedVertices(), imagePath);
 		body.setUserData(door);
 		Texture doorTexture = new Texture(Gdx.files.internal(imagePath));
 		Fixture doorFixture = body.getFixtureList().get(0);
@@ -108,18 +115,9 @@ public class GameMap implements IGameMap {
 	}
 
 	private void createFloraObject(PolygonMapObject o, Texture floraTexture) {
-		// System.out.println("createFloraObject called");
-		float[] vertices = o.getPolygon().getTransformedVertices();
+		Body body = createObject(o);
 
-		Rectangle bounds = o.getPolygon().getBoundingRectangle();
-		float x = bounds.x;
-		float y = bounds.y;
-		float width = bounds.width;
-		float height = bounds.height;
-		Body body = BodyManager.createBody(x + width / 2, y + height / 2, width,
-				height, true, world);
-
-		Flora flora = new Flora(body, vertices, floraTexture);
+		Flora flora = new Flora(body, o.getPolygon().getTransformedVertices(), floraTexture);
 		body.setUserData(flora);
 		Fixture floraFixture = body.getFixtureList().get(0);
 		floraFixture.setUserData(flora);
@@ -136,18 +134,12 @@ public class GameMap implements IGameMap {
 	}
 
 	private void createChestObject(PolygonMapObject o) {
-		float[] vertices = o.getPolygon().getTransformedVertices();
 
-		Rectangle bounds = o.getPolygon().getBoundingRectangle();
-		float x = bounds.x;
-		float y = bounds.y;
-		float width = bounds.width;
-		float height = bounds.height;
-		Body body = BodyManager.createBody(x + width / 2, y + height / 2, width, height, true, world);
+		Body body = createObject(o);
 
 		System.out.println(body.getPosition());
 		String imagePath = "chest2.png";
-		Chest chest = new Chest(body, vertices, imagePath, imagePath);
+		Chest chest = new Chest(body, o.getPolygon().getTransformedVertices(), imagePath, imagePath);
 		body.setUserData(chest);
 		Texture chestTexture = new Texture(Gdx.files.internal(imagePath));
 		Fixture chestFixture = body.getFixtureList().get(0);

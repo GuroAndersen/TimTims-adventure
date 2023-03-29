@@ -44,6 +44,8 @@ public class MyContactListener implements ContactListener {
             Chest chest = (Chest) (fa.getUserData() instanceof Chest ? fa.getUserData() : fb.getUserData());
             chest.open();
             // }
+            // This also needs a restriction where the open option is only given when the
+            // chest is closed and after it has no reaction.
         }
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Flora)
                 || (fa.getUserData() instanceof Flora && fb.getUserData() instanceof Player)) {
