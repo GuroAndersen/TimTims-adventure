@@ -77,7 +77,6 @@ public class GameMap implements IGameMap {
 	}
 
 	private void createDoorObject(PolygonMapObject o) {
-		// System.out.println("createDoorObject called");
 		float[] vertices = o.getPolygon().getTransformedVertices();
 
 		Rectangle bounds = o.getPolygon().getBoundingRectangle();
@@ -86,8 +85,6 @@ public class GameMap implements IGameMap {
 		float width = bounds.width;
 		float height = bounds.height;
 		Body body = BodyManager.createBody(x + width / 2, y + height / 2, width, height, true, world);
-		// Body body = BodyManager.createBody(1000, 1000, 10, 10, true, world);
-		// System.out.println(x + ", " + y + ", " + width + ", " + height);
 
 		System.out.println(body.getPosition());
 		String imagePath = "castledoors.png";
@@ -147,8 +144,6 @@ public class GameMap implements IGameMap {
 		float width = bounds.width;
 		float height = bounds.height;
 		Body body = BodyManager.createBody(x + width / 2, y + height / 2, width, height, true, world);
-		// Body body = BodyManager.createBody(1000, 1000, 10, 10, true, world);
-		// System.out.println(x + ", " + y + ", " + width + ", " + height);
 
 		System.out.println(body.getPosition());
 		String imagePath = "chest2.png";
