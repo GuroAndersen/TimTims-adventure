@@ -34,7 +34,7 @@ public class MyContactListener implements ContactListener {
         }
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Chest)
                 || (fa.getUserData() instanceof Chest && fb.getUserData() instanceof Player)) {
-            System.out.println("YOU FOUND GOLD!");
+            System.out.println("Item added to the inventory!");
             // if (Gdx.input.isKeyPressed(Input.Keys.F)) {
             Chest chest = (Chest) (fa.getUserData() instanceof Chest ? fa.getUserData() : fb.getUserData());
             chest.open();
@@ -43,6 +43,7 @@ public class MyContactListener implements ContactListener {
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Flora)
                 || (fa.getUserData() instanceof Flora && fb.getUserData() instanceof Player)) {
             System.out.println("OH NO I HAVE A POLLEN ALLERGY!");
+
         } else {
             System.out.println("Nothing!");
 
