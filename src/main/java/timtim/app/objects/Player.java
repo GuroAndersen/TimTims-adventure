@@ -22,7 +22,7 @@ public class Player extends CombatEntity implements IPlayer {
 
 	@Override
 	public void render(SpriteBatch batch) {
-		// TODO Auto-generated method stub
+		
 	}
 
 	private void updateMovement() {

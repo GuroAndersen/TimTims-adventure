@@ -1,47 +1,84 @@
 package timtim.app.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 
 import timtim.app.core.GameScreen;
+import timtim.app.core.MyContactListener;
 import timtim.app.manager.Const;
+import timtim.app.manager.EntityWorld;
+import timtim.app.manager.GameMap;
 import timtim.app.manager.TileMapManager;
+import timtim.app.objects.Enemy;
+import timtim.app.objects.Friend;
+import timtim.app.objects.GameEntity;
 import timtim.app.objects.Player;
 
-public class GameModel implements IGameModel {
+public class GameModel implements IGameModel, EntityWorld {
 
-	private GameScreen gameScreen;
 	private TileMapManager tileMapManager;
-	private World world;
+	private GameMap currentMap;
 	private Player player;
-	
-	public GameModel(GameScreen gameScreen) {
-		this.gameScreen = gameScreen;
-		this.world = new World(new Vector2(0,Const.GRAVITY), false);
-		this.tileMapManager = new TileMapManager(this);
+
+	private List<GameMap> maps;
+
+	List<Friend> friendList;
+	List<GameEntity> entityList;
+
+	public GameModel() {
 		this.player = new Player();
-	}
-	
-	
-	@Override
-	public World getWorld() {
-		return this.world;
+		this.tileMapManager = new TileMapManager(this);
+
+		// ENTITY LIST INIT
+		friendList = new ArrayList<Friend>();
+		entityList = new ArrayList<GameEntity>();
+
+		this.currentMap = tileMapManager.getCurrentMap();
 	}
 
 	@Override
 	public Player getPlayer() {
 		return this.player;
 	}
-	
+
+	public GameMap getCurrentMap() {
+		return this.getCurrentMap();
+	}
+
 	@Override
 	public OrthogonalTiledMapRenderer getMapRenderer() {
-		return this.tileMapManager.mapSetup();
+		return this.currentMap.getMapRenderer();
 	}
-	
+
+	@Override
+	public void addFriend(Friend friend) {
+		this.friendList.add(friend);
+		this.entityList.add(friend);
+	}
+
+	@Override
+	public void addEnemy(Enemy enemy) {
+		this.entityList.add(enemy);
+	}
+
 	@Override
 	public void update() {
 		this.player.update();
-		this.world.step(Const.FPS, 6, 2);
+		updateEntities(entityList);
+		this.currentMap.update();
+	}
+
+	private void updateEntities(List<GameEntity> entityList) {
+		for (GameEntity e : entityList)
+			e.update();
+	}
+
+	@Override
+	public World getCurrentWorld() {
+		return this.currentMap.getWorld();
 	}
 }
