@@ -171,15 +171,50 @@ Som diskutert i møtereferatet fra 20.03.2023 har vi besluttet at det å lage et
 Et "boss" level vil si at det vil være en større fiende som hovedkarakterer må kjempe mot. Dette kan sammenlignes med en "boss" i eksempelvis Super Mario. 
 ___
 ### **Prioriterte krav i Oblig 3**
-TODO
+I denne obligen har vi i hovedsak fokusert på følgende krav:
+1. start/slutt skjerm
+5. Spilleren skal interagere med terrenget
+7. Fiender/allierte vises i spillet
+9. Vise grafikk til spilleren
+11. Få kamera til å stoppe før man ser den sorte kanten rundt spillbrettet
 ___
 ### **Nye MVP krav**
-TODO
+Vi har under denne obligen laget et nytt MVP krav. Hovedfokuset har vært å fullføre de eksisterende, så kun ett nytt har oppstått. Det er:
+
+12. Spillkarakteren kan foredres ved å få tak i en "PowerUp"
 ___
 ### **Oversikt over brukerhistorier**
-TODO
+Brukerhistoriene er i stor grad lik som ved forrige oblig. Årsaken til dette er, som beskrevet over, at hovedfokuset har vært i implementere eksisterende krav. Likevel har vi laget en ny brukerhistorie, som tilhører det nye MVP kravet.
 
+*Fullførte brukerhistorier*
+| Brukerhistorie | Akseptansekriterier | Arbeidsoppgaver | Krav |
+|:--------------:|:-------------------:|:---------------:|:-----|
+| Som spiller skal jeg kunne se et spillbrett når jeg starter spillet. | Gitt at spilleren starter et spill: <br> -Bakken, taket være tydelig markert <br> -Hindringer være tydelig adskilt fra bakgrunnen | Metode som viser spillbrettet når spiller starter spillet fra menyen | 2 |
+| Som spiller skal jeg til enhver se en spiller-objekt og tydelig skille den fra andre objekter | Gitt at spillet spilles skal: <br> - spillfiguren til envher være synlig <br> -spillfiguren skille seg fra andre objekter | Lage en spillfigur som tydelig skiller seg fra bakgrunnen <br> Metode som viser spiller på spillbrettet | 3 |
+| Som spiller skal jeg kunne flytte på spilleren | Gitt at spilleren trykker “W”: <br> -skal spilleren hoppe <br> Gitt at spilleren trykker "A" skal: <br> -skal spilleren bevege seg til venstre <br> Gitt at spilleren trykker "D" <br> -skal spilleren bevege seg til høyre | Metode i controller som registrerer tastetrykk <br> Metode som beveger spilleren basert på tastetrykk | 4 |
+| Som spiller skal jeg se den grafiske fremstillingen av spillfiguren | Gitt at spillet spilles <br> -skal spilleren se en figur som tydelig markerer seg som "hovedkarakteren" i spillet | Metode som implementerer spillfiguren | 10|
+| Som spiller skal jeg ikke se den sorte kanten rundt spillbrettet | Gitt at spilleren beveger seg til kanten av spillbrettet<br> -skal kameratet stoppe <br> -skal spilleren IKKE se den svarte kanten rundt spillbrettet | Metode som implementerer kamera | 12|
+
+*Påbegynte brukerhistorier* <br>
+| Brukerhistorie | Akseptansekriterier | Arbeidsoppgaver | Krav |
+|:--------------:|:-------------------:|:---------------:|:-----|
+| Som spiller skal jeg se en meny når jeg starter spillet. Der skal jeg ha mulighet til å velge mellom å starte spille, eller se informasjon om spillet | Gitt at spillet startes skal: <br> -spilleren måte en meny med forskjellige valg <br>- Hvert valg skal ta spilleren til et nytt vindu | Metode som viser menyen når programet starter <br> Metode som kan kjøre andre klasser | 1 |
+| Som spiller jeg kunne interagere med terenget | Gitt at spilleren går bort til et hinder skal: <br> - spillfiguren stoppe <br> Gitt at spilleren hopper på et objekt: <br> -skal spilleren kunne lande på et objekt | Metode som gjør gjør at spilleren stopper når den interagerer med terrenget | 5 |
+| Som spiller skal jeg kunne hente gjenstander fra kister | Gitt at spillfiguren åpner en kiste: <br> -skal enten spilleren få en "power-up" <br> -eller motta informasjon som senere kan byttes | Metode som gir spilleren gjenstander når den åpner en kiste <br> Metode som gir spilleren våpen når den åpner en kiste | 6 |
+| Som spiller skal jeg kunne se fiender og allierte | Gitt at spilleren er på et sted i spillbrettet der det er fiender eller alierte <br> -skal spilleren tydelig klare å skille fiender/alierte fra bakgrunnen <br> -skal spilleren vite forskjell på fiende og alliert | Metode som som lager fiender <br> Metode som lager allierte | 7 |
 ___
+
+*Ikke-påbegynte brukerhistorier*
+| Brukerhistorie | Akseptansekriterier | Arbeidsoppgaver | Krav |
+|:--------------:|:-------------------:|:---------------:|:-----|
+| Som spiller skal jeg se at jeg mister liv når jeg jeg interagerer med en fiende | Gitt at spilleren interagerer med en fiende <br> -skal spilleren tydelig se hvor mye liv den mister <br> -skal spilleren tydelig se hvor mye liv den har igjen | Metode som gjør at spilleren mister liv ved kontakt med fiender <br> Metode som gjør at spilleren dør når den er tom for liv | 8 |
+| Som spiller skal jeg se at jeg mister liv dersom jeg faller ut av brettet | Gitt at spilleren faller en viss distanse <br> -skal spilleren tydelig se at den dør | Metode som gjør at spiller dør og spillet starter på nytt dersom spiller faller ut av brettet | 8|
+| Som spiller skal jeg se en siste "boss" på siste level | Gitt at spilleren kommer til siste level <br> -skal spilleren se en figur som tydelig er en "boss" <br> -skal spilleren kunne kjempe mot denne "bossen" | Metode som implementerer "boss" | 11|
+
+*Nye MVP brukerhistorier* <br>
+| Brukerhistorie | Akseptansekriterier | Arbeidsoppgaver | Krav |
+|:--------------:|:-------------------:|:---------------:|:-----|
+| Som spiller skal jeg kunne plukke opp en "PowerUp" og forbedre spillekarakterens ferdigheter | Gitt at spilleren plukker opp en "PowerUp" <br> -skal spillkarakteren bevege seg raskere i en gitt tidsperiode | Metode som implementerer "PowerUp" | 13 |
 
 ### **Prioritering av oppgaver fremover**
 TODO
