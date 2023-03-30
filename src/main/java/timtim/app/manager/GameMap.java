@@ -35,8 +35,10 @@ public class GameMap implements IGameMap {
 	TiledMap tiledMap;
 	World world;
 	Player player;
+	Body playerBody;
 	// Chest chest;
 	OrthogonalTiledMapRenderer renderer;
+
 	private ArrayList<Door> doors;
 	private ArrayList<Flora> floras;
 	private ArrayList<Chest> chests;
@@ -169,12 +171,10 @@ public class GameMap implements IGameMap {
 		MapObject o = objects.get(0);
 		if (o instanceof RectangleMapObject) {
 			Rectangle rect = ((RectangleMapObject) o).getRectangle();
-			Body body = BodyManager.createBody(rect.getX() + rect.getWidth() / 2,
-					rect.getY() + rect.getHeight() / 2,
+			playerBody = BodyManager.createBody(rect.getX() + rect.getWidth() / 2, rect.getY() + rect.getHeight() / 2,
 					rect.getWidth(), rect.getHeight(), false, world);
 
-			player.setBody(body, rect.getWidth(), rect.getHeight());
-			Fixture fixture = body.getFixtureList().get(0);
+			Fixture fixture = playerBody.getFixtureList().get(0);
 			fixture.setUserData(player);
 		} else {
 			throw new IllegalArgumentException("Player map object not found or is not a RectangleMapObject");
