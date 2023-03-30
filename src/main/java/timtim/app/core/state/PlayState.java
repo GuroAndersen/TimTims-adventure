@@ -39,7 +39,6 @@ public class PlayState implements StateHandler {
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) { // Closes game if escape is pressed
             Gdx.app.exit();
         }
-
         // Horizontal movement
         boolean moveLeft = false;
         boolean moveRight = false;
