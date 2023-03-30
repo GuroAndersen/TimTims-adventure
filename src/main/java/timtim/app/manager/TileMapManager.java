@@ -27,17 +27,16 @@ public class TileMapManager {
 
 	private void loadMaps() {
 		BufferedReader reader;
-        try {
-        	InputStream is = TileMapManager.class.getResourceAsStream("/maps.txt");
-            reader = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
-            String mapName; 
-            while ((mapName = reader.readLine()) != null){
-            	maps.put(mapName, new GameMap(mapName, model.getPlayer()));
-        }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+		try {
+			InputStream is = TileMapManager.class.getResourceAsStream("/maps.txt");
+			reader = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
+			String mapName;
+			while ((mapName = reader.readLine()) != null) {
+				maps.put(mapName, new GameMap(mapName, model.getPlayer()));
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 	}
 
