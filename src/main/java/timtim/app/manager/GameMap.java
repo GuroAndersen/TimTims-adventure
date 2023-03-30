@@ -51,7 +51,7 @@ public class GameMap implements IGameMap {
 	 */
 	private boolean complete;
 
-	public GameMap(String mapName, Player player) {
+	public GameMap(String mapName, Timtim player) {
 		this.player = player;
 		this.mapName = mapName;
 		doors = new ArrayList<Door>();

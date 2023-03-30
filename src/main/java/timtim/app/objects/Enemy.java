@@ -1,6 +1,7 @@
 package timtim.app.objects;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
 public class Enemy extends CombatEntity {
 
@@ -11,7 +12,7 @@ public class Enemy extends CombatEntity {
 	}
 	
 	@Override
-	public void update() {
+	public void update(float delta) {
 		doRandomXMovement();
 	}
 

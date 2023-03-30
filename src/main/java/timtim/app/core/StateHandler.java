@@ -6,9 +6,10 @@ public interface StateHandler {
 
 
     /**
-     * Render this state
+     * Render this state.
+     * @param delta time in seconds since last render
      */
-    public void render();
+	void render(float delta);
 
 
     /**
