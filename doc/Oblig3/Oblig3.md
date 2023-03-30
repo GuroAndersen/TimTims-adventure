@@ -62,21 +62,20 @@ ___
 
 **Dato: Torsdag 30.03.2023** <br>
 **Sted: Vilvite** <br>
-**Deltagere: Sandra, Hilde, Guro, Cecilie, Mattias** <br>
+**Deltagere: Sandra, Hilde, Cecilie, Mattias** <br>
 **Referent: Mattias** <br>
 
 *Oppsummering:* <br>
-TODO
+Siden forrige møte har hvert medlem på teamet skrevet en del kode individuelt. Derfor brukte vi en del tid i starten på å gå gjennom hver enkelt sin kode, slik at alle på teamet er oppdatert. Videre har vi diskutert "PowerUps", som beskrevet under. 
 
 *Diskusjoner:* <br>
-TODO
+Under møte ble det diskutert vi skal ta i bruk "PowerUps" for å oppgradere spilleren. Vi har sett at dette er et krav at koden inneholder. Vår tanker er det skal ligge noen objekter i kartet. Når spillkarakteren kolliderer med disse, vil han kunne løpe fortere i en gitt tidsperiode. 
 
 *Neste møte* <br>
 13.04.2023 <br>
 
 *Oppgaver til neste gang:* <br>
-TODO
-
+Neste møte blir ikke før om 2 uker, siden det er påskeferie. Likevel vil vi til neste gang fokusere på hvordan man skal hente informasjon fra kartene til menyen. Det vil si at menyen skal vise de forskjellige levelene. Dersom man ikke har spillt før, vil det kun være mulig å spille det første level. Dersom man har fullført det første levelet, skal det være mulig å starte level 2 osv. I tillegg vil vi fokusere på å få inn en friend som står og er animert i kartet.
 ___
 
 **Dato: Torsdag 13.04.2023** <br>
@@ -158,9 +157,9 @@ Det vi ønser å forbedre under neste oblig er tydelig kommunisere og bevisstgj�
 ___
 
 ### **Bidrag til kodebasen**
-Under oblig 1 fikk vi tilbakemelding å at vi hadde for ujevne commits. Dette har vært et stort fokus i denne obligen. Vi har oppnådd et mye jevnere nivå denne gangen. Årsaken til dete er for det første at samtlige i gruppen har blit bedre på git. Dette gjør at gruppen som helhet har blitt tryggere på å pushe kode. Videre har flere nå jobbet med koden selvstendig som fører til flere commits per person. <br>
+Under oblig 1 fikk vi tilbakemelding å at vi hadde for ujevne commits. Dette har vært et stort fokus i denne obligen. Vi har oppnådd et mye jevnere nivå denne gangen. Årsaken til dette er for det første at samtlige i gruppen har blit bedre på git. Dette gjør at gruppen som helhet har blitt tryggere på å pushe kode. Videre har flere nå jobbet med koden selvstendig som fører til flere commits per person. <br>
 
-Likevel vil det også denne gangen være noen ujevnheter. Årsaken til dette er blant annet at individer på gruppen har forskjellige git-vaner, samt at noen fortsatt har jobbet med det grafiske som ikke fører til commits. Dog er vi fornøyd med fordelingen av commits, og anser den som naturlig.
+Likevel vil det også denne gangen være noen ujevnheter. Årsaken til dette er blant annet at individer på gruppen har forskjellige git-vaner, samt at noen fortsatt har jobber med det grafiske som ikke fører til commits. Dog er vi fornøyd med fordelingen av commits, og anser den som naturlig. 
 ___
 
 ## Krav og spesifikasjon
@@ -192,8 +191,8 @@ Brukerhistoriene er i stor grad lik som ved forrige oblig. Årsaken til dette er
 | Som spiller skal jeg kunne se et spillbrett når jeg starter spillet. | Gitt at spilleren starter et spill: <br> -Bakken, taket være tydelig markert <br> -Hindringer være tydelig adskilt fra bakgrunnen | Metode som viser spillbrettet når spiller starter spillet fra menyen | 2 |
 | Som spiller skal jeg til enhver se en spiller-objekt og tydelig skille den fra andre objekter | Gitt at spillet spilles skal: <br> - spillfiguren til envher være synlig <br> -spillfiguren skille seg fra andre objekter | Lage en spillfigur som tydelig skiller seg fra bakgrunnen <br> Metode som viser spiller på spillbrettet | 3 |
 | Som spiller skal jeg kunne flytte på spilleren | Gitt at spilleren trykker “W”: <br> -skal spilleren hoppe <br> Gitt at spilleren trykker "A" skal: <br> -skal spilleren bevege seg til venstre <br> Gitt at spilleren trykker "D" <br> -skal spilleren bevege seg til høyre | Metode i controller som registrerer tastetrykk <br> Metode som beveger spilleren basert på tastetrykk | 4 |
-| Som spiller skal jeg se den grafiske fremstillingen av spillfiguren | Gitt at spillet spilles <br> -skal spilleren se en figur som tydelig markerer seg som "hovedkarakteren" i spillet | Metode som implementerer spillfiguren | 10|
-| Som spiller skal jeg ikke se den sorte kanten rundt spillbrettet | Gitt at spilleren beveger seg til kanten av spillbrettet<br> -skal kameratet stoppe <br> -skal spilleren IKKE se den svarte kanten rundt spillbrettet | Metode som implementerer kamera | 12|
+| Som spiller skal jeg se den grafiske fremstillingen av spillfiguren | Gitt at spillet spilles <br> -skal spilleren se en figur som tydelig markerer seg som "hovedkarakteren" i spillet | Metode som implementerer spillfiguren | 9|
+| Som spiller skal jeg ikke se den sorte kanten rundt spillbrettet | Gitt at spilleren beveger seg til kanten av spillbrettet<br> -skal kameratet stoppe <br> -skal spilleren IKKE se den svarte kanten rundt spillbrettet | Metode som implementerer kamera | 11|
 
 *Påbegynte brukerhistorier* <br>
 | Brukerhistorie | Akseptansekriterier | Arbeidsoppgaver | Krav |
@@ -209,12 +208,12 @@ ___
 |:--------------:|:-------------------:|:---------------:|:-----|
 | Som spiller skal jeg se at jeg mister liv når jeg jeg interagerer med en fiende | Gitt at spilleren interagerer med en fiende <br> -skal spilleren tydelig se hvor mye liv den mister <br> -skal spilleren tydelig se hvor mye liv den har igjen | Metode som gjør at spilleren mister liv ved kontakt med fiender <br> Metode som gjør at spilleren dør når den er tom for liv | 8 |
 | Som spiller skal jeg se at jeg mister liv dersom jeg faller ut av brettet | Gitt at spilleren faller en viss distanse <br> -skal spilleren tydelig se at den dør | Metode som gjør at spiller dør og spillet starter på nytt dersom spiller faller ut av brettet | 8|
-| Som spiller skal jeg se en siste "boss" på siste level | Gitt at spilleren kommer til siste level <br> -skal spilleren se en figur som tydelig er en "boss" <br> -skal spilleren kunne kjempe mot denne "bossen" | Metode som implementerer "boss" | 11|
+| Som spiller skal jeg se en siste "boss" på siste level | Gitt at spilleren kommer til siste level <br> -skal spilleren se en figur som tydelig er en "boss" <br> -skal spilleren kunne kjempe mot denne "bossen" | Metode som implementerer "boss" | 10|
 
 *Nye MVP brukerhistorier* <br>
 | Brukerhistorie | Akseptansekriterier | Arbeidsoppgaver | Krav |
 |:--------------:|:-------------------:|:---------------:|:-----|
-| Som spiller skal jeg kunne plukke opp en "PowerUp" og forbedre spillekarakterens ferdigheter | Gitt at spilleren plukker opp en "PowerUp" <br> -skal spillkarakteren bevege seg raskere i en gitt tidsperiode | Metode som implementerer "PowerUp" | 13 |
+| Som spiller skal jeg kunne plukke opp en "PowerUp" og forbedre spillekarakterens ferdigheter | Gitt at spilleren plukker opp en "PowerUp" <br> -skal spillkarakteren bevege seg raskere i en gitt tidsperiode | Metode som implementerer "PowerUp" | 12 |
 
 ### **Prioritering av oppgaver fremover**
 TODO
@@ -229,9 +228,13 @@ Siden forrige oblig har vi ikke fått påpekt noen feil vi bør jobbe med eller 
 * TODO
 * TODO
 
-Vi har fortsatt ikke laget tester for hele spillet, men dette er noe vi skal ha på plass til den neste og endelige innleveringen. 
+Vi har fortsatt ikke laget tester for alle aspekter av spillet, men dette er noe vi skal ha på plass til den neste og endelige innleveringen. 
 ___
 ### **Kjøre koden**
+Se README for instruksjoner.
+
+Siden sist har vi og testet spillet på Linux. Dvs at spillet nå skal kjøre på Windows, Mac og Linux.
+
 TODO
 
 Får vi testet at den kjører på Linux?
