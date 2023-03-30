@@ -14,9 +14,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 
-import timtim.app.core.state.PauseState;
-import timtim.app.core.state.PlayState;
-import timtim.app.core.state.State;
+import timtim.app.core.state.*;
 import timtim.app.manager.Const;
 import timtim.app.model.GameModel;
 import timtim.app.model.IGameModel;
@@ -40,7 +38,9 @@ public class GameScreen extends ScreenAdapter implements AccessibleGame {
 	private SpriteBatch batch;
 
 	public GameScreen(OrthographicCamera camera) {
-		this.state = State.PLAY; // currently PLAY but should be START
+		this.state = State.START;
+		this.model = new GameModel();
+		this.camera = camera;
 		this.batch = new SpriteBatch();
 		this.atlas = new TextureAtlas("timtimSprite.atlas");
 		this.camera = camera;
@@ -59,6 +59,8 @@ public class GameScreen extends ScreenAdapter implements AccessibleGame {
 	private void initStates() {
 		states.put(State.PLAY, new PlayState(this));
 		states.put(State.PAUSE, new PauseState(this));
+		states.put(State.GAMEOVER, new GameOverState(this));
+		states.put(State.START, new StartState(this));
 	}
 
 	@Override
@@ -117,6 +119,7 @@ public class GameScreen extends ScreenAdapter implements AccessibleGame {
 
 	@Override
 	public void renderMap() {
+
 		mapRenderer.setView(camera);
 		mapRenderer.render();
 		getBatch().setProjectionMatrix(camera.combined);
