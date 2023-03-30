@@ -36,7 +36,7 @@ public class PlayerTest {
 				false, 
 				world
 			);
-		player.setBody(body, 0, 0);
+		player.setBody(body);
 	}
 
 	

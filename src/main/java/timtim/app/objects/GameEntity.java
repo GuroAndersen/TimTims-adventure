@@ -11,7 +11,6 @@ public abstract class GameEntity {
 
 	public int[] xMovementCases = {-1,0,1};
 	float velX, velY, speed;
-	float width, height;
 	Body body;
 	
 	public GameEntity() {
@@ -20,9 +19,7 @@ public abstract class GameEntity {
 		this.speed = 0;
 	}
 	
-	public GameEntity(Body body, float w, float h) {
-		this.width = w;
-		this.height = h;
+	public GameEntity(Body body) {
 		this.velX = 0;
 		this.velY = 0;
 		this.speed = 0;
@@ -48,16 +45,10 @@ public abstract class GameEntity {
 	}
 	
 	 /**
-	  * Set a body for this GameEntity along with width and height
+	  * Set a body for this GameEntity
 	  * @param body
-	  * @param w
-	  * @param h
 	  */
-	public void setBody(Body body, float w, float h) {
-		this.width = w;
-		this.height = h;
-		this.velX = 0;
-		this.velY = 0;
+	public void setBody(Body body) {
 		this.body = body;
 	}
 	

@@ -20,9 +20,14 @@ public class TileMapManager {
 	public TileMapManager(GameModel model) {
 		this.model = model;
 		this.maps = new HashMap<String, GameMap>();
-		this.currentMap = "level1";
 		loadMaps();
+		setMap("level_3");
 
+	}
+
+	private void setMap(String mapName) {
+		this.currentMap = mapName;
+		model.getPlayer().setBody(maps.get(mapName).playerBody);
 	}
 
 	private void loadMaps() {
