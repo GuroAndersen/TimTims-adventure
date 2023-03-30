@@ -22,11 +22,10 @@ public class TileMapManager {
 		this.maps = new HashMap<String, GameMap>();
 		loadMaps();
 		setMap("level_3");
-
 	}
 
 	private void setMap(String mapName) {
-		this.currentMap = mapName;
+		this.currentMap = "level_3";
 		model.getPlayer().setBody(maps.get(mapName).playerBody);
 	}
 

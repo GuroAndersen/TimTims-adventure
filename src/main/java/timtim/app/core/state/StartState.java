@@ -28,7 +28,7 @@ public class StartState implements StateHandler {
     }
 
     @Override
-    public void render() {
+    public void render(float delta) {
         // render game in start state
         handleInput();
 

@@ -3,8 +3,7 @@ package timtim.app.model;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 
-import timtim.app.objects.IPlayer;
-import timtim.app.objects.Timtim;
+import timtim.app.objects.Player;
 
 
 /**
@@ -19,7 +18,7 @@ public interface IGameModel {
 	 * get the models Player object
 	 * @return player
 	 */
-	public Timtim getPlayer();
+	public Player getPlayer();
 	
 	/**
 	 * get the current maps renderer
