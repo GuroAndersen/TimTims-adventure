@@ -30,7 +30,7 @@ public class PauseState implements StateHandler {
 
     }
     @Override
-    public void render() {
+    public void render(float delta) {
         // render game in paused state
         update();
 

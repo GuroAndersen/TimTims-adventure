@@ -16,21 +16,21 @@ import timtim.app.manager.TileMapManager;
 import timtim.app.objects.Enemy;
 import timtim.app.objects.Friend;
 import timtim.app.objects.GameEntity;
-import timtim.app.objects.Player;
+import timtim.app.objects.Timtim;
 
 public class GameModel implements IGameModel, EntityWorld {
 
 	private TileMapManager tileMapManager;
 	private GameMap currentMap;
-	private Player player;
+	private Timtim timtim;
 
 	private List<GameMap> maps;
 
 	List<Friend> friendList;
 	List<GameEntity> entityList;
 
-	public GameModel() {
-		this.player = new Player();
+	public GameModel(GameScreen gameScreen) {
+		this.timtim = new Timtim(gameScreen);
 		this.tileMapManager = new TileMapManager(this);
 
 		// ENTITY LIST INIT
@@ -41,8 +41,8 @@ public class GameModel implements IGameModel, EntityWorld {
 	}
 
 	@Override
-	public Player getPlayer() {
-		return this.player;
+	public Timtim getPlayer() {
+		return this.timtim;
 	}
 
 	public GameMap getCurrentMap() {
@@ -66,15 +66,15 @@ public class GameModel implements IGameModel, EntityWorld {
 	}
 
 	@Override
-	public void update() {
-		this.player.update();
+	public void update(float delta) {
+		this.timtim.update(delta);
 		updateEntities(entityList);
 		this.currentMap.update();
 	}
 
 	private void updateEntities(List<GameEntity> entityList) {
 		for (GameEntity e : entityList)
-			e.update();
+			e.update(1);
 	}
 
 	@Override

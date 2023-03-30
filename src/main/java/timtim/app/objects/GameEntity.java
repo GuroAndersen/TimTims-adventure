@@ -3,6 +3,7 @@ package timtim.app.objects;
 import java.util.Random;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 
@@ -30,7 +31,7 @@ public abstract class GameEntity {
 	 /**
 	  * Updates the entity
 	  */
-	public abstract void update();
+	public abstract void update(float delta);
 	
 	/**
 	 * Renders the entity

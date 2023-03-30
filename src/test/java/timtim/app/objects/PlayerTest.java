@@ -18,7 +18,7 @@ import timtim.app.manager.Const;
 public class PlayerTest {
 
 	static World world;
-	Player player;
+	Timtim player;
 	
 	@BeforeAll
 	public static void worldSetup() {
@@ -27,7 +27,7 @@ public class PlayerTest {
 	
 	@BeforeEach
 	public void playerSetup() {
-		player = new Player();
+		player = new Timtim();
 		Body body = BodyManager.createBody(
 				0,
 				0,
@@ -72,7 +72,7 @@ public class PlayerTest {
 	public void testPlayerMoveRight() {
 		float playerVelX1 = player.body.getLinearVelocity().x;
 		player.move(false, true);
-		player.update();
+		player.update(Const.FPS);
 		float playerVelX2 = player.body.getLinearVelocity().x;
 		assertNotEquals(playerVelX1, playerVelX2);
 		assertEquals(playerVelX1, 0);
@@ -83,7 +83,7 @@ public class PlayerTest {
 	public void testPlayerMoveLeft() {
 		float playerVelX1 = player.body.getLinearVelocity().x;
 		player.move(true, false);
-		player.update();
+		player.update(Const.FPS);
 		float playerVelX2 = player.body.getLinearVelocity().x;
 		assertNotEquals(playerVelX1, playerVelX2);
 		assertEquals(playerVelX1, 0);
@@ -94,7 +94,7 @@ public class PlayerTest {
 	public void testPlayerMoveBoth() {
 		float playerVelX1 = player.body.getLinearVelocity().x;
 		player.move(true, true);
-		player.update();
+		player.update(Const.FPS);
 		float playerVelX2 = player.body.getLinearVelocity().x;
 		assertEquals(playerVelX1, playerVelX2);
 		assertEquals(playerVelX1, 0);

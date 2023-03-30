@@ -1,6 +1,7 @@
 package timtim.app.objects;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
 import timtim.app.objects.Inventory.Item;
 
@@ -94,7 +95,7 @@ public class Friend extends GameEntity implements IFriend {
     }
 
 	@Override
-	public void update() {
+	public void update(float delta) {
 		// TODO Auto-generated method stub
 		
 	}

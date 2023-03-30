@@ -17,8 +17,8 @@ public class PlayState implements StateHandler {
     }
     
     @Override
-    public void render() {
-        update();
+    public void render(float delta) {
+        update(delta);
 
         // Removes all graphics and animations from last frame
         Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -26,11 +26,12 @@ public class PlayState implements StateHandler {
 
         // Render map and player and objects
         game.renderMap();
+        
     }
 
-    private void update() {
-        game.getModel().update();
+    private void update(float delta) {
         handleInput();
+        game.getModel().update(delta);
         game.updateCamera();
     }
 
