@@ -10,7 +10,7 @@ import com.badlogic.gdx.utils.Array;
 import timtim.app.core.GameScreen;
 import timtim.app.manager.Const;
 
-public class Timtim extends CombatEntity implements IPlayer {
+public class Player extends CombatEntity implements IPlayer {
 	
 	private final float maxJumpVel = 25;
 	private boolean isJumping;
@@ -28,7 +28,7 @@ public class Timtim extends CombatEntity implements IPlayer {
 	 * Testing constructor.
 	 * Does not set up the sprite.
 	 */
-	public Timtim() {
+	public Player() {
 		super();
 		baseSetup();
 	}
@@ -37,7 +37,7 @@ public class Timtim extends CombatEntity implements IPlayer {
 		this.speed = 4f;
 	}
 	
-	public Timtim(GameScreen gameScreen) {
+	public Player(GameScreen gameScreen) {
 		super();
 		baseSetup();
 		this.gameScreen = gameScreen;

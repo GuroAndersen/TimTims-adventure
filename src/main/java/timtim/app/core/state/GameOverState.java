@@ -30,7 +30,7 @@ public class GameOverState implements StateHandler {
 
 
     @Override
-    public void render() {
+    public void render(float delta) {
         update();
 
         batch.begin();

@@ -39,7 +39,6 @@ public class GameScreen extends ScreenAdapter implements AccessibleGame {
 
 	public GameScreen(OrthographicCamera camera) {
 		this.state = State.START;
-		this.model = new GameModel();
 		this.camera = camera;
 		this.batch = new SpriteBatch();
 		this.atlas = new TextureAtlas("timtimSprite.atlas");

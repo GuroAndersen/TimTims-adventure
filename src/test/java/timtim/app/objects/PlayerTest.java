@@ -18,7 +18,7 @@ import timtim.app.manager.Const;
 public class PlayerTest {
 
 	static World world;
-	Timtim player;
+	Player player;
 	
 	@BeforeAll
 	public static void worldSetup() {
@@ -27,7 +27,7 @@ public class PlayerTest {
 	
 	@BeforeEach
 	public void playerSetup() {
-		player = new Timtim();
+		player = new Player();
 		Body body = BodyManager.createBody(
 				0,
 				0,

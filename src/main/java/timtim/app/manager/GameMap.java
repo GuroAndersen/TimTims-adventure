@@ -34,7 +34,7 @@ public class GameMap implements IGameMap {
 	String mapName;
 	TiledMap tiledMap;
 	World world;
-	Timtim player;
+	Player player;
 	// Chest chest;
 	OrthogonalTiledMapRenderer renderer;
 	private ArrayList<Door> doors;
@@ -49,7 +49,7 @@ public class GameMap implements IGameMap {
 	 */
 	private boolean complete;
 
-	public GameMap(String mapName, Timtim player) {
+	public GameMap(String mapName, Player player) {
 		this.player = player;
 		this.mapName = mapName;
 		doors = new ArrayList<Door>();
