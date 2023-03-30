@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 
 import timtim.app.core.GameScreen;
+import timtim.app.core.MyContactListener;
 import timtim.app.manager.Const;
 import timtim.app.manager.EntityWorld;
 import timtim.app.manager.GameMap;
