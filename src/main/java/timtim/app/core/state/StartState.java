@@ -67,8 +67,22 @@ public class StartState implements StateHandler {
     }
 
     private void handleInput() {
+        // Exit
+        if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) { // Closes game if escape is pressed
+            Gdx.app.exit();
+        }
+
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)){
             startGame();
+        }
+        if(Gdx.input.isKeyJustPressed(Input.Keys.L)){
+            game.getModel().swapLevels();
+        }
+        if(Gdx.input.isKeyJustPressed(Input.Keys.NUM_2)){
+            //game.getModel();
+        }
+        if(Gdx.input.isKeyJustPressed(Input.Keys.NUM_3)){
+            //game.getModel();
         }
     }
 

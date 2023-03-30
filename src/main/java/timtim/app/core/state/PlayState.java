@@ -36,10 +36,7 @@ public class PlayState implements StateHandler {
     }
 
     private void handleInput() {
-        // Exit
-        if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) { // Closes game if escape is pressed
-            Gdx.app.exit();
-        }
+
         // Horizontal movement
         boolean moveLeft = false;
         boolean moveRight = false;
@@ -56,6 +53,10 @@ public class PlayState implements StateHandler {
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.P)) {
             game.switchState(State.PAUSE);
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.M)) {
+            game.switchState(State.START);
         }
 
         //remember to edit this if statement when gameover is properly implemented

@@ -21,11 +21,15 @@ public class TileMapManager {
 		this.model = model;
 		this.maps = new HashMap<String, GameMap>();
 		loadMaps();
-		setMap("level_3");
+		setMap("level1");
+	}
+
+	public void swapLevels(){
+		if(currentMap == "level1") setMap("level2");
 	}
 
 	private void setMap(String mapName) {
-		this.currentMap = "level_3";
+		this.currentMap = mapName;
 		model.getPlayer().setBody(maps.get(mapName).playerBody);
 	}
 
