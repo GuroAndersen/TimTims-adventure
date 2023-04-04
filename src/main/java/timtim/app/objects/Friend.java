@@ -3,6 +3,7 @@ package timtim.app.objects;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
+import timtim.app.objects.IFriend;
 import timtim.app.objects.Inventory.Item;
 
 public class Friend extends GameEntity implements IFriend {
