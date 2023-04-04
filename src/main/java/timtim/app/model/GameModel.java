@@ -7,15 +7,13 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 
 import timtim.app.core.GameScreen;
-import timtim.app.manager.EntityWorld;
 import timtim.app.manager.GameMap;
 import timtim.app.manager.TileMapManager;
-import timtim.app.objects.Enemy;
 import timtim.app.objects.Friend;
 import timtim.app.objects.GameEntity;
 import timtim.app.objects.Player;
 
-public class GameModel implements IGameModel, EntityWorld {
+public class GameModel implements IGameModel {
 
 	private TileMapManager tileMapManager;
 	private GameMap currentMap;
@@ -49,17 +47,6 @@ public class GameModel implements IGameModel, EntityWorld {
 	@Override
 	public OrthogonalTiledMapRenderer getMapRenderer() {
 		return this.currentMap.getMapRenderer();
-	}
-
-	@Override
-	public void addFriend(Friend friend) {
-		this.friendList.add(friend);
-		this.entityList.add(friend);
-	}
-
-	@Override
-	public void addEnemy(Enemy enemy) {
-		this.entityList.add(enemy);
 	}
 
 	@Override

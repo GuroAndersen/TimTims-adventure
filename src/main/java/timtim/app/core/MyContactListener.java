@@ -30,7 +30,6 @@ public class MyContactListener implements ContactListener {
 
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Door)
                 || (fa.getUserData() instanceof Door && fb.getUserData() instanceof Player)) {
-            System.out.println("Player and door collided!");
             // System.out.println("Fixture A user data: " + fa.getUserData());
             // System.out.println("Fixture B user data: " + fb.getUserData());
 
@@ -49,7 +48,6 @@ public class MyContactListener implements ContactListener {
         }
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Flora)
                 || (fa.getUserData() instanceof Flora && fb.getUserData() instanceof Player)) {
-            System.out.println("OH NO I HAVE A POLLEN ALLERGY!");
             if (fa.getUserData() instanceof Player) {
                 Player p = (Player) fa.getUserData();
                 p.takeDamage(1);
@@ -58,7 +56,6 @@ public class MyContactListener implements ContactListener {
                 p.takeDamage(1);
             }
         } else {
-            System.out.println("Nothing!");
 
         }
 
