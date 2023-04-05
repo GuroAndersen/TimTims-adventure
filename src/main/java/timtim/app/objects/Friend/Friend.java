@@ -1,18 +1,18 @@
-package timtim.app.objects;
+package timtim.app.objects.Friend;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-
+import timtim.app.objects.GameEntity;
 import timtim.app.objects.Inventory.Item;
 
-public class Friend extends GameEntity implements IFriend {
+public abstract class Friend extends GameEntity implements IFriend {
 
     public Item item;
 
-    private String[] dialogueOptions = { "Hei", "Kan du hjelpe meg?", "Jeg trenger en " + item.name(),
-            "Se etter kister" };
+    private String[] dialogueOptions = { "Hi", "Can you help me?", "I need a " + item.name(),
+            "Look for chests" };
     private int dialogueCounter = 0;
     private int interactionCounter = 0;
+    
+    private boolean itemReceived;
 
     /**
      * getConversation finds a string to show when a conversation with a Friend has
@@ -52,26 +52,11 @@ public class Friend extends GameEntity implements IFriend {
 
     @Override
     public boolean hasRecievedGift() {
-        // If the player has the item in his inventory then by pressing e while close to
-        // Friend will return true.
-        // If the player does not have the item it will return false.
-
-        /**
-         * If (player has item) {
-         * return true;
-         * }
-         * if (player does not have item) {
-         * return false;
-         * }
-         * 
-         * 
-         */
-        return true;
+    	return itemReceived;
     }
 
-    @Override
-    public String giftDialogue() {
-        return "Takk for " + item.name() + "!";
+    private String giftDialogue() {
+        return "Thanks for the " + item.name() + "!";
     }
 
     @Override
@@ -82,28 +67,5 @@ public class Friend extends GameEntity implements IFriend {
 
         return null;
     }
-
-    @Override
-    public void move() {
-        // TODO Auto-generated method stub
-        // This method is supposed to be a restricted move method where the Friend
-        // object can only move a certain way.
-        // A starter coordinate and then move x amount of steps in left and right
-        // direction.
-
-        throw new UnsupportedOperationException("Unimplemented method 'move'");
-    }
-
-	@Override
-	public void update(float delta) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void render(SpriteBatch batch) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

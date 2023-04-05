@@ -8,18 +8,17 @@ import java.util.Map;
 
 public class ItemFactory {
     
-    Map<String, String> items;
-    private final String file = "ItemDescription.txt";
+    static private final String file = "ItemDescription.txt";
 
     public ItemFactory (){
-        items = new HashMap<String,String>();
         parseItemFile();
     }
 
     /**
      * parses the textfile into a hashmap, with the values itemname and description
      */
-    private void parseItemFile() {
+    static private Map<String, String> parseItemFile() {
+        Map<String, String> items = new HashMap<String,String>();
         BufferedReader reader;
         try {
             reader = new BufferedReader(new FileReader(file));
@@ -33,13 +32,19 @@ public class ItemFactory {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return items;
     }
     /**
      * returns a new item with name and description
+     * if the item does not exist, throw an exception
      * @param itemName
+     * @throws IllegalArgumentException
      * @return
      */
-    public Item newItem (String itemName){
-        return new Item(itemName, items.get(itemName));
+    public static Item newItem (String itemName){
+    	Map<String, String> items = parseItemFile();
+    	if (!items.containsKey(itemName)) throw new IllegalArgumentException("This item is not listed in ItemDescription");
+        return new Item(itemName, parseItemFile().get(itemName));
     }
+
 }

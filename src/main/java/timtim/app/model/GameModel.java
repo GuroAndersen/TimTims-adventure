@@ -9,9 +9,9 @@ import com.badlogic.gdx.physics.box2d.World;
 import timtim.app.core.GameScreen;
 import timtim.app.manager.GameMap;
 import timtim.app.manager.TileMapManager;
-import timtim.app.objects.Friend;
 import timtim.app.objects.GameEntity;
 import timtim.app.objects.Player;
+import timtim.app.objects.Friend.Friend;
 
 public class GameModel implements IGameModel {
 
