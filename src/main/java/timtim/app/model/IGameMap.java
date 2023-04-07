@@ -1,7 +1,11 @@
-package timtim.app.manager;
+package timtim.app.model;
+
+import java.util.List;
 
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.World;
+
+import timtim.app.objects.GameEntity;
 
 
 public interface IGameMap {
@@ -31,4 +35,14 @@ public interface IGameMap {
 	 */
 	public World getWorld();
 	
+	/**
+	 * Get the map's entities
+	 */
+	public List<GameEntity> getEntities();
+
+	/**
+	 * Sets the map as complete
+	 * @return
+	 */
+	public void setComplete();
 }
