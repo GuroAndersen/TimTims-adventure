@@ -39,4 +39,10 @@ public interface IGameMap {
 	 * Get the map's entities
 	 */
 	public List<GameEntity> getEntities();
+
+	/**
+	 * Sets the map as complete
+	 * @return
+	 */
+	public void setComplete();
 }

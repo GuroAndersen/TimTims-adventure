@@ -48,6 +48,7 @@ public class MyContactListener implements ContactListener {
         }
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Flora)
                 || (fa.getUserData() instanceof Flora && fb.getUserData() instanceof Player)) {
+        	System.out.println("POLLEN AHHHHHH");
             if (fa.getUserData() instanceof Player) {
                 Player p = (Player) fa.getUserData();
                 p.takeDamage(1);

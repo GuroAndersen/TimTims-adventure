@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 
 import timtim.app.core.GameScreen;
+import timtim.app.manager.GameMap;
 import timtim.app.objects.Inventory.Item;
 import timtim.app.objects.Inventory.ItemFactory;
 
@@ -18,8 +19,8 @@ public class Snake extends Friend {
 	 * its sprite from the given gameScreen.
 	 * @param gameScreen
 	 */
-	public Snake(GameScreen gameScreen) {
-		super(ItemFactory.newItem("juicebox"));
+	public Snake(GameScreen gameScreen, GameMap map) {
+		super(map, ItemFactory.newItem("juicebox"));
 //		this.sprite = new Sprite(gameScreen.getAtlas().findRegion("snake"));
 //		setupAnimation();
 	}

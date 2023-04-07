@@ -8,22 +8,25 @@ import com.badlogic.gdx.utils.Array;
 
 import timtim.app.core.GameScreen;
 import timtim.app.manager.Const;
+import timtim.app.manager.GameMap;
 import timtim.app.objects.Inventory.Item;
 import timtim.app.objects.Inventory.ItemFactory;
 
 public class Wolf extends Friend {
+
 	GameScreen game;
 
 	/**
 	 * Creates a wolf that wants the given item.
-	 * 
-	 * @param item
+	 * It takes its sprite from the gamescreen.
+	 * @param game
+	 * @param map
 	 */
-	public Wolf(GameScreen game) {
-		super(ItemFactory.newItem("ball"));
+	public Wolf(GameScreen game, GameMap map) {
+		super(map, ItemFactory.newItem("ball"));
 		this.game = game;
-		//this.sprite = new Sprite(game.getAtlas().findRegion("skeleton"));
-		//setupAnimation();
+		// this.sprite = new Sprite(game.getAtlas().findRegion("skeleton"));
+		// setupAnimation();
 	}
 
 	/**
@@ -34,7 +37,7 @@ public class Wolf extends Friend {
 	public Wolf(Item item) {
 		super(item);
 	}
-	
+
 	private void setupAnimation() {
 		stateTimer = 0;
 		// setup run animation

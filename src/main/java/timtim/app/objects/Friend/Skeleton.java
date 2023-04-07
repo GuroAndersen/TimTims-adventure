@@ -8,6 +8,7 @@ import com.badlogic.gdx.utils.Array;
 
 import timtim.app.core.GameScreen;
 import timtim.app.manager.Const;
+import timtim.app.manager.GameMap;
 import timtim.app.objects.Inventory.Item;
 import timtim.app.objects.Inventory.ItemFactory;
 
@@ -17,11 +18,12 @@ public class Skeleton extends Friend {
 
 	/**
 	 * Creates a skeleton that wants the given item.
-	 * 
-	 * @param item
+	 * It takes its sprite from the gameScreen.
+	 * @param game
+	 * @param map
 	 */
-	public Skeleton(GameScreen game) {
-		super(ItemFactory.newItem("jumper"));
+	public Skeleton(GameScreen game, GameMap map) {
+		super(map, ItemFactory.newItem("jumper"));
 		this.game = game;
 		//this.sprite = new Sprite(game.getAtlas().findRegion("skeleton"));
 		//setupAnimation();

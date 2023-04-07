@@ -26,7 +26,7 @@ public class GameModel implements IGameModel {
 	public GameModel(GameScreen gameScreen) {
 		this.gameScreen = gameScreen;
 		this.timtim = new Player(gameScreen);
-		this.tileMapManager = new TileMapManager(this);
+		this.tileMapManager = new TileMapManager(this, timtim);
 
 		// ENTITY LIST INIT
 		friendList = new ArrayList<Friend>();

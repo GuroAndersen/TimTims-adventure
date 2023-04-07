@@ -56,6 +56,7 @@ public class GameMap implements IGameMap {
 	// entities
 	private ArrayList<Friend> friends;
 	private ArrayList<Enemy> enemies;
+	private Player player;
 
 	/**
 	 * Completion criteria
@@ -63,9 +64,10 @@ public class GameMap implements IGameMap {
 	private boolean complete;
 
 
-	public GameMap(String mapName, GameScreen gameScreen) {
+	public GameMap(String mapName, GameScreen gameScreen, Player player) {
 		this.gameScreen = gameScreen;
 		this.mapName = mapName;
+		this.player = player;
 		doors = new ArrayList<Door>();
 		chests = new ArrayList<Chest>();
 		floras = new ArrayList<Flora>();
@@ -90,6 +92,19 @@ public class GameMap implements IGameMap {
 		parseEnemyObject(tiledMap.getLayers().get("enemies").getObjects());
 
 		renderer = new OrthogonalTiledMapRenderer(tiledMap);
+	}
+	
+	private void parsePlayerObject(MapObjects objects) {
+		MapObject o = objects.get(0);
+		if (o instanceof RectangleMapObject) {
+			Rectangle rect = ((RectangleMapObject) o).getRectangle();
+			playerBody = BodyManager.createBody(rect.getX() + rect.getWidth() / 2, rect.getY() + rect.getHeight() / 2,
+					rect.getWidth(), rect.getHeight(), false, world);
+			Fixture fixture = playerBody.getFixtureList().get(0);
+			fixture.setUserData(player);
+		} else {
+			throw new IllegalArgumentException("Player map object not found or is not a RectangleMapObject");
+		}
 	}
 
 	private void parseEnemyObject(MapObjects objects) {
@@ -119,18 +134,19 @@ public class GameMap implements IGameMap {
 						rect.getY() + rect.getHeight() / 2, rect.getWidth(), rect.getHeight(), false, world);
 				switch (name) {
 					case "skeleton":
-						friend = new Skeleton(gameScreen);
+						friend = new Skeleton(gameScreen, this);
 						break;
 					case "wolf":
-						friend = new Wolf(gameScreen);
+						friend = new Wolf(gameScreen, this);
 						break;
 					case "snake":
-						friend = new Snake(gameScreen);
+						friend = new Snake(gameScreen, this);
 						break;
 					default:
 						throw new IllegalArgumentException("This friend type is not represented");
 				}
-				friend.setBody(body);
+				Fixture fixture = body.getFixtureList().get(0);
+				fixture.setUserData(friend);
 				friends.add(friend);
 			} else {
 				throw new IllegalArgumentException("Friend map object not found or is not a RectangleMapObject");
@@ -224,18 +240,6 @@ public class GameMap implements IGameMap {
 		}
 	}
 
-	private void parsePlayerObject(MapObjects objects) {
-		MapObject o = objects.get(0);
-		if (o instanceof RectangleMapObject) {
-			Rectangle rect = ((RectangleMapObject) o).getRectangle();
-			playerBody = BodyManager.createBody(rect.getX() + rect.getWidth() / 2, rect.getY() + rect.getHeight() / 2,
-					rect.getWidth(), rect.getHeight(), false, world);
-
-		} else {
-			throw new IllegalArgumentException("Player map object not found or is not a RectangleMapObject");
-		}
-	}
-
 	private void createStaticBody(PolygonMapObject o) {
 		BodyDef bodydef = new BodyDef();
 		bodydef.type = BodyDef.BodyType.StaticBody;
@@ -265,6 +269,11 @@ public class GameMap implements IGameMap {
 	@Override
 	public boolean isComplete() {
 		return complete;
+	}
+
+	@Override
+	public void setComplete() {
+		this.complete = true;
 	}
 
 	@Override

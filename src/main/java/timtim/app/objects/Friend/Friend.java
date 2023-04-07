@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 import timtim.app.manager.Const;
+import timtim.app.manager.GameMap;
 import timtim.app.objects.GameEntity;
 import timtim.app.objects.Inventory.Item;
 
@@ -22,9 +23,20 @@ public abstract class Friend extends GameEntity implements IFriend {
 	protected Animation<TextureRegion> idleAnimation;
 	protected int stateTimer;
 
-    public Friend(Item newItem) {
+	private GameMap map;
+
+    public Friend(GameMap map, Item newItem) {
+    	this.map = map;
 		this.item = newItem;
 	}
+    
+    /**
+     * Testing constructor.
+     * @param item
+     */
+    public Friend(Item item) {
+    	this.item = item;
+    }
 
 	/**
      * getConversation finds a string to show when a conversation with a Friend has
@@ -86,7 +98,8 @@ public abstract class Friend extends GameEntity implements IFriend {
     @Override
     public boolean receiveGift(Item item) {
         if (this.item.equals(item)) {
-        	itemReceived = true; 
+        	itemReceived = true;
+        	
         	return true;
     	} else {
     		return false;
