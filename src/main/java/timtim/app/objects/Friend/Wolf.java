@@ -11,17 +11,16 @@ import timtim.app.manager.Const;
 import timtim.app.objects.Inventory.Item;
 import timtim.app.objects.Inventory.ItemFactory;
 
-public class Skeleton extends Friend {
-
+public class Wolf extends Friend {
 	GameScreen game;
 
 	/**
-	 * Creates a skeleton that wants the given item.
+	 * Creates a wolf that wants the given item.
 	 * 
 	 * @param item
 	 */
-	public Skeleton(GameScreen game) {
-		super(ItemFactory.newItem("jumper"));
+	public Wolf(GameScreen game) {
+		super(ItemFactory.newItem("ball"));
 		this.game = game;
 		//this.sprite = new Sprite(game.getAtlas().findRegion("skeleton"));
 		//setupAnimation();
@@ -32,7 +31,7 @@ public class Skeleton extends Friend {
 	 * 
 	 * @param item
 	 */
-	public Skeleton(Item item) {
+	public Wolf(Item item) {
 		super(item);
 	}
 	
@@ -40,13 +39,13 @@ public class Skeleton extends Friend {
 		stateTimer = 0;
 		// setup run animation
 		Array<TextureRegion> frames = new Array<TextureRegion>();
-		for (int r = 0; r < 3; r++) {
+		for (int r = 0; r < 1; r++) {
 			for (int c = 0; c < 4; c++) {
-				if (r == 2 && c == 4) break; // empty spot in tilesheet
-				frames.add(new TextureRegion(sprite.getTexture(), c * 32, r * 32, 32, 32));
+				frames.add(new TextureRegion(sprite.getTexture(), c * 32 * 2, r * 32, 32, 32));
 			}
 		}
 		idleAnimation = new Animation<TextureRegion>(0.1f, frames);
 		frames.clear();
 	}
+
 }

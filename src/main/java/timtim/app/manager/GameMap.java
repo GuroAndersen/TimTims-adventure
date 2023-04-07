@@ -26,12 +26,14 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.Fixture;
 
 import timtim.app.core.GameScreen;
-import timtim.app.core.MyContactListener;
+import timtim.app.model.IGameMap;
 import timtim.app.objects.Enemy;
 import timtim.app.objects.GameEntity;
 import timtim.app.objects.Player;
 import timtim.app.objects.Friend.Friend;
 import timtim.app.objects.Friend.Skeleton;
+import timtim.app.objects.Friend.Snake;
+import timtim.app.objects.Friend.Wolf;
 import timtim.app.objects.GameObjects.Chest;
 import timtim.app.objects.GameObjects.Door;
 import timtim.app.objects.GameObjects.Flora;
@@ -54,9 +56,6 @@ public class GameMap implements IGameMap {
 	// entities
 	private ArrayList<Friend> friends;
 	private ArrayList<Enemy> enemies;
-
-	private Box2DDebugRenderer debugRenderer;
-	private OrthographicCamera camera;
 
 	/**
 	 * Completion criteria
@@ -91,8 +90,6 @@ public class GameMap implements IGameMap {
 		parseEnemyObject(tiledMap.getLayers().get("enemies").getObjects());
 
 		renderer = new OrthogonalTiledMapRenderer(tiledMap);
-		debugRenderer = new Box2DDebugRenderer();
-		camera = new OrthographicCamera();
 	}
 
 	private void parseEnemyObject(MapObjects objects) {
@@ -125,10 +122,10 @@ public class GameMap implements IGameMap {
 						friend = new Skeleton(gameScreen);
 						break;
 					case "wolf":
-						//
+						friend = new Wolf(gameScreen);
 						break;
 					case "snake":
-						//
+						friend = new Snake(gameScreen);
 						break;
 					default:
 						throw new IllegalArgumentException("This friend type is not represented");
@@ -282,7 +279,6 @@ public class GameMap implements IGameMap {
 
 	public void update() {
 		this.world.step(Const.FPS, 6, 2);
-		camera.update();
 	}
 
 	@Override

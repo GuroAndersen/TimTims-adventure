@@ -17,8 +17,9 @@ public interface IFriend {
     public boolean hasRecievedGift();
 
     /**
-     * Gives item to friend and returns
-     *  a String responce if true
+     * Friend recieves a gift. If this
+     * was the correct gift, return true
+     * Else, return false.
      */
-    public String giftToNpc(Item item);
+    public boolean receiveGift(Item item);
 }

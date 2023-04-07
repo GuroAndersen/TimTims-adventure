@@ -1,4 +1,4 @@
-package timtim.app.core;
+package timtim.app.manager;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;

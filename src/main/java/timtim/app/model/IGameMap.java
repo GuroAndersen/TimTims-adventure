@@ -1,4 +1,4 @@
-package timtim.app.manager;
+package timtim.app.model;
 
 import java.util.List;
 

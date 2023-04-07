@@ -7,42 +7,39 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 
 import timtim.app.core.GameScreen;
-import timtim.app.manager.Const;
 import timtim.app.objects.Inventory.Item;
 import timtim.app.objects.Inventory.ItemFactory;
 
-public class Skeleton extends Friend {
+public class Snake extends Friend {
 
-	GameScreen game;
-
+	
 	/**
-	 * Creates a skeleton that wants the given item.
-	 * 
-	 * @param item
+	 * Creates a snake Friend who takes
+	 * its sprite from the given gameScreen.
+	 * @param gameScreen
 	 */
-	public Skeleton(GameScreen game) {
-		super(ItemFactory.newItem("jumper"));
-		this.game = game;
-		//this.sprite = new Sprite(game.getAtlas().findRegion("skeleton"));
-		//setupAnimation();
+	public Snake(GameScreen gameScreen) {
+		super(ItemFactory.newItem("juicebox"));
+//		this.sprite = new Sprite(gameScreen.getAtlas().findRegion("snake"));
+//		setupAnimation();
 	}
 
 	/**
-	 * Testing constructor using the given item
+	 * Testing constructor. 
+	 * Creates a snake who wants this item.
 	 * 
-	 * @param item
+	 * @param newItem
 	 */
-	public Skeleton(Item item) {
-		super(item);
+	public Snake(Item newItem) {
+		super(newItem);
 	}
 	
 	private void setupAnimation() {
 		stateTimer = 0;
 		// setup run animation
 		Array<TextureRegion> frames = new Array<TextureRegion>();
-		for (int r = 0; r < 3; r++) {
-			for (int c = 0; c < 4; c++) {
-				if (r == 2 && c == 4) break; // empty spot in tilesheet
+		for (int r = 0; r < 1; r++) {
+			for (int c = 0; c < 2; c++) {
 				frames.add(new TextureRegion(sprite.getTexture(), c * 32, r * 32, 32, 32));
 			}
 		}

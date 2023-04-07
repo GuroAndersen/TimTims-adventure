@@ -15,16 +15,16 @@ import timtim.app.objects.Friend.Friend;
 
 public class GameModel implements IGameModel {
 
+	private GameScreen gameScreen;
 	private TileMapManager tileMapManager;
 	private GameMap currentMap;
 	private Player timtim;
-
-	private List<GameMap> maps;
 
 	List<Friend> friendList;
 	List<GameEntity> entityList;
 
 	public GameModel(GameScreen gameScreen) {
+		this.gameScreen = gameScreen;
 		this.timtim = new Player(gameScreen);
 		this.tileMapManager = new TileMapManager(this);
 
@@ -43,6 +43,11 @@ public class GameModel implements IGameModel {
 	public GameMap getCurrentMap() {
 		return this.getCurrentMap();
 	}
+	
+	public GameScreen getGameScreen() {
+		return this.gameScreen;
+	}
+
 
 	@Override
 	public OrthogonalTiledMapRenderer getMapRenderer() {
