@@ -18,6 +18,7 @@ import timtim.app.core.state.*;
 import timtim.app.manager.Const;
 import timtim.app.model.GameModel;
 import timtim.app.model.IGameModel;
+import timtim.app.objects.GameEntity;
 
 import java.util.HashMap;
 
@@ -42,7 +43,7 @@ public class GameScreen extends ScreenAdapter implements AccessibleGame {
 		this.state = State.START;
 		this.camera = camera;
 		this.batch = new SpriteBatch();
-		this.atlas = new TextureAtlas("timtimSprite.atlas");
+		this.atlas = new TextureAtlas("gameSprites.pack");
 		this.camera = camera;
 		this.camera.zoom = zoom;
 		this.B2DDebugRenderer = new Box2DDebugRenderer();
@@ -119,13 +120,13 @@ public class GameScreen extends ScreenAdapter implements AccessibleGame {
 
 	@Override
 	public void renderMap() {
-
 		mapRenderer.setView(camera);
 		mapRenderer.render();
 		getBatch().setProjectionMatrix(camera.combined);
 		getBatch().begin();
 		// render objects
 		model.getPlayer().render(getBatch());
+		for (GameEntity e : model.getEntities()) e.render(batch);
 		getBatch().end();
 		B2DDebugRenderer.render(model.getCurrentWorld(), camera.combined.scl(Const.PPM));
 	}

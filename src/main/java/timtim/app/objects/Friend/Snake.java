@@ -21,8 +21,8 @@ public class Snake extends Friend {
 	 */
 	public Snake(GameScreen gameScreen, GameMap map) {
 		super(map, ItemFactory.newItem("juicebox"));
-//		this.sprite = new Sprite(gameScreen.getAtlas().findRegion("snake"));
-//		setupAnimation();
+		this.sprite = new Sprite(gameScreen.getAtlas().findRegion("snake"));
+		setupAnimation();
 	}
 
 	/**
@@ -41,7 +41,7 @@ public class Snake extends Friend {
 		Array<TextureRegion> frames = new Array<TextureRegion>();
 		for (int r = 0; r < 1; r++) {
 			for (int c = 0; c < 2; c++) {
-				frames.add(new TextureRegion(sprite.getTexture(), c * 32, r * 32, 32, 32));
+				frames.add(new TextureRegion(sprite.getTexture(), sprite.getRegionX() + c * 32, sprite.getRegionY() + r * 32, 32, 32));
 			}
 		}
 		idleAnimation = new Animation<TextureRegion>(0.1f, frames);

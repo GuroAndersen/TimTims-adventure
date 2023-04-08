@@ -25,11 +25,11 @@ public class TileMapManager {
 		this.player = player;
 		this.maps = new HashMap<String, GameMap>();
 		loadMaps();
-		setMap("level_3");
+		setMap("level2");
 	}
 
 	private void setMap(String mapName) {
-		this.currentMap = "level_3";
+		this.currentMap = mapName;
 		model.getPlayer().setBody(maps.get(mapName).playerBody);
 	}
 
@@ -51,8 +51,8 @@ public class TileMapManager {
 	/**
 	 * Update the current map.
 	 */
-	public void update() {
-		maps.get(currentMap).update();
+	public void update(float delta) {
+		maps.get(currentMap).update(delta);
 	}
 
 	/**
