@@ -75,7 +75,7 @@ public class Player extends CombatEntity implements IPlayer {
 
 	private void updateSprite(float delta) {
 		float spriteX = (body.getPosition().x * Const.PPM - sprite.getWidth()/2);
-		float spriteY = (body.getPosition().y * Const.PPM - sprite.getHeight()/2);
+		float spriteY = (body.getPosition().y * Const.PPM - sprite.getHeight()/2) + 2;
 		sprite.setBounds(spriteX, spriteY, sprite.getRegionWidth(), sprite.getRegionHeight());
 		sprite.setRegion(getFrame(delta));
 

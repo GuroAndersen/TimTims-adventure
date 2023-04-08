@@ -43,7 +43,7 @@ public class GameScreen extends ScreenAdapter implements AccessibleGame {
 		this.state = State.START;
 		this.camera = camera;
 		this.batch = new SpriteBatch();
-		this.atlas = new TextureAtlas("gameSprites.atlas");
+		this.atlas = new TextureAtlas("gameSprites.pack");
 		this.camera = camera;
 		this.camera.zoom = zoom;
 		this.B2DDebugRenderer = new Box2DDebugRenderer();

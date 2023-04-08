@@ -20,6 +20,8 @@ public abstract class Friend extends GameEntity implements IFriend {
     private boolean itemReceived;
     
 	protected Sprite sprite;
+	protected float spriteXOffset;
+	protected float spriteYOffset;
 	protected Animation<TextureRegion> idleAnimation;
 	protected int stateTimer;
 
@@ -99,7 +101,7 @@ public abstract class Friend extends GameEntity implements IFriend {
     public boolean receiveGift(Item item) {
         if (this.item.equals(item)) {
         	itemReceived = true;
-        	
+        	map.setComplete();
         	return true;
     	} else {
     		return false;
@@ -107,8 +109,8 @@ public abstract class Friend extends GameEntity implements IFriend {
     }
 	
 	private void updateSprite(float delta) {
-		float spriteX = (body.getPosition().x * Const.PPM - sprite.getWidth()/2);
-		float spriteY = (body.getPosition().y * Const.PPM - sprite.getHeight()/2);
+		float spriteX = (body.getPosition().x * Const.PPM - sprite.getWidth()/2) + spriteXOffset;
+		float spriteY = (body.getPosition().y * Const.PPM - sprite.getHeight()/2) + spriteYOffset;
 		sprite.setBounds(spriteX, spriteY, sprite.getRegionWidth(), sprite.getRegionHeight());
 		sprite.setRegion(getFrame(delta));
 	}

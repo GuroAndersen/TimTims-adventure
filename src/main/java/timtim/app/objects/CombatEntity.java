@@ -56,5 +56,13 @@ public abstract class CombatEntity extends GameEntity {
 	public int getHealth() {
 		return health;
 	}
+	
+	/**
+	 * Returns true when the entity's health is above 0.
+	 * @return
+	 */
+	public boolean isAlive() {
+		return health > 0;
+	}
 
  }

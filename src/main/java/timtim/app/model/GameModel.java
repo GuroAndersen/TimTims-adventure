@@ -48,6 +48,8 @@ public class GameModel implements IGameModel {
 	public void update(float delta) {
 		this.timtim.update(delta);
 		this.tileMapManager.update(delta);
+		
+		if (!this.timtim.isAlive()) tileMapManager.getCurrentMap().restart();
 	}
 	
 	@Override
