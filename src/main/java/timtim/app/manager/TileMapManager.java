@@ -10,15 +10,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 import timtim.app.model.GameModel;
+import timtim.app.objects.Player;
 
 public class TileMapManager {
 
 	private String currentMap;
 	private GameModel model;
 	private Map<String, GameMap> maps;
+	
+	private Player player;
 
-	public TileMapManager(GameModel model) {
+	public TileMapManager(GameModel model, Player player) {
 		this.model = model;
+		this.player = player;
 		this.maps = new HashMap<String, GameMap>();
 		loadMaps();
 		setMap("level_3");
@@ -36,7 +40,7 @@ public class TileMapManager {
 			reader = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
 			String mapName;
 			while ((mapName = reader.readLine()) != null) {
-				maps.put(mapName, new GameMap(mapName, model.getPlayer()));
+				maps.put(mapName, new GameMap(mapName, model.getGameScreen(), player));
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

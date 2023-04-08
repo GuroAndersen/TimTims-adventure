@@ -4,7 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-import timtim.app.objects.IFriend;
+import timtim.app.objects.Friend.Friend;
+import timtim.app.objects.Friend.IFriend;
 import timtim.app.objects.Inventory.Item;
 
 public class FriendTest {

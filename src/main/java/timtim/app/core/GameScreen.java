@@ -32,6 +32,7 @@ public class GameScreen extends ScreenAdapter implements AccessibleGame {
 	private OrthographicCamera camera;
 	private Box2DDebugRenderer B2DDebugRenderer;
 	private OrthogonalTiledMapRenderer mapRenderer;
+	private float zoom = 0.5f;
 	
 	// Sprite rendering variables
 	private TextureAtlas atlas;
@@ -43,8 +44,8 @@ public class GameScreen extends ScreenAdapter implements AccessibleGame {
 		this.batch = new SpriteBatch();
 		this.atlas = new TextureAtlas("timtimSprite.atlas");
 		this.camera = camera;
+		this.camera.zoom = zoom;
 		this.B2DDebugRenderer = new Box2DDebugRenderer();
-		
 		this.model = new GameModel(this);
 
 		// MAP INIT
@@ -100,8 +101,8 @@ public class GameScreen extends ScreenAdapter implements AccessibleGame {
 	private void bindCameraToMap() {
 		Vector3 position = camera.position;
 		
-		float startX = camera.viewportWidth / 2;
-		float startY = camera.viewportHeight / 2;
+		float startX = camera.viewportWidth *zoom/ 2;
+		float startY = camera.viewportHeight*zoom / 2;
 		float width = mapRenderer.getMap().getProperties().get("width", Integer.class) * Const.PPM - startX*2;
 		float height = mapRenderer.getMap().getProperties().get("height", Integer.class) * Const.PPM - startY*2;
 		

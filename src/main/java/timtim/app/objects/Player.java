@@ -12,8 +12,6 @@ import timtim.app.manager.Const;
 
 public class Player extends CombatEntity implements IPlayer {
 	
-	private final float maxJumpVel = 25;
-	private boolean isJumping;
 	private Sprite sprite;
 	
 	
@@ -108,12 +106,6 @@ public class Player extends CombatEntity implements IPlayer {
 	@Override
 	public void render(SpriteBatch batch) {
 		sprite.draw(batch);
-	}
-
-	private void updateMovement() {
-		body.setLinearVelocity(velX * speed, body.getLinearVelocity().y < maxJumpVel ? body.getLinearVelocity().y : maxJumpVel);
-		if (body.getLinearVelocity().y == 0) isJumping = false;
-		resetVelocity();
 	}
 
 	@Override
