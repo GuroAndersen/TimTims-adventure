@@ -41,5 +41,5 @@ public interface IGameModel {
 	/**
 	 * Swaps the current level
 	 */
-	public void swapLevels();
+	public void swapLevel(String mapName);
 }

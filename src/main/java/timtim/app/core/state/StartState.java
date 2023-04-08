@@ -1,7 +1,9 @@
 package timtim.app.core.state;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -17,6 +19,12 @@ public class StartState implements StateHandler {
     SpriteBatch batch;
     BitmapFont font;
     private final AccessibleGame game;
+
+    private boolean level1Selected = true;
+    private boolean level2Selected = false;
+    private boolean level3Selected = false;
+
+
 
     public StartState (AccessibleGame game) {
         this.game = game;
@@ -52,7 +60,32 @@ public class StartState implements StateHandler {
         imgSprite.setScale(0.2f); // Scale the image by half
 
         // Draw the image and the text
+
         imgSprite.draw(batch);
+        // Change the color of the level selection text based on which level is currently selected
+        if (level1Selected) {
+            font.setColor(Color.RED);
+        } else {
+            font.setColor(Color.WHITE);
+        }
+        font.draw(batch, "Level1", centerXtext + 35, centerYtext - 50, 0, Align.center, false);
+
+        if (level2Selected) {
+            font.setColor(Color.RED);
+            game.getModel().swapLevel("level2");
+        } else {
+            font.setColor(Color.WHITE);
+        }
+        font.draw(batch, "Level2", centerXtext + 35, centerYtext - 100, 0, Align.center, false);
+
+        if (level3Selected) {
+            font.setColor(Color.RED);
+        } else {
+            font.setColor(Color.WHITE);
+        }
+        font.draw(batch, "Level3", centerXtext + 35, centerYtext - 150, 0, Align.center, false);
+
+        font.setColor(Color.WHITE);
         font.draw(batch, "Press ENTER to start TimTim's adventure!", centerXtext + 35, centerYtext + 50, 0, Align.center, false);
         font.draw(batch, "If you ever want to give TimTim a break, just press 'P' !", centerXtext + 55, centerYtext, 0, Align.center, false);
 
@@ -67,6 +100,7 @@ public class StartState implements StateHandler {
     }
 
     private void handleInput() {
+
         // Exit
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) { // Closes game if escape is pressed
             Gdx.app.exit();
@@ -75,9 +109,41 @@ public class StartState implements StateHandler {
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)){
             startGame();
         }
-        if(Gdx.input.isKeyJustPressed(Input.Keys.L)){
-            game.getModel().swapLevels();
+        if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
+            if (level1Selected) {
+                level1Selected = false;
+                level2Selected = true;
+                level3Selected = false;
+            } else if (level2Selected) {
+                level1Selected = false;
+                level2Selected = false;
+                level3Selected = true;
+
+            } else if (level3Selected){
+                level1Selected = true;
+                level2Selected = false;
+                level3Selected = false;
+
+            }
         }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
+            if (level1Selected) {
+                level1Selected = false;
+                level2Selected = false;
+                level3Selected = true;
+            } else if (level2Selected) {
+                level1Selected = true;
+                level2Selected = false;
+                level3Selected = false;
+            } else if (level3Selected) {
+                level1Selected = false;
+                level2Selected = true;
+                level3Selected = false;
+
+            }
+        }
+
+
         if(Gdx.input.isKeyJustPressed(Input.Keys.NUM_2)){
             //game.getModel();
         }
@@ -90,3 +156,5 @@ public class StartState implements StateHandler {
         game.switchState(State.PLAY);
     }
 }
+
+

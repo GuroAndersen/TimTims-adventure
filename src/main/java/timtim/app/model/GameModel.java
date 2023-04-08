@@ -34,8 +34,8 @@ public class GameModel implements IGameModel, EntityWorld {
 		entityList = new ArrayList<GameEntity>();
 	}
 
-	public void swapLevels(){
-		tileMapManager.swapLevels();
+	public void swapLevel(String mapName){
+		tileMapManager.swapLevels(mapName);
 	}
 
 	@Override
@@ -43,8 +43,8 @@ public class GameModel implements IGameModel, EntityWorld {
 		return this.timtim;
 	}
 
-	public GameMap getCurrentMap() {
-		return this.tileMapManager.getCurrentMap();
+	public List<String> getTileMapList() {
+		return this.tileMapManager.getMapNames();
 	}
 
 	@Override
