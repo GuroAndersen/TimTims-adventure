@@ -51,8 +51,8 @@ public class TileMapManager {
 	/**
 	 * Update the current map.
 	 */
-	public void update() {
-		maps.get(currentMap).update();
+	public void update(float delta) {
+		maps.get(currentMap).update(delta);
 	}
 
 	/**

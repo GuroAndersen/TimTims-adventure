@@ -39,7 +39,7 @@ public class Player extends CombatEntity implements IPlayer {
 		super();
 		baseSetup();
 		this.gameScreen = gameScreen;
-		this.sprite = new Sprite(gameScreen.getAtlas().findRegion("timtimSprite"));
+		this.sprite = new Sprite(gameScreen.getAtlas().findRegion("timtim"));
 		setupAnimation();
 		sprite.setBounds(0, 0, 32 / Const.PPM, Const.PPM);
 		sprite.setRegion(standing);
@@ -51,19 +51,19 @@ public class Player extends CombatEntity implements IPlayer {
 		// setup run animation
 		Array<TextureRegion> frames = new Array<TextureRegion>();
 		for (int i = 1; i < 9; i++) {
-			frames.add(new TextureRegion(sprite.getTexture(), i * 32, 0, 32, 32));
+			frames.add(new TextureRegion(sprite.getTexture(), sprite.getRegionX() + i * 32, sprite.getRegionY() + 0, 32, 32));
 		}
 		runAnimation = new Animation<TextureRegion>(0.1f, frames);
 		frames.clear();
 		
 		// setup jump animation
 		for (int i = 9; i < 13; i++) {
-			frames.add(new TextureRegion(sprite.getTexture(), i * 32, 0, 32, 32));
+			frames.add(new TextureRegion(sprite.getTexture(),sprite.getRegionX() + i * 32, sprite.getRegionY() + 0, 32, 32));
 		}
 		jumpCells = new Array<TextureRegion>(frames);
 		frames.clear();
 		
-		standing = new TextureRegion(sprite.getTexture(), 0, 0, 32, 32);
+		standing = new TextureRegion(sprite.getTexture(), sprite.getRegionX(), sprite.getRegionY(), 32, 32);
 	}
 
 	@Override

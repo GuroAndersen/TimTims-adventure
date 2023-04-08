@@ -1,8 +1,11 @@
 package timtim.app.model;
 
+import java.util.List;
+
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 
+import timtim.app.objects.GameEntity;
 import timtim.app.objects.Player;
 
 
@@ -37,4 +40,13 @@ public interface IGameModel {
 	 * @return world
 	 */
 	public World getCurrentWorld();
+	
+	/**
+	 * Get a list of all entities
+	 * contained in this model. 
+	 * This includes friends, enemies
+	 * and player.
+	 * @return list of entities
+	 */
+	public List<GameEntity> getEntities();
 }

@@ -25,8 +25,8 @@ public class Wolf extends Friend {
 	public Wolf(GameScreen game, GameMap map) {
 		super(map, ItemFactory.newItem("ball"));
 		this.game = game;
-		// this.sprite = new Sprite(game.getAtlas().findRegion("skeleton"));
-		// setupAnimation();
+		 this.sprite = new Sprite(game.getAtlas().findRegion("wolf"));
+		 setupAnimation();
 	}
 
 	/**
@@ -44,7 +44,7 @@ public class Wolf extends Friend {
 		Array<TextureRegion> frames = new Array<TextureRegion>();
 		for (int r = 0; r < 1; r++) {
 			for (int c = 0; c < 4; c++) {
-				frames.add(new TextureRegion(sprite.getTexture(), c * 32 * 2, r * 32, 32, 32));
+				frames.add(new TextureRegion(sprite.getTexture(), sprite.getRegionX() + c * 32 * 2, sprite.getRegionY() + r * 32, 32, 32));
 			}
 		}
 		idleAnimation = new Animation<TextureRegion>(0.1f, frames);

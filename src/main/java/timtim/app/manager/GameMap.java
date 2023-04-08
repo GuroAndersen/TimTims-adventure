@@ -145,6 +145,7 @@ public class GameMap implements IGameMap {
 					default:
 						throw new IllegalArgumentException("This friend type is not represented");
 				}
+				friend.setBody(body);
 				Fixture fixture = body.getFixtureList().get(0);
 				fixture.setUserData(friend);
 				friends.add(friend);
@@ -286,8 +287,11 @@ public class GameMap implements IGameMap {
 		return renderer;
 	}
 
-	public void update() {
+	
+	public void update(float delta) {
 		this.world.step(Const.FPS, 6, 2);
+		for (Friend f : friends) f.update(delta);
+		for (Enemy e : enemies) e.update(delta);
 	}
 
 	@Override

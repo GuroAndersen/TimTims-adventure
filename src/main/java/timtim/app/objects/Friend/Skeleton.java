@@ -25,8 +25,8 @@ public class Skeleton extends Friend {
 	public Skeleton(GameScreen game, GameMap map) {
 		super(map, ItemFactory.newItem("jumper"));
 		this.game = game;
-		//this.sprite = new Sprite(game.getAtlas().findRegion("skeleton"));
-		//setupAnimation();
+		this.sprite = new Sprite(game.getAtlas().findRegion("skeleton"));
+		setupAnimation();
 	}
 
 	/**
@@ -45,7 +45,7 @@ public class Skeleton extends Friend {
 		for (int r = 0; r < 3; r++) {
 			for (int c = 0; c < 4; c++) {
 				if (r == 2 && c == 4) break; // empty spot in tilesheet
-				frames.add(new TextureRegion(sprite.getTexture(), c * 32, r * 32, 32, 32));
+				frames.add(new TextureRegion(sprite.getTexture(), sprite.getRegionX() + c * 32, sprite.getRegionY() + r * 32, 32, 32));
 			}
 		}
 		idleAnimation = new Animation<TextureRegion>(0.1f, frames);

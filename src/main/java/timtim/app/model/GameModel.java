@@ -17,22 +17,12 @@ public class GameModel implements IGameModel {
 
 	private GameScreen gameScreen;
 	private TileMapManager tileMapManager;
-	private GameMap currentMap;
 	private Player timtim;
-
-	List<Friend> friendList;
-	List<GameEntity> entityList;
 
 	public GameModel(GameScreen gameScreen) {
 		this.gameScreen = gameScreen;
 		this.timtim = new Player(gameScreen);
 		this.tileMapManager = new TileMapManager(this, timtim);
-
-		// ENTITY LIST INIT
-		friendList = new ArrayList<Friend>();
-		entityList = new ArrayList<GameEntity>();
-
-		this.currentMap = tileMapManager.getCurrentMap();
 	}
 
 	@Override
@@ -41,7 +31,7 @@ public class GameModel implements IGameModel {
 	}
 
 	public GameMap getCurrentMap() {
-		return this.getCurrentMap();
+		return tileMapManager.getCurrentMap();
 	}
 	
 	public GameScreen getGameScreen() {
@@ -51,23 +41,25 @@ public class GameModel implements IGameModel {
 
 	@Override
 	public OrthogonalTiledMapRenderer getMapRenderer() {
-		return this.currentMap.getMapRenderer();
+		return this.tileMapManager.getCurrentMap().getMapRenderer();
 	}
 
 	@Override
 	public void update(float delta) {
 		this.timtim.update(delta);
-		updateEntities(entityList);
-		this.currentMap.update();
+		this.tileMapManager.update(delta);
 	}
-
-	private void updateEntities(List<GameEntity> entityList) {
-		for (GameEntity e : entityList)
-			e.update(1);
+	
+	@Override
+	public List<GameEntity> getEntities() {
+		List<GameEntity> entities = getCurrentMap().getEntities();
+		entities.add(getPlayer());
+		return entities;
+		
 	}
 
 	@Override
 	public World getCurrentWorld() {
-		return this.currentMap.getWorld();
+		return this.tileMapManager.getCurrentMap().getWorld();
 	}
 }
