@@ -51,14 +51,16 @@ public class MyContactListener implements ContactListener {
         }
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Flora)
                 || (fa.getUserData() instanceof Flora && fb.getUserData() instanceof Player)) {
-        	System.out.println("POLLEN AHHHHHH");
         	Flora f;
+        	Player p;
             if (fa.getUserData() instanceof Player) {
+                p = (Player) (fa.getUserData());
             	f = (Flora) (fb.getUserData());
             } else {
+            	p = (Player) (fb.getUserData());
             	f = (Flora) (fa.getUserData());
             }
-            model.getPlayer().takeDamage(f.damage());
+            p.takeDamage(f.damage());
         } else {
 
         }
