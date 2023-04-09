@@ -1,18 +1,21 @@
 package timtim.app.manager;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.physics.box2d.*;
 
 import timtim.app.objects.Player;
 import timtim.app.objects.GameObjects.Chest;
 import timtim.app.objects.GameObjects.Door;
 import timtim.app.objects.GameObjects.Flora;
-
-import timtim.app.objects.CombatEntity;
+import timtim.app.model.IGameModel;
 
 public class MyContactListener implements ContactListener {
 
+	private IGameModel model;
+
+	public MyContactListener(IGameModel model) {
+		this.model = model;
+	}
+	
     // Gets activated when two objects make contact with eachother.
     @Override
     public void beginContact(Contact contact) {
@@ -49,13 +52,13 @@ public class MyContactListener implements ContactListener {
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Flora)
                 || (fa.getUserData() instanceof Flora && fb.getUserData() instanceof Player)) {
         	System.out.println("POLLEN AHHHHHH");
+        	Flora f;
             if (fa.getUserData() instanceof Player) {
-                Player p = (Player) fa.getUserData();
-                p.takeDamage(1);
-            } else if (fb.getUserData() instanceof Player) {
-                Player p = (Player) fb.getUserData();
-                p.takeDamage(1);
+            	f = (Flora) (fb.getUserData());
+            } else {
+            	f = (Flora) (fa.getUserData());
             }
+            model.getPlayer().takeDamage(f.damage());
         } else {
 
         }

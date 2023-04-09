@@ -45,7 +45,7 @@ public abstract class CombatEntity extends GameEntity {
 	 * @param hitPoints
 	 */
 	public void takeDamage(int hitPoints) {
-		if (hitPoints >= 0) return; 
+		if (hitPoints <= 0) return; 
 		int newHealth = (health - hitPoints);
 		this.health = newHealth >= 0 ? newHealth : 0;
 	}
@@ -63,6 +63,13 @@ public abstract class CombatEntity extends GameEntity {
 	 */
 	public boolean isAlive() {
 		return health > 0;
+	}
+	
+	/**
+	 * Resets the health to max health value
+	 */
+	public void resetHealth() {
+		this.health = maxHealth;
 	}
 
  }

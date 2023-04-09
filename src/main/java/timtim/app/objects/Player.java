@@ -27,7 +27,7 @@ public class Player extends CombatEntity implements IPlayer {
 	 * Does not set up the sprite.
 	 */
 	public Player() {
-		super();
+		super(100, 10);
 		baseSetup();
 	}
 	
@@ -36,7 +36,7 @@ public class Player extends CombatEntity implements IPlayer {
 	}
 	
 	public Player(GameScreen gameScreen) {
-		super();
+		super(100, 10);
 		baseSetup();
 		this.gameScreen = gameScreen;
 		this.sprite = new Sprite(gameScreen.getAtlas().findRegion("timtim"));
