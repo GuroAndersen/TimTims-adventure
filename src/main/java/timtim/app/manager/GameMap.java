@@ -26,6 +26,7 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.Fixture;
 
 import timtim.app.core.GameScreen;
+import timtim.app.model.GameModel;
 import timtim.app.model.IGameMap;
 import timtim.app.objects.Enemy;
 import timtim.app.objects.GameEntity;
@@ -41,6 +42,7 @@ import timtim.app.objects.GameObjects.Flora;
 public class GameMap implements IGameMap {
 
 	GameScreen gameScreen;
+	GameModel model;
 	String mapName;
 	TiledMap tiledMap;
 	World world;
@@ -64,10 +66,11 @@ public class GameMap implements IGameMap {
 	private boolean complete;
 
 
-	public GameMap(String mapName, GameScreen gameScreen, Player player) {
-		this.gameScreen = gameScreen;
+	public GameMap(String mapName, GameModel model) {
+		this.gameScreen = model.getGameScreen();
+		this.model = model;
 		this.mapName = mapName;
-		this.player = player;
+		this.player = model.getPlayer();
 		doors = new ArrayList<Door>();
 		chests = new ArrayList<Chest>();
 		floras = new ArrayList<Flora>();
@@ -80,7 +83,7 @@ public class GameMap implements IGameMap {
 
 	public void mapSetup() {
 		this.world = new World(new Vector2(0, Const.GRAVITY), false);
-		world.setContactListener(new MyContactListener());
+		world.setContactListener(new MyContactListener(model));
 		tiledMap = new TmxMapLoader().load(mapName + ".tmx"); // gets map from resource folder
 		parseStaticMapObjects(tiledMap.getLayers().get("static").getObjects()); // gets objects in the "objects" layer
 																				// of the tiledmap.
@@ -280,6 +283,7 @@ public class GameMap implements IGameMap {
 	@Override
 	public void restart() {
 		mapSetup();
+		this.model.getPlayer().setBody(this.playerBody);
 	}
 
 	@Override

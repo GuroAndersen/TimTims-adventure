@@ -40,7 +40,7 @@ public class TileMapManager {
 			reader = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
 			String mapName;
 			while ((mapName = reader.readLine()) != null) {
-				maps.put(mapName, new GameMap(mapName, model.getGameScreen(), player));
+				maps.put(mapName, new GameMap(mapName, model));
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

@@ -49,7 +49,10 @@ public class GameModel implements IGameModel {
 		this.timtim.update(delta);
 		this.tileMapManager.update(delta);
 		
-		if (!this.timtim.isAlive()) tileMapManager.getCurrentMap().restart();
+		if (!this.timtim.isAlive()) {
+			tileMapManager.getCurrentMap().restart();
+			timtim.resetHealth();
+		}
 	}
 	
 	@Override

@@ -23,5 +23,9 @@ public class Flora extends GameObject {
     public Body getBody() {
         return super.body;
     }
+    
+    public int damage() {
+    	return 50;
+    }
 
 }
