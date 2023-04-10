@@ -1,6 +1,6 @@
-package timtim.app.objects.Friend;
+package timtim.app.model.objects.Friend;
 
-import timtim.app.objects.Inventory.Item;
+import timtim.app.model.objects.Inventory.Item;
 
 public interface IFriend {
 

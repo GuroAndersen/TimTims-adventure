@@ -2,11 +2,12 @@ package timtim.app.manager;
 
 import com.badlogic.gdx.physics.box2d.*;
 
-import timtim.app.objects.Player;
-import timtim.app.objects.GameObjects.Chest;
-import timtim.app.objects.GameObjects.Door;
-import timtim.app.objects.GameObjects.Flora;
 import timtim.app.model.IGameModel;
+import timtim.app.model.objects.Player;
+import timtim.app.model.objects.Friend.Friend;
+import timtim.app.model.objects.GameObjects.Chest;
+import timtim.app.model.objects.GameObjects.Door;
+import timtim.app.model.objects.GameObjects.Flora;
 
 public class MyContactListener implements ContactListener {
 
@@ -41,7 +42,7 @@ public class MyContactListener implements ContactListener {
         }
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Chest)
                 || (fa.getUserData() instanceof Chest && fb.getUserData() instanceof Player)) {
-            System.out.println("Item added to the inventory!");
+            
             // if (Gdx.input.isKeyPressed(Input.Keys.F)) {
             Chest chest = (Chest) (fa.getUserData() instanceof Chest ? fa.getUserData() : fb.getUserData());
             chest.open();
@@ -49,17 +50,21 @@ public class MyContactListener implements ContactListener {
             // This also needs a restriction where the open option is only given when the
             // chest is closed and after it has no reaction.
         }
+        if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Friend)
+                || (fa.getUserData() instanceof Friend && fb.getUserData() instanceof Player)) {
+        	Friend f = (Friend) (fa.getUserData() instanceof Friend ? fa.getUserData() : fb.getUserData());
+        	Player p = (Player) (fa.getUserData() instanceof Player ? fa.getUserData() : fb.getUserData());
+        	
+        	if (!p.isInteracting()); // skip if not interacting
+        	else {
+        		
+        	}
+        	
+        }
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Flora)
                 || (fa.getUserData() instanceof Flora && fb.getUserData() instanceof Player)) {
-        	Flora f;
-        	Player p;
-            if (fa.getUserData() instanceof Player) {
-                p = (Player) (fa.getUserData());
-            	f = (Flora) (fb.getUserData());
-            } else {
-            	p = (Player) (fb.getUserData());
-            	f = (Flora) (fa.getUserData());
-            }
+        	Flora f = (Flora) (fa.getUserData() instanceof Flora ? fa.getUserData() : fb.getUserData());
+        	Player p = (Player) (fa.getUserData() instanceof Player ? fa.getUserData() : fb.getUserData());
             p.takeDamage(f.damage());
         } else {
 

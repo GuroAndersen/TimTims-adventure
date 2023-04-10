@@ -1,4 +1,4 @@
-package timtim.app.objects;
+package timtim.app.model.objects;
 
 public interface IPlayer {
 
@@ -13,6 +13,17 @@ public interface IPlayer {
 	 * Performs a jump for this player
 	 */
 	public void jump();
+
+	/**
+	 * Handles interaction for this player.
+	 */
+	public void interact();
+	
+	/**
+	 * True if player is interacting
+	 * @return 
+	 */
+	public boolean isInteracting();
 	
 
 }

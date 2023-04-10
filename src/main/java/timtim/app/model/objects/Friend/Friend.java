@@ -1,4 +1,4 @@
-package timtim.app.objects.Friend;
+package timtim.app.model.objects.Friend;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -6,9 +6,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 import timtim.app.manager.Const;
-import timtim.app.manager.GameMap;
-import timtim.app.objects.GameEntity;
-import timtim.app.objects.Inventory.Item;
+import timtim.app.model.map.GameMap;
+import timtim.app.model.objects.GameEntity;
+import timtim.app.model.objects.Inventory.Item;
 
 public abstract class Friend extends GameEntity implements IFriend {
 

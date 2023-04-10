@@ -1,4 +1,4 @@
-package timtim.app.objects;
+package timtim.app.model.objects;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -21,6 +21,9 @@ public class Player extends CombatEntity implements IPlayer {
 	private float stateTimer;
 	
 	private GameScreen gameScreen;
+
+
+	private boolean interacting;
 
 	/**
 	 * Testing constructor.
@@ -71,6 +74,7 @@ public class Player extends CombatEntity implements IPlayer {
 		
 		updateMovement();
 		updateSprite(delta);
+		interacting = false;
 	}
 
 	private void updateSprite(float delta) {
@@ -123,6 +127,16 @@ public class Player extends CombatEntity implements IPlayer {
 			body.applyLinearImpulse(new Vector2(0, force), body.getPosition(), true);
 			isJumping = true;
 		}
+	}
+
+	@Override
+	public void interact() {
+		this.interacting = true;
+	}
+
+	@Override
+	public boolean isInteracting() {
+		return this.interacting;
 	}
 	
 }

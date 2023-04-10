@@ -1,15 +1,10 @@
 package timtim.app.core;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
@@ -18,7 +13,7 @@ import timtim.app.core.state.*;
 import timtim.app.manager.Const;
 import timtim.app.model.GameModel;
 import timtim.app.model.IGameModel;
-import timtim.app.objects.GameEntity;
+import timtim.app.model.objects.GameEntity;
 
 import java.util.HashMap;
 
@@ -125,7 +120,6 @@ public class GameScreen extends ScreenAdapter implements AccessibleGame {
 		getBatch().setProjectionMatrix(camera.combined);
 		getBatch().begin();
 		// render objects
-		model.getPlayer().render(getBatch());
 		for (GameEntity e : model.getEntities()) e.render(batch);
 		getBatch().end();
 		B2DDebugRenderer.render(model.getCurrentWorld(), camera.combined.scl(Const.PPM));
@@ -147,6 +141,11 @@ public class GameScreen extends ScreenAdapter implements AccessibleGame {
 
 	public TextureAtlas getAtlas() {
 		return atlas;
+	}
+
+	@Override
+	public void playerInteract() {
+		this.model.playerInteract();
 	}
 
 
