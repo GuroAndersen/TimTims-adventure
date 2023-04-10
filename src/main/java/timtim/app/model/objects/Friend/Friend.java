@@ -1,9 +1,15 @@
 package timtim.app.model.objects.Friend;
 
+import java.awt.Font;
+
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.utils.Align;
 
 import timtim.app.manager.Const;
 import timtim.app.model.map.GameMap;
@@ -16,10 +22,12 @@ public abstract class Friend extends GameEntity implements IFriend {
   
     private int dialogueCounter = 0;
     private int interactionCounter = 0;
+    private String currentDialogue = "";
     
     private boolean itemReceived;
     
 	protected Sprite sprite;
+    protected BitmapFont font;
 	protected float spriteXOffset;
 	protected float spriteYOffset;
 	protected Animation<TextureRegion> idleAnimation;
@@ -27,9 +35,16 @@ public abstract class Friend extends GameEntity implements IFriend {
 
 	private GameMap map;
 
+	/**
+	 * Constructor used in game.
+	 * @param map
+	 * @param newItem
+	 */
     public Friend(GameMap map, Item newItem) {
     	this.map = map;
 		this.item = newItem;
+		this.font = new BitmapFont();
+		font.setColor(Color.BLACK);
 	}
     
     /**
@@ -46,20 +61,19 @@ public abstract class Friend extends GameEntity implements IFriend {
      * Gets it from a list of Strings.
      */
     @Override
-    public String getConversation() {
+    public void updateConversation() {
     	
-    	if (itemReceived) return "Thanks for the gift!";
+    	if (itemReceived) this.currentDialogue = giftDialogue();
     	
         // First interaction between Player and Friend
         // Will go through the whole list of conversation options
         if (interactionCounter == 0) {
-            String currentDialogue = getDialogueOptions()[dialogueCounter];
+            String dialogue = getDialogueOptions()[dialogueCounter];
             dialogueCounter++;
             if (dialogueCounter >= getDialogueOptions().length) {
                 dialogueCounter = 0;
-                return "";
+                this.currentDialogue = "";
             }
-            return currentDialogue;
         }
 
         // Second or more interaction between Player and Friend
@@ -70,13 +84,17 @@ public abstract class Friend extends GameEntity implements IFriend {
             relevantDialogueCounter++;
             if (relevantDialogueCounter >= getDialogueOptions().length) {
                 relevantDialogueCounter = 3;
-                return "";
+                this.currentDialogue = "";
             }
-            return relevantDialogue;
+            this.currentDialogue = relevantDialogue;
         }
 
         interactionCounter++;
-        return "";
+    }
+    
+    @Override
+	public String getConversation() {
+    	return this.currentDialogue;
     }
 
     @Override
@@ -129,11 +147,12 @@ public abstract class Friend extends GameEntity implements IFriend {
 	@Override
 	public void render(SpriteBatch batch) {
 		sprite.draw(batch);
+		font.draw(batch, currentDialogue, sprite.getX(), sprite.getY() + 2 * Const.PPM, sprite.getWidth()*2, Align.center, true);
 	}
 	
 	@Override
 	public void update(float delta) {
 		updateSprite(delta);
 	}
-
+	
 }

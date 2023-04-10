@@ -24,9 +24,9 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 import timtim.app.core.GameScreen;
 import timtim.app.manager.BodyManager;
 import timtim.app.manager.Const;
-import timtim.app.manager.MyContactListener;
 import timtim.app.model.GameModel;
 import timtim.app.model.IGameMap;
+import timtim.app.model.MyContactListener;
 import timtim.app.model.objects.Enemy;
 import timtim.app.model.objects.GameEntity;
 import timtim.app.model.objects.Player;
@@ -132,7 +132,7 @@ public class GameMap implements IGameMap {
 				Rectangle rect = ((RectangleMapObject) o).getRectangle();
 				String name = ((RectangleMapObject) o).getName();
 				Body body = BodyManager.createBody(rect.getX() + rect.getWidth() / 2,
-						rect.getY() + rect.getHeight() / 2, rect.getWidth(), rect.getHeight(), false, world);
+						rect.getY() + rect.getHeight() / 2, rect.getWidth(), rect.getHeight(), true, world);
 				switch (name) {
 				case "skeleton":
 					friend = new Skeleton(gameScreen, this);
@@ -173,7 +173,6 @@ public class GameMap implements IGameMap {
 
 		Body body = createObject(o);
 
-		System.out.println(body.getPosition());
 		String imagePath = "castledoors.png";
 		Door door = new Door(body, o.getPolygon().getTransformedVertices(), imagePath);
 		body.setUserData(door);
@@ -214,8 +213,6 @@ public class GameMap implements IGameMap {
 	private void createChestObject(PolygonMapObject o) {
 
 		Body body = createObject(o);
-
-		System.out.println(body.getPosition());
 		String imagePath = "chest2.png";
 		Chest chest = new Chest(body, o.getPolygon().getTransformedVertices(), imagePath, imagePath);
 		body.setUserData(chest);

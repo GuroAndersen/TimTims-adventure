@@ -1,8 +1,9 @@
-package timtim.app.manager;
+package timtim.app.model;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.physics.box2d.*;
 
-import timtim.app.model.IGameModel;
 import timtim.app.model.objects.Player;
 import timtim.app.model.objects.Friend.Friend;
 import timtim.app.model.objects.GameObjects.Chest;
@@ -55,11 +56,10 @@ public class MyContactListener implements ContactListener {
         	Friend f = (Friend) (fa.getUserData() instanceof Friend ? fa.getUserData() : fb.getUserData());
         	Player p = (Player) (fa.getUserData() instanceof Player ? fa.getUserData() : fb.getUserData());
         	
-        	if (!p.isInteracting()); // skip if not interacting
-        	else {
-        		
-        	}
+        	if (p.getInventory().contains(f.item)) 
+        		f.receiveGift(p.getInventory().takeOutItem(f.item));
         	
+        	f.updateConversation();
         }
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Flora)
                 || (fa.getUserData() instanceof Flora && fb.getUserData() instanceof Player)) {

@@ -27,14 +27,10 @@ public class GameModel implements IGameModel {
 	private String currentMap;
 	private Map<String, GameMap> maps;
 
-	// handler
-	private DialogueManager dialogueManager;
-
 	public GameModel(GameScreen gameScreen) {
 		this.gameScreen = gameScreen;
 		this.player = new Player(gameScreen);
 		this.maps = new HashMap<String, GameMap>();
-		this.dialogueManager = new DialogueManager();
 		setup();
 	}
 
@@ -77,7 +73,6 @@ public class GameModel implements IGameModel {
 	private void setMap(String mapName) {
 		this.currentMap = mapName;
 		getPlayer().setBody(maps.get(mapName).getPlayerBody());
-		this.dialogueManager.clear();
 	}
 
 	@Override
@@ -123,8 +118,4 @@ public class GameModel implements IGameModel {
 		this.player.jump();
 	}
 
-	@Override
-	public void playerInteract() {
-		this.player.interact();
-	}
 }

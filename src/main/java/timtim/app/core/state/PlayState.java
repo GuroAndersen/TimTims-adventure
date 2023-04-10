@@ -53,11 +53,7 @@ public class PlayState implements StateHandler {
         if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
             game.playerJump();
         }
-        
-        // Interact
-        if (Gdx.input.isKeyJustPressed(Input.Keys.E)) {
-        	game.playerInteract();
-        }
+       
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.P)) {
             game.switchState(State.PAUSE);

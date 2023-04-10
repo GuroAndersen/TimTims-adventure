@@ -38,12 +38,6 @@ public interface IGameModel {
      * Make the player jump
      */
     public void playerJump();
-    
-    /**
-     * Activate player interaction
-     */
-    public void playerInteract();
-	
 	
 	
 	///////////////////// OTHER
@@ -74,4 +68,5 @@ public interface IGameModel {
 	 * @return list of entities
 	 */
 	public List<GameEntity> getEntities();
+	
 }

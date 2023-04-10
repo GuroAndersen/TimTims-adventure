@@ -25,7 +25,7 @@ public class Flora extends GameObject {
     }
     
     public int damage() {
-    	return 50;
+    	return 5;
     }
 
 }

@@ -25,11 +25,6 @@ public interface AccessibleGame {
      * Make the player jump
      */
     public void playerJump();
-    
-    /**
-     * Activate player interaction
-     */
-    public void playerInteract();
 
     /**
      * Update the camera
@@ -51,4 +46,5 @@ public interface AccessibleGame {
      * Get the game's camera
      */
     public OrthographicCamera getCamera();
+
 }

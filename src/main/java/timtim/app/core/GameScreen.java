@@ -143,10 +143,4 @@ public class GameScreen extends ScreenAdapter implements AccessibleGame {
 		return atlas;
 	}
 
-	@Override
-	public void playerInteract() {
-		this.model.playerInteract();
-	}
-
-
 }

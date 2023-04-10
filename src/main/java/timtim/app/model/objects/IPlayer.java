@@ -1,5 +1,7 @@
 package timtim.app.model.objects;
 
+import timtim.app.model.objects.Inventory.Inventory;
+
 public interface IPlayer {
 
 	/**
@@ -13,17 +15,11 @@ public interface IPlayer {
 	 * Performs a jump for this player
 	 */
 	public void jump();
-
-	/**
-	 * Handles interaction for this player.
-	 */
-	public void interact();
 	
 	/**
-	 * True if player is interacting
-	 * @return 
+	 * Get the player's inventory
+	 * @return
 	 */
-	public boolean isInteracting();
-	
+	public Inventory getInventory();
 
 }

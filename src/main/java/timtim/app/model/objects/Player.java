@@ -9,6 +9,8 @@ import com.badlogic.gdx.utils.Array;
 
 import timtim.app.core.GameScreen;
 import timtim.app.manager.Const;
+import timtim.app.model.objects.Inventory.Inventory;
+import timtim.app.model.objects.Inventory.ItemFactory;
 
 public class Player extends CombatEntity implements IPlayer {
 	
@@ -19,11 +21,9 @@ public class Player extends CombatEntity implements IPlayer {
 	private Array<TextureRegion> jumpCells;
 	private TextureRegion standing;
 	private float stateTimer;
-	
-	private GameScreen gameScreen;
 
 
-	private boolean interacting;
+	private Inventory inventory;
 
 	/**
 	 * Testing constructor.
@@ -36,12 +36,12 @@ public class Player extends CombatEntity implements IPlayer {
 	
 	private void baseSetup() {
 		this.speed = 4f;
+		this.inventory = new Inventory();
 	}
 	
 	public Player(GameScreen gameScreen) {
 		super(100, 10);
 		baseSetup();
-		this.gameScreen = gameScreen;
 		this.sprite = new Sprite(gameScreen.getAtlas().findRegion("timtim"));
 		setupAnimation();
 		sprite.setBounds(0, 0, 32 / Const.PPM, Const.PPM);
@@ -74,7 +74,6 @@ public class Player extends CombatEntity implements IPlayer {
 		
 		updateMovement();
 		updateSprite(delta);
-		interacting = false;
 	}
 
 	private void updateSprite(float delta) {
@@ -130,13 +129,7 @@ public class Player extends CombatEntity implements IPlayer {
 	}
 
 	@Override
-	public void interact() {
-		this.interacting = true;
+	public Inventory getInventory() {
+		return this.inventory;
 	}
-
-	@Override
-	public boolean isInteracting() {
-		return this.interacting;
-	}
-	
 }
