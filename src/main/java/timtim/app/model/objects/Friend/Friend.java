@@ -153,6 +153,9 @@ public abstract class Friend extends GameEntity implements IFriend {
 	@Override
 	public void update(float delta) {
 		updateSprite(delta);
+		
+		if (itemReceived) map.setComplete();
+		
 	}
 	
 }
