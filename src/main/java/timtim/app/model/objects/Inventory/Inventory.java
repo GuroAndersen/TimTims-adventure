@@ -1,4 +1,4 @@
-package timtim.app.objects.Inventory;
+package timtim.app.model.objects.Inventory;
 
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
@@ -58,9 +58,11 @@ public class Inventory {
      * takes out an item from inventory if the item is in inventory
      * @param item
      */
-    public void takeOutItem(Item item){
+    public Item takeOutItem(Item item){
         if(items.contains(item)){
+        	Item i = items.get(items.indexOf(item));
             items.remove(item);
+            return i;
         }
         else 
         throw new NoSuchElementException("Inventory does not contain this item");

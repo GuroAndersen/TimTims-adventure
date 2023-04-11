@@ -1,4 +1,4 @@
-package timtim.app.objects;
+package timtim.app.model.objects;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -9,6 +9,8 @@ import com.badlogic.gdx.utils.Array;
 
 import timtim.app.core.GameScreen;
 import timtim.app.manager.Const;
+import timtim.app.model.objects.Inventory.Inventory;
+import timtim.app.model.objects.Inventory.ItemFactory;
 
 public class Player extends CombatEntity implements IPlayer {
 	
@@ -19,8 +21,9 @@ public class Player extends CombatEntity implements IPlayer {
 	private Array<TextureRegion> jumpCells;
 	private TextureRegion standing;
 	private float stateTimer;
-	
-	private GameScreen gameScreen;
+
+
+	private Inventory inventory;
 
 	/**
 	 * Testing constructor.
@@ -33,12 +36,12 @@ public class Player extends CombatEntity implements IPlayer {
 	
 	private void baseSetup() {
 		this.speed = 4f;
+		this.inventory = new Inventory();
 	}
 	
 	public Player(GameScreen gameScreen) {
 		super(100, 10);
 		baseSetup();
-		this.gameScreen = gameScreen;
 		this.sprite = new Sprite(gameScreen.getAtlas().findRegion("timtim"));
 		setupAnimation();
 		sprite.setBounds(0, 0, 32 / Const.PPM, Const.PPM);
@@ -124,5 +127,9 @@ public class Player extends CombatEntity implements IPlayer {
 			isJumping = true;
 		}
 	}
-	
+
+	@Override
+	public Inventory getInventory() {
+		return this.inventory;
+	}
 }

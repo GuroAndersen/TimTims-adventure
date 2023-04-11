@@ -1,9 +1,8 @@
-package timtim.app.manager;
+package timtim.app.model.map;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.objects.PolygonMapObject;
@@ -19,25 +18,25 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.Shape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.Fixture;
 
 import timtim.app.core.GameScreen;
+import timtim.app.manager.BodyManager;
+import timtim.app.manager.Const;
 import timtim.app.model.GameModel;
 import timtim.app.model.IGameMap;
-import timtim.app.objects.Enemy;
-import timtim.app.objects.GameEntity;
-import timtim.app.objects.Player;
-import timtim.app.objects.Friend.Friend;
-import timtim.app.objects.Friend.Skeleton;
-import timtim.app.objects.Friend.Snake;
-import timtim.app.objects.Friend.Wolf;
-import timtim.app.objects.GameObjects.Chest;
-import timtim.app.objects.GameObjects.Door;
-import timtim.app.objects.GameObjects.Flora;
+import timtim.app.model.MyContactListener;
+import timtim.app.model.objects.Enemy;
+import timtim.app.model.objects.GameEntity;
+import timtim.app.model.objects.Player;
+import timtim.app.model.objects.Friend.Friend;
+import timtim.app.model.objects.Friend.Skeleton;
+import timtim.app.model.objects.Friend.Snake;
+import timtim.app.model.objects.Friend.Wolf;
+import timtim.app.model.objects.GameObjects.Chest;
+import timtim.app.model.objects.GameObjects.Door;
+import timtim.app.model.objects.GameObjects.Flora;
 
 public class GameMap implements IGameMap {
 
@@ -64,7 +63,6 @@ public class GameMap implements IGameMap {
 	 * Completion criteria
 	 */
 	private boolean complete;
-
 
 	public GameMap(String mapName, GameModel model) {
 		this.gameScreen = model.getGameScreen();
@@ -96,7 +94,7 @@ public class GameMap implements IGameMap {
 
 		renderer = new OrthogonalTiledMapRenderer(tiledMap);
 	}
-	
+
 	private void parsePlayerObject(MapObjects objects) {
 		MapObject o = objects.get(0);
 		if (o instanceof RectangleMapObject) {
@@ -134,19 +132,19 @@ public class GameMap implements IGameMap {
 				Rectangle rect = ((RectangleMapObject) o).getRectangle();
 				String name = ((RectangleMapObject) o).getName();
 				Body body = BodyManager.createBody(rect.getX() + rect.getWidth() / 2,
-						rect.getY() + rect.getHeight() / 2, rect.getWidth(), rect.getHeight(), false, world);
+						rect.getY() + rect.getHeight() / 2, rect.getWidth(), rect.getHeight(), true, world);
 				switch (name) {
-					case "skeleton":
-						friend = new Skeleton(gameScreen, this);
-						break;
-					case "wolf":
-						friend = new Wolf(gameScreen, this);
-						break;
-					case "snake":
-						friend = new Snake(gameScreen, this);
-						break;
-					default:
-						throw new IllegalArgumentException("This friend type is not represented");
+				case "skeleton":
+					friend = new Skeleton(gameScreen, this);
+					break;
+				case "wolf":
+					friend = new Wolf(gameScreen, this);
+					break;
+				case "snake":
+					friend = new Snake(gameScreen, this);
+					break;
+				default:
+					throw new IllegalArgumentException("This friend type is not represented");
 				}
 				friend.setBody(body);
 				Fixture fixture = body.getFixtureList().get(0);
@@ -175,7 +173,6 @@ public class GameMap implements IGameMap {
 
 		Body body = createObject(o);
 
-		System.out.println(body.getPosition());
 		String imagePath = "castledoors.png";
 		Door door = new Door(body, o.getPolygon().getTransformedVertices(), imagePath);
 		body.setUserData(door);
@@ -216,8 +213,6 @@ public class GameMap implements IGameMap {
 	private void createChestObject(PolygonMapObject o) {
 
 		Body body = createObject(o);
-
-		System.out.println(body.getPosition());
 		String imagePath = "chest2.png";
 		Chest chest = new Chest(body, o.getPolygon().getTransformedVertices(), imagePath, imagePath);
 		body.setUserData(chest);
@@ -291,11 +286,12 @@ public class GameMap implements IGameMap {
 		return renderer;
 	}
 
-	
 	public void update(float delta) {
 		this.world.step(Const.FPS, 6, 2);
-		for (Friend f : friends) f.update(delta);
-		for (Enemy e : enemies) e.update(delta);
+		for (Friend f : friends)
+			f.update(delta);
+		for (Enemy e : enemies)
+			e.update(delta);
 	}
 
 	@Override
@@ -309,6 +305,11 @@ public class GameMap implements IGameMap {
 		entityList.addAll(friends);
 		entityList.addAll(enemies);
 		return entityList;
+	}
+
+	@Override
+	public Body getPlayerBody() {
+		return this.playerBody;
 	}
 
 }
