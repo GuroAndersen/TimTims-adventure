@@ -1,0 +1,15 @@
+Test: check if camera displays the black screen around the tile map when playing
+
+Description: 
+Launch the game in launcher, continue to a level by pressing enter in start screen. 
+Move TimTim around all edges to check if there is a visibile black screen when playing the game or not. There are not supposed to be one. 
+
+Steps: 
+1. Launch game 
+2. Start the first level by pressing enter in start menu. 
+3. Move Timtim to all the outer edges of the map. 
+4. Observe if there is any visibile black screen around the map. '
+5. Repeat steps for the other levels. 
+
+Result: 
+After several playthroughs of each level, there are no visibile sign of a black screen around the tile map. 

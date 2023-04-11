@@ -25,7 +25,7 @@ public class TileMapManager {
 		this.player = player;
 		this.maps = new HashMap<String, GameMap>();
 		loadMaps();
-		setMap("level2");
+		setMap("level_3");
 	}
 
 	private void setMap(String mapName) {

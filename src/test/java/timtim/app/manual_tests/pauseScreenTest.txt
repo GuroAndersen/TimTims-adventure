@@ -1,0 +1,26 @@
+Test: check if pause Screen appears when p key is pressed and the game continues when pressing p in pause state
+
+Description: 
+Launch the game in launcher, continue to a level by pressing enter in start screen. 
+Press p to see if the game pauses and the pause screen appears. Check if it pauses while not moving, moving left, moving right, jumping and falling. 
+Press p again each time to see if the game continues. 
+
+Steps: 
+1. Launch game 
+2. Start the first level by pressing enter in start menu. 
+3. press p when not moving to see if it pauses and the screen appears.
+4. check if press p to continue works.
+5. press p when moving to the left to see if it pauses and the screen appears.
+6. check if press p to continue works.
+7. press p when moving to the right to see if it pauses and the screen appears.
+8. check if press p to continue works.
+9. press p when jumping to see if it pauses and the screen appears.
+10. check if press p to continue works.
+11. press p when falling to see if it pauses and the screen appears.
+12. check if press p to continue works.
+
+Result: 
+After several playthroughs of each level, the game does pause and the screen appears on each level.
+
+Error: 
+Timtim is kinda shaking when he is paused, but staying in place. 
