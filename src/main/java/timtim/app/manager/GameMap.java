@@ -146,9 +146,8 @@ public class GameMap implements IGameMap {
 		System.out.println(body.getPosition());
 		String imagePath = "chest2.png";
 		Chest chest = new Chest(body, o.getPolygon().getTransformedVertices(), imagePath, imagePath);
-		String name = "juicebox";
-		String description = "a cold refreshing beverage";
-		Item chestItem = new Item(name, description);
+
+		Item chestItem = new ItemFactory().getFirstItem();
 
 		chest.setItem(chestItem);
 		body.setUserData(chest);

@@ -52,7 +52,7 @@ public class MyContactListener implements ContactListener {
                     Player p = (Player) fb.getUserData();
                     p.addItemToInventory(item);
                 }
-                System.out.println(chest.getItem() + "added to the inventory!");
+                System.out.println(chest.getItem() + " added to the inventory!");
             }
 
             // }
