@@ -36,7 +36,7 @@ public class GameModel implements IGameModel {
 
 	private void setup() {
 		loadMaps();
-		setMap("level1");
+		setMap("level2");
 	}
 
 	@Override

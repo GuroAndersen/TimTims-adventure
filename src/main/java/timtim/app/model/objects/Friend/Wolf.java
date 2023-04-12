@@ -38,7 +38,6 @@ public class Wolf extends Friend {
 	}
 
 	private void setupAnimation() {
-		stateTimer = 0;
 		// setup run animation
 		Array<TextureRegion> frames = new Array<TextureRegion>();
 		for (int r = 0; r < 1; r++) {

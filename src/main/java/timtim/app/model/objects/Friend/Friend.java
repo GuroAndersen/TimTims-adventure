@@ -1,9 +1,6 @@
 package timtim.app.model.objects.Friend;
 
-import java.awt.Font;
-
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -31,7 +28,7 @@ public abstract class Friend extends GameEntity implements IFriend {
 	protected float spriteXOffset;
 	protected float spriteYOffset;
 	protected Animation<TextureRegion> idleAnimation;
-	protected int stateTimer;
+	protected float stateTimer;
 
 	private GameMap map;
 
@@ -134,9 +131,8 @@ public abstract class Friend extends GameEntity implements IFriend {
 	}
 	
 	private TextureRegion getFrame(float delta) {
-		// jumping cases
-		stateTimer += delta;
 		
+		this.stateTimer += delta;
 		TextureRegion frame = idleAnimation.getKeyFrame(stateTimer, true);
 		if (this.body.getLinearVelocity().x < 0 && !frame.isFlipX()) frame.flip(true, false);
 		if (this.body.getLinearVelocity().x > 0 && frame.isFlipX()) frame.flip(true, false);
