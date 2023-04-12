@@ -28,6 +28,8 @@ import timtim.app.objects.Player;
 import timtim.app.objects.GameObjects.Chest;
 import timtim.app.objects.GameObjects.Door;
 import timtim.app.objects.GameObjects.Flora;
+import timtim.app.objects.Inventory.Item;
+import timtim.app.objects.Inventory.ItemFactory;
 
 public class GameMap implements IGameMap {
 
@@ -42,6 +44,7 @@ public class GameMap implements IGameMap {
 	private ArrayList<Door> doors;
 	private ArrayList<Flora> floras;
 	private ArrayList<Chest> chests;
+	private ItemFactory itemFactory;
 
 	private Box2DDebugRenderer debugRenderer;
 	private OrthographicCamera camera;
@@ -57,6 +60,7 @@ public class GameMap implements IGameMap {
 		doors = new ArrayList<Door>();
 		chests = new ArrayList<Chest>();
 		floras = new ArrayList<Flora>();
+		itemFactory = new ItemFactory();
 		complete = false;
 		mapSetup();
 
@@ -142,11 +146,16 @@ public class GameMap implements IGameMap {
 		System.out.println(body.getPosition());
 		String imagePath = "chest2.png";
 		Chest chest = new Chest(body, o.getPolygon().getTransformedVertices(), imagePath, imagePath);
+		String name = "juicebox";
+		String description = "a cold refreshing beverage";
+		Item chestItem = new Item(name, description);
+
+		chest.setItem(chestItem);
 		body.setUserData(chest);
-		Texture chestTexture = new Texture(Gdx.files.internal(imagePath));
 		Fixture chestFixture = body.getFixtureList().get(0);
 		chestFixture.setUserData(chest);
 		chestFixture.setSensor(true);
+		chest.setItem(chestItem);
 		chests.add(chest);
 	}
 

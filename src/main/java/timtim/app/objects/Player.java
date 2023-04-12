@@ -10,19 +10,23 @@ import com.badlogic.gdx.utils.Array;
 import timtim.app.core.GameScreen;
 import timtim.app.manager.Const;
 
+import timtim.app.objects.Inventory.Inventory;
+import timtim.app.objects.Inventory.Item;
+
 public class Player extends CombatEntity implements IPlayer {
-	
+
 	private final float maxJumpVel = 25;
 	private boolean isJumping;
 	private Sprite sprite;
-	
-	
+
 	private Animation<TextureRegion> runAnimation;
 	private Array<TextureRegion> jumpCells;
 	private TextureRegion standing;
 	private float stateTimer;
-	
+
 	private GameScreen gameScreen;
+
+	private Inventory inventory;
 
 	/**
 	 * Testing constructor.
@@ -31,12 +35,14 @@ public class Player extends CombatEntity implements IPlayer {
 	public Player() {
 		super();
 		baseSetup();
+		inventory = new Inventory();
 	}
-	
+
 	private void baseSetup() {
 		this.speed = 4f;
+		this.inventory = new Inventory();
 	}
-	
+
 	public Player(GameScreen gameScreen) {
 		super();
 		baseSetup();
@@ -47,7 +53,6 @@ public class Player extends CombatEntity implements IPlayer {
 		sprite.setRegion(standing);
 	}
 
-	
 	private void setupAnimation() {
 		stateTimer = 0;
 		// setup run animation
@@ -57,27 +62,27 @@ public class Player extends CombatEntity implements IPlayer {
 		}
 		runAnimation = new Animation<TextureRegion>(0.1f, frames);
 		frames.clear();
-		
+
 		// setup jump animation
 		for (int i = 9; i < 13; i++) {
 			frames.add(new TextureRegion(sprite.getTexture(), i * 32, 0, 32, 32));
 		}
 		jumpCells = new Array<TextureRegion>(frames);
 		frames.clear();
-		
+
 		standing = new TextureRegion(sprite.getTexture(), 0, 0, 32, 32);
 	}
 
 	@Override
 	public void update(float delta) {
-		
+
 		updateMovement();
 		updateSprite(delta);
 	}
 
 	private void updateSprite(float delta) {
-		float spriteX = (body.getPosition().x * Const.PPM - sprite.getWidth()/2);
-		float spriteY = (body.getPosition().y * Const.PPM - sprite.getHeight()/2);
+		float spriteX = (body.getPosition().x * Const.PPM - sprite.getWidth() / 2);
+		float spriteY = (body.getPosition().y * Const.PPM - sprite.getHeight() / 2);
 		sprite.setBounds(spriteX, spriteY, sprite.getRegionWidth(), sprite.getRegionHeight());
 		sprite.setRegion(getFrame(delta));
 
@@ -86,22 +91,24 @@ public class Player extends CombatEntity implements IPlayer {
 	private TextureRegion getFrame(float delta) {
 		// jumping cases
 		stateTimer += delta;
-		
+
 		TextureRegion frame;
 		if (this.body.getLinearVelocity().y > -3 && this.body.getLinearVelocity().y < 3 && isJumping) {
 			frame = jumpCells.get(2);
-	    } else if (this.body.getLinearVelocity().y > 0) {
+		} else if (this.body.getLinearVelocity().y > 0) {
 			frame = jumpCells.get(1);
-		} else if (this.body.getLinearVelocity().y < 0){
+		} else if (this.body.getLinearVelocity().y < 0) {
 			frame = jumpCells.get(3);
 		} else if (this.body.getLinearVelocity().x != 0) {
 			frame = runAnimation.getKeyFrame(stateTimer, true);
 		} else {
 			frame = standing;
 		}
-		if (this.body.getLinearVelocity().x < 0 && !frame.isFlipX()) frame.flip(true, false);
-		if (this.body.getLinearVelocity().x > 0 && frame.isFlipX()) frame.flip(true, false);
-		
+		if (this.body.getLinearVelocity().x < 0 && !frame.isFlipX())
+			frame.flip(true, false);
+		if (this.body.getLinearVelocity().x > 0 && frame.isFlipX())
+			frame.flip(true, false);
+
 		return frame;
 	}
 
@@ -111,26 +118,42 @@ public class Player extends CombatEntity implements IPlayer {
 	}
 
 	private void updateMovement() {
-		body.setLinearVelocity(velX * speed, body.getLinearVelocity().y < maxJumpVel ? body.getLinearVelocity().y : maxJumpVel);
-		if (body.getLinearVelocity().y == 0) isJumping = false;
+		body.setLinearVelocity(velX * speed,
+				body.getLinearVelocity().y < maxJumpVel ? body.getLinearVelocity().y : maxJumpVel);
+		if (body.getLinearVelocity().y == 0)
+			isJumping = false;
 		resetVelocity();
 	}
 
 	@Override
 	public void move(boolean moveLeft, boolean moveRight) {
-		if (moveRight && moveLeft) velX = 0;
-		else if (moveLeft) velX = -1;
-		else if (moveRight) velX = 1;
-		
+		if (moveRight && moveLeft)
+			velX = 0;
+		else if (moveLeft)
+			velX = -1;
+		else if (moveRight)
+			velX = 1;
+
 	}
 
 	@Override
 	public void jump() {
-		if(!isJumping) {
+		if (!isJumping) {
 			float force = body.getMass() * Const.JUMPCONSTANT;
 			body.applyLinearImpulse(new Vector2(0, force), body.getPosition(), true);
 			isJumping = true;
 		}
 	}
-	
+
+	public boolean addItemToInventory(Item item) {
+		return inventory.placeInInventory(item);
+	}
+
+	public void removeItemFromInventory(Item item) {
+		inventory.takeOutItem(item);
+	}
+
+	public boolean inventoryContains(Item item) {
+		return inventory.contains(item);
+	}
 }

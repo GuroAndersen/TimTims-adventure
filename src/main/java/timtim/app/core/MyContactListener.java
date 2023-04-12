@@ -8,8 +8,7 @@ import timtim.app.objects.Player;
 import timtim.app.objects.GameObjects.Chest;
 import timtim.app.objects.GameObjects.Door;
 import timtim.app.objects.GameObjects.Flora;
-
-import timtim.app.objects.CombatEntity;
+import timtim.app.objects.Inventory.Item;
 
 public class MyContactListener implements ContactListener {
 
@@ -39,10 +38,23 @@ public class MyContactListener implements ContactListener {
         }
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Chest)
                 || (fa.getUserData() instanceof Chest && fb.getUserData() instanceof Player)) {
-            System.out.println("Item added to the inventory!");
+
             // if (Gdx.input.isKeyPressed(Input.Keys.F)) {
             Chest chest = (Chest) (fa.getUserData() instanceof Chest ? fa.getUserData() : fb.getUserData());
-            chest.open();
+            if (!chest.isOpen()) {
+                chest.open();
+                Item item = chest.getItem();
+                if (fa.getUserData() instanceof Player) {
+                    Player p = (Player) fa.getUserData();
+                    p.addItemToInventory(item);
+
+                } else if (fb.getUserData() instanceof Player) {
+                    Player p = (Player) fb.getUserData();
+                    p.addItemToInventory(item);
+                }
+                System.out.println(chest.getItem() + "added to the inventory!");
+            }
+
             // }
             // This also needs a restriction where the open option is only given when the
             // chest is closed and after it has no reaction.
@@ -57,9 +69,6 @@ public class MyContactListener implements ContactListener {
                 Player p = (Player) fb.getUserData();
                 p.takeDamage(1);
             }
-        } else {
-            System.out.println("Nothing!");
-
         }
 
     }

@@ -7,12 +7,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ItemFactory {
-    
-    Map<String, String> items;
+
+    public Map<String, String> items;
     private final String file = "ItemDescription.txt";
 
-    public ItemFactory (){
-        items = new HashMap<String,String>();
+    public ItemFactory() {
+        items = new HashMap<String, String>();
         parseItemFile();
     }
 
@@ -23,23 +23,25 @@ public class ItemFactory {
         BufferedReader reader;
         try {
             reader = new BufferedReader(new FileReader(file));
-            String line; 
-            while ((line = reader.readLine()) != null){
+            String line;
+            while ((line = reader.readLine()) != null) {
                 String[] elements = line.split(",");
                 String itemName = elements[0].trim();
                 String description = elements[1].trim();
                 items.put(itemName, description);
-        }
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     /**
      * returns a new item with name and description
+     * 
      * @param itemName
      * @return
      */
-    public Item newItem (String itemName){
+    public Item newItem(String itemName) {
         return new Item(itemName, items.get(itemName));
     }
 }
