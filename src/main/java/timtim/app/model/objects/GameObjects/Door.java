@@ -1,4 +1,4 @@
-package timtim.app.objects.GameObjects;
+package timtim.app.model.objects.GameObjects;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.TextureData;

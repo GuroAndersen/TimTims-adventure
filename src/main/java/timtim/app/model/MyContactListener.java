@@ -1,24 +1,30 @@
-package timtim.app.core;
+package timtim.app.model;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.physics.box2d.*;
 
-import timtim.app.objects.Player;
-import timtim.app.objects.GameObjects.Chest;
-import timtim.app.objects.GameObjects.Door;
-import timtim.app.objects.GameObjects.Flora;
-import timtim.app.objects.Inventory.Item;
+import timtim.app.model.objects.Player;
+import timtim.app.model.objects.Friend.Friend;
+import timtim.app.model.objects.GameObjects.Chest;
+import timtim.app.model.objects.GameObjects.Door;
+import timtim.app.model.objects.GameObjects.Flora;
+import timtim.app.model.objects.Inventory.Item;
 
 public class MyContactListener implements ContactListener {
 
-    // Gets activated when two objects make contact with eachother.
+    private IGameModel model;
+
+    public MyContactListener(IGameModel model) {
+        this.model = model;
+    }
+
     @Override
     public void beginContact(Contact contact) {
+
         Fixture fa = contact.getFixtureA();
         Fixture fb = contact.getFixtureB();
 
-        // System.out.println("a: " + fa.getBody().getPosition() + ", " + "b: " +
         // fb.getBody().getPosition());
 
         if ((fa.getUserData() == null || fb.getUserData() == null) || fa == null || fb == null) {
@@ -29,7 +35,6 @@ public class MyContactListener implements ContactListener {
 
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Door)
                 || (fa.getUserData() instanceof Door && fb.getUserData() instanceof Player)) {
-            System.out.println("Player and door collided!");
             // System.out.println("Fixture A user data: " + fa.getUserData());
             // System.out.println("Fixture B user data: " + fb.getUserData());
 
@@ -59,8 +64,19 @@ public class MyContactListener implements ContactListener {
             // This also needs a restriction where the open option is only given when the
             // chest is closed and after it has no reaction.
         }
+        if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Friend)
+                || (fa.getUserData() instanceof Friend && fb.getUserData() instanceof Player)) {
+            Friend f = (Friend) (fa.getUserData() instanceof Friend ? fa.getUserData() : fb.getUserData());
+            Player p = (Player) (fa.getUserData() instanceof Player ? fa.getUserData() : fb.getUserData());
+
+            if (p.getInventory().contains(f.item))
+                f.receiveGift(p.getInventory().takeOutItem(f.item));
+
+            f.updateConversation();
+        }
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Flora)
                 || (fa.getUserData() instanceof Flora && fb.getUserData() instanceof Player)) {
+
             System.out.println("OH NO I HAVE A POLLEN ALLERGY!");
             if (fa.getUserData() instanceof Player) {
                 Player p = (Player) fa.getUserData();
@@ -68,6 +84,8 @@ public class MyContactListener implements ContactListener {
             } else if (fb.getUserData() instanceof Player) {
                 Player p = (Player) fb.getUserData();
                 p.takeDamage(1);
+            } else {
+
             }
         }
 
@@ -86,6 +104,6 @@ public class MyContactListener implements ContactListener {
 
     @Override
     public void postSolve(Contact contact, ContactImpulse impulse) {
-
+        
     }
 }

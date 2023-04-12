@@ -1,4 +1,4 @@
-package timtim.app.objects;
+package timtim.app.model.objects;
 
 public abstract class CombatEntity extends GameEntity {
 
@@ -45,7 +45,7 @@ public abstract class CombatEntity extends GameEntity {
 	 * @param hitPoints
 	 */
 	public void takeDamage(int hitPoints) {
-		if (hitPoints >= 0) return; 
+		if (hitPoints <= 0) return; 
 		int newHealth = (health - hitPoints);
 		this.health = newHealth >= 0 ? newHealth : 0;
 	}
@@ -55,6 +55,21 @@ public abstract class CombatEntity extends GameEntity {
 	 */
 	public int getHealth() {
 		return health;
+	}
+	
+	/**
+	 * Returns true when the entity's health is above 0.
+	 * @return
+	 */
+	public boolean isAlive() {
+		return health > 0;
+	}
+	
+	/**
+	 * Resets the health to max health value
+	 */
+	public void resetHealth() {
+		this.health = maxHealth;
 	}
 
  }

@@ -1,15 +1,10 @@
 package timtim.app.core;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
@@ -18,6 +13,7 @@ import timtim.app.core.state.*;
 import timtim.app.manager.Const;
 import timtim.app.model.GameModel;
 import timtim.app.model.IGameModel;
+import timtim.app.model.objects.GameEntity;
 
 import java.util.HashMap;
 
@@ -32,6 +28,7 @@ public class GameScreen extends ScreenAdapter implements AccessibleGame {
 	private OrthographicCamera camera;
 	private Box2DDebugRenderer B2DDebugRenderer;
 	private OrthogonalTiledMapRenderer mapRenderer;
+	private float zoom = 0.5f;
 	
 	// Sprite rendering variables
 	private TextureAtlas atlas;
@@ -41,10 +38,10 @@ public class GameScreen extends ScreenAdapter implements AccessibleGame {
 		this.state = State.START;
 		this.camera = camera;
 		this.batch = new SpriteBatch();
-		this.atlas = new TextureAtlas("timtimSprite.atlas");
+		this.atlas = new TextureAtlas("gameSprites.pack");
 		this.camera = camera;
+		this.camera.zoom = zoom;
 		this.B2DDebugRenderer = new Box2DDebugRenderer();
-		
 		this.model = new GameModel(this);
 
 		// MAP INIT
@@ -100,8 +97,8 @@ public class GameScreen extends ScreenAdapter implements AccessibleGame {
 	private void bindCameraToMap() {
 		Vector3 position = camera.position;
 		
-		float startX = camera.viewportWidth / 2;
-		float startY = camera.viewportHeight / 2;
+		float startX = camera.viewportWidth *zoom/ 2;
+		float startY = camera.viewportHeight*zoom / 2;
 		float width = mapRenderer.getMap().getProperties().get("width", Integer.class) * Const.PPM - startX*2;
 		float height = mapRenderer.getMap().getProperties().get("height", Integer.class) * Const.PPM - startY*2;
 		
@@ -118,13 +115,12 @@ public class GameScreen extends ScreenAdapter implements AccessibleGame {
 
 	@Override
 	public void renderMap() {
-
 		mapRenderer.setView(camera);
 		mapRenderer.render();
 		getBatch().setProjectionMatrix(camera.combined);
 		getBatch().begin();
 		// render objects
-		model.getPlayer().render(getBatch());
+		for (GameEntity e : model.getEntities()) e.render(batch);
 		getBatch().end();
 		B2DDebugRenderer.render(model.getCurrentWorld(), camera.combined.scl(Const.PPM));
 	}
@@ -146,6 +142,5 @@ public class GameScreen extends ScreenAdapter implements AccessibleGame {
 	public TextureAtlas getAtlas() {
 		return atlas;
 	}
-
 
 }
