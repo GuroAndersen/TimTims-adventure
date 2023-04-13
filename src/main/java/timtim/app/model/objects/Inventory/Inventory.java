@@ -9,6 +9,21 @@ public class Inventory {
     private ArrayList<Item> items = new ArrayList <Item>();
 
     /**
+     * Testing Constructor. 
+     * @param size
+     */
+    public Inventory(int size) {
+    	this.max_size = size;
+    }
+    
+    /**
+     * Makes an inventory with size 5.
+     */
+    public Inventory() {
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
     * returns the max size of the inventory
     * @return
     */

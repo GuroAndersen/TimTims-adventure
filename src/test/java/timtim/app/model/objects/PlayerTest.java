@@ -1,4 +1,4 @@
-package timtim.app.objects;
+package timtim.app.model.objects;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;

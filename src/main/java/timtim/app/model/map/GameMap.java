@@ -273,6 +273,7 @@ public class GameMap implements IGameMap {
 	@Override
 	public void setComplete() {
 		this.complete = true;
+		this.doors.
 	}
 
 	@Override
