@@ -2,6 +2,7 @@ package timtim.app.core.state;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -11,17 +12,16 @@ import com.badlogic.gdx.utils.Align;
 import timtim.app.core.AccessibleGame;
 import timtim.app.core.StateHandler;
 
-public class StartState implements StateHandler {
+public class InstructionState implements StateHandler {
 
     ShapeRenderer shape;
     SpriteBatch batch;
     BitmapFont font;
     private final AccessibleGame game;
 
-    public StartState (AccessibleGame game) {
+    public InstructionState (AccessibleGame game) {
         this.game = game;
         shape = new ShapeRenderer();
-
         this.batch = new SpriteBatch();
         this.font = new BitmapFont();
 
@@ -29,7 +29,7 @@ public class StartState implements StateHandler {
 
     @Override
     public void render(float delta) {
-        // render game in start state
+        // render game in how to play state
         handleInput();
 
         batch.begin();
@@ -51,36 +51,35 @@ public class StartState implements StateHandler {
         // Set the scale of the image
         imgSprite.setScale(0.2f); // Scale the image by half
 
+        //clears the screen 
+        Gdx.gl.glClearColor(0, 0, 0, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
         // Draw the image and the text
         imgSprite.draw(batch);
-        font.draw(batch, "Press ENTER to start TimTim's adventure!", centerXtext + 35, centerYtext + 50, 0, Align.center, false);
-        font.draw(batch, "If you ever want to give TimTim a break, just press 'P' !", centerXtext + 55, centerYtext, 0, Align.center, false);
+        font.draw(batch, "How to play Timtim's adventure!", centerXtext + 35, centerYtext + 150, 0, Align.center, false);
+        font.draw(batch, "Press 'A' to move to the left and 'D' to move right." , centerXtext + 35, centerYtext + 100, 0, Align.center, false);
+        font.draw(batch, "Press 'Space' to jump!", centerXtext + 35, centerYtext + 50, 0, Align.center, false);
+        font.draw(batch, "If you ever want to give TimTim a break, just press 'P' in game!", centerXtext + 35, centerYtext, 0, Align.center, false);
+        font.draw(batch, "Press 'M' to return to Main Menu", centerXtext + 35, centerYtext - 50, 0, Align.center, false);
 
         batch.end();
     }
 
 
-
     @Override
     public State getState() {
-        return State.START;
+        return State.INSTRUCTIONS;
     }
 
     private void handleInput() {
-        if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)){
-            startGame();
-        }
-        if (Gdx.input.isKeyJustPressed(Input.Keys.H)){
-            getInstructions();
+        if (Gdx.input.isKeyJustPressed(Input.Keys.M)){
+            returnToMenu();
         }
     }
 
-    private void startGame(){
-        game.switchState(State.PLAY);
+    private void returnToMenu(){
+        game.switchState(State.START);
     }
-
-    private void getInstructions(){
-        game.switchState(State.INSTRUCTIONS);
-    }
-
+    
 }

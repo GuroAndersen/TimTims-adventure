@@ -57,6 +57,7 @@ public class GameScreen extends ScreenAdapter implements AccessibleGame {
 		states.put(State.PAUSE, new PauseState(this));
 		states.put(State.GAMEOVER, new GameOverState(this));
 		states.put(State.START, new StartState(this));
+		states.put(State.INSTRUCTIONS, new InstructionState(this));
 	}
 
 	@Override
