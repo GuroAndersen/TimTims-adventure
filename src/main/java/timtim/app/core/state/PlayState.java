@@ -15,7 +15,7 @@ public class PlayState implements StateHandler {
     public PlayState (GameScreen game) {
         this.game = game;
     }
-    
+
     @Override
     public void render(float delta) {
         update(delta);
@@ -26,7 +26,7 @@ public class PlayState implements StateHandler {
 
         // Render map and player and objects
         game.renderMap();
-        
+
     }
 
     private void update(float delta) {
@@ -36,10 +36,7 @@ public class PlayState implements StateHandler {
     }
 
     private void handleInput() {
-        // Exit
-        if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) { // Closes game if escape is pressed
-            Gdx.app.exit();
-        }
+
         // Horizontal movement
         boolean moveLeft = false;
         boolean moveRight = false;
@@ -53,10 +50,14 @@ public class PlayState implements StateHandler {
         if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
             game.playerJump();
         }
-       
+
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.P)) {
             game.switchState(State.PAUSE);
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.M)) {
+            game.switchState(State.START);
         }
 
         //remember to edit this if statement when gameover is properly implemented

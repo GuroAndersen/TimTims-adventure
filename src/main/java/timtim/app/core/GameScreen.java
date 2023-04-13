@@ -4,7 +4,6 @@ import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
@@ -27,9 +26,8 @@ public class GameScreen extends ScreenAdapter implements AccessibleGame {
 	// Map rendering variables
 	private OrthographicCamera camera;
 	private Box2DDebugRenderer B2DDebugRenderer;
-	private OrthogonalTiledMapRenderer mapRenderer;
 	private float zoom = 0.5f;
-	
+
 	// Sprite rendering variables
 	private TextureAtlas atlas;
 	private SpriteBatch batch;
@@ -43,9 +41,6 @@ public class GameScreen extends ScreenAdapter implements AccessibleGame {
 		this.camera.zoom = zoom;
 		this.B2DDebugRenderer = new Box2DDebugRenderer();
 		this.model = new GameModel(this);
-
-		// MAP INIT
-		this.mapRenderer = this.model.getMapRenderer();
 
 		this.states = new HashMap<>();
 		initStates();
@@ -99,8 +94,12 @@ public class GameScreen extends ScreenAdapter implements AccessibleGame {
 		
 		float startX = camera.viewportWidth *zoom/ 2;
 		float startY = camera.viewportHeight*zoom / 2;
-		float width = mapRenderer.getMap().getProperties().get("width", Integer.class) * Const.PPM - startX*2;
-		float height = mapRenderer.getMap().getProperties().get("height", Integer.class) * Const.PPM - startY*2;
+		float width = this.model.getMapRenderer().getMap()
+				.getProperties().get("width", Integer.class)
+				* Const.PPM - startX*2;
+		float height = this.model.getMapRenderer().getMap()
+				.getProperties().get("height", Integer.class)
+				* Const.PPM - startY*2;
 		
 		//Leftmost and bottom boundaries
 		if (position.x < startX) position.x = startX;
@@ -115,8 +114,8 @@ public class GameScreen extends ScreenAdapter implements AccessibleGame {
 
 	@Override
 	public void renderMap() {
-		mapRenderer.setView(camera);
-		mapRenderer.render();
+		this.model.getMapRenderer().setView(camera);
+		this.model.getMapRenderer().render();
 		getBatch().setProjectionMatrix(camera.combined);
 		getBatch().begin();
 		// render objects

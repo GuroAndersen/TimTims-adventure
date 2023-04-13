@@ -1,7 +1,9 @@
 package timtim.app.core.state;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -11,6 +13,11 @@ import com.badlogic.gdx.utils.Align;
 import timtim.app.core.AccessibleGame;
 import timtim.app.core.StateHandler;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class StartState implements StateHandler {
 
     ShapeRenderer shape;
@@ -18,12 +25,30 @@ public class StartState implements StateHandler {
     BitmapFont font;
     private final AccessibleGame game;
 
+    private List<String> mapList;
+    private List<Boolean> mapSelection;
+    private final int selectionSpace = 50;
+
+
     public StartState (AccessibleGame game) {
         this.game = game;
         shape = new ShapeRenderer();
 
         this.batch = new SpriteBatch();
         this.font = new BitmapFont();
+
+        setupMapSelection();
+    }
+
+    private void setupMapSelection() {
+        this.mapSelection = new ArrayList<>();
+        this.mapList = new ArrayList<>();
+        boolean selected = true;
+        for (String map : game.getModel().getMapNames()) {
+            mapSelection.add(selected);
+            mapList.add(map);
+            if (selected) selected = false;
+        }
 
     }
 
@@ -52,13 +77,27 @@ public class StartState implements StateHandler {
         imgSprite.setScale(0.2f); // Scale the image by half
 
         // Draw the image and the text
+
         imgSprite.draw(batch);
+        // Change the color of the level selection text based on which level is currently selected
+        drawMapSelection(centerXtext, centerYtext);
+
+        font.setColor(Color.WHITE);
         font.draw(batch, "Press ENTER to start TimTim's adventure!", centerXtext + 35, centerYtext + 50, 0, Align.center, false);
         font.draw(batch, "If you ever want to give TimTim a break, just press 'P' !", centerXtext + 55, centerYtext, 0, Align.center, false);
 
         batch.end();
     }
 
+    private void drawMapSelection(float centerX, float centerY) {
+        for (int i = 0; i < mapSelection.size(); i++) {
+            boolean selected = mapSelection.get(i);
+            String map = mapList.get(i);
+            if (selected) font.setColor(Color.RED);
+            else font.setColor(Color.WHITE);
+            font.draw(batch, map, centerX + 35, centerY - (i+1) * selectionSpace, 0, Align.center, false);
+        }
+    }
 
 
     @Override
@@ -67,12 +106,48 @@ public class StartState implements StateHandler {
     }
 
     private void handleInput() {
+
+        // Exit
+        if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) { // Closes game if escape is pressed
+            Gdx.app.exit();
+        }
+
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)){
             startGame();
         }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
+            cycle(mapSelection, 1);
+            switchMap();
+        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
+            cycle(mapSelection, -1);
+            switchMap();
+        }
     }
+
+    private void switchMap() {
+        for (int i = 0; i < mapSelection.size(); i++) {
+            if (mapSelection.get(i))
+                game.getModel().swapLevel(mapList.get(i));
+        }
+    }
+
+    public static void cycle(List<Boolean> list, int direction) {
+        int index = list.indexOf(true);
+        list.set(index, false);
+        index = (index + direction + list.size()) % list.size();
+        list.set(index, true);
+        for (int i = (index + direction + list.size()) % list.size(); i != index; i = (i + direction + list.size()) % list.size()) {
+            list.set(i, false);
+        }
+    }
+
+
 
     private void startGame(){
         game.switchState(State.PLAY);
+
     }
 }
+
+
