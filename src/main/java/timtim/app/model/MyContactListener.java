@@ -36,11 +36,11 @@ public class MyContactListener implements ContactListener {
 
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Door)
                 || (fa.getUserData() instanceof Door && fb.getUserData() instanceof Player)) {
-            // System.out.println("Fixture A user data: " + fa.getUserData());
-            // System.out.println("Fixture B user data: " + fb.getUserData());
+            Friend f = (Friend) (fa.getUserData() instanceof Friend ? fa.getUserData() : fb.getUserData());
 
-            // Here we need to have a key pressed to either open the menu or to continue
-            // directly to the next level.
+            if (f.hasRecievedGift() == true) {
+                // Here we need to call the menu so that the player can change the level.
+            }
         }
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Chest)
                 || (fa.getUserData() instanceof Chest && fb.getUserData() instanceof Player)) {
