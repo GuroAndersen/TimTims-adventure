@@ -26,7 +26,7 @@ public class PlayState implements StateHandler {
 
         // Render map and player and objects
         game.renderMap();
-        this.game.getModel().getPlayer().getHealth()
+        this.game.getModel().getPlayer().getHealth();
 
     }
 
