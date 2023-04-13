@@ -1,4 +1,6 @@
-package timtim.app.objects;
+package timtim.app.model.objects;
+
+import timtim.app.model.objects.Inventory.Inventory;
 
 public interface IPlayer {
 
@@ -14,5 +16,10 @@ public interface IPlayer {
 	 */
 	public void jump();
 	
+	/**
+	 * Get the player's inventory
+	 * @return
+	 */
+	public Inventory getInventory();
 
 }

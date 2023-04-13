@@ -1,4 +1,4 @@
-package timtim.app.objects;
+package timtim.app.model.objects;
 
 public abstract class CombatEntity extends GameEntity {
 

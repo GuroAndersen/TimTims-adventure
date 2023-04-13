@@ -12,4 +12,4 @@ Steps:
 5. Repeat steps for the other levels. 
 
 Result: 
-After several playthroughs of each level, there are no visibile sign of a black screen around the tile map. 
+After several playthroughs of each level, there are no visibile sign of a black screen around the tile map.  

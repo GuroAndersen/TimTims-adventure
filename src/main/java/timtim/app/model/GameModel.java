@@ -1,70 +1,121 @@
 package timtim.app.model;
 
-import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 
 import timtim.app.core.GameScreen;
-import timtim.app.manager.GameMap;
-import timtim.app.manager.TileMapManager;
-import timtim.app.objects.GameEntity;
-import timtim.app.objects.Player;
-import timtim.app.objects.Friend.Friend;
+import timtim.app.core.state.State;
+import timtim.app.model.map.GameMap;
+import timtim.app.model.objects.GameEntity;
+import timtim.app.model.objects.Player;
 
 public class GameModel implements IGameModel {
 
 	private GameScreen gameScreen;
-	private TileMapManager tileMapManager;
-	private Player timtim;
+	private Player player;
+
+	// maps
+	private String currentMap;
+	private Map<String, GameMap> maps;
 
 	public GameModel(GameScreen gameScreen) {
 		this.gameScreen = gameScreen;
-		this.timtim = new Player(gameScreen);
-		this.tileMapManager = new TileMapManager(this, timtim);
+		this.player = new Player(gameScreen);
+		this.maps = new HashMap<String, GameMap>();
+		setup();
 	}
 
-	@Override
-	public Player getPlayer() {
-		return this.timtim;
-	}
-
-	public GameMap getCurrentMap() {
-		return tileMapManager.getCurrentMap();
-	}
-	
-	public GameScreen getGameScreen() {
-		return this.gameScreen;
-	}
-
-
-	@Override
-	public OrthogonalTiledMapRenderer getMapRenderer() {
-		return this.tileMapManager.getCurrentMap().getMapRenderer();
+	private void setup() {
+		loadMaps();
+		setMap("level2");
 	}
 
 	@Override
 	public void update(float delta) {
-		this.timtim.update(delta);
-		this.tileMapManager.update(delta);
-		
-		if (!this.timtim.isAlive()) {
-			tileMapManager.getCurrentMap().restart();
-			timtim.resetHealth();
+		this.player.update(delta);
+		this.maps.get(currentMap).update(delta);
+
+		if (!this.player.isAlive()) {
+			gameScreen.switchState(State.GAMEOVER);
+			getCurrentMap().restart();
+			player.resetHealth();
 		}
 	}
+
+	///////// MAP METHODS
+	private void loadMaps() {
+		BufferedReader reader;
+		try {
+			InputStream is = GameModel.class.getResourceAsStream("/maps.txt");
+			reader = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
+			String mapName;
+			while ((mapName = reader.readLine()) != null) {
+				maps.put(mapName, new GameMap(mapName, this));
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public GameMap getCurrentMap() {
+		return maps.get(currentMap);
+	}
+
+	private void setMap(String mapName) {
+		this.currentMap = mapName;
+		getPlayer().setBody(maps.get(mapName).getPlayerBody());
+	}
+
+	@Override
+	public OrthogonalTiledMapRenderer getMapRenderer() {
+		return getCurrentMap().getMapRenderer();
+	}
+
+	
+	///////// GETTERS
 	
 	@Override
 	public List<GameEntity> getEntities() {
 		List<GameEntity> entities = getCurrentMap().getEntities();
 		entities.add(getPlayer());
 		return entities;
-		
+
 	}
 
 	@Override
 	public World getCurrentWorld() {
-		return this.tileMapManager.getCurrentMap().getWorld();
+		return this.getCurrentMap().getWorld();
 	}
+
+	public GameScreen getGameScreen() {
+		return this.gameScreen;
+	}
+
+	@Override
+	public Player getPlayer() {
+		return this.player;
+	}
+
+	
+	/////// PLAYER
+
+	@Override
+	public void playerMove(boolean left, boolean right) {
+		this.player.move(left, right);
+	}
+
+	@Override
+	public void playerJump() {
+		this.player.jump();
+	}
+
 }
