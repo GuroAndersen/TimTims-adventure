@@ -4,6 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -75,6 +76,10 @@ public class StartState implements StateHandler {
 
         // Set the scale of the image
         imgSprite.setScale(0.2f); // Scale the image by half
+        
+        //clears the screen 
+        Gdx.gl.glClearColor(0, 0, 0, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         // Draw the image and the text
 
@@ -84,7 +89,7 @@ public class StartState implements StateHandler {
 
         font.setColor(Color.WHITE);
         font.draw(batch, "Press ENTER to start TimTim's adventure!", centerXtext + 35, centerYtext + 50, 0, Align.center, false);
-        font.draw(batch, "If you ever want to give TimTim a break, just press 'P' !", centerXtext + 55, centerYtext, 0, Align.center, false);
+        font.draw(batch, "Press 'H' to find out how to play Timtim's adeventure!", centerXtext + 55, centerYtext, 0, Align.center, false);
 
         batch.end();
     }
@@ -114,6 +119,9 @@ public class StartState implements StateHandler {
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)){
             startGame();
+        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.H)){
+            getInstructions();
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
             cycle(mapSelection, 1);
@@ -146,6 +154,11 @@ public class StartState implements StateHandler {
 
     private void startGame(){
         game.switchState(State.PLAY);
+
+    }
+
+    private void getInstructions(){
+        game.switchState(State.INSTRUCTIONS);
 
     }
 }
