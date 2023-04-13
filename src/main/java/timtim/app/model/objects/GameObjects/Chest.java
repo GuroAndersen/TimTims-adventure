@@ -24,8 +24,7 @@ public class Chest extends GameObject {
         openTexture = new Texture(openImagePath);
         fixture = body.getFixtureList().get(0);
         fixture.setUserData(this);
-        this.isOpen = false;
-        this.item = item;
+        isOpen = false;
     }
 
     public Fixture getFixture() {
@@ -38,8 +37,6 @@ public class Chest extends GameObject {
 
     public void open() {
         if (!isOpen) {
-            System.out.println("Chest opened!");
-
             super.texture = openTexture;
             if (closedTexture != null) {
                 closedTexture.dispose();
