@@ -19,12 +19,28 @@ I spillet beveger man seg til venstre med "A", høyre med "D" og hopper med "spa
 * Krever Java 17 eller senere
 
 ## Kjente feil
-* Det er mulig å gå utenfor brettet på noen nivå
+* I level 2 kan ikke spillkarakteren gå på den første broen, han må hoppe over den.
+* Game Over skjermen "flasher"
 * Man dør ikke eller begynner ikke på nytt når man faller i et hull
-* Kamera følger ikke spiller ut til venstre, men gjør det til høyre.
-* Terrenget har inkonsistent kollisjon
+* Terrenget har inkonsistent kollisjon - fortsatt med noen broer
 * Kan dobbelhoppe når man er borti et tak
-* Avhengig av vindustørrelse vises svarte vertikale striper når man beveger seg
+* Når spillet kjøres på mac, må man til tider trykke flere ganger på "space" før spillfiguren hopper
 
 ## Credits
-* Ikke hentet grafikk eller lyd eksternt enda
+* OpenGameArt credits Modified 32x32 Treasure chest - by Blarumyrran <br>
+Link: https://opengameart.org/content/modified-32x32-treasure-chest <br>
+* Generic Platformer Tiles - by Surt <br>
+Link: https://opengameart.org/content/generic-platformer-tiles <br>
+* Castle Door - by Tuomo Untinen <br>
+Link: https://opengameart.org/content/castle-door   <br>
+* Updated Generic Platformer Tiles, by tebruno99 updated from surt <br>
+Link: https://opengameart.org/content/updated-generic-platformer-tiles <br>
+* Skeleton Sprite, by r0ar <br>
+Link: https://opengameart.org/content/skeleton-sprite <br>
+* Snake rework, edited by AntumDeluge made from Baŝto & yolkatic <br>
+Link: https://opengameart.org/content/snake-rework <br>
+* Wolf Animation, by Stephen "Redshrike" Challener as graphic artist and William.Thompsonj as contributor <br>
+Link: https://opengameart.org/content/lpc-wolf-animation
+* Tileset Platform Forest, by thekingphoenix <br>
+Link: https://opengameart.org/content/tileset-platform-forest#comment-form
+
