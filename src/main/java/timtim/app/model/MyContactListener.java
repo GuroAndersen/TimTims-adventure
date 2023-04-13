@@ -23,7 +23,7 @@ public class MyContactListener implements ContactListener {
     private GameScreen game;
     private PlayState playState;
 
-    public MyContactListener(IGameModel model, GameScreen game) {
+    public MyContactListener(IGameModel model, GameScreen game, GameMap gameMap) {
         this.model = model;
         this.game = game;
         this.gameMap = gameMap;
@@ -49,7 +49,8 @@ public class MyContactListener implements ContactListener {
             Player p = (Player) (fa.getUserData() instanceof Player ? fa.getUserData() : fb.getUserData());
             Door d = (Door) (fa.getUserData() instanceof Door ? fa.getUserData() : fb.getUserData());
 
-            game.switchState(State.START);
+            if (gameMap.isComplete())
+                game.switchState(State.START);
 
         }
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Chest)

@@ -11,7 +11,6 @@ public class Door extends GameObject {
     public Fixture fixture;
     public Body body;
     private boolean isOpen;
-    private GameMap gameMap;
 
     public Door(Body body, float[] vertices, String imagePath) {
         super(body, new Texture(imagePath), vertices);
@@ -30,7 +29,7 @@ public class Door extends GameObject {
 
     public void open() {
         isOpen = true;
-        gameMap.setComplete();
+        // gameMap.setComplete();
     }
 
 }

@@ -87,7 +87,7 @@ public class GameMap implements IGameMap {
 
 	public void mapSetup() {
 		this.world = new World(new Vector2(0, Const.GRAVITY), false);
-		world.setContactListener(new MyContactListener(model, gameScreen));
+		world.setContactListener(new MyContactListener(model, gameScreen, this));
 		tiledMap = new TmxMapLoader().load(mapName + ".tmx"); // gets map from resource folder
 		parseStaticMapObjects(tiledMap.getLayers().get("static").getObjects()); // gets objects in the "objects" layer
 																				// of the tiledmap.

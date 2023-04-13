@@ -61,7 +61,7 @@ public class ItemFactory {
             return ItemFactory.newItem("ball");
         if (mapName.equals("level2"))
             return ItemFactory.newItem("juicebox");
-        if (mapName.equals("level_3"))
+        if (mapName.equals("level3"))
             return ItemFactory.newItem("jumper");
         throw new IllegalArgumentException("This level does not have an item");
     }
