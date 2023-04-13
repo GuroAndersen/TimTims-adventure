@@ -26,7 +26,12 @@ public class PlayState implements StateHandler {
 
         // Render map and player and objects
         game.renderMap();
+        drawPlayerHealth();
 
+
+    }
+    private void drawPlayerHealth(){
+        this.game.getModel().getPlayer().getMaxHealth();
     }
 
     private void update(float delta) {
