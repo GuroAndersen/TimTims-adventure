@@ -15,9 +15,9 @@ import com.badlogic.gdx.physics.box2d.World;
 
 import timtim.app.core.GameScreen;
 import timtim.app.core.state.State;
+import timtim.app.model.entity.GameEntity;
+import timtim.app.model.entity.Player;
 import timtim.app.model.map.GameMap;
-import timtim.app.model.objects.GameEntity;
-import timtim.app.model.objects.Player;
 
 public class GameModel implements IGameModel {
 

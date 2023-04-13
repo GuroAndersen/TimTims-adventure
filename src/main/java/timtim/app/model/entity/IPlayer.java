@@ -1,4 +1,4 @@
-package timtim.app.model.objects;
+package timtim.app.model.entity;
 
 import timtim.app.model.objects.Inventory.Inventory;
 

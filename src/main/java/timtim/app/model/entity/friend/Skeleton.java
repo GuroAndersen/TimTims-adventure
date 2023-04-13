@@ -1,8 +1,10 @@
-package timtim.app.model.objects.Friend;
+package timtim.app.model.entity.friend;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.utils.Array;
 
 import timtim.app.core.GameScreen;
@@ -13,8 +15,6 @@ import timtim.app.model.objects.Inventory.ItemFactory;
 
 public class Skeleton extends Friend {
 
-	GameScreen game;
-
 	/**
 	 * Creates a skeleton that wants the given item. It takes its sprite from the
 	 * gameScreen.
@@ -22,16 +22,15 @@ public class Skeleton extends Friend {
 	 * @param game
 	 * @param map
 	 */
-	public Skeleton(GameScreen game, GameMap map) {
-		super(map, ItemFactory.newItem("jumper"));
-		this.game = game;
-		this.sprite = new Sprite(game.getAtlas().findRegion("skeleton"));
+	public Skeleton(Body body, Texture texture, GameMap map) {
+		super(body, texture, map, ItemFactory.newItem("jumper"));
 		this.spriteYOffset = Const.PPM * 0.5f;
 		setupAnimation();
 	}
 
 	/**
-	 * Testing constructor using the given item
+	 * Testing constructor using the given item.
+	 * Does not set up body or sprite.
 	 * 
 	 * @param item
 	 */

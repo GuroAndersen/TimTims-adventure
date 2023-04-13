@@ -1,4 +1,7 @@
-package timtim.app.model.objects;
+package timtim.app.model.entity;
+
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.physics.box2d.Body;
 
 public abstract class CombatEntity extends GameEntity {
 
@@ -9,20 +12,26 @@ public abstract class CombatEntity extends GameEntity {
 	 */
 	private int strength;
 	
-	public CombatEntity() {
-		super();
-		this.maxHealth = 1;
-		this.health = 1;
-		this.strength = 0;
-	}
-	
 	/**
 	 * Construct a CombatEntity with the given 
 	 * maximum health and strength.
 	 * @param maxHealth the max health of this entity
 	 * @param strength the strength of this entity
 	 */
+	public CombatEntity(Body body, Texture texture, int maxHealth, int strength) {
+		super(body, texture);
+		this.maxHealth = 1;
+		this.health = 1;
+		this.strength = 0;
+	}
+	
+	/**
+	 * Testing constructur. Body and sprite in GameObject remain null.
+	 * @param maxHealth
+	 * @param strength
+	 */
 	public CombatEntity(int maxHealth, int strength) {
+		super(null,null);
 		this.maxHealth = maxHealth;
 		this.health = maxHealth;
 		this.strength = strength;

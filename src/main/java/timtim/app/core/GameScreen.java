@@ -12,7 +12,7 @@ import timtim.app.core.state.*;
 import timtim.app.manager.Const;
 import timtim.app.model.GameModel;
 import timtim.app.model.IGameModel;
-import timtim.app.model.objects.GameEntity;
+import timtim.app.model.entity.GameEntity;
 
 import java.util.HashMap;
 

@@ -6,7 +6,7 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
 
-import timtim.app.model.objects.GameEntity;
+import timtim.app.model.entity.GameEntity;
 
 public interface IGameMap {
 

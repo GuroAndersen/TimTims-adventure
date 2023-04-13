@@ -27,16 +27,17 @@ import timtim.app.manager.Const;
 import timtim.app.model.GameModel;
 import timtim.app.model.IGameMap;
 import timtim.app.model.MyContactListener;
-import timtim.app.model.objects.Enemy;
-import timtim.app.model.objects.GameEntity;
-import timtim.app.model.objects.Player;
-import timtim.app.model.objects.Friend.Friend;
-import timtim.app.model.objects.Friend.Skeleton;
-import timtim.app.model.objects.Friend.Snake;
-import timtim.app.model.objects.Friend.Wolf;
-import timtim.app.model.objects.GameObjects.Chest;
-import timtim.app.model.objects.GameObjects.Door;
-import timtim.app.model.objects.GameObjects.Flora;
+import timtim.app.model.entity.Enemy;
+import timtim.app.model.entity.GameEntity;
+import timtim.app.model.entity.Player;
+import timtim.app.model.entity.friend.Friend;
+import timtim.app.model.entity.friend.Skeleton;
+import timtim.app.model.entity.friend.Snake;
+import timtim.app.model.entity.friend.Wolf;
+import timtim.app.model.objects.Chest;
+import timtim.app.model.objects.Door;
+import timtim.app.model.objects.Flora;
+import timtim.app.model.objects.GameObject;
 import timtim.app.model.objects.Inventory.Item;
 import timtim.app.model.objects.Inventory.ItemFactory;
 
@@ -51,35 +52,21 @@ public class GameMap implements IGameMap {
 
 	OrthogonalTiledMapRenderer renderer;
 
-	// objects
-	private ArrayList<Door> doors;
-	private ArrayList<Flora> floras;
-	private ArrayList<Chest> chests;
-
-	// entities
-	private ArrayList<Friend> friends;
-	private ArrayList<Enemy> enemies;
+	private ArrayList<GameObject> objects;
 	private Player player;
 
 	/**
 	 * Completion criteria
 	 */
 	private boolean complete;
-	// private boolean isDoorOpen;
 
 	public GameMap(String mapName, GameModel model) {
 		this.gameScreen = model.getGameScreen();
 		this.model = model;
 		this.mapName = mapName;
 		this.player = model.getPlayer();
-		tiledMap = new TmxMapLoader().load(mapName + ".tmx"); // gets map from resource folder
-		doors = new ArrayList<Door>();
-		chests = new ArrayList<Chest>();
-		floras = new ArrayList<Flora>();
-		enemies = new ArrayList<Enemy>();
-		friends = new ArrayList<Friend>();
-		complete = false;
-		// isDoorOpen = false;
+		tiledMap = new TmxMapLoader().load(mapName + ".tmx");
+		objects = new ArrayList<>();
 		mapSetup();
 
 	}
@@ -100,11 +87,7 @@ public class GameMap implements IGameMap {
 	}
 
 	private void clearObjects() {
-		this.doors.clear();
-		this.enemies.clear();
-		this.friends.clear();
-		this.floras.clear();
-		this.chests.clear();
+		this.objects.clear();
 	}
 
 	private void parsePlayerObject(MapObjects objects) {
@@ -149,13 +132,13 @@ public class GameMap implements IGameMap {
 						rect.getY() + rect.getHeight() / 2, rect.getWidth(), rect.getHeight(), true, world);
 				switch (name) {
 				case "skeleton":
-					friend = new Skeleton(gameScreen, this);
+					friend = new Skeleton(body, gameScreen.getAtlas().findRegion("skeleton").getTexture(), this);
 					break;
 				case "wolf":
-					friend = new Wolf(gameScreen, this);
+					friend = new Wolf(body, gameScreen.getAtlas().findRegion("wolf").getTexture(), this);
 					break;
 				case "snake":
-					friend = new Snake(gameScreen, this);
+					friend = new Snake(body, gameScreen.getAtlas().findRegion("snake").getTexture(), this);
 					break;
 				default:
 					throw new IllegalArgumentException("This friend type is not represented");
@@ -163,7 +146,7 @@ public class GameMap implements IGameMap {
 				friend.setBody(body);
 				Fixture fixture = body.getFixtureList().get(0);
 				fixture.setUserData(friend);
-				friends.add(friend);
+				this.objects.add(friend);
 			} else {
 				throw new IllegalArgumentException("Friend map object not found or is not a RectangleMapObject");
 			}
@@ -194,7 +177,7 @@ public class GameMap implements IGameMap {
 		Fixture doorFixture = body.getFixtureList().get(0);
 		doorFixture.setUserData(door);
 		doorFixture.setSensor(true);
-		doors.add(door);
+		objects.add(door);
 	}
 
 	private void parseDoorObject(MapObjects objects) {
@@ -213,7 +196,7 @@ public class GameMap implements IGameMap {
 		Fixture floraFixture = body.getFixtureList().get(0);
 		floraFixture.setUserData(flora);
 		floraFixture.setSensor(true);
-		floras.add(flora);
+		objects.add(flora);
 	}
 
 	private void parseFloraObject(MapObjects objects, Texture floraTexture) {

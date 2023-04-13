@@ -1,16 +1,18 @@
-package timtim.app.model.objects.Friend;
+package timtim.app.model.entity.friend;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.utils.Align;
 
 import timtim.app.manager.Const;
+import timtim.app.model.entity.GameEntity;
 import timtim.app.model.map.GameMap;
-import timtim.app.model.objects.GameEntity;
 import timtim.app.model.objects.Inventory.Item;
 
 public abstract class Friend extends GameEntity implements IFriend {
@@ -23,7 +25,6 @@ public abstract class Friend extends GameEntity implements IFriend {
 
     private boolean itemReceived;
 
-    protected Sprite sprite;
     protected BitmapFont font;
     protected float spriteXOffset;
     protected float spriteYOffset;
@@ -38,7 +39,8 @@ public abstract class Friend extends GameEntity implements IFriend {
      * @param map
      * @param newItem
      */
-    public Friend(GameMap map, Item newItem) {
+    public Friend(Body body, Texture texture, GameMap map, Item newItem) {
+    	super(body, texture);
         this.map = map;
         this.item = newItem;
         this.font = new BitmapFont();
@@ -47,10 +49,12 @@ public abstract class Friend extends GameEntity implements IFriend {
 
     /**
      * Testing constructor.
+     * Does not set up sprite or body.
      * 
-     * @param item
+     * @param item the item wanted by this friend
      */
     public Friend(Item item) {
+    	super(null,null);
         this.item = item;
     }
 
@@ -125,14 +129,7 @@ public abstract class Friend extends GameEntity implements IFriend {
         }
     }
 
-    private void updateSprite(float delta) {
-        float spriteX = (body.getPosition().x * Const.PPM - sprite.getWidth() / 2) + spriteXOffset;
-        float spriteY = (body.getPosition().y * Const.PPM - sprite.getHeight() / 2) + spriteYOffset;
-        sprite.setBounds(spriteX, spriteY, sprite.getRegionWidth(), sprite.getRegionHeight());
-        sprite.setRegion(getFrame(delta));
-    }
-
-    private TextureRegion getFrame(float delta) {
+    protected TextureRegion getFrame(float delta) {
 
         this.stateTimer += delta;
         TextureRegion frame = idleAnimation.getKeyFrame(stateTimer, true);

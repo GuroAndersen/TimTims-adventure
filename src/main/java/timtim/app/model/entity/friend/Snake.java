@@ -1,9 +1,11 @@
-package timtim.app.model.objects.Friend;
+package timtim.app.model.entity.friend;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.utils.Array;
 
 import timtim.app.core.GameScreen;
@@ -18,9 +20,8 @@ public class Snake extends Friend {
 	 * 
 	 * @param gameScreen
 	 */
-	public Snake(GameScreen gameScreen, GameMap map) {
-		super(map, ItemFactory.newItem("juicebox"));
-		this.sprite = new Sprite(gameScreen.getAtlas().findRegion("snake"));
+	public Snake(Body body, Texture texture, GameMap map) {
+		super(body, texture, map, ItemFactory.newItem("juicebox"));
 		setupAnimation();
 	}
 

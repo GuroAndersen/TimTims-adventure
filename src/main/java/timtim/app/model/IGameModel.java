@@ -6,8 +6,8 @@ import java.util.Set;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 
-import timtim.app.model.objects.GameEntity;
-import timtim.app.model.objects.Player;
+import timtim.app.model.entity.GameEntity;
+import timtim.app.model.entity.Player;
 
 
 /**

@@ -1,8 +1,10 @@
-package timtim.app.model.objects.Friend;
+package timtim.app.model.entity.friend;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.utils.Array;
 
 import timtim.app.core.GameScreen;
@@ -12,8 +14,6 @@ import timtim.app.model.objects.Inventory.ItemFactory;
 
 public class Wolf extends Friend {
 
-	GameScreen game;
-
 	/**
 	 * Creates a wolf that wants the given item. It takes its sprite from the
 	 * gamescreen.
@@ -21,10 +21,8 @@ public class Wolf extends Friend {
 	 * @param game
 	 * @param map
 	 */
-	public Wolf(GameScreen game, GameMap map) {
-		super(map, ItemFactory.newItem("ball"));
-		this.game = game;
-		this.sprite = new Sprite(game.getAtlas().findRegion("wolf"));
+	public Wolf(Body body, Texture texture, GameMap map) {
+		super(body, texture, map, ItemFactory.newItem("ball"));
 		setupAnimation();
 	}
 

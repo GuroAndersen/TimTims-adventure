@@ -8,12 +8,12 @@ import com.badlogic.gdx.physics.box2d.*;
 import timtim.app.core.GameScreen;
 import timtim.app.core.state.PlayState;
 import timtim.app.core.state.State;
+import timtim.app.model.entity.Player;
+import timtim.app.model.entity.friend.Friend;
 import timtim.app.model.map.GameMap;
-import timtim.app.model.objects.Player;
-import timtim.app.model.objects.Friend.Friend;
-import timtim.app.model.objects.GameObjects.Chest;
-import timtim.app.model.objects.GameObjects.Door;
-import timtim.app.model.objects.GameObjects.Flora;
+import timtim.app.model.objects.Chest;
+import timtim.app.model.objects.Door;
+import timtim.app.model.objects.Flora;
 import timtim.app.model.objects.Inventory.Item;
 
 public class MyContactListener implements ContactListener {
@@ -90,7 +90,7 @@ public class MyContactListener implements ContactListener {
                 || (fa.getUserData() instanceof Flora && fb.getUserData() instanceof Player)) {
             Flora f = (Flora) (fa.getUserData() instanceof Flora ? fa.getUserData() : fb.getUserData());
             Player p = (Player) (fa.getUserData() instanceof Player ? fa.getUserData() : fb.getUserData());
-            p.takeDamage(f.damage());
+            f.doDamage(p);
         } else {
 
         }
