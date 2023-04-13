@@ -215,13 +215,14 @@ ___
 |:--------------:|:-------------------:|:---------------:|:-----|
 | Som spiller skal jeg kunne plukke opp en "PowerUp" og forbedre spillekarakterens ferdigheter | Gitt at spilleren plukker opp en "PowerUp" <br> -skal spillkarakteren bevege seg raskere i en gitt tidsperiode | Metode som implementerer "PowerUp" | 12 |
 
+
 ### **Prioritering av oppgaver fremover**
 De viktigste elementene i spillet er nå på plass. Til den endelige innleveringen vil vi fokusere på å få på plass noen flere features, samt fikse bugs. 
 
 De viktigste oppgavene fremover er: <br>
 
 *PowerUp* <br> 
-Spilleren skal ha muligheten til å forbedre sine ferdigheter. Det vil eksempelvi være ved å plukke opp et objekt, for å så bevege seg raskere eller hoppe høyere. <br>
+Spilleren skal ha muligheten til å forbedre sine ferdigheter. Det vil eksempelvis være ved å plukke opp et objekt, for å så bevege seg raskere eller hoppe høyere. <br>
 
 *Bevegende fiender* <br>
 Til nå har vi kun statiske fiender. Det vil si at objekter i spillet som er fiendlig for spilleren står i ro. Til den endelige innleveringen vil vi implementere bevegende fiender. Dette vil gjøre spillet mer utfordrende, og gi spilleren en mer helhetlig opplevelse. <br>
@@ -230,9 +231,13 @@ Til nå har vi kun statiske fiender. Det vil si at objekter i spillet som er fie
 Spillet vårt består av 3 level. Til den endelige innleveringen ønsker vi å få på plass at dersom spilleren har fullført et level, vil det ligge som "åpent" i menyen. Det vil si at spilleren til enhver tid skal kunne returnere til menyen og fortsette på et annet level som spilleren har åpnet. 
 
 
-*Dø utenfor brettet(falle ned i vann)* <br>
+*Spillkarakteren dør dersom den faller utenfor brettet* <br>
+Dersom spillkarakteren eksempelvis faller ned i vann eller "utenfor spillbrettet". Skal den miste alle livene og dø. Dette er noe vi ønser å få på plass til den endelige innleveringen. <br>
+
+Det er laget et nytt mvp krav for PowerUp. Dette er grunnet vi føler det ikke inngår i de eksisterende kravene, derav må være et eget. De resterende oppgavene inngår i stor grad i eksisterende mvp krav og brukerhistorier, og vi har derfor ikke laget nye.
 
 *Musikk/lyd*
+Implementere bakgrunsmusikk og/eller lydefekkter i spillet. <br>
 
 ___
 ### **Bugs**
@@ -253,30 +258,26 @@ ___
 ### **Kjøre koden**
 Se README for instruksjoner.
 
-TODO
-Dersom vi får testet på Linux: <br>
-Siden sist har vi og testet spillet på Linux. Dvs at spillet nå skal kjøre på Windows, Mac og Linux.
-
-Dersom vi ikke får testet på Linux: <br>
 Vi har ikke hatt tilgang til Linux under denne innleveringen, og har derav ikke fått testet det. Men vi har nå fått tak i en person i Storbritania som bruker Linux, som har sagt han kan testet det for oss til neste oblig. Dette vil derfor bære på plass til siste innlevering. 
 ___
 ### **Klassediagram**
 Se ClassDiagramOblig3.png.
 Dersom det er i dårlig oppløsning, ta kontakt så kan vi sende det direkte på Discord.
 
-TODO
-Cecilie fix?
 ___
 ### **Tester**
-TODO
-
-Får vi testet GUI?
-Hvilke tester har vi?
-Knytte mot "Utbedring av feil"
-
 Per nå har vi tester til følgende klasser: <br>
-* TODO
-* TODO
+* PlayerState
+* BodyManager
+* TiledMapManager
+* GameModel
+* GameMap
+* CombatEntity
+* Enemy
+* Friend
+* Player
+* Inventory
+
 ___
 ### **Analyseverktøy**
 Vi har heller ikke under denne obligen prioritert å ta i bruk et analyseverktøy. Vi har brukt tid på å få på plass store deler av koden, samt skrive tilhørende tester. Vi vil vurdere om dette er noe vi skal bruke til siste innlevering, men det vil ikke være førsteprioritet.

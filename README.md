@@ -24,7 +24,7 @@ I spillet beveger man seg til venstre med "A", høyre med "D" og hopper med "spa
 * Man dør ikke eller begynner ikke på nytt når man faller i et hull
 * Terrenget har inkonsistent kollisjon - fortsatt med noen broer
 * Kan dobbelhoppe når man er borti et tak
-
+* Når spillet kjøres på mac, må man til tider trykke flere ganger på "space" før spillfiguren hopper
 
 ## Credits
 * OpenGameArt credits Modified 32x32 Treasure chest - by Blarumyrran <br>
