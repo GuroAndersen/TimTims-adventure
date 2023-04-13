@@ -9,7 +9,6 @@
 
 *Oppsummering:* <br>
 Grunnet obligatoriske oppgaver i andre fag (blant annet INF222), ble møte i dag i det korteste laget. Derfor vil vi ta et ekstra møte førstkommende mandag. Det ble snakket litt om spritebatch og tegning av hovedkarakter.
-legge til objektlag for friends og enemies i Tiled
 
 *Diskusjoner:* <br>
 Det ble diskutert hvordan vi løser friends og enemies i Tiled. Her konkluderte vi med å lage et eget objektlag for friends og et eget objektlagt for enemies. 
@@ -47,10 +46,10 @@ ___
 **Referent: Mattias** <br>
 
 *Oppsummering:* <br>
-Møte startet med å oppsumere hva de enkelte de har gjort siden sist. Her ble det blant annet presentert hvordan vi har løst kollisjon med objekter. Eksemepelvis når spillkarakteren kolliderer med døresn som skal ta spilleren til neste level. I tilegg har vi i stor grad diskutert hvordan vi videre skal utarbeide welcome screen og pause screen.
+Møte startet med å oppsumere hva de enkelte de har gjort siden sist. Her ble det blant annet presentert hvordan vi har løst kollisjon med objekter. Eksemepelvis når spillkarakteren kolliderer med døren som skal ta spilleren til neste level. I tilegg har vi i stor grad diskutert hvordan vi videre skal utarbeide welcome screen og pause screen.
 
 *Diskusjoner:* <br>
-Som beskrevet over har vi i stor grad jobbet med welcome screen og pause screen. Her har vi møtt på noen problemer. Planen var i utgangspunktet å ha ulike skjermer/klasser for pause og welcome. Dette har dog bydd på problemer dypere ned i biblioteket. Derfor gitt mye av dette møte til å diskutere hvordan vi skal løse dette. Løsningen vi ser som mest hensiktsmessig er å samle dette i gameScreen som forskjellig states.
+Som beskrevet over har vi i stor grad jobbet med welcome screen og pause screen. Her har vi møtt på noen problemer. Planen var i utgangspunktet å ha ulike skjermer/klasser for pause og welcome. Dette har dog bydd på problemer dypere ned i biblioteket. Derfor gitt mye av dette møte til å diskutere hvordan vi skal løse dette. Løsningen vi ser som mest hensiktsmessig er å samle dette i gameScreen som har forskjellig states.
 
 *Neste møte* <br>
 30.03.2023 <br>
@@ -107,7 +106,7 @@ ___
 ### **Rollebeskrivelse**
 I denne avsnittet vil vi beskrive de forskjellige rollene i taemet. Det er i stor grad vektlagt hvordan vi har jobbet frem til nå, og hvordan vi ser for oss at vi skal jobbe fremover. Beskrivelse av hvilke oppgaver de forskjellige rollene har står beskrevet i Oblig1.md. Vi har foreløpig bestemt oss for å ikke utarbeide nye roller, da vi ser at de som ble definert tidligere har fungert til nå. Derfor vil avsnittet under være svært likt som ved forrige oblig. 
 
-*Utvikler* <br>
+*Utvikler:* <br>
 Utover de beskrevne rollene under har hele teamet fungert som utviklere. Det har vært fokus på å kode i fellesskap når vi møtes, slik at alle er oppdatert på koden. Kontra tidligere oblig har gruppen som helhet hatt større fokus på å jobbe som utvikler, da det har vært det viktigste fokuset.
 
 
@@ -133,7 +132,7 @@ Samtlige i gruppen har ansvar for å utvikle tester. Vi har fokusert på å før
 
 ___
 ### **Erfaringer rundt gruppen og prosjektmetodikk**
-Prosjektmetodikken begynner i større grad å bli en naturlig arbeidsmåte for teamet som helhet. Selv om flere synes den agile tilnærmingen var uvant i start, begynner det nå falle på plass. Vi er blitt mer bevisste enn tidligere på følge de satte stegene i hver sprint (planlegge, designe, kode og teste, diskutere veien videre). Men det viktigste læringsmomentet vi har hatt til nå er at vi er blitt mye mer smidig på å tørre å pivotere til andre retninger dersom vi ser det nødvendig. Eksempelvis jobbet gruppen lenge med å implementere welcome screen og pause screen som egne klasser. Da vi så at det ville skape videre problemer i koden, og vi fant en bedre løsning, nølte ikke gruppen med å prøve et annet alternativ. Dette viser en agil tilnærming som vi føler vi mestrer. 
+Prosjektmetodikken begynner i større grad å bli en naturlig arbeidsmåte for teamet som helhet. Selv om flere synes den agile tilnærmingen var uvant i starten, begynner det nå falle på plass. Vi er blitt mer bevisste enn tidligere på følge de satte stegene i hver sprint (planlegge, designe, kode og teste, diskutere veien videre). Men det viktigste læringsmomentet vi har hatt til nå er at vi er blitt mye mer smidig på å tørre å pivotere til andre retninger dersom vi ser det nødvendig. Eksempelvis jobbet gruppen lenge med å implementere welcome screen og pause screen som egne klasser. Da vi så at det ville skape videre problemer i koden, og vi fant en bedre løsning, nølte ikke gruppen med å prøve et annet alternativ. Dette viser en agil tilnærming som vi føler vi mestrer. 
 
 Projectboardet har blitt flittig brukt siden sist gang, og vi føler som gruppe at dette er en natulig det av prosjektmetodikken. Vi har siden sist gang fått inn flere rutiner hva gjelder Projectboardet som gjør arbeidet mer effektivt. Med en gang et team-medlem kommer på en oppgave som burde vært gjort skrives den opp i projectboardet. Videre vil gruppen i fellesskap diskutere hvorvidt dette bør gjennomføres, hvor høy prioritet den oppgaven har, og hvem som skal gjennomføre den. På denne måten sikrer vi at vi ikke glemmer noe, samt at vi i fellesskap blir enighet om hvordan det er mest hensiktsmessig å gjennomføre en oppgave. 
 
@@ -142,7 +141,7 @@ ____
 Dynamikken i gruppen fortsetter å være svært god. Etter å ha jobbet sammen i noen måneder nå begynner gruppen å kjenne hverandre bedre, og føle seg mer trygge på hverandre. Dette fører til at vi i større grad har en åpen dialog, og at gruppen tør i gi direkte tilbakemeldinger til hverandre. Dette aspektet er svært viktig, spesielt når man har en agil prosjektmetodikk. Det at individere i gruppen våger å si ifra når hen føler at vi bør prøve andre løsninger, eller pivotere inn på et annet spor, er helt avgjørende for å lykkes med en slik prosjektmetodikk. Dette føler vi at at vi i større grad mestre nå enn tidligere.
 ___
 ### **Kommunikasjon**
-Kommunikasjonen i gruppen har vært veldig god, men kontra tidligere har vi fått brynt oss på noen utfordringer. Ved flere anledninger har utvalgte i gruppen vært syk under gruppetimer og team-møter. Dette har ført til at vi har måtte prøve å finne en måte få de til å være oppdatert på hva som er blitt gjort siden sist, samt hva de bør gjøre til neste gang. I starten gjorde vi dette i sin helhet over Discord. Dette ser vi etterkant fungerte helt middels. Selv Discord er en fin plattform å snakke sammen på, vil noe informasjon forsvinne kontra å snakke sammen fysisk. Derfor valgte vi etterhvert å heller løse det ved at enten en på teamet som var på gruppetimen ringer den som var syk og forteller hva som ble gjort og hva vi anbefaler å gjøre videre, eller ved å sette opp ett ekstra team-møte. Dette har fungert veldig bra, og vi føler at vi har fått en god måte å håndtere dette på. <br>
+Kommunikasjonen i gruppen har vært veldig god, men kontra tidligere har vi fått brynt oss på noen utfordringer. Ved flere anledninger har utvalgte i gruppen vært syk under gruppetimer og team-møter. Dette har ført til at vi har måtte prøve å finne en måte å få de som ikke vær til stede, til å være oppdatert på hva som er blitt gjort siden sist, samt hva de bør gjøre til neste gang. I starten gjorde vi dette i sin helhet over Discord. Dette ser vi etterkant fungerte helt middels. Selv Discord er en fin plattform å snakke sammen på, vil noe informasjon forsvinne kontra å snakke sammen fysisk. Derfor valgte vi etterhvert å heller løse det ved at enten en på teamet som var på gruppetimen ringer den som var syk og forteller hva som ble gjort og hva vi anbefaler å gjøre videre, eller ved å sette opp ett ekstra team-møte. Dette har fungert veldig bra, og vi føler at vi har fått en god måte å håndtere dette på. <br>
 
 Utover dette er i fornøyd med dynamikken i gruppen. Alle får komme til ordet, alle meninger blir hørt, og den generelle kommunikasjonen er veldig god.
 ___
@@ -152,12 +151,12 @@ Som ved forrige oblig blir mye av retroperspektivet diskutert under avsnittene P
 
 Likevel er det verdt å nevne at vi til enhver tid har vært bevist på, og diskutert, hva som fungerer og hva som kan forbedres. Dette gjelder prosjektmetodikk, roller i teamet, kommunikasjon og selve koden. Det at vi har denne dialogen i gruppen gjør at vi sørger for at vi til enhver til er effektive, samt at trivselen på gruppen er på topp. <br>
 
-Det vi ønser å forbedre under neste oblig er tydelig kommunisere og bevisstgjøre hverander på hvilken del av sprinten vi er på til ethvert tidspunkt. Selv om vi gjennomføre en sprint som en gruppe, vil team-medlemmene jobbe på forskjellige deler av koden, og vil til tider være på forskjellige deler av sprinten. Spesielt i tilfeller hvor vi pivoterer, kan det være vanskelig å vite om vi er på planleggingsstadiet, eller om vi er i designstadiet. Dette kan føre til at vi ikke er like effektive som vi kunne vært. 
+Det vi ønsker å forbedre under neste oblig er tydelig kommunisere og bevisstgjøre hverander på hvilken del av sprinten vi er på til ethvert tidspunkt. Selv om vi gjennomføre en sprint som en gruppe, vil team-medlemmene jobbe på forskjellige deler av koden, og vil til tider være på forskjellige deler av sprinten. Spesielt i tilfeller hvor vi pivoterer, kan det være vanskelig å vite om vi er på planleggingsstadiet, eller om vi er i designstadiet. Dette kan føre til at vi ikke er like effektive som vi kunne vært. 
 
 ___
 
 ### **Bidrag til kodebasen**
-Under oblig 1 fikk vi tilbakemelding å at vi hadde for ujevne commits. Dette har vært et stort fokus i denne obligen. Vi har oppnådd et mye jevnere nivå denne gangen. Årsaken til dette er for det første at samtlige i gruppen har blit bedre på git. Dette gjør at gruppen som helhet har blitt tryggere på å pushe kode. Videre har flere nå jobbet med koden selvstendig som fører til flere commits per person. <br>
+Under oblig 1 fikk vi tilbakemelding å at vi hadde for ujevne commits. Dette har vært et stort fokus i denne obligen. Vi har oppnådd et mye jevnere nivå denne gangen. Årsaken til dette er for det første at samtlige i gruppen har blitt bedre på git. Dette gjør at gruppen som helhet har blitt tryggere på å pushe kode. Videre har flere nå jobbet med koden selvstendig som fører til flere commits per person. <br>
 
 Likevel vil det også denne gangen være noen ujevnheter. Årsaken til dette er blant annet at individer på gruppen har forskjellige git-vaner, samt at noen fortsatt har jobber med det grafiske som ikke fører til commits. Dog er vi fornøyd med fordelingen av commits, og anser den som naturlig. 
 ___
@@ -258,7 +257,7 @@ ___
 ### **Kjøre koden**
 Se README for instruksjoner.
 
-Vi har ikke hatt tilgang til Linux under denne innleveringen, og har derav ikke fått testet det. Men vi har nå fått tak i en person i Storbritania som bruker Linux, som har sagt han kan testet det for oss til neste oblig. Dette vil derfor bære på plass til siste innlevering. 
+Vi har ikke hatt tilgang til Linux under denne innleveringen, og har derav ikke fått testet det. Men vi har nå fått tak i en person i Storbritannia som bruker Linux, som har sagt han kan testet det for oss til neste oblig. Dette vil derfor bære på plass til siste innlevering. 
 ___
 ### **Klassediagram**
 Se ClassDiagramOblig3.png.
