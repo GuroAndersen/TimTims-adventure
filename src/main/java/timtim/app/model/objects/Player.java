@@ -34,6 +34,11 @@ public class Player extends CombatEntity implements IPlayer {
 		baseSetup();
 	}
 	
+	public Player(int health, int strength) {
+		super(health, strength);
+		baseSetup();
+	}
+	
 	private void baseSetup() {
 		this.speed = 4f;
 		this.inventory = new Inventory();
@@ -73,7 +78,7 @@ public class Player extends CombatEntity implements IPlayer {
 	public void update(float delta) {
 		
 		updateMovement();
-		updateSprite(delta);
+		if (this.sprite != null) updateSprite(delta);
 	}
 
 	private void updateSprite(float delta) {
