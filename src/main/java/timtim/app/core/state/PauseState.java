@@ -5,6 +5,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Align;
@@ -36,10 +37,32 @@ public class PauseState implements StateHandler {
 
         batch.begin();
 
-        // Calculate the center position of the screen
-        float centerX = game.getCamera().viewportWidth / 2f;
-        float centerY = game.getCamera().viewportHeight / 2f;
-
+          // Load the image
+          Texture imgage = new Texture(Gdx.files.internal("timtimArt.png"));
+          Sprite imgSprite = new Sprite(imgage);
+   
+           // Calculate the center position of the screen
+          float imageX = game.getCamera().viewportWidth / 5f;
+          float imageY = game.getCamera().viewportHeight / 2f;
+   
+          // Set the position of the image to be centered on the screen
+          imgSprite.setPosition(imageX - imgSprite.getWidth() / 2f -20,
+                   imageY - imgSprite.getHeight() / 2f );
+   
+          // Set the scale of the image
+          imgSprite.setScale(0.2f); // Scale the image by half
+  
+  
+          // Calculate the center position of the screen
+          float centerX = game.getCamera().viewportWidth / 2f;
+          float centerY = game.getCamera().viewportHeight / 2f;
+          
+          //clears the screen 
+          Gdx.gl.glClearColor(0, 0, 0, 1);
+          Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+  
+          // Draw "game over" centered on the screen
+          imgSprite.draw(batch);
         // Draw PauseScreen centered on the screen
 
         font.draw(batch, "TimTim is having a break!", centerX, centerY, 0, Align.center, false);
