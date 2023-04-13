@@ -21,7 +21,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.physics.box2d.Fixture;
 
-<<<<<<< HEAD:src/main/java/timtim/app/manager/GameMap.java
+
 import timtim.app.core.MyContactListener;
 import timtim.app.objects.Player;
 import timtim.app.objects.GameObjects.Chest;
@@ -29,7 +29,7 @@ import timtim.app.objects.GameObjects.Door;
 import timtim.app.objects.GameObjects.Flora;
 import timtim.app.objects.Inventory.Item;
 import timtim.app.objects.Inventory.ItemFactory;
-=======
+
 import timtim.app.core.GameScreen;
 import timtim.app.manager.BodyManager;
 import timtim.app.manager.Const;
@@ -46,7 +46,7 @@ import timtim.app.model.objects.Friend.Wolf;
 import timtim.app.model.objects.GameObjects.Chest;
 import timtim.app.model.objects.GameObjects.Door;
 import timtim.app.model.objects.GameObjects.Flora;
->>>>>>> main:src/main/java/timtim/app/model/map/GameMap.java
+
 
 public class GameMap implements IGameMap {
 
@@ -83,12 +83,12 @@ public class GameMap implements IGameMap {
 		doors = new ArrayList<Door>();
 		chests = new ArrayList<Chest>();
 		floras = new ArrayList<Flora>();
-<<<<<<< HEAD:src/main/java/timtim/app/manager/GameMap.java
+
 		itemFactory = new ItemFactory();
-=======
+
 		enemies = new ArrayList<Enemy>();
 		friends = new ArrayList<Friend>();
->>>>>>> main:src/main/java/timtim/app/model/map/GameMap.java
+
 		complete = false;
 		mapSetup();
 

@@ -16,13 +16,7 @@ import timtim.app.objects.Inventory.Inventory;
 import timtim.app.objects.Inventory.Item;
 
 public class Player extends CombatEntity implements IPlayer {
-<<<<<<< HEAD:src/main/java/timtim/app/objects/Player.java
 
-	private final float maxJumpVel = 25;
-	private boolean isJumping;
-=======
-	
->>>>>>> main:src/main/java/timtim/app/model/objects/Player.java
 	private Sprite sprite;
 
 	private Animation<TextureRegion> runAnimation;
@@ -30,12 +24,10 @@ public class Player extends CombatEntity implements IPlayer {
 	private TextureRegion standing;
 	private float stateTimer;
 
-<<<<<<< HEAD:src/main/java/timtim/app/objects/Player.java
-	private GameScreen gameScreen;
-=======
+
 
 	private Inventory inventory;
->>>>>>> main:src/main/java/timtim/app/model/objects/Player.java
+
 
 	private Inventory inventory;
 
@@ -79,13 +71,11 @@ public class Player extends CombatEntity implements IPlayer {
 		}
 		jumpCells = new Array<TextureRegion>(frames);
 		frames.clear();
-<<<<<<< HEAD:src/main/java/timtim/app/objects/Player.java
 
-		standing = new TextureRegion(sprite.getTexture(), 0, 0, 32, 32);
-=======
+
 		
 		standing = new TextureRegion(sprite.getTexture(), sprite.getRegionX(), sprite.getRegionY(), 32, 32);
->>>>>>> main:src/main/java/timtim/app/model/objects/Player.java
+
 	}
 
 	@Override
@@ -96,13 +86,11 @@ public class Player extends CombatEntity implements IPlayer {
 	}
 
 	private void updateSprite(float delta) {
-<<<<<<< HEAD:src/main/java/timtim/app/objects/Player.java
-		float spriteX = (body.getPosition().x * Const.PPM - sprite.getWidth() / 2);
-		float spriteY = (body.getPosition().y * Const.PPM - sprite.getHeight() / 2);
-=======
+
+
 		float spriteX = (body.getPosition().x * Const.PPM - sprite.getWidth()/2);
 		float spriteY = (body.getPosition().y * Const.PPM - sprite.getHeight()/2) + 2;
->>>>>>> main:src/main/java/timtim/app/model/objects/Player.java
+
 		sprite.setBounds(spriteX, spriteY, sprite.getRegionWidth(), sprite.getRegionHeight());
 		sprite.setRegion(getFrame(delta));
 
@@ -137,7 +125,7 @@ public class Player extends CombatEntity implements IPlayer {
 		sprite.draw(batch);
 	}
 
-<<<<<<< HEAD:src/main/java/timtim/app/objects/Player.java
+
 	private void updateMovement() {
 		body.setLinearVelocity(velX * speed,
 				body.getLinearVelocity().y < maxJumpVel ? body.getLinearVelocity().y : maxJumpVel);
@@ -146,8 +134,7 @@ public class Player extends CombatEntity implements IPlayer {
 		resetVelocity();
 	}
 
-=======
->>>>>>> main:src/main/java/timtim/app/model/objects/Player.java
+
 	@Override
 	public void move(boolean moveLeft, boolean moveRight) {
 		if (moveRight && moveLeft)
@@ -168,21 +155,14 @@ public class Player extends CombatEntity implements IPlayer {
 		}
 	}
 
-<<<<<<< HEAD:src/main/java/timtim/app/objects/Player.java
+
 	public boolean addItemToInventory(Item item) {
 		return inventory.placeInInventory(item);
 	}
 
-	public void removeItemFromInventory(Item item) {
-		inventory.takeOutItem(item);
-	}
-
-	public boolean inventoryContains(Item item) {
-		return inventory.contains(item);
-=======
 	@Override
 	public Inventory getInventory() {
 		return this.inventory;
->>>>>>> main:src/main/java/timtim/app/model/objects/Player.java
+
 	}
 }
