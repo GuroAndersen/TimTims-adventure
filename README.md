@@ -27,4 +27,20 @@ I spillet beveger man seg til venstre med "A", høyre med "D" og hopper med "spa
 
 
 ## Credits
-* Ikke hentet grafikk eller lyd eksternt enda
+* OpenGameArt credits Modified 32x32 Treasure chest - by Blarumyrran <br>
+Link: https://opengameart.org/content/modified-32x32-treasure-chest <br>
+* Generic Platformer Tiles - by Surt <br>
+Link: https://opengameart.org/content/generic-platformer-tiles <br>
+* Castle Door - by Tuomo Untinen <br>
+Link: https://opengameart.org/content/castle-door   <br>
+* Updated Generic Platformer Tiles, by tebruno99 updated from surt <br>
+Link: https://opengameart.org/content/updated-generic-platformer-tiles <br>
+* Skeleton Sprite, by r0ar <br>
+Link: https://opengameart.org/content/skeleton-sprite <br>
+* Snake rework, edited by AntumDeluge made from Baŝto & yolkatic <br>
+Link: https://opengameart.org/content/snake-rework <br>
+* Wolf Animation, by Stephen "Redshrike" Challener as graphic artist and William.Thompsonj as contributor <br>
+Link: https://opengameart.org/content/lpc-wolf-animation
+* Tileset Platform Forest, by thekingphoenix <br>
+Link: https://opengameart.org/content/tileset-platform-forest#comment-form
+
