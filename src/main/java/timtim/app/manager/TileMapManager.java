@@ -1,11 +1,13 @@
 package timtim.app.manager;
 
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 import timtim.app.model.GameModel;
 
@@ -19,24 +21,11 @@ public class TileMapManager {
 		this.model = model;
 		this.maps = new HashMap<String, GameMap>();
 		loadMaps();
-		setMap("level1");
-	}
-
-	public List<String> getMapNames() {
-		ArrayList<String> nameList = new ArrayList<>();
-		maps.keySet().addAll(nameList);
-		return nameList;
-	}
-
-	/**
-	 * Swaps the level
-	 */
-	public void swapLevels(String mapName){
-		if(currentMap == "level1") setMap("level2");
+		setMap("level_3");
 	}
 
 	private void setMap(String mapName) {
-		this.currentMap = mapName;
+		this.currentMap = "level_3";
 		model.getPlayer().setBody(maps.get(mapName).playerBody);
 	}
 

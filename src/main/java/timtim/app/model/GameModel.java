@@ -18,6 +18,7 @@ import timtim.app.objects.Player;
 public class GameModel implements IGameModel, EntityWorld {
 
 	private TileMapManager tileMapManager;
+	private GameMap currentMap;
 	private Player timtim;
 
 	private List<GameMap> maps;
@@ -32,10 +33,8 @@ public class GameModel implements IGameModel, EntityWorld {
 		// ENTITY LIST INIT
 		friendList = new ArrayList<Friend>();
 		entityList = new ArrayList<GameEntity>();
-	}
 
-	public void swapLevel(String mapName){
-		tileMapManager.swapLevels(mapName);
+		this.currentMap = tileMapManager.getCurrentMap();
 	}
 
 	@Override
@@ -43,13 +42,13 @@ public class GameModel implements IGameModel, EntityWorld {
 		return this.timtim;
 	}
 
-	public List<String> getTileMapList() {
-		return this.tileMapManager.getMapNames();
+	public GameMap getCurrentMap() {
+		return this.getCurrentMap();
 	}
 
 	@Override
 	public OrthogonalTiledMapRenderer getMapRenderer() {
-		return this.tileMapManager.getCurrentMap().getMapRenderer();
+		return this.currentMap.getMapRenderer();
 	}
 
 	@Override
@@ -67,7 +66,7 @@ public class GameModel implements IGameModel, EntityWorld {
 	public void update(float delta) {
 		this.timtim.update(delta);
 		updateEntities(entityList);
-		this.tileMapManager.getCurrentMap().update();
+		this.currentMap.update();
 	}
 
 	private void updateEntities(List<GameEntity> entityList) {
@@ -77,6 +76,6 @@ public class GameModel implements IGameModel, EntityWorld {
 
 	@Override
 	public World getCurrentWorld() {
-		return this.tileMapManager.getCurrentMap().getWorld();
+		return this.currentMap.getWorld();
 	}
 }

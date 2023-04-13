@@ -119,7 +119,6 @@ public class GameScreen extends ScreenAdapter implements AccessibleGame {
 	@Override
 	public void renderMap() {
 
-		mapRenderer = model.getMapRenderer();
 		mapRenderer.setView(camera);
 		mapRenderer.render();
 		getBatch().setProjectionMatrix(camera.combined);

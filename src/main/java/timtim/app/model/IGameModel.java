@@ -37,9 +37,4 @@ public interface IGameModel {
 	 * @return world
 	 */
 	public World getCurrentWorld();
-
-	/**
-	 * Swaps the current level
-	 */
-	public void swapLevel(String mapName);
 }

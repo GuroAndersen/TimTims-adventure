@@ -1,16 +1,17 @@
-package timtim.app.objects.GameObjects;
+package timtim.app.model.objects.GameObjects;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Fixture;
 
-public class Door extends GameObject {
+public class Flora extends GameObject {
 
     public Fixture fixture;
     public Body body;
 
-    public Door(Body body, float[] vertices, String imagePath) {
-        super(body, new Texture(imagePath), vertices);
+    public Flora(Body body, float[] vertices, Texture floraTexture) {
+        super(body, floraTexture, vertices);
         fixture = body.getFixtureList().get(0);
         fixture.setUserData(this);
     }
@@ -21,6 +22,10 @@ public class Door extends GameObject {
 
     public Body getBody() {
         return super.body;
+    }
+    
+    public int damage() {
+    	return 5;
     }
 
 }

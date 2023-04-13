@@ -1,6 +1,7 @@
-package timtim.app.manager;
+package timtim.app.model.map;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapObjects;
@@ -17,46 +18,62 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.Shape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.Fixture;
 
-import timtim.app.core.MyContactListener;
-import timtim.app.objects.Player;
-import timtim.app.objects.GameObjects.Chest;
-import timtim.app.objects.GameObjects.Door;
-import timtim.app.objects.GameObjects.Flora;
+import timtim.app.core.GameScreen;
+import timtim.app.manager.BodyManager;
+import timtim.app.manager.Const;
+import timtim.app.model.GameModel;
+import timtim.app.model.IGameMap;
+import timtim.app.model.MyContactListener;
+import timtim.app.model.objects.Enemy;
+import timtim.app.model.objects.GameEntity;
+import timtim.app.model.objects.Player;
+import timtim.app.model.objects.Friend.Friend;
+import timtim.app.model.objects.Friend.Skeleton;
+import timtim.app.model.objects.Friend.Snake;
+import timtim.app.model.objects.Friend.Wolf;
+import timtim.app.model.objects.GameObjects.Chest;
+import timtim.app.model.objects.GameObjects.Door;
+import timtim.app.model.objects.GameObjects.Flora;
 
 public class GameMap implements IGameMap {
 
+	GameScreen gameScreen;
+	GameModel model;
 	String mapName;
 	TiledMap tiledMap;
 	World world;
-	Player player;
 	Body playerBody;
 	// Chest chest;
 	OrthogonalTiledMapRenderer renderer;
 
+	// objects
 	private ArrayList<Door> doors;
 	private ArrayList<Flora> floras;
 	private ArrayList<Chest> chests;
 
-	private Box2DDebugRenderer debugRenderer;
-	private OrthographicCamera camera;
+	// entities
+	private ArrayList<Friend> friends;
+	private ArrayList<Enemy> enemies;
+	private Player player;
 
 	/**
 	 * Completion criteria
 	 */
 	private boolean complete;
 
-	public GameMap(String mapName, Player player) {
-		this.player = player;
+	public GameMap(String mapName, GameModel model) {
+		this.gameScreen = model.getGameScreen();
+		this.model = model;
 		this.mapName = mapName;
+		this.player = model.getPlayer();
 		doors = new ArrayList<Door>();
 		chests = new ArrayList<Chest>();
 		floras = new ArrayList<Flora>();
+		enemies = new ArrayList<Enemy>();
+		friends = new ArrayList<Friend>();
 		complete = false;
 		mapSetup();
 
@@ -64,7 +81,7 @@ public class GameMap implements IGameMap {
 
 	public void mapSetup() {
 		this.world = new World(new Vector2(0, Const.GRAVITY), false);
-		world.setContactListener(new MyContactListener());
+		world.setContactListener(new MyContactListener(model));
 		tiledMap = new TmxMapLoader().load(mapName + ".tmx"); // gets map from resource folder
 		parseStaticMapObjects(tiledMap.getLayers().get("static").getObjects()); // gets objects in the "objects" layer
 																				// of the tiledmap.
@@ -72,10 +89,71 @@ public class GameMap implements IGameMap {
 		parseDoorObject(tiledMap.getLayers().get("door").getObjects());
 		parseChestObject(tiledMap.getLayers().get("chest").getObjects());
 		parseFloraObject(tiledMap.getLayers().get("flora").getObjects(), null);
-		// createDoorObject();
+		parseFriendObject(tiledMap.getLayers().get("friends").getObjects());
+		parseEnemyObject(tiledMap.getLayers().get("enemies").getObjects());
+
 		renderer = new OrthogonalTiledMapRenderer(tiledMap);
-		debugRenderer = new Box2DDebugRenderer();
-		camera = new OrthographicCamera();
+	}
+
+	private void parsePlayerObject(MapObjects objects) {
+		MapObject o = objects.get(0);
+		if (o instanceof RectangleMapObject) {
+			Rectangle rect = ((RectangleMapObject) o).getRectangle();
+			playerBody = BodyManager.createBody(rect.getX() + rect.getWidth() / 2, rect.getY() + rect.getHeight() / 2,
+					rect.getWidth(), rect.getHeight(), false, world);
+			Fixture fixture = playerBody.getFixtureList().get(0);
+			fixture.setUserData(player);
+		} else {
+			throw new IllegalArgumentException("Player map object not found or is not a RectangleMapObject");
+		}
+	}
+
+	private void parseEnemyObject(MapObjects objects) {
+//		for (MapObject o : objects)  {
+//		if (o instanceof RectangleMapObject) {
+//			Enemy enemy;
+//			Rectangle rect = ((RectangleMapObject) o).getRectangle();
+//			Body body = BodyManager.createBody(rect.getX() + rect.getWidth() / 2, rect.getY() + rect.getHeight() / 2,
+//					rect.getWidth(), rect.getHeight(), false, world);
+//			Fixture fixture = playerBody.getFixtureList().get(0);
+//			fixture.setUserData(player);
+//			enemy = new Enemy(SKELETON)
+//			enemies.add(enemy);
+//		} else {
+//			throw new IllegalArgumentException("Player map object not found or is not a RectangleMapObject");
+//		}
+//		}
+	}
+
+	private void parseFriendObject(MapObjects objects) {
+		for (MapObject o : objects) {
+			if (o instanceof RectangleMapObject) {
+				Friend friend = null;
+				Rectangle rect = ((RectangleMapObject) o).getRectangle();
+				String name = ((RectangleMapObject) o).getName();
+				Body body = BodyManager.createBody(rect.getX() + rect.getWidth() / 2,
+						rect.getY() + rect.getHeight() / 2, rect.getWidth(), rect.getHeight(), true, world);
+				switch (name) {
+				case "skeleton":
+					friend = new Skeleton(gameScreen, this);
+					break;
+				case "wolf":
+					friend = new Wolf(gameScreen, this);
+					break;
+				case "snake":
+					friend = new Snake(gameScreen, this);
+					break;
+				default:
+					throw new IllegalArgumentException("This friend type is not represented");
+				}
+				friend.setBody(body);
+				Fixture fixture = body.getFixtureList().get(0);
+				fixture.setUserData(friend);
+				friends.add(friend);
+			} else {
+				throw new IllegalArgumentException("Friend map object not found or is not a RectangleMapObject");
+			}
+		}
 	}
 
 	private Body createObject(PolygonMapObject o) {
@@ -95,7 +173,6 @@ public class GameMap implements IGameMap {
 
 		Body body = createObject(o);
 
-		System.out.println(body.getPosition());
 		String imagePath = "castledoors.png";
 		Door door = new Door(body, o.getPolygon().getTransformedVertices(), imagePath);
 		body.setUserData(door);
@@ -108,8 +185,6 @@ public class GameMap implements IGameMap {
 
 	private void parseDoorObject(MapObjects objects) {
 		for (MapObject o : objects) {
-			System.out.println("Parsing door object...");
-			System.out.println(o.getClass().getName());
 			if (o instanceof PolygonMapObject) {
 				createDoorObject((PolygonMapObject) o);
 			}
@@ -138,8 +213,6 @@ public class GameMap implements IGameMap {
 	private void createChestObject(PolygonMapObject o) {
 
 		Body body = createObject(o);
-
-		System.out.println(body.getPosition());
 		String imagePath = "chest2.png";
 		Chest chest = new Chest(body, o.getPolygon().getTransformedVertices(), imagePath, imagePath);
 		body.setUserData(chest);
@@ -151,7 +224,6 @@ public class GameMap implements IGameMap {
 	}
 
 	private void parseChestObject(MapObjects objects) {
-		System.out.println("parseChest has been reached");
 		for (MapObject o : objects) {
 			if (o instanceof PolygonMapObject) {
 				createChestObject((PolygonMapObject) o);
@@ -164,20 +236,6 @@ public class GameMap implements IGameMap {
 			if (o instanceof PolygonMapObject) {
 				createStaticBody((PolygonMapObject) o);
 			}
-		}
-	}
-
-	private void parsePlayerObject(MapObjects objects) {
-		MapObject o = objects.get(0);
-		if (o instanceof RectangleMapObject) {
-			Rectangle rect = ((RectangleMapObject) o).getRectangle();
-			playerBody = BodyManager.createBody(rect.getX() + rect.getWidth() / 2, rect.getY() + rect.getHeight() / 2,
-					rect.getWidth(), rect.getHeight(), false, world);
-
-			Fixture fixture = playerBody.getFixtureList().get(0);
-			fixture.setUserData(player);
-		} else {
-			throw new IllegalArgumentException("Player map object not found or is not a RectangleMapObject");
 		}
 	}
 
@@ -213,8 +271,14 @@ public class GameMap implements IGameMap {
 	}
 
 	@Override
+	public void setComplete() {
+		this.complete = true;
+	}
+
+	@Override
 	public void restart() {
 		mapSetup();
+		this.model.getPlayer().setBody(this.playerBody);
 	}
 
 	@Override
@@ -222,14 +286,30 @@ public class GameMap implements IGameMap {
 		return renderer;
 	}
 
-	public void update() {
+	public void update(float delta) {
 		this.world.step(Const.FPS, 6, 2);
-		camera.update();
+		for (Friend f : friends)
+			f.update(delta);
+		for (Enemy e : enemies)
+			e.update(delta);
 	}
 
 	@Override
 	public World getWorld() {
 		return this.world;
+	}
+
+	@Override
+	public List<GameEntity> getEntities() {
+		List<GameEntity> entityList = new ArrayList<>();
+		entityList.addAll(friends);
+		entityList.addAll(enemies);
+		return entityList;
+	}
+
+	@Override
+	public Body getPlayerBody() {
+		return this.playerBody;
 	}
 
 }

@@ -46,4 +46,5 @@ public interface AccessibleGame {
      * Get the game's camera
      */
     public OrthographicCamera getCamera();
+
 }
