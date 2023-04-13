@@ -95,7 +95,7 @@ public class StartState implements StateHandler {
             String map = mapList.get(i);
             if (selected) font.setColor(Color.RED);
             else font.setColor(Color.WHITE);
-            font.draw(batch, map, centerX + 35, centerY - i * selectionSpace, 0, Align.center, false);
+            font.draw(batch, map, centerX + 35, centerY - (i+1) * selectionSpace, 0, Align.center, false);
         }
     }
 
