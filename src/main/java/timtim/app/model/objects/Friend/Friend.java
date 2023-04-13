@@ -63,27 +63,28 @@ public abstract class Friend extends GameEntity implements IFriend {
     public void updateConversation() {
 
         if (itemReceived)
-            this.currentDialogue = giftDialogue();
+            currentDialogue = giftDialogue();
 
         // First interaction between Player and Friend
         // Will go through the whole list of conversation options
         if (interactionCounter == 0) {
-            String dialogue = getDialogueOptions()[dialogueCounter];
+            String[] dialogueOptions = getDialogueOptions();
+            String dialogue = dialogueOptions[dialogueCounter];
+            currentDialogue = dialogue;
             dialogueCounter++;
             if (dialogueCounter >= getDialogueOptions().length) {
                 dialogueCounter = 0;
-                this.currentDialogue = "";
             }
         }
 
         // Second or more interaction between Player and Friend
         // Will only show the relevant parts of dialogue needed
-        if (interactionCounter > 0 && hasRecievedGift() == false) {
-            int relevantDialogueCounter = 3;
+        else if (interactionCounter > 0 && hasRecievedGift() == false) {
+            int relevantDialogueCounter = 1;
             String relevantDialogue = getDialogueOptions()[relevantDialogueCounter];
             relevantDialogueCounter++;
             if (relevantDialogueCounter >= getDialogueOptions().length) {
-                relevantDialogueCounter = 3;
+                relevantDialogueCounter = 1;
                 this.currentDialogue = "";
             }
             this.currentDialogue = relevantDialogue;
@@ -103,10 +104,9 @@ public abstract class Friend extends GameEntity implements IFriend {
     }
 
     private String[] getDialogueOptions() {
-        String[] dialogueOptions = { "Hi",
-                "Can you help me?",
-                "I need a " + item.name(),
-                "Look for chests" };
+        String[] dialogueOptions = {
+                "Hi, I need a " + item.name(),
+                "Can you help me look for a chest?" };
         return dialogueOptions;
     }
 
