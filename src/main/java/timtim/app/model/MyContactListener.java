@@ -19,6 +19,7 @@ public class MyContactListener implements ContactListener {
         this.model = model;
     }
 
+    // Gets activated when two objects make contact with eachother.
     @Override
     public void beginContact(Contact contact) {
 
@@ -76,19 +77,12 @@ public class MyContactListener implements ContactListener {
         }
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Flora)
                 || (fa.getUserData() instanceof Flora && fb.getUserData() instanceof Player)) {
+            Flora f = (Flora) (fa.getUserData() instanceof Flora ? fa.getUserData() : fb.getUserData());
+            Player p = (Player) (fa.getUserData() instanceof Player ? fa.getUserData() : fb.getUserData());
+            p.takeDamage(f.damage());
+        } else {
 
-            System.out.println("OH NO I HAVE A POLLEN ALLERGY!");
-            if (fa.getUserData() instanceof Player) {
-                Player p = (Player) fa.getUserData();
-                p.takeDamage(1);
-            } else if (fb.getUserData() instanceof Player) {
-                Player p = (Player) fb.getUserData();
-                p.takeDamage(1);
-            } else {
-
-            }
         }
-
     }
 
     // Gets activated when two objects stop having contact with eachother.
