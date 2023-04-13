@@ -56,7 +56,7 @@ public class ItemFactory {
         return new Item(itemName, parseItemFile().get(itemName));
     }
 
-    public Item generateItem(String mapName) {
+    public static Item generateItem(String mapName) {
         if (mapName.equals("level1"))
             return ItemFactory.newItem("ball");
         if (mapName.equals("level2"))

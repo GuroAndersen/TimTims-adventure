@@ -222,7 +222,7 @@ public class GameMap implements IGameMap {
 		String imagePath = "chest2.png";
 		Chest chest = new Chest(body, o.getPolygon().getTransformedVertices(), imagePath, imagePath);
 
-		Item chestItem = itemFactory.generateItem(mapName);
+		Item chestItem = ItemFactory.generateItem(mapName);
 
 		chest.setItem(chestItem);
 		body.setUserData(chest);
