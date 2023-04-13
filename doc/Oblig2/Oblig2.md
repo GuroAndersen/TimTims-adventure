@@ -2,7 +2,7 @@
 
 ## **Møtereferat**
 
-**Dato: Torsdag 16.02.2021** <br>
+**Dato: Torsdag 16.02.2023** <br>
 **Sted: Vilvite** <br>
 **Deltagere: Sandra, Hilde, Guro, Cecilie, Mattias** <br>
 **Referent: Mattias** <br>
@@ -22,7 +22,7 @@ Til neste gang jobber vi videre med hvordan planlegge videre arbeid og fordele r
 
 ___
 
-**Dato: Torsdag 23.02.2021** <br>
+**Dato: Torsdag 23.02.2023** <br>
 **Sted: Vilvite** <br>
 **Deltagere: Sandra, Hilde, Guro, Cecilie, Mattias** <br>
 **Referent: Mattias** <br>
@@ -40,7 +40,7 @@ Torsdag 02.03.2021 <br>
 Utarbeide interface for venner og fiender i spillet.
 
 ___
-**Dato: Torsdag 02.03.2021** <br>
+**Dato: Torsdag 02.03.2023** <br>
 **Sted: Vilvite** <br>
 **Deltagere: Sandra, Hilde, Guro, Cecilie** <br>
 **Referent: Sandra** <br>
@@ -60,7 +60,7 @@ Torsdag 09.03.2021 <br>
 Til neste gang skal grafikk for 4 level være klart, samt koden til hvordan fiender og venner oppfører seg skal være på plass
 
 _______
-**Dato: Torsdag 09.03.2021** <br>
+**Dato: Torsdag 09.03.2023** <br>
 **Sted: Vilvite** <br>
 **Deltagere: Sandra, Hilde, Guro, Cecilie, Mattias** <br>
 **Referent: Mattias** <br>
@@ -210,7 +210,7 @@ Totaloversikt over kjente bugs ligger i README.
 ## Produkt og kode
 ### **Utbedring av feil**
 Siden forrige oblig har vi ikke fått påpekt noen feil vi bør jobbe med. Dog fikk vi høre at vi må være flinkere på å ha jevne commits innad i gruppen, og dersom vi parprogrammerer må dette vises i commitet. I denne oppgaven har vi større grad jevnere commits. Men som nevnt over har flere jobbet med grafikken, som ikke resulterer i commits. Derfor vil det fortsatt være en viss skjevfordeling. 
-__
+___
 ### **Kjøre koden**
 Se README.
 
