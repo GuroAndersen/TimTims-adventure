@@ -84,16 +84,16 @@ ___
 **Referent: Mattias** <br>
 
 *Oppsummering:* <br>
-TODO
+Det viktigste vi har gjort i dag er klargjøre prosjekter for innlevering av Oblig 3. Derfor startet vi med å se på hver enkelt sin kode, og se om det var noe som måtte endres. Videre har alle pushet koden, og merget den til main slik at det blir et samlet prosjekt. 
 
 *Diskusjoner:* <br>
-TODO
+I hovedsak har diskusjonene i dag vært hva vi skal fokusere på til neste oblig. Vi har blitt enig om at vi skal prøve i implementere noen nye features, samt fikse eksisterende bugs. For grundigere beskrivelse, se **Prioritering av oppgaver fremover**
 
 *Neste møte* <br>
-TODO <br>
+20.04.2023 <br>
 
 *Oppgaver til neste gang:* <br>
-TODO
+Til neste møte skal vi ha laget en plan for sise innlevering. Dette vil si hvilke oppgaver vi skal fokusere på, og hvordan vi skal fordele oppgavene innad i gruppen.
 
 ___
 ## **Prosjektrapport**
@@ -216,32 +216,55 @@ ___
 | Som spiller skal jeg kunne plukke opp en "PowerUp" og forbedre spillekarakterens ferdigheter | Gitt at spilleren plukker opp en "PowerUp" <br> -skal spillkarakteren bevege seg raskere i en gitt tidsperiode | Metode som implementerer "PowerUp" | 12 |
 
 ### **Prioritering av oppgaver fremover**
-TODO
+De viktigste elementene i spillet er nå på plass. Til den endelige innleveringen vil vi fokusere på å få på plass noen flere features, samt fikse bugs. 
+
+De viktigste oppgavene fremover er: <br>
+
+*PowerUp* <br> 
+Spilleren skal ha muligheten til å forbedre sine ferdigheter. Det vil eksempelvi være ved å plukke opp et objekt, for å så bevege seg raskere eller hoppe høyere. <br>
+
+*Bevegende fiender* <br>
+Til nå har vi kun statiske fiender. Det vil si at objekter i spillet som er fiendlig for spilleren står i ro. Til den endelige innleveringen vil vi implementere bevegende fiender. Dette vil gjøre spillet mer utfordrende, og gi spilleren en mer helhetlig opplevelse. <br>
+
+*Returnere til meny og fortsette på et annet level* <br>
+Spillet vårt består av 3 level. Til den endelige innleveringen ønsker vi å få på plass at dersom spilleren har fullført et level, vil det ligge som "åpent" i menyen. Det vil si at spilleren til enhver tid skal kunne returnere til menyen og fortsette på et annet level som spilleren har åpnet. 
+
+
+*Dø utenfor brettet(falle ned i vann)* <br>
+
+*Musikk/lyd*
+
 ___
 ### **Bugs**
 Totaloversikt over kjente bugs ligger i README.
+
 ___
 ## Produkt og kode
 
 ### **Utbedring av feil**
-Siden forrige oblig har vi ikke fått påpekt noen feil vi bør jobbe med eller noen bugs med koden som bør fikses. Det eneste vi fikk påpekt var at vi hadde litt for lite tester. Dette har vi derfor hatt større fokus på under denne obligen. Per nå har vi tester til følgende klasser: <br>
-* TODO
-* TODO
+Siden forrige oblig har vi ikke fått påpekt noen feil vi bør jobbe med eller noen bugs med koden som bør fikses. Det eneste vi fikk påpekt var at vi hadde litt for lite tester. Dette har vi derfor hatt større fokus på under denne obligen. Se avsnittet om testing for mer informasjon.
+
+Likevel er det noen bugs vi hadde i README under forrige oblig som vi har fikset. Disse er bugsene er: <br>
+* Det er mulig å gå utenfor brettet på noen nivåer
+* Kamera følger ikke spiller ut til venste, men gjør det til høyre
 
 Vi har fortsatt ikke laget tester for alle aspekter av spillet, men dette er noe vi skal ha på plass til den neste og endelige innleveringen. 
 ___
 ### **Kjøre koden**
 Se README for instruksjoner.
 
+TODO
+Dersom vi får testet på Linux: <br>
 Siden sist har vi og testet spillet på Linux. Dvs at spillet nå skal kjøre på Windows, Mac og Linux.
 
-TODO
-
-Får vi testet at den kjører på Linux?
+Dersom vi ikke får testet på Linux: <br>
+Vi har ikke hatt tilgang til Linux under denne innleveringen, og har derav ikke fått testet det. Men vi har nå fått tak i en person i Storbritania som bruker Linux, som har sagt han kan testet det for oss til neste oblig. Dette vil derfor bære på plass til siste innlevering. 
 ___
 ### **Klassediagram**
-TODO
+Se ClassDiagramOblig3.png.
+Dersom det er i dårlig oppløsning, ta kontakt så kan vi sende det direkte på Discord.
 
+TODO
 Cecilie fix?
 ___
 ### **Tester**
@@ -250,9 +273,11 @@ TODO
 Får vi testet GUI?
 Hvilke tester har vi?
 Knytte mot "Utbedring av feil"
+
+Per nå har vi tester til følgende klasser: <br>
+* TODO
+* TODO
 ___
 ### **Analyseverktøy**
-TODO
-
-Noen som har brukt dette?
+Vi har heller ikke under denne obligen prioritert å ta i bruk et analyseverktøy. Vi har brukt tid på å få på plass store deler av koden, samt skrive tilhørende tester. Vi vil vurdere om dette er noe vi skal bruke til siste innlevering, men det vil ikke være førsteprioritet.
 ___
