@@ -48,7 +48,7 @@ public class GameMap implements IGameMap {
 	TiledMap tiledMap;
 	World world;
 	Body playerBody;
-	// Chest chest;
+
 	OrthogonalTiledMapRenderer renderer;
 
 	// objects
@@ -66,6 +66,7 @@ public class GameMap implements IGameMap {
 	 * Completion criteria
 	 */
 	private boolean complete;
+	// private boolean isDoorOpen;
 
 	public GameMap(String mapName, GameModel model) {
 		this.gameScreen = model.getGameScreen();
@@ -79,13 +80,14 @@ public class GameMap implements IGameMap {
 		friends = new ArrayList<Friend>();
 		itemFactory = new ItemFactory();
 		complete = false;
+		// isDoorOpen = false;
 		mapSetup();
 
 	}
 
 	public void mapSetup() {
 		this.world = new World(new Vector2(0, Const.GRAVITY), false);
-		world.setContactListener(new MyContactListener(model));
+		world.setContactListener(new MyContactListener(model, gameScreen));
 		tiledMap = new TmxMapLoader().load(mapName + ".tmx"); // gets map from resource folder
 		parseStaticMapObjects(tiledMap.getLayers().get("static").getObjects()); // gets objects in the "objects" layer
 																				// of the tiledmap.
@@ -283,6 +285,7 @@ public class GameMap implements IGameMap {
 	@Override
 	public void setComplete() {
 		this.complete = true;
+		// this.isDoorOpen = true;
 	}
 
 	@Override

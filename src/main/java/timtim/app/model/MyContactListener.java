@@ -8,6 +8,7 @@ import com.badlogic.gdx.physics.box2d.*;
 import timtim.app.core.GameScreen;
 import timtim.app.core.state.PlayState;
 import timtim.app.core.state.State;
+import timtim.app.model.map.GameMap;
 import timtim.app.model.objects.Player;
 import timtim.app.model.objects.Friend.Friend;
 import timtim.app.model.objects.GameObjects.Chest;
@@ -18,13 +19,14 @@ import timtim.app.model.objects.Inventory.Item;
 public class MyContactListener implements ContactListener {
 
     private IGameModel model;
+    private GameMap gameMap;
     private GameScreen game;
     private PlayState playState;
 
-    public MyContactListener(IGameModel model) {
+    public MyContactListener(IGameModel model, GameScreen game) {
         this.model = model;
         this.game = game;
-        this.playState = playState;
+        this.gameMap = gameMap;
     }
 
     // Gets activated when two objects make contact with eachother.
@@ -44,11 +46,11 @@ public class MyContactListener implements ContactListener {
 
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Door)
                 || (fa.getUserData() instanceof Door && fb.getUserData() instanceof Player)) {
-            Friend f = (Friend) (fa.getUserData() instanceof Friend ? fa.getUserData() : fb.getUserData());
+            Player p = (Player) (fa.getUserData() instanceof Player ? fa.getUserData() : fb.getUserData());
+            Door d = (Door) (fa.getUserData() instanceof Door ? fa.getUserData() : fb.getUserData());
 
-            if (f.hasRecievedGift() == true) {
-                game.switchState(State.START);
-            }
+            game.switchState(State.START);
+
         }
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Chest)
                 || (fa.getUserData() instanceof Chest && fb.getUserData() instanceof Player)) {

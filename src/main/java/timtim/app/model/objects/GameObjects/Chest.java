@@ -36,22 +36,7 @@ public class Chest extends GameObject {
     }
 
     public void open() {
-        if (!isOpen) {
-            super.texture = openTexture;
-            if (closedTexture != null) {
-                closedTexture.dispose();
-                closedTexture = null;
-            }
-            isOpen = true;
-        } else {
-            System.out.println("Chest is already opened!");
-        }
-
-        // Additional logic to perform when the chest is opened, such as playing a sound
-        // effect or spawning items
-        // Simply put we need to connect to both item and inventory and with this add
-        // the item to the inventory.
-
+        isOpen = true;
     }
 
     public boolean isOpen() {
