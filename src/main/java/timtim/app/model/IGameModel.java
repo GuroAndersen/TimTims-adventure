@@ -1,12 +1,12 @@
 package timtim.app.model;
 
 import java.util.List;
+import java.util.Set;
 
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 
 import timtim.app.model.objects.GameEntity;
-import timtim.app.model.objects.IPlayer;
 import timtim.app.model.objects.Player;
 
 
@@ -68,5 +68,12 @@ public interface IGameModel {
 	 * @return list of entities
 	 */
 	public List<GameEntity> getEntities();
-	
+
+	/**
+	 * Swap to the given level.
+	 * @param level
+	 */
+	void swapLevel(String level);
+
+	Iterable<String> getMapNames();
 }
