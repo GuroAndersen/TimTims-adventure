@@ -55,7 +55,6 @@ public class GameMap implements IGameMap {
 	private ArrayList<Door> doors;
 	private ArrayList<Flora> floras;
 	private ArrayList<Chest> chests;
-	private ItemFactory itemFactory;
 
 	// entities
 	private ArrayList<Friend> friends;
@@ -73,12 +72,12 @@ public class GameMap implements IGameMap {
 		this.model = model;
 		this.mapName = mapName;
 		this.player = model.getPlayer();
+		tiledMap = new TmxMapLoader().load(mapName + ".tmx"); // gets map from resource folder
 		doors = new ArrayList<Door>();
 		chests = new ArrayList<Chest>();
 		floras = new ArrayList<Flora>();
 		enemies = new ArrayList<Enemy>();
 		friends = new ArrayList<Friend>();
-		itemFactory = new ItemFactory();
 		complete = false;
 		// isDoorOpen = false;
 		mapSetup();
@@ -88,9 +87,8 @@ public class GameMap implements IGameMap {
 	public void mapSetup() {
 		this.world = new World(new Vector2(0, Const.GRAVITY), false);
 		world.setContactListener(new MyContactListener(model, gameScreen, this));
-		tiledMap = new TmxMapLoader().load(mapName + ".tmx"); // gets map from resource folder
-		parseStaticMapObjects(tiledMap.getLayers().get("static").getObjects()); // gets objects in the "objects" layer
-																				// of the tiledmap.
+
+		parseStaticMapObjects(tiledMap.getLayers().get("static").getObjects());
 		parsePlayerObject(tiledMap.getLayers().get("player").getObjects());
 		parseDoorObject(tiledMap.getLayers().get("door").getObjects());
 		parseChestObject(tiledMap.getLayers().get("chest").getObjects());
@@ -99,6 +97,14 @@ public class GameMap implements IGameMap {
 		parseEnemyObject(tiledMap.getLayers().get("enemies").getObjects());
 
 		renderer = new OrthogonalTiledMapRenderer(tiledMap);
+	}
+
+	private void clearObjects() {
+		this.doors.clear();
+		this.enemies.clear();
+		this.friends.clear();
+		this.floras.clear();
+		this.chests.clear();
 	}
 
 	private void parsePlayerObject(MapObjects objects) {
@@ -142,17 +148,17 @@ public class GameMap implements IGameMap {
 				Body body = BodyManager.createBody(rect.getX() + rect.getWidth() / 2,
 						rect.getY() + rect.getHeight() / 2, rect.getWidth(), rect.getHeight(), true, world);
 				switch (name) {
-					case "skeleton":
-						friend = new Skeleton(gameScreen, this);
-						break;
-					case "wolf":
-						friend = new Wolf(gameScreen, this);
-						break;
-					case "snake":
-						friend = new Snake(gameScreen, this);
-						break;
-					default:
-						throw new IllegalArgumentException("This friend type is not represented");
+				case "skeleton":
+					friend = new Skeleton(gameScreen, this);
+					break;
+				case "wolf":
+					friend = new Wolf(gameScreen, this);
+					break;
+				case "snake":
+					friend = new Snake(gameScreen, this);
+					break;
+				default:
+					throw new IllegalArgumentException("This friend type is not represented");
 				}
 				friend.setBody(body);
 				Fixture fixture = body.getFixtureList().get(0);
@@ -265,10 +271,7 @@ public class GameMap implements IGameMap {
 		Vector2[] worldVertices = new Vector2[vertices.length / 2];
 
 		for (int i = 0; i < vertices.length / 2; i++) {
-			Vector2 current = new Vector2(vertices[i * 2] / Const.PPM, vertices[i * 2 + 1] / Const.PPM); // Calculations
-																											// to match
-																											// BOX2D
-																											// world
+			Vector2 current = new Vector2(vertices[i * 2] / Const.PPM, vertices[i * 2 + 1] / Const.PPM);
 			worldVertices[i] = current;
 		}
 
@@ -290,6 +293,7 @@ public class GameMap implements IGameMap {
 
 	@Override
 	public void restart() {
+		clearObjects();
 		mapSetup();
 		this.model.getPlayer().setBody(this.playerBody);
 	}
