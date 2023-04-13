@@ -1,9 +1,13 @@
 package timtim.app.model;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.physics.box2d.*;
 
+import timtim.app.core.GameScreen;
+import timtim.app.core.state.PlayState;
+import timtim.app.core.state.State;
 import timtim.app.model.objects.Player;
 import timtim.app.model.objects.Friend.Friend;
 import timtim.app.model.objects.GameObjects.Chest;
@@ -14,9 +18,13 @@ import timtim.app.model.objects.Inventory.Item;
 public class MyContactListener implements ContactListener {
 
     private IGameModel model;
+    private GameScreen game;
+    private PlayState playState;
 
     public MyContactListener(IGameModel model) {
         this.model = model;
+        this.game = game;
+        this.playState = playState;
     }
 
     // Gets activated when two objects make contact with eachother.
@@ -39,7 +47,7 @@ public class MyContactListener implements ContactListener {
             Friend f = (Friend) (fa.getUserData() instanceof Friend ? fa.getUserData() : fb.getUserData());
 
             if (f.hasRecievedGift() == true) {
-                // Here we need to call the menu so that the player can change the level.
+                game.switchState(State.START);
             }
         }
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Chest)
