@@ -8,33 +8,14 @@ import timtim.app.model.objects.Inventory.Item;
 
 public class Chest extends GameObject {
 
-    public Fixture fixture;
-    public Body body;
-    private Texture closedTexture;
-    private Texture openTexture;
     private boolean isOpen;
     private Item item;
 
-    public Chest(Body body, float[] vertices, String closedImagePath, String openImagePath) {
-        super(body, new Texture(closedImagePath), vertices);
-        if (closedImagePath != null) {
-            closedTexture = new Texture(closedImagePath);
-        }
-
-        openTexture = new Texture(openImagePath);
-        fixture = body.getFixtureList().get(0);
-        fixture.setUserData(this);
+    public Chest(Body body) {
+        super(body);
         isOpen = false;
     }
-
-    public Fixture getFixture() {
-        return fixture;
-    }
-
-    public Body getBody() {
-        return super.body;
-    }
-
+    
     public void open() {
         isOpen = true;
     }

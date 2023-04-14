@@ -12,10 +12,8 @@ public class Door extends GameObject {
     public Body body;
     private boolean isOpen;
 
-    public Door(Body body, float[] vertices, String imagePath) {
-        super(body, new Texture(imagePath), vertices);
-        fixture = body.getFixtureList().get(0);
-        fixture.setUserData(this);
+    public Door(Body body) {
+        super(body);
         isOpen = false;
     }
 

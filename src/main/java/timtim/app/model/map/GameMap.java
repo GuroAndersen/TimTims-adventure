@@ -181,10 +181,8 @@ public class GameMap implements IGameMap {
 
 		Body body = createObject(o);
 
-		String imagePath = "castledoors.png";
-		Door door = new Door(body, o.getPolygon().getTransformedVertices(), imagePath);
+		Door door = new Door(body);
 		body.setUserData(door);
-		Texture doorTexture = new Texture(Gdx.files.internal(imagePath));
 		Fixture doorFixture = body.getFixtureList().get(0);
 		doorFixture.setUserData(door);
 		doorFixture.setSensor(true);
@@ -202,7 +200,7 @@ public class GameMap implements IGameMap {
 	private void createFloraObject(PolygonMapObject o, Texture floraTexture) {
 		Body body = createObject(o);
 
-		Flora flora = new Flora(body, o.getPolygon().getTransformedVertices(), floraTexture);
+		Flora flora = new Flora(body);
 		body.setUserData(flora);
 		Fixture floraFixture = body.getFixtureList().get(0);
 		floraFixture.setUserData(flora);
@@ -222,7 +220,7 @@ public class GameMap implements IGameMap {
 
 		Body body = createObject(o);
 		String imagePath = "chest2.png";
-		Chest chest = new Chest(body, o.getPolygon().getTransformedVertices(), imagePath, imagePath);
+		Chest chest = new Chest(body);
 
 		Item chestItem = ItemFactory.generateItem(mapName);
 

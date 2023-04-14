@@ -7,26 +7,38 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 
-public abstract class GameEntity {
+import timtim.app.model.objects.GameObjects.GameObject;
+
+public abstract class GameEntity extends GameObject {
 
 	public int[] xMovementCases = { -1, 0, 1 };
-	float velX, velY, speed;
-	protected Body body;
+	protected float velX, velY, speed;
 
 	protected boolean isJumping;
 	private final float maxJumpVel = 25;
 
+	/**
+	 * Initialise a GameEntity without a body.
+	 * Body must be set with setBody after the fact.
+	 */
 	public GameEntity() {
-		this.velX = 0;
-		this.velY = 0;
-		this.speed = 0;
+		super(null);
+		baseSetup();
 	}
 
+	/**
+	 * Initialise a GameEntity with a body.
+	 * @param body
+	 */
 	public GameEntity(Body body) {
+		super(body);
+		baseSetup();
+	}
+	
+	private void baseSetup() {
 		this.velX = 0;
 		this.velY = 0;
 		this.speed = 0;
-		this.body = body;
 	}
 
 	/**
@@ -38,24 +50,6 @@ public abstract class GameEntity {
 	 * Renders the entity
 	 */
 	public abstract void render(SpriteBatch batch);
-
-	/**
-	 * 
-	 * @return body of this entity
-	 * @throws Exception
-	 */
-	public Body getBody() {
-		return this.body;
-	}
-
-	/**
-	 * Set a body for this GameEntity
-	 * 
-	 * @param body
-	 */
-	public void setBody(Body body) {
-		this.body = body;
-	}
 
 	/**
 	 * Resets the X and Y velocity of this object.
