@@ -11,6 +11,7 @@ public class Flora extends GameObject {
     public Body body;
 
     public Flora(Body body, float[] vertices, Texture floraTexture) {
+
         super(body, floraTexture, vertices);
         fixture = body.getFixtureList().get(0);
         fixture.setUserData(this);
