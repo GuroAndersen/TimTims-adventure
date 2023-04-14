@@ -20,8 +20,8 @@ public class Snake extends Friend {
 	 * 
 	 * @param gameScreen
 	 */
-	public Snake(Body body, Texture texture, GameMap map) {
-		super(body, texture, map, ItemFactory.newItem("juicebox"));
+	public Snake(GameMap map) {
+		super(map, ItemFactory.newItem("juicebox"));
 		setupAnimation();
 	}
 

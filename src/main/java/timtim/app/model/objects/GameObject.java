@@ -13,11 +13,6 @@ public abstract class GameObject {
 	protected Body body;
 	protected Sprite sprite;
 
-	public GameObject(Body body, Texture texture) {
-		this.body = body;
-		this.sprite = new Sprite(texture);
-	}
-
 	/**
 	 * 
 	 * @return body of this entity

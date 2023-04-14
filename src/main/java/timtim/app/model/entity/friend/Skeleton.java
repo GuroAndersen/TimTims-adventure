@@ -22,8 +22,8 @@ public class Skeleton extends Friend {
 	 * @param game
 	 * @param map
 	 */
-	public Skeleton(Body body, Texture texture, GameMap map) {
-		super(body, texture, map, ItemFactory.newItem("jumper"));
+	public Skeleton(GameMap map) {
+		super(map, ItemFactory.newItem("jumper"));
 		this.spriteYOffset = Const.PPM * 0.5f;
 		setupAnimation();
 	}

@@ -39,8 +39,7 @@ public abstract class Friend extends GameEntity implements IFriend {
      * @param map
      * @param newItem
      */
-    public Friend(Body body, Texture texture, GameMap map, Item newItem) {
-    	super(body, texture);
+    public Friend(GameMap map, Item newItem) {
         this.map = map;
         this.item = newItem;
         this.font = new BitmapFont();
@@ -54,7 +53,6 @@ public abstract class Friend extends GameEntity implements IFriend {
      * @param item the item wanted by this friend
      */
     public Friend(Item item) {
-    	super(null,null);
         this.item = item;
     }
 

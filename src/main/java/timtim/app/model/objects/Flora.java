@@ -9,14 +9,10 @@ import timtim.app.model.entity.CombatEntity;
 
 public class Flora extends CombatEntity {
 
-    public Flora(Body body, Texture texture) {
-        super(body, texture, 50, 5);
+    public Flora() {
+        super(50, 5);
     }
-
-    public Body getBody() {
-        return super.body;
-    }
-
+    
 	@Override
 	protected TextureRegion getFrame(float delta) {
 		return sprite;

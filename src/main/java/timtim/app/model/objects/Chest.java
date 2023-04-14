@@ -10,8 +10,7 @@ public class Chest extends GameObject {
     private boolean isOpen;
     private Item item;
 
-    public Chest(Body body, Texture texture) {
-        super(body, texture);
+    public Chest() {
         isOpen = false;
     }
 

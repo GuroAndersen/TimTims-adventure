@@ -18,20 +18,7 @@ public abstract class CombatEntity extends GameEntity {
 	 * @param maxHealth the max health of this entity
 	 * @param strength the strength of this entity
 	 */
-	public CombatEntity(Body body, Texture texture, int maxHealth, int strength) {
-		super(body, texture);
-		this.maxHealth = 1;
-		this.health = 1;
-		this.strength = 0;
-	}
-	
-	/**
-	 * Testing constructur. Body and sprite in GameObject remain null.
-	 * @param maxHealth
-	 * @param strength
-	 */
 	public CombatEntity(int maxHealth, int strength) {
-		super(null,null);
 		this.maxHealth = maxHealth;
 		this.health = maxHealth;
 		this.strength = strength;

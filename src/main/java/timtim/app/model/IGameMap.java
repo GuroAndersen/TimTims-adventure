@@ -7,6 +7,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
 
 import timtim.app.model.entity.GameEntity;
+import timtim.app.model.objects.GameObject;
 
 public interface IGameMap {
 
@@ -42,9 +43,9 @@ public interface IGameMap {
 	public Body getPlayerBody();
 
 	/**
-	 * Get the map's entities
+	 * Get the map's objects
 	 */
-	public List<GameEntity> getEntities();
+	public 	List<GameObject> getObjects();
 
 	/**
 	 * Sets the map as complete

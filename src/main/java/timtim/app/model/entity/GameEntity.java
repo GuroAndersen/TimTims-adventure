@@ -15,10 +15,6 @@ public abstract class GameEntity extends GameObject {
 	protected boolean isJumping;
 	private final float maxJumpVel = 25;
 
-	public GameEntity(Body body, Texture texture) {
-		super(body, texture);
-	}
-
 	/**
 	 * Sets the speed of this object.
 	 * 

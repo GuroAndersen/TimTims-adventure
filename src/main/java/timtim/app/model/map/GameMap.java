@@ -288,10 +288,7 @@ public class GameMap implements IGameMap {
 
 	public void update(float delta) {
 		this.world.step(Const.FPS, 6, 2);
-		for (Friend f : friends)
-			f.update(delta);
-		for (Enemy e : enemies)
-			e.update(delta);
+		for (GameObject o : objects) o.update(delta);
 	}
 
 	@Override
@@ -300,11 +297,8 @@ public class GameMap implements IGameMap {
 	}
 
 	@Override
-	public List<GameEntity> getEntities() {
-		List<GameEntity> entityList = new ArrayList<>();
-		entityList.addAll(friends);
-		entityList.addAll(enemies);
-		return entityList;
+	public List<GameObject> getObjects() {
+		return objects;
 	}
 
 	@Override

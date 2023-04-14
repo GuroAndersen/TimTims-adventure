@@ -22,7 +22,7 @@ public class Wolf extends Friend {
 	 * @param map
 	 */
 	public Wolf(Body body, Texture texture, GameMap map) {
-		super(body, texture, map, ItemFactory.newItem("ball"));
+		super(map, ItemFactory.newItem("ball"));
 		setupAnimation();
 	}
 

@@ -10,7 +10,6 @@ public class Door extends GameObject {
     private boolean isOpen;
 
     public Door(Body body, Texture texture) {
-        super(body, texture);
         isOpen = false;
     }
 
