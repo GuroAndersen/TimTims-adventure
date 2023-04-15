@@ -27,18 +27,18 @@ import timtim.app.manager.Const;
 import timtim.app.model.GameModel;
 import timtim.app.model.IGameMap;
 import timtim.app.model.MyContactListener;
-import timtim.app.model.objects.Enemy;
+import timtim.app.model.objects.Chest;
+import timtim.app.model.objects.Door;
+import timtim.app.model.objects.Flora;
 import timtim.app.model.objects.GameEntity;
 import timtim.app.model.objects.Player;
-import timtim.app.model.objects.Friend.Friend;
-import timtim.app.model.objects.Friend.Skeleton;
-import timtim.app.model.objects.Friend.Snake;
-import timtim.app.model.objects.Friend.Wolf;
-import timtim.app.model.objects.GameObjects.Chest;
-import timtim.app.model.objects.GameObjects.Door;
-import timtim.app.model.objects.GameObjects.Flora;
-import timtim.app.model.objects.Inventory.Item;
-import timtim.app.model.objects.Inventory.ItemFactory;
+import timtim.app.model.objects.enemy.Enemy;
+import timtim.app.model.objects.friend.Friend;
+import timtim.app.model.objects.friend.Skeleton;
+import timtim.app.model.objects.friend.Snake;
+import timtim.app.model.objects.friend.Wolf;
+import timtim.app.model.objects.inventory.Item;
+import timtim.app.model.objects.inventory.ItemFactory;
 
 public class GameMap implements IGameMap {
 
@@ -187,10 +187,8 @@ public class GameMap implements IGameMap {
 
 		Body body = createObject(o);
 
-		String imagePath = "castledoors.png";
-		Door door = new Door(body, o.getPolygon().getTransformedVertices(), imagePath);
+		Door door = new Door(body);
 		body.setUserData(door);
-		Texture doorTexture = new Texture(Gdx.files.internal(imagePath));
 		Fixture doorFixture = body.getFixtureList().get(0);
 		doorFixture.setUserData(door);
 		doorFixture.setSensor(true);
@@ -208,7 +206,7 @@ public class GameMap implements IGameMap {
 	private void createFloraObject(PolygonMapObject o, Texture floraTexture) {
 		Body body = createObject(o);
 
-		Flora flora = new Flora(body, o.getPolygon().getTransformedVertices(), floraTexture);
+		Flora flora = new Flora(body);
 		body.setUserData(flora);
 		Fixture floraFixture = body.getFixtureList().get(0);
 		floraFixture.setUserData(flora);
@@ -228,7 +226,7 @@ public class GameMap implements IGameMap {
 
 		Body body = createObject(o);
 		String imagePath = "chest2.png";
-		Chest chest = new Chest(body, o.getPolygon().getTransformedVertices(), imagePath, imagePath);
+		Chest chest = new Chest(body);
 
 		Item chestItem = ItemFactory.generateItem(mapName);
 

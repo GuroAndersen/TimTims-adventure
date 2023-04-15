@@ -9,9 +9,9 @@ import com.badlogic.gdx.utils.Array;
 
 import timtim.app.core.GameScreen;
 import timtim.app.manager.Const;
-import timtim.app.model.objects.Inventory.Inventory;
-import timtim.app.model.objects.Inventory.Item;
-import timtim.app.model.objects.Inventory.ItemFactory;
+import timtim.app.model.objects.inventory.Inventory;
+import timtim.app.model.objects.inventory.Item;
+import timtim.app.model.objects.inventory.ItemFactory;
 
 public class Player extends CombatEntity implements IPlayer {
 
