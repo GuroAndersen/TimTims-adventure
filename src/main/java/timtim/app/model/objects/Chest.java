@@ -1,10 +1,10 @@
-package timtim.app.model.objects.GameObjects;
+package timtim.app.model.objects;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Fixture;
 
-import timtim.app.model.objects.Inventory.Item;
+import timtim.app.model.objects.inventory.Item;
 
 public class Chest extends GameObject {
 

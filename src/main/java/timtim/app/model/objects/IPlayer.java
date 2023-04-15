@@ -1,6 +1,6 @@
 package timtim.app.model.objects;
 
-import timtim.app.model.objects.Inventory.Inventory;
+import timtim.app.model.objects.inventory.Inventory;
 
 public interface IPlayer {
 

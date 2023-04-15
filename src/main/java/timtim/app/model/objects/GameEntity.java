@@ -7,8 +7,6 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 
-import timtim.app.model.objects.GameObjects.GameObject;
-
 public abstract class GameEntity extends GameObject {
 
 	public int[] xMovementCases = { -1, 0, 1 };

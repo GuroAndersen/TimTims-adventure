@@ -1,4 +1,4 @@
-package timtim.app.model.objects.Inventory;
+package timtim.app.model.objects.inventory;
 
 import java.util.ArrayList;
 import java.util.NoSuchElementException;

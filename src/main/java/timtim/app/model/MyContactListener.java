@@ -9,12 +9,12 @@ import timtim.app.core.GameScreen;
 import timtim.app.core.state.PlayState;
 import timtim.app.core.state.State;
 import timtim.app.model.map.GameMap;
+import timtim.app.model.objects.Chest;
+import timtim.app.model.objects.Door;
+import timtim.app.model.objects.Flora;
 import timtim.app.model.objects.Player;
-import timtim.app.model.objects.Friend.Friend;
-import timtim.app.model.objects.GameObjects.Chest;
-import timtim.app.model.objects.GameObjects.Door;
-import timtim.app.model.objects.GameObjects.Flora;
-import timtim.app.model.objects.Inventory.Item;
+import timtim.app.model.objects.friend.Friend;
+import timtim.app.model.objects.inventory.Item;
 
 public class MyContactListener implements ContactListener {
 
