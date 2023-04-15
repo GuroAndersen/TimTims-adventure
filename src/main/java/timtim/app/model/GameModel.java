@@ -8,8 +8,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 
@@ -37,7 +35,7 @@ public class GameModel implements IGameModel {
 
 	private void setup() {
 		loadMaps();
-		setMap("level2");
+		setMap("level1");
 	}
 
 	@Override

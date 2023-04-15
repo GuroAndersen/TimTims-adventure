@@ -52,8 +52,9 @@ public abstract class Friend extends GameEntity implements IFriend {
      * 
      * @param item
      */
-    public Friend(Item item) {
+    public Friend(Item item, GameMap testMap) {
         this.item = item;
+        this.map = testMap;
     }
 
     /**
@@ -81,7 +82,7 @@ public abstract class Friend extends GameEntity implements IFriend {
 
         // Second or more interaction between Player and Friend
         // Will only show the relevant parts of dialogue needed
-        else if (interactionCounter > 0 && hasRecievedGift() == false) {
+        else if (interactionCounter > 0 && hasReceivedGift() == false) {
             int relevantDialogueCounter = 1;
             String relevantDialogue = getDialogueOptions()[relevantDialogueCounter];
             relevantDialogueCounter++;
@@ -101,7 +102,7 @@ public abstract class Friend extends GameEntity implements IFriend {
     }
 
     @Override
-    public boolean hasRecievedGift() {
+    public boolean hasReceivedGift() {
         return itemReceived;
     }
 

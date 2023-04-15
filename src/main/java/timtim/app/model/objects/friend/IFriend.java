@@ -17,7 +17,7 @@ public interface IFriend {
 	/**
 	 * Returns true if the NPC has recieved the gift it wanted
 	 */
-	public boolean hasRecievedGift();
+	public boolean hasReceivedGift();
 
 	/**
 	 * Friend recieves a gift. If this was the correct gift, return true Else,
