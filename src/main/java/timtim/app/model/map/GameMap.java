@@ -31,7 +31,6 @@ import timtim.app.model.objects.Chest;
 import timtim.app.model.objects.Door;
 import timtim.app.model.objects.Flora;
 import timtim.app.model.objects.GameEntity;
-import timtim.app.model.objects.GameObject;
 import timtim.app.model.objects.Player;
 import timtim.app.model.objects.enemy.Enemy;
 import timtim.app.model.objects.friend.Friend;
@@ -52,8 +51,15 @@ public class GameMap implements IGameMap {
 
 	OrthogonalTiledMapRenderer renderer;
 
+	// objects
+	private ArrayList<Door> doors;
+	private ArrayList<Flora> floras;
+	private ArrayList<Chest> chests;
+	private ItemFactory itemFactory;
+
 	// entities
-	private ArrayList<GameEntity> entities;
+	private ArrayList<Friend> friends;
+	private ArrayList<Enemy> enemies;
 	private Player player;
 
 	/**
@@ -67,8 +73,12 @@ public class GameMap implements IGameMap {
 		this.model = model;
 		this.mapName = mapName;
 		this.player = model.getPlayer();
-
-		entities = new ArrayList<GameEntity>();
+		doors = new ArrayList<Door>();
+		chests = new ArrayList<Chest>();
+		floras = new ArrayList<Flora>();
+		enemies = new ArrayList<Enemy>();
+		friends = new ArrayList<Friend>();
+		itemFactory = new ItemFactory();
 		complete = false;
 		// isDoorOpen = false;
 		mapSetup();
@@ -95,7 +105,8 @@ public class GameMap implements IGameMap {
 		MapObject o = objects.get(0);
 		if (o instanceof RectangleMapObject) {
 			Rectangle rect = ((RectangleMapObject) o).getRectangle();
-			playerBody = createRectBody(rect, false);
+			playerBody = BodyManager.createBody(rect.getX() + rect.getWidth() / 2, rect.getY() + rect.getHeight() / 2,
+					rect.getWidth(), rect.getHeight(), false, world);
 			Fixture fixture = playerBody.getFixtureList().get(0);
 			fixture.setUserData(player);
 		} else {
@@ -128,7 +139,8 @@ public class GameMap implements IGameMap {
 				Friend friend = null;
 				Rectangle rect = ((RectangleMapObject) o).getRectangle();
 				String name = ((RectangleMapObject) o).getName();
-				Body body = createRectBody(rect, true);
+				Body body = BodyManager.createBody(rect.getX() + rect.getWidth() / 2,
+						rect.getY() + rect.getHeight() / 2, rect.getWidth(), rect.getHeight(), true, world);
 				switch (name) {
 					case "skeleton":
 						friend = new Skeleton(gameScreen, this);
@@ -145,31 +157,36 @@ public class GameMap implements IGameMap {
 				friend.setBody(body);
 				Fixture fixture = body.getFixtureList().get(0);
 				fixture.setUserData(friend);
-				entities.add(friend);
+				friends.add(friend);
 			} else {
 				throw new IllegalArgumentException("Friend map object not found or is not a RectangleMapObject");
 			}
 		}
 	}
-	
-	private Body createRectBody(Rectangle bounds, boolean isStatic) {
+
+	private Body createObject(PolygonMapObject o) {
+		float[] vertices = o.getPolygon().getTransformedVertices();
+
+		Rectangle bounds = o.getPolygon().getBoundingRectangle();
 		float x = bounds.x;
 		float y = bounds.y;
 		float width = bounds.width;
 		float height = bounds.height;
-		Body body = BodyManager.createBody(x + width / 2, y + height / 2, width, height, isStatic, world);
+		Body body = BodyManager.createBody(x + width / 2, y + height / 2, width, height, true, world);
+
 		return body;
 	}
 
-	private Body createPolyBody(PolygonMapObject o, boolean isStatic) {
-		Rectangle bounds = o.getPolygon().getBoundingRectangle();
-		return createRectBody(bounds, isStatic);
-	}
-
 	private void createDoorObject(PolygonMapObject o) {
-		Body body = createPolyBody(o, true);
+
+		Body body = createObject(o);
+
 		Door door = new Door(body);
-		handleUserDataObject(door);
+		body.setUserData(door);
+		Fixture doorFixture = body.getFixtureList().get(0);
+		doorFixture.setUserData(door);
+		doorFixture.setSensor(true);
+		doors.add(door);
 	}
 
 	private void parseDoorObject(MapObjects objects) {
@@ -181,9 +198,14 @@ public class GameMap implements IGameMap {
 	}
 
 	private void createFloraObject(PolygonMapObject o, Texture floraTexture) {
-		Body body = createPolyBody(o, true);
+		Body body = createObject(o);
+
 		Flora flora = new Flora(body);
-		handleUserDataObject(flora);
+		body.setUserData(flora);
+		Fixture floraFixture = body.getFixtureList().get(0);
+		floraFixture.setUserData(flora);
+		floraFixture.setSensor(true);
+		floras.add(flora);
 	}
 
 	private void parseFloraObject(MapObjects objects, Texture floraTexture) {
@@ -195,11 +217,20 @@ public class GameMap implements IGameMap {
 	}
 
 	private void createChestObject(PolygonMapObject o) {
-		Body body = createPolyBody(o, true);
+
+		Body body = createObject(o);
+		String imagePath = "chest2.png";
 		Chest chest = new Chest(body);
+
 		Item chestItem = ItemFactory.generateItem(mapName);
+
 		chest.setItem(chestItem);
-		handleUserDataObject(chest);
+		body.setUserData(chest);
+		Fixture chestFixture = body.getFixtureList().get(0);
+		chestFixture.setUserData(chest);
+		chestFixture.setSensor(true);
+		chest.setItem(chestItem);
+		chests.add(chest);
 	}
 
 	private void parseChestObject(MapObjects objects) {
@@ -208,14 +239,6 @@ public class GameMap implements IGameMap {
 				createChestObject((PolygonMapObject) o);
 			}
 		}
-	}
-	
-	private void handleUserDataObject(GameObject o) {
-		Body body = o.getBody();
-		body.setUserData(o);
-		Fixture fixture = body.getFixtureList().get(0);
-		fixture.setUserData(o);
-		fixture.setSensor(true);
 	}
 
 	private void parseStaticMapObjects(MapObjects objects) {
@@ -276,7 +299,10 @@ public class GameMap implements IGameMap {
 
 	public void update(float delta) {
 		this.world.step(Const.FPS, 6, 2);
-		for (GameEntity e : entities) e.update(delta);
+		for (Friend f : friends)
+			f.update(delta);
+		for (Enemy e : enemies)
+			e.update(delta);
 	}
 
 	@Override
@@ -286,7 +312,10 @@ public class GameMap implements IGameMap {
 
 	@Override
 	public List<GameEntity> getEntities() {
-		return entities;
+		List<GameEntity> entityList = new ArrayList<>();
+		entityList.addAll(friends);
+		entityList.addAll(enemies);
+		return entityList;
 	}
 
 	@Override
