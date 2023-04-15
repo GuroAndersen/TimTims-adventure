@@ -1,7 +1,10 @@
-package timtim.app.model.objects;
+package timtim.app.model.objects.enemy;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+
+import timtim.app.model.objects.CombatEntity;
+import timtim.app.model.objects.EnemyType;
 
 public class Enemy extends CombatEntity {
 

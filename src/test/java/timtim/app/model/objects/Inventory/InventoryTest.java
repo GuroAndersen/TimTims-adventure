@@ -7,6 +7,9 @@ import java.util.NoSuchElementException;
 import org.junit.Before;
 import org.junit.Test;
 
+import timtim.app.model.objects.inventory.Inventory;
+import timtim.app.model.objects.inventory.Item;
+
 public class InventoryTest {
 
     private Inventory inventory;

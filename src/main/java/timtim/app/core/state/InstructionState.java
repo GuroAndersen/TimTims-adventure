@@ -9,89 +9,77 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Align;
-import timtim.app.core.GameScreen;
+import timtim.app.core.AccessibleGame;
 import timtim.app.core.StateHandler;
 
-
-
-
-public class GameOverState implements StateHandler {
-
-    private final GameScreen game;
+public class InstructionState implements StateHandler {
 
     ShapeRenderer shape;
     SpriteBatch batch;
     BitmapFont font;
+    private final AccessibleGame game;
 
-    public GameOverState(GameScreen game){
+    public InstructionState (AccessibleGame game) {
         this.game = game;
         shape = new ShapeRenderer();
-
         this.batch = new SpriteBatch();
         this.font = new BitmapFont();
-    }
 
+    }
 
     @Override
     public void render(float delta) {
-        update();
+        // render game in how to play state
+        handleInput();
 
         batch.begin();
-         // Load the image
+
+        // Load the image
         Texture imgage = new Texture(Gdx.files.internal("timtimArt.png"));
         Sprite imgSprite = new Sprite(imgage);
- 
-         // Calculate the center position of the screen
+
+        // Calculate the center position of the screen
+        float centerXtext = game.getCamera().viewportWidth / 2f;
+        float centerYtext = game.getCamera().viewportHeight / 2f ;
         float imageX = game.getCamera().viewportWidth / 5f;
         float imageY = game.getCamera().viewportHeight / 2f;
- 
+
         // Set the position of the image to be centered on the screen
         imgSprite.setPosition(imageX - imgSprite.getWidth() / 2f -20,
-                 imageY - imgSprite.getHeight() / 2f );
- 
+                imageY - imgSprite.getHeight() / 2f );
+
         // Set the scale of the image
         imgSprite.setScale(0.2f); // Scale the image by half
 
-
-        // Calculate the center position of the screen
-        float centerX = game.getCamera().viewportWidth / 2f;
-        float centerY = game.getCamera().viewportHeight / 2f;
-        
         //clears the screen 
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        // Draw "game over" centered on the screen
+        // Draw the image and the text
         imgSprite.draw(batch);
-
-        font.draw(batch, "Game Over!", centerX, centerY, 0, Align.center, false);
-
-        font.draw(batch, "Press ENTER to start new game!", centerX, centerY - 40, 0, Align.center, false);
-
-        font.draw(batch, "Press ESCAPE to exit game", centerX, centerY - 60, 0, Align.center, false);
+        font.draw(batch, "How to play Timtim's adventure!", centerXtext + 35, centerYtext + 150, 0, Align.center, false);
+        font.draw(batch, "Press 'A' to move to the left and 'D' to move right." , centerXtext + 35, centerYtext + 100, 0, Align.center, false);
+        font.draw(batch, "Press 'Space' to jump!", centerXtext + 35, centerYtext + 50, 0, Align.center, false);
+        font.draw(batch, "If you ever want to give TimTim a break, just press 'P' in game!", centerXtext + 35, centerYtext, 0, Align.center, false);
+        font.draw(batch, "Press 'M' to return to Main Menu, and 'Escape' to exit the game", centerXtext + 35, centerYtext - 50, 0, Align.center, false);
 
         batch.end();
-
-
     }
 
-    private void update() {
-        handleInput();
-        game.updateCamera();
-    }
 
     @Override
     public State getState() {
-        return State.GAMEOVER;
+        return State.INSTRUCTIONS;
     }
 
     private void handleInput() {
-        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
-            Gdx.app.exit();
+        if (Gdx.input.isKeyJustPressed(Input.Keys.M)){
+            returnToMenu();
         }
-        if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
-            game.switchState(State.START);
-        }
-
     }
+
+    private void returnToMenu(){
+        game.switchState(State.START);
+    }
+    
 }

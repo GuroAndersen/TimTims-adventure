@@ -1,4 +1,4 @@
-package timtim.app.model.objects.Inventory;
+package timtim.app.model.objects.inventory;
 
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
@@ -20,7 +20,6 @@ public class Inventory {
      * Makes an inventory with size 5.
      */
     public Inventory() {
-		// TODO Auto-generated constructor stub
 	}
 
 	/**

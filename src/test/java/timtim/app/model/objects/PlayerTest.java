@@ -14,6 +14,7 @@ import com.badlogic.gdx.physics.box2d.World;
 
 import timtim.app.manager.BodyManager;
 import timtim.app.manager.Const;
+import timtim.app.model.objects.inventory.Item;
 
 public class PlayerTest {
 
@@ -27,7 +28,7 @@ public class PlayerTest {
 	
 	@BeforeEach
 	public void playerSetup() {
-		player = new Player();
+		player = new Player(100,10);
 		Body body = BodyManager.createBody(
 				0,
 				0,
@@ -99,4 +100,13 @@ public class PlayerTest {
 		assertEquals(playerVelX1, playerVelX2);
 		assertEquals(playerVelX1, 0);
 	}
+	
+	@Test
+	public void giveItemPlayerTest() {
+		Item item = new Item("Apple", "A tasty fruit");
+		player.addItemToInventory(item);
+		assertTrue(player.getInventory().contains(item));
+	}
+	
+	
 }
