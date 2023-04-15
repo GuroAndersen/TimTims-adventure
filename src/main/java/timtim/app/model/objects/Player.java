@@ -27,16 +27,14 @@ public class Player extends CombatEntity implements IPlayer {
 	/**
 	 * Testing constructor.
 	 * Does not set up the sprite.
+	 * @param j 
+	 * @param i 
 	 */
-	public Player() {
-		super(100, 10);
+	public Player(int health, int strength) {
+		super(health, strength);
 		baseSetup();
 	}
 
-	private void baseSetup() {
-		this.speed = 4f;
-		this.inventory = new Inventory();
-	}
 
 	public Player(GameScreen gameScreen) {
 		super(100, 10);
@@ -45,6 +43,12 @@ public class Player extends CombatEntity implements IPlayer {
 		setupAnimation();
 		sprite.setBounds(0, 0, 32 / Const.PPM, Const.PPM);
 		sprite.setRegion(standing);
+	}
+	
+
+	private void baseSetup() {
+		this.speed = 4f;
+		this.inventory = new Inventory();
 	}
 
 	private void setupAnimation() {
@@ -73,7 +77,7 @@ public class Player extends CombatEntity implements IPlayer {
 	public void update(float delta) {
 
 		updateMovement();
-		updateSprite(delta);
+		if (sprite != null) updateSprite(delta);
 	}
 
 	private void updateSprite(float delta) {

@@ -30,15 +30,6 @@ public class Skeleton extends Friend {
 		setupAnimation();
 	}
 
-	/**
-	 * Testing constructor using the given item
-	 * 
-	 * @param item
-	 */
-	public Skeleton(Item item) {
-		super(item);
-	}
-
 	private void setupAnimation() {
 		stateTimer = 0;
 		// setup run animation

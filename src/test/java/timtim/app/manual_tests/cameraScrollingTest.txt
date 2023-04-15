@@ -1,0 +1,17 @@
+Test: check if camera scrolls according to how Timtim is moving on the screen. 
+
+Description: 
+Launch the game in launcher, continue to a level by pressing enter in start screen. 
+Move TimTim around to the left, right and jump to check if the camera follows Timtim on the screen,
+and if it stops when Timtim is close to the edge of the map.is a visibile black screen when playing the game or not.
+
+Steps: 
+1. Launch game 
+2. Start the first level by pressing enter in start menu. 
+3. Move Timtim to all the outer edges of the map to check if the camera stops. 
+4. Observe if the camera moves to the left when Timtim moves left, and to the right when Timtim moves to the right.
+5. Repeat steps for the other levels. 
+
+Result: 
+After several playthroughs of each level, the camera is scrolling correctly with Timtim when he moves in each direction. 
+It stops when Timtim is close to the edge of the tile map as it should. 

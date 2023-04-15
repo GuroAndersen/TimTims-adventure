@@ -28,15 +28,6 @@ public class Wolf extends Friend {
 		setupAnimation();
 	}
 
-	/**
-	 * Testing constructor using the given item
-	 * 
-	 * @param item
-	 */
-	public Wolf(Item item) {
-		super(item);
-	}
-
 	private void setupAnimation() {
 		// setup run animation
 		Array<TextureRegion> frames = new Array<TextureRegion>();

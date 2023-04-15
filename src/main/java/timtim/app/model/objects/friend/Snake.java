@@ -23,16 +23,7 @@ public class Snake extends Friend {
 		this.sprite = new Sprite(gameScreen.getAtlas().findRegion("snake"));
 		setupAnimation();
 	}
-
-	/**
-	 * Testing constructor. Creates a snake who wants this item.
-	 * 
-	 * @param newItem
-	 */
-	public Snake(Item newItem) {
-		super(newItem);
-	}
-
+	
 	private void setupAnimation() {
 		stateTimer = 0;
 		// setup run animation

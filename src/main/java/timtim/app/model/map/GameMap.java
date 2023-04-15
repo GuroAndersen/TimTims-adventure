@@ -83,6 +83,16 @@ public class GameMap implements IGameMap {
 		mapSetup();
 
 	}
+	
+	/**
+	 * Empty testing constructor. Does not
+	 * load a map, can only be used for completion
+	 * criteria.
+	 * @param mapName
+	 */
+	public GameMap(String mapName) {
+		this.mapName = mapName;
+	}
 
 	public void mapSetup() {
 		this.world = new World(new Vector2(0, Const.GRAVITY), false);

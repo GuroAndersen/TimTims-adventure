@@ -141,6 +141,12 @@
 			<artifactId>gdx-openal</artifactId>
 			<version>0.9.9</version>
 		</dependency>
+		<dependency>
+		    <groupId>org.mockito</groupId>
+		    <artifactId>mockito-core</artifactId>
+		    <version>3.10.0</version>
+		    <scope>test</scope>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
