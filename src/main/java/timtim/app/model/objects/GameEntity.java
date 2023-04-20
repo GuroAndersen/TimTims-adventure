@@ -58,12 +58,13 @@ public abstract class GameEntity extends GameObject {
 	}
 
 	/**
-	 * Sets the speed of this object.
+	 *  Changes the speed of this object according to the value. Speed cannot be set to less than 1 or more than 100.
 	 * 
 	 * @param speed
 	 */
-	protected void setSpeed(float speed) {
-		this.speed = speed;
+	public void changeSpeed(float speed) {
+		float newSpeed = this.speed + speed;
+		this.speed = (newSpeed < 1 || newSpeed > 100) ? this.speed : newSpeed;
 	}
 
 	public Vector2 getPosition() {
