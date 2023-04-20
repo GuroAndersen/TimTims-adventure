@@ -3,6 +3,8 @@ package timtim.app.model;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.physics.box2d.*;
 
 import timtim.app.core.GameScreen;
@@ -10,6 +12,7 @@ import timtim.app.core.state.PlayState;
 import timtim.app.core.state.State;
 import timtim.app.model.map.GameMap;
 import timtim.app.model.objects.Chest;
+import timtim.app.model.objects.DeathZone;
 import timtim.app.model.objects.Door;
 import timtim.app.model.objects.Flora;
 import timtim.app.model.objects.Player;
@@ -91,7 +94,19 @@ public class MyContactListener implements ContactListener {
             Flora f = (Flora) (fa.getUserData() instanceof Flora ? fa.getUserData() : fb.getUserData());
             Player p = (Player) (fa.getUserData() instanceof Player ? fa.getUserData() : fb.getUserData());
             p.takeDamage(f.damage());
-        } else {
+        }
+
+        // Check if player has made contact with the deathzone
+        // If true then player will take full damage
+        if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof DeathZone)
+                || (fa.getUserData() instanceof DeathZone && fb.getUserData() instanceof Player)) {
+
+            Player p = (Player) (fa.getUserData() instanceof Player ? fa.getUserData() : fb.getUserData());
+            DeathZone d = (DeathZone) (fa.getUserData() instanceof DeathZone ? fa.getUserData() : fb.getUserData());
+            p.takeDamage(400);
+        }
+
+        else {
 
         }
     }

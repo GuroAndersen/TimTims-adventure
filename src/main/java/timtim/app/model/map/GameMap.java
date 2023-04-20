@@ -28,6 +28,7 @@ import timtim.app.model.GameModel;
 import timtim.app.model.IGameMap;
 import timtim.app.model.MyContactListener;
 import timtim.app.model.objects.Chest;
+import timtim.app.model.objects.DeathZone;
 import timtim.app.model.objects.Door;
 import timtim.app.model.objects.Flora;
 import timtim.app.model.objects.GameEntity;
@@ -52,9 +53,10 @@ public class GameMap implements IGameMap {
 	OrthogonalTiledMapRenderer renderer;
 
 	// objects
-	private ArrayList<Door> doors;
-	private ArrayList<Flora> floras;
-	private ArrayList<Chest> chests;
+	private Door door;
+	private Flora flora;
+	private Chest chest;
+	private DeathZone deathZone;
 
 	// entities
 	private ArrayList<Friend> friends;
@@ -73,21 +75,23 @@ public class GameMap implements IGameMap {
 		this.mapName = mapName;
 		this.player = model.getPlayer();
 		tiledMap = new TmxMapLoader().load(mapName + ".tmx"); // gets map from resource folder
-		doors = new ArrayList<Door>();
-		chests = new ArrayList<Chest>();
-		floras = new ArrayList<Flora>();
+		door = new Door(playerBody);
+		chest = new Chest(playerBody);
+		flora = new Flora(playerBody);
 		enemies = new ArrayList<Enemy>();
 		friends = new ArrayList<Friend>();
+		deathZone = new DeathZone(playerBody);
 		complete = false;
 		// isDoorOpen = false;
 		mapSetup();
 
 	}
-	
+
 	/**
 	 * Empty testing constructor. Does not
 	 * load a map, can only be used for completion
 	 * criteria.
+	 * 
 	 * @param mapName
 	 */
 	public GameMap(String mapName) {
@@ -105,16 +109,16 @@ public class GameMap implements IGameMap {
 		parseFloraObject(tiledMap.getLayers().get("flora").getObjects(), null);
 		parseFriendObject(tiledMap.getLayers().get("friends").getObjects());
 		parseEnemyObject(tiledMap.getLayers().get("enemies").getObjects());
+		parseDeathZoneObject(tiledMap.getLayers().get("deathzone").getObjects());
 
 		renderer = new OrthogonalTiledMapRenderer(tiledMap);
 	}
 
 	private void clearObjects() {
-		this.doors.clear();
+
 		this.enemies.clear();
 		this.friends.clear();
-		this.floras.clear();
-		this.chests.clear();
+
 	}
 
 	private void parsePlayerObject(MapObjects objects) {
@@ -158,17 +162,17 @@ public class GameMap implements IGameMap {
 				Body body = BodyManager.createBody(rect.getX() + rect.getWidth() / 2,
 						rect.getY() + rect.getHeight() / 2, rect.getWidth(), rect.getHeight(), true, world);
 				switch (name) {
-				case "skeleton":
-					friend = new Skeleton(gameScreen, this);
-					break;
-				case "wolf":
-					friend = new Wolf(gameScreen, this);
-					break;
-				case "snake":
-					friend = new Snake(gameScreen, this);
-					break;
-				default:
-					throw new IllegalArgumentException("This friend type is not represented");
+					case "skeleton":
+						friend = new Skeleton(gameScreen, this);
+						break;
+					case "wolf":
+						friend = new Wolf(gameScreen, this);
+						break;
+					case "snake":
+						friend = new Snake(gameScreen, this);
+						break;
+					default:
+						throw new IllegalArgumentException("This friend type is not represented");
 				}
 				friend.setBody(body);
 				Fixture fixture = body.getFixtureList().get(0);
@@ -193,6 +197,24 @@ public class GameMap implements IGameMap {
 		return body;
 	}
 
+	private void createDeathZoneObject(PolygonMapObject o) {
+		Body body = createObject(o);
+
+		DeathZone deathZone = new DeathZone(body);
+		body.setUserData(deathZone);
+		Fixture doorFixture = body.getFixtureList().get(0);
+		doorFixture.setUserData(deathZone);
+		doorFixture.setSensor(true);
+	}
+
+	private void parseDeathZoneObject(MapObjects objects) {
+		for (MapObject o : objects) {
+			if (o instanceof PolygonMapObject) {
+				createDeathZoneObject((PolygonMapObject) o);
+			}
+		}
+	}
+
 	private void createDoorObject(PolygonMapObject o) {
 
 		Body body = createObject(o);
@@ -202,7 +224,7 @@ public class GameMap implements IGameMap {
 		Fixture doorFixture = body.getFixtureList().get(0);
 		doorFixture.setUserData(door);
 		doorFixture.setSensor(true);
-		doors.add(door);
+
 	}
 
 	private void parseDoorObject(MapObjects objects) {
@@ -221,7 +243,7 @@ public class GameMap implements IGameMap {
 		Fixture floraFixture = body.getFixtureList().get(0);
 		floraFixture.setUserData(flora);
 		floraFixture.setSensor(true);
-		floras.add(flora);
+
 	}
 
 	private void parseFloraObject(MapObjects objects, Texture floraTexture) {
@@ -246,7 +268,7 @@ public class GameMap implements IGameMap {
 		chestFixture.setUserData(chest);
 		chestFixture.setSensor(true);
 		chest.setItem(chestItem);
-		chests.add(chest);
+
 	}
 
 	private void parseChestObject(MapObjects objects) {

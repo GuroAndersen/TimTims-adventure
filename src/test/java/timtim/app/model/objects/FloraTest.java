@@ -18,7 +18,7 @@ public class FloraTest {
 
     @BeforeEach
     public void setUp() {
-    	// Set up Box2D and create a new world
+        // Set up Box2D and create a new world
         Box2D.init();
         World world = new World(new Vector2(0, -10), true);
 
@@ -35,7 +35,7 @@ public class FloraTest {
      */
     @Test
     public void testDamage() {
-    	Player p = new Player(20,5);
+        Player p = new Player(20, 5);
         assertEquals(5, flora.damage());
         p.takeDamage(flora.damage());
         assertEquals(15, p.getHealth());
