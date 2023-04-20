@@ -3,6 +3,7 @@ package timtim.app.model.objects;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.badlogic.gdx.math.Vector2;
@@ -15,7 +16,7 @@ import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 public class FloraTest {
     private Flora flora;
 
-    @BeforeAll
+    @BeforeEach
     public void setUp() {
     	// Set up Box2D and create a new world
         Box2D.init();

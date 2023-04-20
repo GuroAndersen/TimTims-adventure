@@ -1,4 +1,4 @@
-package timtim.app.model.objects.Inventory;
+package timtim.app.model.objects.inventory;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -9,9 +9,6 @@ import java.util.NoSuchElementException;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import timtim.app.model.objects.inventory.Inventory;
-import timtim.app.model.objects.inventory.Item;
 
 public class InventoryTest {
 

@@ -3,6 +3,7 @@ package timtim.app.model.objects;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.badlogic.gdx.math.Vector2;
@@ -17,7 +18,7 @@ public class GameObjectTest {
     private Body body;
     private GameObject gameObject;
 
-    @BeforeAll
+    @BeforeEach
     public void setUp() throws Exception {
         Box2D.init();
         world = new World(new Vector2(0, -9.8f), true);
