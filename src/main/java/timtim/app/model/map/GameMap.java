@@ -27,16 +27,18 @@ import timtim.app.manager.Const;
 import timtim.app.model.GameModel;
 import timtim.app.model.IGameMap;
 import timtim.app.model.MyContactListener;
-import timtim.app.model.objects.Enemy;
+import timtim.app.model.objects.Chest;
+import timtim.app.model.objects.Door;
+import timtim.app.model.objects.Flora;
 import timtim.app.model.objects.GameEntity;
 import timtim.app.model.objects.Player;
-import timtim.app.model.objects.Friend.Friend;
-import timtim.app.model.objects.Friend.Skeleton;
-import timtim.app.model.objects.Friend.Snake;
-import timtim.app.model.objects.Friend.Wolf;
-import timtim.app.model.objects.GameObjects.Chest;
-import timtim.app.model.objects.GameObjects.Door;
-import timtim.app.model.objects.GameObjects.Flora;
+import timtim.app.model.objects.enemy.Enemy;
+import timtim.app.model.objects.friend.Friend;
+import timtim.app.model.objects.friend.Skeleton;
+import timtim.app.model.objects.friend.Snake;
+import timtim.app.model.objects.friend.Wolf;
+import timtim.app.model.objects.inventory.Item;
+import timtim.app.model.objects.inventory.ItemFactory;
 
 public class GameMap implements IGameMap {
 
@@ -46,7 +48,7 @@ public class GameMap implements IGameMap {
 	TiledMap tiledMap;
 	World world;
 	Body playerBody;
-	// Chest chest;
+
 	OrthogonalTiledMapRenderer renderer;
 
 	// objects
@@ -63,28 +65,40 @@ public class GameMap implements IGameMap {
 	 * Completion criteria
 	 */
 	private boolean complete;
+	// private boolean isDoorOpen;
 
 	public GameMap(String mapName, GameModel model) {
 		this.gameScreen = model.getGameScreen();
 		this.model = model;
 		this.mapName = mapName;
 		this.player = model.getPlayer();
+		tiledMap = new TmxMapLoader().load(mapName + ".tmx"); // gets map from resource folder
 		doors = new ArrayList<Door>();
 		chests = new ArrayList<Chest>();
 		floras = new ArrayList<Flora>();
 		enemies = new ArrayList<Enemy>();
 		friends = new ArrayList<Friend>();
 		complete = false;
+		// isDoorOpen = false;
 		mapSetup();
 
+	}
+	
+	/**
+	 * Empty testing constructor. Does not
+	 * load a map, can only be used for completion
+	 * criteria.
+	 * @param mapName
+	 */
+	public GameMap(String mapName) {
+		this.mapName = mapName;
 	}
 
 	public void mapSetup() {
 		this.world = new World(new Vector2(0, Const.GRAVITY), false);
-		world.setContactListener(new MyContactListener(model));
-		tiledMap = new TmxMapLoader().load(mapName + ".tmx"); // gets map from resource folder
-		parseStaticMapObjects(tiledMap.getLayers().get("static").getObjects()); // gets objects in the "objects" layer
-																				// of the tiledmap.
+		world.setContactListener(new MyContactListener(model, gameScreen, this));
+
+		parseStaticMapObjects(tiledMap.getLayers().get("static").getObjects());
 		parsePlayerObject(tiledMap.getLayers().get("player").getObjects());
 		parseDoorObject(tiledMap.getLayers().get("door").getObjects());
 		parseChestObject(tiledMap.getLayers().get("chest").getObjects());
@@ -93,6 +107,14 @@ public class GameMap implements IGameMap {
 		parseEnemyObject(tiledMap.getLayers().get("enemies").getObjects());
 
 		renderer = new OrthogonalTiledMapRenderer(tiledMap);
+	}
+
+	private void clearObjects() {
+		this.doors.clear();
+		this.enemies.clear();
+		this.friends.clear();
+		this.floras.clear();
+		this.chests.clear();
 	}
 
 	private void parsePlayerObject(MapObjects objects) {
@@ -109,20 +131,22 @@ public class GameMap implements IGameMap {
 	}
 
 	private void parseEnemyObject(MapObjects objects) {
-//		for (MapObject o : objects)  {
-//		if (o instanceof RectangleMapObject) {
-//			Enemy enemy;
-//			Rectangle rect = ((RectangleMapObject) o).getRectangle();
-//			Body body = BodyManager.createBody(rect.getX() + rect.getWidth() / 2, rect.getY() + rect.getHeight() / 2,
-//					rect.getWidth(), rect.getHeight(), false, world);
-//			Fixture fixture = playerBody.getFixtureList().get(0);
-//			fixture.setUserData(player);
-//			enemy = new Enemy(SKELETON)
-//			enemies.add(enemy);
-//		} else {
-//			throw new IllegalArgumentException("Player map object not found or is not a RectangleMapObject");
-//		}
-//		}
+		// for (MapObject o : objects) {
+		// if (o instanceof RectangleMapObject) {
+		// Enemy enemy;
+		// Rectangle rect = ((RectangleMapObject) o).getRectangle();
+		// Body body = BodyManager.createBody(rect.getX() + rect.getWidth() / 2,
+		// rect.getY() + rect.getHeight() / 2,
+		// rect.getWidth(), rect.getHeight(), false, world);
+		// Fixture fixture = playerBody.getFixtureList().get(0);
+		// fixture.setUserData(player);
+		// enemy = new Enemy(SKELETON)
+		// enemies.add(enemy);
+		// } else {
+		// throw new IllegalArgumentException("Player map object not found or is not a
+		// RectangleMapObject");
+		// }
+		// }
 	}
 
 	private void parseFriendObject(MapObjects objects) {
@@ -173,10 +197,8 @@ public class GameMap implements IGameMap {
 
 		Body body = createObject(o);
 
-		String imagePath = "castledoors.png";
-		Door door = new Door(body, o.getPolygon().getTransformedVertices(), imagePath);
+		Door door = new Door(body);
 		body.setUserData(door);
-		Texture doorTexture = new Texture(Gdx.files.internal(imagePath));
 		Fixture doorFixture = body.getFixtureList().get(0);
 		doorFixture.setUserData(door);
 		doorFixture.setSensor(true);
@@ -194,7 +216,7 @@ public class GameMap implements IGameMap {
 	private void createFloraObject(PolygonMapObject o, Texture floraTexture) {
 		Body body = createObject(o);
 
-		Flora flora = new Flora(body, o.getPolygon().getTransformedVertices(), floraTexture);
+		Flora flora = new Flora(body);
 		body.setUserData(flora);
 		Fixture floraFixture = body.getFixtureList().get(0);
 		floraFixture.setUserData(flora);
@@ -214,12 +236,16 @@ public class GameMap implements IGameMap {
 
 		Body body = createObject(o);
 		String imagePath = "chest2.png";
-		Chest chest = new Chest(body, o.getPolygon().getTransformedVertices(), imagePath, imagePath);
+		Chest chest = new Chest(body);
+
+		Item chestItem = ItemFactory.generateItem(mapName);
+
+		chest.setItem(chestItem);
 		body.setUserData(chest);
-		Texture chestTexture = new Texture(Gdx.files.internal(imagePath));
 		Fixture chestFixture = body.getFixtureList().get(0);
 		chestFixture.setUserData(chest);
 		chestFixture.setSensor(true);
+		chest.setItem(chestItem);
 		chests.add(chest);
 	}
 
@@ -253,10 +279,7 @@ public class GameMap implements IGameMap {
 		Vector2[] worldVertices = new Vector2[vertices.length / 2];
 
 		for (int i = 0; i < vertices.length / 2; i++) {
-			Vector2 current = new Vector2(vertices[i * 2] / Const.PPM, vertices[i * 2 + 1] / Const.PPM); // Calculations
-																											// to match
-																											// BOX2D
-																											// world
+			Vector2 current = new Vector2(vertices[i * 2] / Const.PPM, vertices[i * 2 + 1] / Const.PPM);
 			worldVertices[i] = current;
 		}
 
@@ -273,10 +296,12 @@ public class GameMap implements IGameMap {
 	@Override
 	public void setComplete() {
 		this.complete = true;
+		// this.isDoorOpen = true;
 	}
 
 	@Override
 	public void restart() {
+		clearObjects();
 		mapSetup();
 		this.model.getPlayer().setBody(this.playerBody);
 	}

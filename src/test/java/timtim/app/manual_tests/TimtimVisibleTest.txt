@@ -1,0 +1,18 @@
+Test: check TimTim is animated when launching the game
+
+Description: 
+Launch the game in launcher, continue to a level by pressing enter in start screen. 
+When the level starts Timtim should be visibile as a little boy in blue jeans and yellow jumper with a colorful hat. 
+
+Steps: 
+1. Launch game 
+2. Start the first level by pressing enter in start menu. 
+3. check if Timtim is visibile at all levels. 
+4. check if Timtim changes accordingly when moving to the left, right, jumping and falling. 
+
+
+Result: 
+After several playthroughs of each level, Timtim is visibile at all levels and he changes accordingly when moving him.  
+
+Error:
+none. 

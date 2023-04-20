@@ -1,4 +1,4 @@
-package timtim.app.model.objects.Friend;
+package timtim.app.model.objects.friend;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -8,8 +8,8 @@ import com.badlogic.gdx.utils.Array;
 import timtim.app.core.GameScreen;
 import timtim.app.manager.Const;
 import timtim.app.model.map.GameMap;
-import timtim.app.model.objects.Inventory.Item;
-import timtim.app.model.objects.Inventory.ItemFactory;
+import timtim.app.model.objects.inventory.Item;
+import timtim.app.model.objects.inventory.ItemFactory;
 
 public class Skeleton extends Friend {
 
@@ -28,15 +28,6 @@ public class Skeleton extends Friend {
 		this.sprite = new Sprite(game.getAtlas().findRegion("skeleton"));
 		this.spriteYOffset = Const.PPM * 0.5f;
 		setupAnimation();
-	}
-
-	/**
-	 * Testing constructor using the given item
-	 * 
-	 * @param item
-	 */
-	public Skeleton(Item item) {
-		super(item);
 	}
 
 	private void setupAnimation() {

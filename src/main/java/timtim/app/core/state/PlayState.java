@@ -42,6 +42,7 @@ public class PlayState implements StateHandler {
         //draws the healthbar on screen
         healthBar.draw(batch, shapeRenderer);
 
+
     }
     
     private void update(float delta) {

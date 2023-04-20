@@ -1,6 +1,6 @@
-package timtim.app.model.objects.Friend;
+package timtim.app.model.objects.friend;
 
-import timtim.app.model.objects.Inventory.Item;
+import timtim.app.model.objects.inventory.Item;
 
 public interface IFriend {
 
@@ -17,7 +17,7 @@ public interface IFriend {
 	/**
 	 * Returns true if the NPC has recieved the gift it wanted
 	 */
-	public boolean hasRecievedGift();
+	public boolean hasReceivedGift();
 
 	/**
 	 * Friend recieves a gift. If this was the correct gift, return true Else,

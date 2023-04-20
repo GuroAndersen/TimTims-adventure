@@ -56,11 +56,13 @@ public abstract class CombatEntity extends GameEntity {
 	public int getHealth() {
 		return health;
 	}
+	
 	/**
-	 * @return the max healthPoints (HP) of this CombatEntity.
+	 * 
+	 * @return the max health of this CombatEntity.
 	 */
-	public int getMaxHealth(){
-		return maxHealth;
+	public int getMaxHealth() {
+		return this.maxHealth;
 	}
 	
 	/**
