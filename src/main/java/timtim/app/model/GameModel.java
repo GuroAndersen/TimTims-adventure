@@ -74,6 +74,7 @@ public class GameModel implements IGameModel {
 	private void setMap(String mapName) {
 		this.currentMap = mapName;
 		getPlayer().setBody(maps.get(mapName).getPlayerBody());
+		this.player.resetHealth();
 	}
 
 	@Override
