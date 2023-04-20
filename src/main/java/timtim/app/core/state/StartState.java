@@ -14,10 +14,7 @@ import com.badlogic.gdx.utils.Align;
 import timtim.app.core.AccessibleGame;
 import timtim.app.core.StateHandler;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class StartState implements StateHandler {
 
@@ -48,6 +45,7 @@ public class StartState implements StateHandler {
         for (String map : game.getModel().getMapNames()) {
             mapSelection.add(selected);
             mapList.add(map);
+            mapList.sort(Comparator.naturalOrder());
             if (selected) selected = false;
         }
 
