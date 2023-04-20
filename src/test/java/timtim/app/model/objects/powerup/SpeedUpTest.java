@@ -26,8 +26,5 @@ public class SpeedUpTest {
         assertEquals(initialSpeed + 2, newSpeed, 0.001);
     }
 
-    // Needs this in the player class:
-    // public float getSpeed() {
-	// 	return speed;
-	// }
+
 }

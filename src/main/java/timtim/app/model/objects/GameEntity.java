@@ -87,4 +87,8 @@ public abstract class GameEntity extends GameObject {
 			isJumping = false;
 		resetVelocity();
 	}
+
+	public float getSpeed() {
+		return speed;
+	}
 }
