@@ -12,7 +12,10 @@ public class SpeedUp implements Powerup {
 
     @Override
     public void doPowerupIfActive(CombatEntity entity) {
-
+        if(!used) {
+            entity.changeSpeed(2);
+            used = true;
+        }
     }
     
 }
