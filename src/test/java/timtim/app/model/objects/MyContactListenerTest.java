@@ -100,4 +100,16 @@ public class MyContactListenerTest {
 
         verify(player).takeDamage(damage);
     }
+
+    @Test
+    public void testBeginContact_PlayerAndDeathZone() {
+        Player player = mock(Player.class);
+        DeathZone deathZone = mock(DeathZone.class);
+        when(fixtureA.getUserData()).thenReturn(player);
+        when(fixtureB.getUserData()).thenReturn(deathZone);
+
+        listener.beginContact(contact);
+
+        verify(player).takeDamage(400);
+    }
 }
