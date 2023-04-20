@@ -1,9 +1,9 @@
 package timtim.app.model.objects;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -17,7 +17,7 @@ public class GameObjectTest {
     private Body body;
     private GameObject gameObject;
 
-    @Before
+    @BeforeAll
     public void setUp() throws Exception {
         Box2D.init();
         world = new World(new Vector2(0, -9.8f), true);
