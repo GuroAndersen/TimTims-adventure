@@ -23,7 +23,7 @@ public class SpeedUpTest {
         speedUp.doPowerupIfActive(player);
         float newSpeed = player.getSpeed();
 
-        assertEquals(initialSpeed + 2, newSpeed, 0.001);
+        assertEquals(initialSpeed + 2, newSpeed);
     }
 
 
