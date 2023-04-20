@@ -29,10 +29,10 @@ ___
 **Referent: Mattias** <br>
 
 *Oppsummering:* <br>
-Todo
+Todo <br>
 
 *Diskusjoner:* <br>
-Todo
+Todo <br>
 
 *Neste møte* <br>
 Todo <br>
@@ -89,7 +89,7 @@ ___
 TODO
 ___
 
-### ***Retroperspektiv/forbedringspunkter***
+### ***Retroperspektiv***
 TODO
 ___
 
@@ -140,7 +140,7 @@ ___
 ### **Analyseverktøy**
 Under denne obligen har vi tatt i bruk analyseverktøy Spotbugs. Dette er et analyseverktøy som ....
 
-Vi har startet obligen med å ta dette i bruk. Resultat kan sees på ...png. 
+Vi har startet obligen med å ta dette i bruk. Resultat kan sees på SpotbugsStartOfOblig.png. 
 Den viser at vi hadde 43 bugs, under forskjellige kategorier. De fleste av disse var av det vi vil kategoriesere som mindre fatal for utfallet av spillet. Samt var det noen vi ikke helt forstod hva betytte. Vi vil prioritere å fikse dem som er mer kritiske for spillet.
 
 På slutten av obligen tok vi en ny runde med Spotbugs. Resultatet kan sees på ...png.
