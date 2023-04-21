@@ -30,6 +30,7 @@ import timtim.app.model.MyContactListener;
 import timtim.app.model.objects.Chest;
 import timtim.app.model.objects.DeathZone;
 import timtim.app.model.objects.Door;
+import timtim.app.model.objects.EnemyType;
 import timtim.app.model.objects.Flora;
 import timtim.app.model.objects.GameEntity;
 import timtim.app.model.objects.Player;
@@ -135,24 +136,27 @@ public class GameMap implements IGameMap {
 	}
 
 	private void parseEnemyObject(MapObjects objects) {
-		// for (MapObject o : objects) {
-		// if (o instanceof RectangleMapObject) {
-		// Enemy enemy;
-		// Rectangle rect = ((RectangleMapObject) o).getRectangle();
-		// Body body = BodyManager.createBody(rect.getX() + rect.getWidth() / 2,
-		// rect.getY() + rect.getHeight() / 2,
-		// rect.getWidth(), rect.getHeight(), false, world);
-		// Fixture fixture = playerBody.getFixtureList().get(0);
-		// fixture.setUserData(player);
-		// enemy = new Enemy(SKELETON)
-		// enemies.add(enemy);
-		// } else {
-		// throw new IllegalArgumentException("Player map object not found or is not a
-		// RectangleMapObject");
-		// }
-		// }
+		for (MapObject o : objects) {
+			if (o instanceof RectangleMapObject) {
+				Enemy enemy = null;
+				Rectangle rect = ((RectangleMapObject) o).getRectangle();
+				String name = ((RectangleMapObject) o).getName();
+				Body body = BodyManager.createBody(rect.getX() + rect.getWidth() / 2,
+						rect.getY() + rect.getHeight() / 2, rect.getWidth(), rect.getHeight(), false, world);
+				switch (name) {
+				case "bunny":
+					enemy = new Enemy(this.gameScreen, EnemyType.BUNNY);
+					break;
+				default:
+					throw new IllegalArgumentException("This enemy type is not represented: " + name);
+				}
+				enemy.setBody(body);
+				Fixture fixture = body.getFixtureList().get(0);
+				fixture.setUserData(enemy);
+				enemies.add(enemy);
+			}
+		}
 	}
-
 	private void parseFriendObject(MapObjects objects) {
 		for (MapObject o : objects) {
 			if (o instanceof RectangleMapObject) {
@@ -172,7 +176,7 @@ public class GameMap implements IGameMap {
 						friend = new Snake(gameScreen, this);
 						break;
 					default:
-						throw new IllegalArgumentException("This friend type is not represented");
+						throw new IllegalArgumentException("This friend type is not represented " + name);
 				}
 				friend.setBody(body);
 				Fixture fixture = body.getFixtureList().get(0);

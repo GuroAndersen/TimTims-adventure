@@ -27,8 +27,8 @@ public class Player extends CombatEntity implements IPlayer {
 	/**
 	 * Testing constructor.
 	 * Does not set up the sprite.
-	 * @param j 
-	 * @param i 
+	 * @param health 
+	 * @param strength
 	 */
 	public Player(int health, int strength) {
 		super(health, strength);
@@ -75,7 +75,6 @@ public class Player extends CombatEntity implements IPlayer {
 
 	@Override
 	public void update(float delta) {
-
 		updateMovement();
 		if (sprite != null) updateSprite(delta);
 	}

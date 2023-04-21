@@ -31,3 +31,10 @@ snake
   orig: 96, 128
   offset: 0, 0
   index: -1
+bunny
+  rotate: false
+  xy: 323, 323
+  size: 128, 32
+  orig: 128, 32
+  offset: 0, 0
+  index: -1
