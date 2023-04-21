@@ -16,6 +16,7 @@ import timtim.app.model.objects.DeathZone;
 import timtim.app.model.objects.Door;
 import timtim.app.model.objects.Flora;
 import timtim.app.model.objects.Player;
+import timtim.app.model.objects.enemy.Enemy;
 import timtim.app.model.objects.friend.Friend;
 import timtim.app.model.objects.inventory.Item;
 
@@ -104,6 +105,14 @@ public class MyContactListener implements ContactListener {
             Player p = (Player) (fa.getUserData() instanceof Player ? fa.getUserData() : fb.getUserData());
             DeathZone d = (DeathZone) (fa.getUserData() instanceof DeathZone ? fa.getUserData() : fb.getUserData());
             p.takeDamage(400);
+        }
+        
+        if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Enemy)
+                || (fa.getUserData() instanceof Enemy && fb.getUserData() instanceof Enemy)) {
+            Enemy f = (Enemy) (fa.getUserData() instanceof Enemy ? fa.getUserData() : fb.getUserData());
+            Player p = (Player) (fa.getUserData() instanceof Player ? fa.getUserData() : fb.getUserData());
+
+            f.doDamage(p);
         }
 
         else {

@@ -23,6 +23,7 @@ public class Enemy extends CombatEntity {
 	
 	
 	public Enemy(GameScreen game, EnemyType type) {
+		super(50,10);
 		this.type = type;
 		setSprite(game);
 		setupAnimation();
