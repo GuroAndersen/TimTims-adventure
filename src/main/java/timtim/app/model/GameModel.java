@@ -8,6 +8,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 
@@ -20,17 +22,17 @@ import timtim.app.model.objects.Player;
 public class GameModel implements IGameModel {
 
 	private GameScreen gameScreen;
-	private Player player;
+	Player player;
 
 	// maps
 	private String currentMap;
-	private Map<String, GameMap> maps;
+	Map<String, GameMap> maps;
 
 	public GameModel(GameScreen gameScreen) {
 		this.gameScreen = gameScreen;
-		this.player = new Player(gameScreen);
+		if (Gdx.files != null) this.player = new Player(gameScreen);
 		this.maps = new HashMap<String, GameMap>();
-		setup();
+		if (Gdx.files != null) setup();
 	}
 
 	private void setup() {
@@ -89,9 +91,8 @@ public class GameModel implements IGameModel {
 		return getCurrentMap().getMapRenderer();
 	}
 
-	
 	///////// GETTERS
-	
+
 	@Override
 	public List<GameEntity> getEntities() {
 		List<GameEntity> entities = getCurrentMap().getEntities();
@@ -114,7 +115,6 @@ public class GameModel implements IGameModel {
 		return this.player;
 	}
 
-	
 	/////// PLAYER
 
 	@Override
