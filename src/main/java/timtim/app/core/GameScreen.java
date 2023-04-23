@@ -20,7 +20,7 @@ public class GameScreen extends ScreenAdapter implements AccessibleGame {
 
 	// Model and state variables
 	private State state;
-	private HashMap<State, StateHandler> states;
+	HashMap<State, StateHandler> states;
 	private IGameModel model;
 
 	// Map rendering variables
