@@ -17,14 +17,12 @@ import java.awt.*;
 
 public class PauseState implements StateHandler {
 
-    ShapeRenderer shape;
     SpriteBatch batch;
     BitmapFont font;
     private final AccessibleGame game;
 
     public PauseState (AccessibleGame game) {
         this.game = game;
-        shape = new ShapeRenderer();
 
         this.batch = new SpriteBatch();
         this.font = new BitmapFont();

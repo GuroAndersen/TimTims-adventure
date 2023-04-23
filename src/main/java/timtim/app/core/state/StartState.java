@@ -14,14 +14,10 @@ import com.badlogic.gdx.utils.Align;
 import timtim.app.core.AccessibleGame;
 import timtim.app.core.StateHandler;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class StartState implements StateHandler {
 
-    ShapeRenderer shape;
     SpriteBatch batch;
     BitmapFont font;
     private final AccessibleGame game;
@@ -33,8 +29,6 @@ public class StartState implements StateHandler {
 
     public StartState (AccessibleGame game) {
         this.game = game;
-        shape = new ShapeRenderer();
-
         this.batch = new SpriteBatch();
         this.font = new BitmapFont();
 
@@ -48,6 +42,7 @@ public class StartState implements StateHandler {
         for (String map : game.getModel().getMapNames()) {
             mapSelection.add(selected);
             mapList.add(map);
+            mapList.sort(Comparator.naturalOrder());
             if (selected) selected = false;
         }
 
@@ -118,6 +113,7 @@ public class StartState implements StateHandler {
         }
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)){
+        	switchMap();
             startGame();
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.H)){

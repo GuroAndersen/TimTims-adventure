@@ -2,18 +2,29 @@ package timtim.app.core.state;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+
 import timtim.app.core.GameScreen;
 import timtim.app.core.StateHandler;
 import timtim.app.manager.Const;
+import timtim.app.model.HealthBar;
+import timtim.app.model.objects.Player;
 
 public class PlayState implements StateHandler {
 
 
     private final GameScreen game;
+    private final SpriteBatch batch;
+    private final HealthBar healthBar;
+
 
     public PlayState (GameScreen game) {
         this.game = game;
+        this.batch = new SpriteBatch();
+        this.healthBar =  new HealthBar(30, 40, 100, 40, Color.BLACK, Color.GREEN, game.getModel().getPlayer());
     }
 
     @Override
@@ -26,10 +37,10 @@ public class PlayState implements StateHandler {
 
         // Render map and player and objects
         game.renderMap();
-        this.game.getModel().getPlayer().getHealth();
-
+        //draws the healthbar on screen
+        healthBar.draw(batch);
     }
-
+    
     private void update(float delta) {
         handleInput();
         game.getModel().update(delta);
