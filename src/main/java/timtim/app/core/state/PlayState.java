@@ -17,7 +17,6 @@ public class PlayState implements StateHandler {
 
 
     private final GameScreen game;
-    private final ShapeRenderer shapeRenderer;
     private final SpriteBatch batch;
     private final HealthBar healthBar;
 
@@ -25,7 +24,6 @@ public class PlayState implements StateHandler {
     public PlayState (GameScreen game) {
         this.game = game;
         this.batch = new SpriteBatch();
-        this.shapeRenderer = new ShapeRenderer();
         this.healthBar =  new HealthBar(30, 40, 100, 40, Color.BLACK, Color.GREEN, game.getModel().getPlayer());
     }
 
@@ -40,9 +38,7 @@ public class PlayState implements StateHandler {
         // Render map and player and objects
         game.renderMap();
         //draws the healthbar on screen
-        healthBar.draw(batch, shapeRenderer);
-
-
+        healthBar.draw(batch);
     }
     
     private void update(float delta) {

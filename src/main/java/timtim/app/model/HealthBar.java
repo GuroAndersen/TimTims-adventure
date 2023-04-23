@@ -16,6 +16,7 @@ public class HealthBar {
     private Color backgroundColor;
     private Color foregroundColor;
     private Player player;
+    private ShapeRenderer shapeRenderer;
     
     public HealthBar(int x, int y, int width, int height, Color backgroundColor, Color foregroundColor, Player player) {
         this.x = x;
@@ -25,9 +26,10 @@ public class HealthBar {
         this.backgroundColor = backgroundColor;
         this.foregroundColor = foregroundColor;
         this.player = player;
+        this.shapeRenderer = new ShapeRenderer();
     }
     
-    public void draw(SpriteBatch batch, ShapeRenderer shapeRenderer) {
+    public void draw(SpriteBatch batch) {
         // Begin the SpriteBatch and ShapeRenderer
         batch.begin();
         shapeRenderer.setProjectionMatrix(batch.getProjectionMatrix());
