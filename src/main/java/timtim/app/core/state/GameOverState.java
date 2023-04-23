@@ -19,13 +19,11 @@ public class GameOverState implements StateHandler {
 
     private final GameScreen game;
 
-    ShapeRenderer shape;
     SpriteBatch batch;
     BitmapFont font;
 
     public GameOverState(GameScreen game){
         this.game = game;
-        shape = new ShapeRenderer();
 
         this.batch = new SpriteBatch();
         this.font = new BitmapFont();

@@ -41,8 +41,8 @@ public class GameScreen extends ScreenAdapter implements AccessibleGame {
 		this.camera.zoom = zoom;
 		this.B2DDebugRenderer = new Box2DDebugRenderer();
 		this.model = new GameModel(this);
-
 		this.states = new HashMap<>();
+		
 		initStates();
 
 	}
