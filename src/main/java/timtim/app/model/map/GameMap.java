@@ -17,7 +17,6 @@ import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.Shape;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.physics.box2d.Fixture;
 
@@ -26,7 +25,7 @@ import timtim.app.manager.BodyManager;
 import timtim.app.manager.Const;
 import timtim.app.model.GameModel;
 import timtim.app.model.IGameMap;
-import timtim.app.model.MyContactListener;
+import timtim.app.model.Collision.MyContactListener;
 import timtim.app.model.objects.Chest;
 import timtim.app.model.objects.DeathZone;
 import timtim.app.model.objects.Door;
@@ -100,7 +99,7 @@ public class GameMap implements IGameMap {
 
 	public void mapSetup() {
 		this.world = new World(new Vector2(0, Const.GRAVITY), false);
-		world.setContactListener(new MyContactListener(model, gameScreen, this));
+		world.setContactListener(new MyContactListener(gameScreen, this));
 
 		parseStaticMapObjects(tiledMap.getLayers().get("static").getObjects());
 		parsePlayerObject(tiledMap.getLayers().get("player").getObjects());
@@ -359,4 +358,15 @@ public class GameMap implements IGameMap {
 		return this.playerBody;
 	}
 
+	public String getMapName() {
+		return mapName;
+	}
+
+	public GameModel getModel() {
+		return model;
+	}
+
+	public Player getPlayer() {
+		return player;
+	}
 }

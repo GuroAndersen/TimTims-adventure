@@ -11,7 +11,7 @@ import static org.mockito.Mockito.*;
 import timtim.app.core.GameScreen;
 import timtim.app.core.state.State;
 import timtim.app.model.IGameModel;
-import timtim.app.model.MyContactListener;
+import timtim.app.model.Collision.MyContactListener;
 import timtim.app.model.map.GameMap;
 import timtim.app.model.objects.friend.Friend;
 import timtim.app.model.objects.inventory.Inventory;
@@ -32,7 +32,7 @@ public class MyContactListenerTest {
         model = mock(IGameModel.class);
         game = mock(GameScreen.class);
         gameMap = mock(GameMap.class);
-        listener = new MyContactListener(model, game, gameMap);
+        listener = new MyContactListener(game, gameMap);
         contact = mock(Contact.class);
         fixtureA = mock(Fixture.class);
         fixtureB = mock(Fixture.class);
