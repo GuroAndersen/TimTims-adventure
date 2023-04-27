@@ -24,7 +24,7 @@ public class Enemy extends CombatEntity {
 
 	public Enemy(GameScreen game, EnemyType type) {
 		super(50, 10);
-		this.setSpeed(2f);
+		this.changeSpeed(2f);
 		this.type = type;
 		setSprite(game);
 		setupAnimation();
