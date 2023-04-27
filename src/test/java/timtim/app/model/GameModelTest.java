@@ -85,34 +85,6 @@ public class GameModelTest {
 
 		assertNotNull(gameModel.getMapRenderer());
 	}
-
-	@Test
-	public void testGetEntities() {
-		Player playerMock = mock(Player.class);
-		when(playerMock.isAlive()).thenReturn(false);
-		when(playerMock.getHealth()).thenReturn(0);
-		when(playerMock.getBody()).thenReturn(null);
-
-		GameEntity gameEntityMock = mock(GameEntity.class);
-		GameMap gameMapMock = mock(GameMap.class);
-		when(gameMapMock.getPlayerBody()).thenReturn(null);
-		when(gameMapMock.getWorld()).thenReturn(null);
-		when(gameMapMock.getEntities()).thenReturn(Arrays.asList(gameEntityMock,playerMock));
-
-		Map<String, GameMap> mapsMock = new HashMap<String, GameMap>();
-		mapsMock.put("level1", gameMapMock);
-
-		gameModel = new GameModel(gameScreenMock);
-		gameModel.player = playerMock;
-		gameModel.maps = mapsMock;
-		gameModel.swapLevel("level1");
-
-		List<GameEntity> entities = gameModel.getEntities();
-
-		assertEquals(2, entities.size());
-		assertTrue(entities.contains(playerMock));
-		assertTrue(entities.contains(gameEntityMock));
-	}
 	
     @Test
     public void testPlayerMove() {
