@@ -8,6 +8,7 @@ import com.badlogic.gdx.physics.box2d.World;
 
 import timtim.app.model.objects.GameEntity;
 import timtim.app.model.objects.Player;
+import timtim.app.model.sound.SoundEffect;
 
 
 /**
@@ -76,4 +77,6 @@ public interface IGameModel {
 	void swapLevel(String level);
 
 	Iterable<String> getMapNames();
+
+	void playSound(SoundEffect sound);
 }
