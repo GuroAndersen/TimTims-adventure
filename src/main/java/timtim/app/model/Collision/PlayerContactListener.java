@@ -1,14 +1,8 @@
-package timtim.app.model;
+package timtim.app.model.Collision;
 
-import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.maps.MapObject;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.physics.box2d.*;
 
 import timtim.app.core.GameScreen;
-import timtim.app.core.state.PlayState;
 import timtim.app.core.state.State;
 import timtim.app.model.map.GameMap;
 import timtim.app.model.objects.Chest;
@@ -21,47 +15,32 @@ import timtim.app.model.objects.friend.Friend;
 import timtim.app.model.objects.inventory.Item;
 import timtim.app.model.sound.SoundEffect;
 
-public class MyContactListener implements ContactListener {
+public class PlayerContactListener implements ContactListener {
 
-    private IGameModel model;
     private GameMap gameMap;
     private GameScreen game;
-    private PlayState playState;
 
-    public MyContactListener(IGameModel model, GameScreen game, GameMap gameMap) {
-        this.model = model;
+    public PlayerContactListener(GameScreen game, GameMap gameMap) {
         this.game = game;
         this.gameMap = gameMap;
     }
 
-    // Gets activated when two objects make contact with eachother.
-    @Override
-    public void beginContact(Contact contact) {
-
-        Fixture fa = contact.getFixtureA();
-        Fixture fb = contact.getFixtureB();
-
-        // fb.getBody().getPosition());
-
-        if ((fa.getUserData() == null || fb.getUserData() == null) || fa == null || fb == null) {
-            // System.out.println("fa: " + fa.getUserData());
-            // System.out.println("fb: " + fb.getUserData());
-            return;
-        }
-
+    // Handles contact between player and door.
+    private void handleDoorContact(Fixture fa, Fixture fb) {
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Door)
                 || (fa.getUserData() instanceof Door && fb.getUserData() instanceof Player)) {
-            Player p = (Player) (fa.getUserData() instanceof Player ? fa.getUserData() : fb.getUserData());
-            Door d = (Door) (fa.getUserData() instanceof Door ? fa.getUserData() : fb.getUserData());
 
             if (gameMap.isComplete())
                 game.switchState(State.START);
 
         }
+    }
+
+    // Handles contact between player and chest.
+    private void handleChestContact(Fixture fa, Fixture fb) {
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Chest)
                 || (fa.getUserData() instanceof Chest && fb.getUserData() instanceof Player)) {
 
-            // if (Gdx.input.isKeyPressed(Input.Keys.F)) {
             Chest chest = (Chest) (fa.getUserData() instanceof Chest ? fa.getUserData() : fb.getUserData());
             if (!chest.isOpen()) {
                 chest.open();
@@ -79,10 +58,11 @@ public class MyContactListener implements ContactListener {
                 
             }
 
-            // }
-            // This also needs a restriction where the open option is only given when the
-            // chest is closed and after it has no reaction.
         }
+    }
+
+    // Handles contact between player and friend.
+    private void handleFriendContact(Fixture fa, Fixture fb) {
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Friend)
                 || (fa.getUserData() instanceof Friend && fb.getUserData() instanceof Player)) {
             Friend f = (Friend) (fa.getUserData() instanceof Friend ? fa.getUserData() : fb.getUserData());
@@ -93,6 +73,9 @@ public class MyContactListener implements ContactListener {
 
             f.updateConversation();
         }
+    }
+
+    private void handleFloraContact(Fixture fa, Fixture fb) {
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Flora)
                 || (fa.getUserData() instanceof Flora && fb.getUserData() instanceof Player)) {
             Flora f = (Flora) (fa.getUserData() instanceof Flora ? fa.getUserData() : fb.getUserData());
@@ -100,18 +83,21 @@ public class MyContactListener implements ContactListener {
             p.takeDamage(f.damage());
             game.getModel().playSound(SoundEffect.HIT);
         }
+    }
 
+    private void handleDeathzoneContact(Fixture fa, Fixture fb) {
         // Check if player has made contact with the deathzone
         // If true then player will take full damage
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof DeathZone)
                 || (fa.getUserData() instanceof DeathZone && fb.getUserData() instanceof Player)) {
 
             Player p = (Player) (fa.getUserData() instanceof Player ? fa.getUserData() : fb.getUserData());
-            DeathZone d = (DeathZone) (fa.getUserData() instanceof DeathZone ? fa.getUserData() : fb.getUserData());
             p.takeDamage(400);
             game.getModel().playSound(SoundEffect.GAMEOVER);
         }
-        
+    }
+
+    private void handleEnemyContact(Fixture fa, Fixture fb) {
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Enemy)
                 || (fa.getUserData() instanceof Enemy && fb.getUserData() instanceof Player)) {
             Enemy f = (Enemy) (fa.getUserData() instanceof Enemy ? fa.getUserData() : fb.getUserData());
@@ -123,10 +109,31 @@ public class MyContactListener implements ContactListener {
         if (!game.getModel().getPlayer().isAlive()){
             game.getModel().playSound(SoundEffect.GAMEOVER);
         }
+    }
 
-        else {
+    // Gets activated when two objects make contact with eachother.
+    @Override
+    public void beginContact(Contact contact) {
 
+        Fixture fa = contact.getFixtureA();
+        Fixture fb = contact.getFixtureB();
+
+        if ((fa.getUserData() == null || fb.getUserData() == null) || fa == null || fb == null) {
+
+            return;
         }
+
+        handleDoorContact(fa, fb);
+
+        handleChestContact(fa, fb);
+
+        handleFriendContact(fa, fb);
+
+        handleFloraContact(fa, fb);
+
+        handleDeathzoneContact(fa, fb);
+
+        handleEnemyContact(fa, fb);
     }
 
     // Gets activated when two objects stop having contact with eachother.
