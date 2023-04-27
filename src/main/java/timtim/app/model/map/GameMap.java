@@ -329,7 +329,8 @@ public class GameMap implements IGameMap {
 	public void restart() {
 		clearObjects();
 		mapSetup();
-		this.model.getPlayer().setBody(this.playerBody);
+		this.player.setBody(this.playerBody);
+		this.player.resetHealth();
 	}
 
 	@Override
