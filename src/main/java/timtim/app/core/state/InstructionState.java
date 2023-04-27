@@ -14,14 +14,12 @@ import timtim.app.core.StateHandler;
 
 public class InstructionState implements StateHandler {
 
-    ShapeRenderer shape;
     SpriteBatch batch;
     BitmapFont font;
     private final AccessibleGame game;
 
     public InstructionState (AccessibleGame game) {
         this.game = game;
-        shape = new ShapeRenderer();
         this.batch = new SpriteBatch();
         this.font = new BitmapFont();
 

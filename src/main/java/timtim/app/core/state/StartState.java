@@ -18,7 +18,6 @@ import java.util.*;
 
 public class StartState implements StateHandler {
 
-    ShapeRenderer shape;
     SpriteBatch batch;
     BitmapFont font;
     private final AccessibleGame game;
@@ -30,8 +29,6 @@ public class StartState implements StateHandler {
 
     public StartState (AccessibleGame game) {
         this.game = game;
-        shape = new ShapeRenderer();
-
         this.batch = new SpriteBatch();
         this.font = new BitmapFont();
 
@@ -116,6 +113,7 @@ public class StartState implements StateHandler {
         }
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)){
+        	switchMap();
             startGame();
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.H)){
