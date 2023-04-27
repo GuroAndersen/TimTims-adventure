@@ -18,6 +18,7 @@ import timtim.app.model.objects.Flora;
 import timtim.app.model.objects.Player;
 import timtim.app.model.objects.friend.Friend;
 import timtim.app.model.objects.inventory.Item;
+import timtim.app.model.sound.SoundEffect;
 
 public class MyContactListener implements ContactListener {
 
@@ -94,6 +95,7 @@ public class MyContactListener implements ContactListener {
             Flora f = (Flora) (fa.getUserData() instanceof Flora ? fa.getUserData() : fb.getUserData());
             Player p = (Player) (fa.getUserData() instanceof Player ? fa.getUserData() : fb.getUserData());
             p.takeDamage(f.damage());
+            game.getModel().playSound(SoundEffect.HIT);
         }
 
         // Check if player has made contact with the deathzone

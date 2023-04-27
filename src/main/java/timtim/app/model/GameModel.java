@@ -1,6 +1,7 @@
 package timtim.app.model;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -10,6 +11,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 
@@ -18,6 +24,7 @@ import timtim.app.core.state.State;
 import timtim.app.model.map.GameMap;
 import timtim.app.model.objects.GameEntity;
 import timtim.app.model.objects.Player;
+import timtim.app.model.sound.SoundEffect;
 
 public class GameModel implements IGameModel {
 
@@ -27,6 +34,26 @@ public class GameModel implements IGameModel {
 	// maps
 	private String currentMap;
 	private Map<String, GameMap> maps;
+	//sound hashmap
+	private static HashMap<SoundEffect, AudioInputStream> soundStreams = new HashMap<>();
+
+	/**static {
+        try {
+            soundStreams.put(SoundEffect.CHEST, AudioSystem.getAudioInputStream(new File("resources/mixkit-casino-bling-achievement-2067.wav")));
+            soundStreams.put(SoundEffect.HIT, AudioSystem.getAudioInputStream(new File("resources/mixkit-small-hit-in-a-game-2072.wav")));
+            soundStreams.put(SoundEffect.GAMEOVER, AudioSystem.getAudioInputStream(new File("resources/mixkit-player-losing-or-failing-2042.wav")));
+        } catch (Exception e) {
+            System.err.println("Error loading sound files: " + e.getMessage());
+        }
+    }*/
+
+	static{
+		try {
+		soundStreams.put(SoundEffect.CHEST, AudioSystem.getAudioInputStream(new File("resources/mixkit-small-hit-in-a-game-2072.wav")));
+	} catch (UnsupportedAudioFileException | IOException e) {
+		((Throwable) e).printStackTrace();
+		}
+	}
 
 	public GameModel(GameScreen gameScreen) {
 		this.gameScreen = gameScreen;
@@ -128,6 +155,20 @@ public class GameModel implements IGameModel {
 	@Override
 	public void playerJump() {
 		this.player.jump();
+	}
+
+	///Sound
+	@Override
+	public void playSound(SoundEffect state) {
+		try{
+		Clip clip = AudioSystem.getClip();
+		clip.open(soundStreams.get(state));
+		clip.start();
+		}
+		catch (Exception e){
+			System.err.println("Error playing sound: " + e.getMessage());
+		}
+
 	}
 
 }
