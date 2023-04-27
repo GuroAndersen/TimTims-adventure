@@ -83,7 +83,7 @@ Under oblig1 ble Gitmaster beskrevet som en som er leder for gruppens GitLab pro
 Designansvarlig ble beskrevet som en som har hovedansvaret for utseendet til spillet, inkludert banedesign, poengsystem og målet med spillet. Denne rollen har i stor grad fungert som beskrevet. Dog har denne rollen kun vært operativ i deler av prosjektet. Når det grafiske var på plass, har da heller Cecilie vært smidig og hoppet over som utvikler. Men når det har vært behov for å endre på grafikken, har hun vært den som har hatt ansvar for dette.
 
 *Rapportansvarlig:* <br>
-Under oblig1 ble rapportansvarlig beskrevet som en som har har hovedansvaret for å utarbeide den skriftlige delen av prosjektet, samt har det overordnede ansvret for prosjektmetodikken i gruppen. Denne rollen har i stor grad fungert som beskrevet. Mattias har hatt ansvar for å skrive rapporten, og har også vært den som har hatt ansvar for å holde gruppen på rett spor når det gjelder prosjektmetodikk. Sistnevnte har til tider vært utfordrende da det agile rammeverket vi har brukt har vært nytt for deler av gruppen. Dette kan leses mer om under "Prosjektmetodikk". TODO - sjekke at det er riktig refering til prosjektmetodikk 
+Under oblig1 ble rapportansvarlig beskrevet som en som har har hovedansvaret for å utarbeide den skriftlige delen av prosjektet, samt har det overordnede ansvret for prosjektmetodikken i gruppen. Denne rollen har i stor grad fungert som beskrevet. Mattias har hatt ansvar for å skrive rapporten, og har også vært den som har hatt ansvar for å holde gruppen på rett spor når det gjelder prosjektmetodikk. Sistnevnte har til tider vært utfordrende da det agile rammeverket vi har brukt har vært nytt for deler av gruppen. Dette kan leses mer om under "Erfaringer rundt gruppen og prosjektmetodikk". 
 
 
 *Testansvarlig:* <br>
@@ -91,8 +91,20 @@ Da vi beskrev rollen Testansvarlig sa vi at alle skulle skrive tester kontinuerl
 
 ___
 ### **Erfaringer rundt gruppen og prosjektmetodikk**
-TODO 
+I dette avsnittet vil vi reflektere rundt  hvordan vi har brukt prosjektmetodikken. Vi vil se på hva vi har gjort bra, og hva vi kunne gjort annerledes. <br>
 
+Som nevnt under tidligere obliger har vi både tatt i bruk både en agil sprint og et KanBan/Project-board.
+
+**Hva har vi gjort bra:** <br>
+Fra relativt tidlig i prosjektet har vi som gruppe prøvd å følge de satte stegene i sprinten. Selv om det har nytt for mange, og en måtte å jobbe på som vi ikke har gjort tidligere, har alle gjort sitt beste. Vi har vært åpen for å pivotere og teste nye ideer, og ikke holde på en ide bare fordi vi har brukt mye tid på den. Dette har gjort at vi har fått testet ut flere ideer, og kommet frem til en løsning vi er fornøyd med. <br>
+
+Videre har vi blitt bedre og bedre på å bruke Projectboardet aktivt. Det har blitt en naturlig del av å jobbe med INF112. Når vi nå sitter oss ned, enten i fellesskap eller hver for oss, og skal skrive kode, begynner vi med å se på Projectboardet. På denne måten har samtlige i gruppen til enhver tid oversikt over hvilke oppgaver som skal gjøres, hvordan andre team-medlemmer ligger an med siden oppgaver, og hvordan vi skal prioritere arbeidet vårt. <br>
+
+**Hva kunne vi gjort annerledes:** <br>
+Det er flere ting vi føler vi kunne gjort annerledes, og mye av dette gjelder spesielt tidlig i prosjektet. Vi kunne nok i større grad i starten diksutert prosjektmetodikken mer. Etterhvert ble vi flinke på å bevisstgjøre hverandre på hvordan vi jobbet og brukte prosjektmetodikker, samt hvorfor vi gjorde det på denne måten. Dette er noe vi kunne startet med tidligere. I tillegg brukte vi kanskje ikke nok tid på velge ut hvilken prosjektmetodikk vi skulle ta i bruk. Nå har det fungert bra, men det kan være det finnes andre måter å jobbe som vi ikke vurderte. <br>
+
+
+Men alt i alt er vi fornøyd med både valg av prosjektmetodikk, og hvordan teamet har jobbet med det. 
 ____
 ### **Gruppedynamikk**
 Gruppedynamikken har i likhet med forrige oblig fungert svært bra. Vi har i stor grad jobbet sammen fysisk, og det har vært god steming når vi har møttes. 
@@ -106,7 +118,9 @@ Alt i alt har kommunikasjonen i gruppen fungert svært bra, og bare blitt bedre 
 ___
 
 ### ***Retroperspektiv***
-TODO
+Retroperspektivet har i stor grad blitt diskutert under *Erfaringer rundt gruppen og prosjektmetodikk*, *Gruppedynamikk*, og *Kommunikasjon*. Det viktigste å trekke frem her er at vi har utviklet oss som kodere, og som et team. Vi har hatt kontinuerlig dialog på hva som fungerer og hva som ikke fungerer, og har derav blitt bedre og bedre underveis i prosjektet. Dette gjelder både prosjektmetodikk, og kodeferdigheter. Som nevnt over er det klart det er ting vi gjerne skulle gjort annerledes hadde vi gjort dette på nytt, men totalt sett er vi fornøyd. <br>
+
+Når vi ser på det tekniske burde vi nok startet å skrive tester tidligere. Dette gjelder både unit-testene, men ikke minst de manuelle testene. Fra tidligere fag på bacheloren var gruppen som helhet mest vant til unit-tester. Dette førte til at vi var litt usikker på hvordan vi skulle teste det grafiske. Vi skjønte etterhvert at det var mest hensiktsmessig å lage manuelle tester til dette. Men skulle vi gjort dette prosjektet på nytt hadde vi nok fokusert mer på testing i tidlig fase, og kanskje hadde selve kodingen gått bedre/raskere. 
 ___
 
 ### **Bidrag til kodebasen**
@@ -169,8 +183,8 @@ TODO - lage klasse diagram
 ___
 ### **Tester**
 Vi har nå laget tilstrekkelig tester for å dekke kravene. Det som er verdt å merke seg er at vi har 2 typer tester: unit tester og manuelle tester. 
-Årsaken til dette er at vi ser verdien av å bruke unit tester der det er mulig. Dette er en effektiv måte å sjekke at koden faktisk gjør det vi ønsker. Likevel møtte vi på utfordringer knyttet til å bruke unit tester på grafikken. Vi har brukt ligbx, og sett det som mer effektivt og hensiktsmessig å heller bruk manuelle tester.
-Etter samtale med gruppeleder (Rolf), fikk vi bekreftet at dette var en god løsning, og hadde vi hadde nok test-coverage, når vi inkluderer manuelle tester.
+Årsaken til dette er at vi ser verdien av å bruke unit tester der det er mulig. Dette er en effektiv måte å sjekke at koden faktisk gjør det vi ønsker. Likevel møtte vi på utfordringer knyttet til å bruke unit tester på grafikken. Vi har brukt ligbx, og sett det som mer effektivt og formålstjenelig å heller bruk manuelle tester.
+Etter samtale med gruppeleder, fikk vi bekreftet at dette var en god løsning, og at vi har nok test-coverage, når vi inkluderer manuelle tester.
 
 ___
 ### **Analyseverktøy**
