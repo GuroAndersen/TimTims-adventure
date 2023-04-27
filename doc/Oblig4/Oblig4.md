@@ -29,16 +29,28 @@ ___
 **Referent: Mattias** <br>
 
 *Oppsummering:* <br>
-Todo <br>
+Siden det nå nærmer seg endelig innlevering har vi i hovedsak fokusert på hva som mangler før vi kan levere. Vi har siden sist implementert lyd og en "powerUp". Her mangler det noen småting, som vi skal se på til neste gang. Videre gikk mye av tiden til å diskutere tester <br>
 
 *Diskusjoner:* <br>
-Todo <br>
+TODO - skriv etter du har skrevet om tester <br>
 
 *Neste møte* <br>
-Todo <br>
+04.05.2023 <br>
 
 *Oppgaver til neste gang:* <br>
 Todo <br>
+
+___
+**Dato: Torsdag 04.05.2023** <br>
+**Sted: Vilvite** <br>
+**Deltagere: Sandra, Hilde, Guro, Cecilie, Mattias** <br>
+**Referent: Mattias** <br>
+
+*Oppsummering:* <br>
+TODO <br>
+
+*Diskusjoner:* <br>
+TODO <br>
 
 ___
 
@@ -54,7 +66,7 @@ ___
 Denne delen av rapporten vil reflektere på hvordan rollene har fungert gjennom hele prosjektet. Vi vil sammenligne hvordan vi satt opp rollebeskrivelsen i Oblig1, men hvordan rollen faktisk har utviklet seg. 
 
 *Utvikler:* <br>
-Utvikler rollen, er en rollen vi ikke beskrev under oblig1. Men dette er da blitt en naturlig del av INF112-hverdan til samtlige på gruppen. 
+Utvikler rollen, er en rollen vi ikke beskrev under oblig1. Men dette er da blitt en naturlig del av INF112-hverdagen til samtlige på gruppen. 
 
 
 *Teamleder:* <br>
@@ -83,10 +95,14 @@ TODO
 
 ____
 ### **Gruppedynamikk**
-TODO
+Gruppedynamikken har i likhet med forrige oblig fungert svært bra. Vi har i stor grad jobbet sammen fysisk, og det har vært god steming når vi har møttes. 
+
+Videre vil vi trekke frem det større bilde, og se på hvordan gruppedynamikken har vært gjennom hele prosjektet. I utgangspunktet har den vært gjennomgående bra, men har gradvis forbedret seg utover i prosjektet. Årsaken til dette tror vi er at vi er blitt bedre kjent med hverandre, og derav tryggere på hverander. Det vil si at vi har blitt mer rom for å gi hverandre tilbakemeldinger, konstruktiv kritikk, samt skape diskusjoner for hva vi skal gjøre videre. Dette har vært avgjørende, og er en av årsakene til at vi har oppnåd det resultat vi sitter med i dag. 
 ___
 ### **Kommunikasjon**
-TODO
+Kommunikasjonen har i likhet med gruppedynamikken også blitt bedre utover i prosjektet. Dette gjelder både fordi vi har blitt tryggere på hverandre, men også at vi er blitt flinkere til å ta i bruk digitale hjelpemidler når vi ikke har vært fysisk sammen. I starten av prosjeket ble store deler av samhandlingen gjort når vi møttes. Utover i prosjektet skjønte vi at det er viktig å møte fysisk, men og å kunne samarbeide digitalt. Derfor har vi aktivt brukt Discord, og alle dens fordelere. Det være seg deling av kode, skjermdeling etc. Underveis i prosjeketet har eksempelvis medlemmer vært syk, og ikke fått deltatt på fysiske møter. Da har vi vært flinke til å bruke Discord, og dermed fått med alle på det som har skjedd. I tillegg har det gjort det mulig å spørre om hjelp fra andre, dersom man sitter hjemme og koder, og sliter med enkelte ting. 
+
+Alt i alt har kommunikasjonen i gruppen fungert svært bra, og bare blitt bedre utover i prosjektet. 
 ___
 
 ### ***Retroperspektiv***
@@ -95,6 +111,9 @@ ___
 
 ### **Bidrag til kodebasen**
 TODO
+Gi en story fra start til slutt
+Start - mer skjevfordelt
+Slutt - mer jevnt
 ___
 
 ## Krav og spesifikasjon
@@ -102,7 +121,7 @@ ___
 ### **Strech goal**
 TODO
 ___
-### **Prioriterte krav i Oblig 3**
+### **Prioriterte krav i Oblig 4**
 TODO
 ___
 ### **Nye MVP krav**
@@ -113,6 +132,8 @@ TODO
 
 ### **Prioritering av oppgaver fremover**
 TODO
+Ingen oppgaver fremover
+Hva ville vi prioritert dersom vi hadde mer tid?
 
 ___
 ### **Bugs**
@@ -124,17 +145,25 @@ ___
 
 ### **Utbedring av feil**
 TODO
+Knytte mot feil fra oblig 3
 ___
 ### **Kjøre koden**
-TODO
-Denne må bli bedre, ref tilbakemelding fra oblig 3
+Se README for instruksjoner.
+
+Vi har nå testet spillet på windows, mac og Linux, og den fungerer på alle plattformer.
+TODO - sjekke Linux
 ___
 ### **Klassediagram**
-TODO
+Se ClassDiagramOblig3.png.
+
+Etter tilbakemelding på oblig 3 har vi nå valgt å lage et mer strukturert klassediagram. 
+TODO - se tilbakemelding på oblig 3
+TODO - lage klasse diagram
 
 ___
 ### **Tester**
-TODO
+TODO - se tilbakemelding på Discord
+Mye manuelle tester
 
 ___
 ### **Analyseverktøy**
