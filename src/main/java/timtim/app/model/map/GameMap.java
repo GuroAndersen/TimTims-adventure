@@ -40,6 +40,8 @@ import timtim.app.model.objects.friend.Snake;
 import timtim.app.model.objects.friend.Wolf;
 import timtim.app.model.objects.inventory.Item;
 import timtim.app.model.objects.inventory.ItemFactory;
+import timtim.app.model.objects.powerup.Powerup;
+import timtim.app.model.objects.powerup.SpeedUp;
 
 public class GameMap implements IGameMap {
 
@@ -51,12 +53,6 @@ public class GameMap implements IGameMap {
 	Body playerBody;
 
 	OrthogonalTiledMapRenderer renderer;
-
-	// objects
-	private Door door;
-	private Flora flora;
-	private Chest chest;
-	private DeathZone deathZone;
 
 	// entities
 	private ArrayList<Friend> friends;
@@ -75,12 +71,8 @@ public class GameMap implements IGameMap {
 		this.mapName = mapName;
 		this.player = model.getPlayer();
 		tiledMap = new TmxMapLoader().load(mapName + ".tmx"); // gets map from resource folder
-		door = new Door(playerBody);
-		chest = new Chest(playerBody);
-		flora = new Flora(playerBody);
 		enemies = new ArrayList<Enemy>();
 		friends = new ArrayList<Friend>();
-		deathZone = new DeathZone(playerBody);
 		complete = false;
 		// isDoorOpen = false;
 		mapSetup();
@@ -88,9 +80,8 @@ public class GameMap implements IGameMap {
 	}
 
 	/**
-	 * Empty testing constructor. Does not
-	 * load a map, can only be used for completion
-	 * criteria.
+	 * Empty testing constructor. Does not load a map, can only be used for
+	 * completion criteria.
 	 * 
 	 * @param mapName
 	 */
@@ -110,7 +101,7 @@ public class GameMap implements IGameMap {
 		parseFriendObject(tiledMap.getLayers().get("friends").getObjects());
 		parseEnemyObject(tiledMap.getLayers().get("enemies").getObjects());
 		parseDeathZoneObject(tiledMap.getLayers().get("deathzone").getObjects());
-
+		parsePowerupObjects(tiledMap.getLayers().get("powerup").getObjects());
 		renderer = new OrthogonalTiledMapRenderer(tiledMap);
 	}
 
@@ -156,6 +147,7 @@ public class GameMap implements IGameMap {
 			}
 		}
 	}
+
 	private void parseFriendObject(MapObjects objects) {
 		for (MapObject o : objects) {
 			if (o instanceof RectangleMapObject) {
@@ -165,17 +157,17 @@ public class GameMap implements IGameMap {
 				Body body = BodyManager.createBody(rect.getX() + rect.getWidth() / 2,
 						rect.getY() + rect.getHeight() / 2, rect.getWidth(), rect.getHeight(), true, world);
 				switch (name) {
-					case "skeleton":
-						friend = new Skeleton(gameScreen, this);
-						break;
-					case "wolf":
-						friend = new Wolf(gameScreen, this);
-						break;
-					case "snake":
-						friend = new Snake(gameScreen, this);
-						break;
-					default:
-						throw new IllegalArgumentException("This friend type is not represented " + name);
+				case "skeleton":
+					friend = new Skeleton(gameScreen, this);
+					break;
+				case "wolf":
+					friend = new Wolf(gameScreen, this);
+					break;
+				case "snake":
+					friend = new Snake(gameScreen, this);
+					break;
+				default:
+					throw new IllegalArgumentException("This friend type is not represented " + name);
 				}
 				friend.setBody(body);
 				Fixture fixture = body.getFixtureList().get(0);
@@ -278,6 +270,32 @@ public class GameMap implements IGameMap {
 		for (MapObject o : objects) {
 			if (o instanceof PolygonMapObject) {
 				createChestObject((PolygonMapObject) o);
+			}
+		}
+	}
+
+	private void createPowerUpObject(PolygonMapObject o) {
+		Body body = createObject(o);
+		Powerup powerup = null;
+
+		switch (o.getName()) {
+		case "speed":
+			powerup = new SpeedUp();
+			break;
+		default:
+			throw new IllegalArgumentException("This powerup type is not represented or has a wrongly formatted name");
+		}
+
+		body.setUserData(powerup);
+		Fixture chestFixture = body.getFixtureList().get(0);
+		chestFixture.setUserData(powerup);
+		chestFixture.setSensor(true);
+	}
+	
+	private void parsePowerupObjects(MapObjects objects) {
+		for (MapObject o : objects) {
+			if (o instanceof PolygonMapObject) {
+				createPowerUpObject((PolygonMapObject) o);
 			}
 		}
 	}
