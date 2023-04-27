@@ -110,10 +110,16 @@ TODO
 ___
 
 ### **Bidrag til kodebasen**
-TODO
-Gi en story fra start til slutt
-Start - mer skjevfordelt
-Slutt - mer jevnt
+Bidrag til kodebasen har blitt mer og mer jevn utover i prosjektet. I starten så vi at det var en skjevfordeling. Dette har i hovedsak 3 årsaker:
+* I starten var det en del parprogrammering der vi ikke skrev dette i commiten. 
+* Forskjellige vaner og kompetansenivå hva gjelder git.
+* Utvalgte på gruppen jobbet med det grafiske i starten, og derav hadde færre commits. 
+
+Likevel ser vi at dette har blitt mer jevnt utover i prosjeket. For det første har kompetanse rundt git blitt større innad i gruppen, og samtlige har fått bedre commit vaner. 
+Videre ble det grafiske i stor grad ferdigstillt, og alle i teamet kunne bidra mer i koden og derav få flere commits. 
+
+Totalt sett er vi fornøyd med hvordan bidraget til kodebasen har vært. Klart det vil være noen ujevnheter, men vi mener dette er naturlig.
+
 ___
 
 ## Krav og spesifikasjon
