@@ -168,8 +168,9 @@ TODO - lage klasse diagram
 
 ___
 ### **Tester**
-TODO - se tilbakemelding på Discord
-Mye manuelle tester
+Vi har nå laget tilstrekkelig tester for å dekke kravene. Det som er verdt å merke seg er at vi har 2 typer tester: unit tester og manuelle tester. 
+Årsaken til dette er at vi ser verdien av å bruke unit tester der det er mulig. Dette er en effektiv måte å sjekke at koden faktisk gjør det vi ønsker. Likevel møtte vi på utfordringer knyttet til å bruke unit tester på grafikken. Vi har brukt ligbx, og sett det som mer effektivt og hensiktsmessig å heller bruk manuelle tester.
+Etter samtale med gruppeleder (Rolf), fikk vi bekreftet at dette var en god løsning, og hadde vi hadde nok test-coverage, når vi inkluderer manuelle tester.
 
 ___
 ### **Analyseverktøy**
