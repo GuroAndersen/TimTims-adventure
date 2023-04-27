@@ -71,12 +71,12 @@ public abstract class GameEntity extends GameObject {
 	}
 
 	/**
-	 * Do random movement horizontal movement for this GameEntity object.
+	 * Sets the X velocity to a random direction.
 	 */
 	protected void doRandomXMovement() {
 		Random r = new Random();
-		int i = r.nextInt(-1, 2);
-		body.setLinearVelocity(xMovementCases[i] * speed, 0);
+		this.velX = xMovementCases[r.nextInt(0, 3)];
+		body.setLinearVelocity(velX*speed, body.getLinearVelocity().y);
 	}
 
 	protected void updateMovement() {

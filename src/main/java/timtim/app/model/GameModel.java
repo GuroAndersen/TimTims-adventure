@@ -48,7 +48,6 @@ public class GameModel implements IGameModel {
 		if (!this.player.isAlive()) {
 			gameScreen.switchState(State.GAMEOVER);
 			getCurrentMap().restart();
-			player.resetHealth();
 		}
 	}
 
