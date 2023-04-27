@@ -94,7 +94,7 @@ public class PlayerContactListener implements ContactListener {
 
     private void handleEnemyContact(Fixture fa, Fixture fb) {
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Enemy)
-                || (fa.getUserData() instanceof Enemy && fb.getUserData() instanceof Enemy)) {
+                || (fa.getUserData() instanceof Enemy && fb.getUserData() instanceof Player)) {
             Enemy f = (Enemy) (fa.getUserData() instanceof Enemy ? fa.getUserData() : fb.getUserData());
             Player p = (Player) (fa.getUserData() instanceof Player ? fa.getUserData() : fb.getUserData());
 
