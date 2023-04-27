@@ -10,7 +10,6 @@ import static org.mockito.Mockito.*;
 
 import timtim.app.core.GameScreen;
 import timtim.app.core.state.State;
-import timtim.app.model.IGameModel;
 import timtim.app.model.Collision.PlayerContactListener;
 import timtim.app.model.map.GameMap;
 import timtim.app.model.objects.friend.Friend;
@@ -19,7 +18,6 @@ import timtim.app.model.objects.inventory.Item;
 
 public class MyContactListenerTest {
 
-    private IGameModel model;
     private GameScreen game;
     private GameMap gameMap;
     private PlayerContactListener listener;
@@ -29,7 +27,6 @@ public class MyContactListenerTest {
 
     @BeforeEach
     public void setUp() {
-        model = mock(IGameModel.class);
         game = mock(GameScreen.class);
         gameMap = mock(GameMap.class);
         listener = new PlayerContactListener(game, gameMap);
@@ -41,7 +38,7 @@ public class MyContactListenerTest {
     }
 
     @Test
-    public void testBeginContact_PlayerAndDoor() {
+    public void testHandleDoorContact() {
         Player player = mock(Player.class);
         Door door = mock(Door.class);
         when(fixtureA.getUserData()).thenReturn(player);
@@ -54,7 +51,7 @@ public class MyContactListenerTest {
     }
 
     @Test
-    public void testBeginContact_PlayerAndChest() {
+    public void testChestContact() {
         Player player = mock(Player.class);
         Chest chest = mock(Chest.class);
         Item item = new Item(null, null);
@@ -70,7 +67,7 @@ public class MyContactListenerTest {
     }
 
     @Test
-    public void testBeginContact_PlayerAndFriend() {
+    public void testFriendContact() {
         Player player = mock(Player.class);
         Friend friend = mock(Friend.class);
         Item item = new Item(null, null);
@@ -88,7 +85,7 @@ public class MyContactListenerTest {
     }
 
     @Test
-    public void testBeginContact_PlayerAndFlora() {
+    public void testFloraContact() {
         Player player = mock(Player.class);
         Flora flora = mock(Flora.class);
         int damage = 10;
@@ -102,7 +99,7 @@ public class MyContactListenerTest {
     }
 
     @Test
-    public void testBeginContact_PlayerAndDeathZone() {
+    public void testDeathzoneContact() {
         Player player = mock(Player.class);
         DeathZone deathZone = mock(DeathZone.class);
         when(fixtureA.getUserData()).thenReturn(player);
