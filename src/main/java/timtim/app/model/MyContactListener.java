@@ -16,6 +16,7 @@ import timtim.app.model.objects.DeathZone;
 import timtim.app.model.objects.Door;
 import timtim.app.model.objects.Flora;
 import timtim.app.model.objects.Player;
+import timtim.app.model.objects.enemy.Enemy;
 import timtim.app.model.objects.friend.Friend;
 import timtim.app.model.objects.inventory.Item;
 import timtim.app.model.sound.SoundEffect;
@@ -64,6 +65,7 @@ public class MyContactListener implements ContactListener {
             Chest chest = (Chest) (fa.getUserData() instanceof Chest ? fa.getUserData() : fb.getUserData());
             if (!chest.isOpen()) {
                 chest.open();
+                game.getModel().playSound(SoundEffect.CHEST);
                 Item item = chest.getItem();
                 if (fa.getUserData() instanceof Player) {
                     Player p = (Player) fa.getUserData();
@@ -107,6 +109,18 @@ public class MyContactListener implements ContactListener {
             Player p = (Player) (fa.getUserData() instanceof Player ? fa.getUserData() : fb.getUserData());
             DeathZone d = (DeathZone) (fa.getUserData() instanceof DeathZone ? fa.getUserData() : fb.getUserData());
             p.takeDamage(400);
+            game.getModel().playSound(SoundEffect.GAMEOVER);
+        }
+        
+        if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Enemy)
+                || (fa.getUserData() instanceof Enemy && fb.getUserData() instanceof Player)) {
+            Enemy f = (Enemy) (fa.getUserData() instanceof Enemy ? fa.getUserData() : fb.getUserData());
+            Player p = (Player) (fa.getUserData() instanceof Player ? fa.getUserData() : fb.getUserData());
+
+            f.doDamage(p);
+            game.getModel().playSound(SoundEffect.HIT);
+        }
+        if (!game.getModel().getPlayer().isAlive()){
             game.getModel().playSound(SoundEffect.GAMEOVER);
         }
 

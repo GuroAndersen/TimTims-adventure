@@ -14,7 +14,6 @@ import java.util.Set;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import javax.sound.sampled.UnsupportedAudioFileException;
 
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.World;
@@ -38,7 +37,20 @@ public class GameModel implements IGameModel {
 	
 	private static Map<SoundEffect, Clip> soundClips = new HashMap<>();
 
-	static {
+	public GameModel(GameScreen gameScreen) {
+		this.gameScreen = gameScreen;
+		this.player = new Player(gameScreen);
+		this.maps = new HashMap<String, GameMap>();
+		setup();
+	}
+
+	private void setup() {
+		loadSoundEffects();
+		loadMaps();
+		setMap("level2");
+	}
+
+	private void loadSoundEffects() {
 		try {
 			for (SoundEffect soundEffect : SoundEffect.values()) {
 				InputStream inputStream = GameModel.class.getClassLoader().getResourceAsStream(soundEffect.getFileName());
@@ -52,18 +64,6 @@ public class GameModel implements IGameModel {
 		}
 	}
 
-	public GameModel(GameScreen gameScreen) {
-		this.gameScreen = gameScreen;
-		this.player = new Player(gameScreen);
-		this.maps = new HashMap<String, GameMap>();
-		setup();
-	}
-
-	private void setup() {
-		loadMaps();
-		setMap("level2");
-	}
-
 	@Override
 	public void update(float delta) {
 		this.player.update(delta);
@@ -72,7 +72,6 @@ public class GameModel implements IGameModel {
 		if (!this.player.isAlive()) {
 			gameScreen.switchState(State.GAMEOVER);
 			getCurrentMap().restart();
-			player.resetHealth();
 		}
 	}
 
