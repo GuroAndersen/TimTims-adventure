@@ -25,7 +25,7 @@ import timtim.app.manager.BodyManager;
 import timtim.app.manager.Const;
 import timtim.app.model.GameModel;
 import timtim.app.model.IGameMap;
-import timtim.app.model.Collision.MyContactListener;
+import timtim.app.model.Collision.PlayerContactListener;
 import timtim.app.model.objects.Chest;
 import timtim.app.model.objects.DeathZone;
 import timtim.app.model.objects.Door;
@@ -99,7 +99,7 @@ public class GameMap implements IGameMap {
 
 	public void mapSetup() {
 		this.world = new World(new Vector2(0, Const.GRAVITY), false);
-		world.setContactListener(new MyContactListener(gameScreen, this));
+		world.setContactListener(new PlayerContactListener(gameScreen, this));
 
 		parseStaticMapObjects(tiledMap.getLayers().get("static").getObjects());
 		parsePlayerObject(tiledMap.getLayers().get("player").getObjects());
