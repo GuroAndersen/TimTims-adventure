@@ -74,6 +74,7 @@ public class MyContactListener implements ContactListener {
                     p.addItemToInventory(item);
                 }
                 System.out.println(chest.getItem() + " added to the inventory!");
+                
             }
 
             // }
@@ -106,6 +107,7 @@ public class MyContactListener implements ContactListener {
             Player p = (Player) (fa.getUserData() instanceof Player ? fa.getUserData() : fb.getUserData());
             DeathZone d = (DeathZone) (fa.getUserData() instanceof DeathZone ? fa.getUserData() : fb.getUserData());
             p.takeDamage(400);
+            game.getModel().playSound(SoundEffect.GAMEOVER);
         }
 
         else {

@@ -35,23 +35,20 @@ public class GameModel implements IGameModel {
 	private String currentMap;
 	private Map<String, GameMap> maps;
 	//sound hashmap
-	private static HashMap<SoundEffect, AudioInputStream> soundStreams = new HashMap<>();
+	
+	private static Map<SoundEffect, Clip> soundClips = new HashMap<>();
 
-	/**static {
-        try {
-            soundStreams.put(SoundEffect.CHEST, AudioSystem.getAudioInputStream(new File("resources/mixkit-casino-bling-achievement-2067.wav")));
-            soundStreams.put(SoundEffect.HIT, AudioSystem.getAudioInputStream(new File("resources/mixkit-small-hit-in-a-game-2072.wav")));
-            soundStreams.put(SoundEffect.GAMEOVER, AudioSystem.getAudioInputStream(new File("resources/mixkit-player-losing-or-failing-2042.wav")));
-        } catch (Exception e) {
-            System.err.println("Error loading sound files: " + e.getMessage());
-        }
-    }*/
-
-	static{
+	static {
 		try {
-		soundStreams.put(SoundEffect.CHEST, AudioSystem.getAudioInputStream(new File("resources/mixkit-small-hit-in-a-game-2072.wav")));
-	} catch (UnsupportedAudioFileException | IOException e) {
-		((Throwable) e).printStackTrace();
+			for (SoundEffect soundEffect : SoundEffect.values()) {
+				InputStream inputStream = GameModel.class.getClassLoader().getResourceAsStream(soundEffect.getFileName());
+				AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(inputStream);
+				Clip clip = AudioSystem.getClip();
+				clip.open(audioInputStream);
+				soundClips.put(soundEffect, clip);
+			}
+		} catch (Exception e) {
+			System.err.println("Error loading sound files: " + e.getMessage());
 		}
 	}
 
@@ -159,16 +156,11 @@ public class GameModel implements IGameModel {
 
 	///Sound
 	@Override
-	public void playSound(SoundEffect state) {
-		try{
-		Clip clip = AudioSystem.getClip();
-		clip.open(soundStreams.get(state));
+	public void playSound(SoundEffect soundEffect) {
+		Clip clip = soundClips.get(soundEffect);
+		clip.setFramePosition(0);
 		clip.start();
-		}
-		catch (Exception e){
-			System.err.println("Error playing sound: " + e.getMessage());
-		}
-
 	}
+	
 
 }
