@@ -32,13 +32,13 @@ ___
 Siden det nå nærmer seg endelig innlevering har vi i hovedsak fokusert på hva som mangler før vi kan levere. Vi har siden sist implementert lyd og en "powerUp". Her mangler det noen småting, som vi skal se på til neste gang. Videre gikk mye av tiden til å diskutere tester <br>
 
 *Diskusjoner:* <br>
-TODO - skriv etter du har skrevet om tester <br>
+Vi fikk tilbakemelding etter oblig 3 at vi manglet en del tester for å oppnå kravet. Her har vi diskutert hvordan vi skal løse dette. Siden mye av koden vår er avhengig av at vi har en grafisk brukerflate, har vi valgt å ikke teste dette ved bruk av unit-tester, men heller manuelle tester. Mer om dette kan leses under *Tester* <br>
 
 *Neste møte* <br>
 04.05.2023 <br>
 
 *Oppgaver til neste gang:* <br>
-Todo <br>
+Implementere musikk i spillet, og få på plass flere tester.  <br>
 
 ___
 **Dato: Torsdag 04.05.2023** <br>
