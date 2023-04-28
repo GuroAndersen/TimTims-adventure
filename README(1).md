@@ -15,7 +15,8 @@ I spillet beveger man seg til venstre med "A", høyre med "D" og hopper med "spa
 
 
 ## Kjøring
-For å spillet Team Team trenger man Java 17 eller senere. Dersom du ikke har dette, må det lastes ned fra internett. Når man skal kjøre selve spillet må man først åpne en IDE, eksempelvis VSCode. Deretter trykker man på "src". Når den åpner seg trukker man videre på den knappen som heter "main\java\timtim.app". Videre vil det da dukke opp flere forskjellige mapper man kan åpne. Her velger man da den som heter "core". Når "core" er åpnet må man bla litt ned til man finner en fil som heter "Launcher.java". Denne må man da trykke på. Da vil det åpne seg en fil på skjermen din. Her må du trykke på "Run" i øverste høyre hjørne. Når dette er gjort er det bare å spille i vei! Kos deg!
+* Kjøres med launcher i pakken src/main/java/timtim.app/core/launcher
+* Krever Java 17 eller senere
 
 ## Kjente feil
 * I level 2 kan ikke spillkarakteren gå på den første broen, han må hoppe over den.
@@ -42,5 +43,4 @@ Link: https://opengameart.org/content/snake-rework <br>
 Link: https://opengameart.org/content/lpc-wolf-animation
 * Tileset Platform Forest, by thekingphoenix <br>
 Link: https://opengameart.org/content/tileset-platform-forest#comment-form
-* Lyd er hentet fra: <br>
-Link: https://mixkit.co/free-sound-effects/game/
+
