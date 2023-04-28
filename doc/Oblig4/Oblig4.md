@@ -157,15 +157,21 @@ Hva ville vi prioritert dersom vi hadde mer tid?
 
 ___
 ### **Bugs**
-TODO
-Knytte mot Spotbugs
+Totaloversikt over kjente bugs ligger i README.
+Se avsnitt om *Utbedring av feil* og *Analyseverktøy* for hvordan vi har jobbet med å fikse bugs i denne innleveringen.
 
 ___
 ## Produkt og kode
 
 ### **Utbedring av feil**
-TODO
-Knytte mot feil fra oblig 3
+Tilbakemeldingen fra forrige oblig inkluderte ingen bugs eller feil. Derimot inneholdt tilbakmeldingen at vi manglet noen funksjoner i spillet for å få full score. Dette var en powerup og lyd/musikk. Dette har vi nå fått på plass. 
+
+Likevel har vi fikset en del bugs, som forrige innlevering inneholdt. Dette er både bugs som vi var klar over selv, og som vi har funnet ved hjelp av SpotBugsDette er blant annet:
+* TODO
+* TODO
+* TODO
+
+
 ___
 ### **Kjøre koden**
 Se README for instruksjoner.
