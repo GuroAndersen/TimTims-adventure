@@ -13,6 +13,7 @@ import timtim.app.model.objects.Player;
 import timtim.app.model.objects.enemy.Enemy;
 import timtim.app.model.objects.friend.Friend;
 import timtim.app.model.objects.inventory.Item;
+import timtim.app.model.objects.powerup.SpeedUp;
 import timtim.app.model.sound.SoundEffect;
 
 public class PlayerContactListener implements ContactListener {
@@ -23,6 +24,17 @@ public class PlayerContactListener implements ContactListener {
     public PlayerContactListener(GameScreen game, GameMap gameMap) {
         this.game = game;
         this.gameMap = gameMap;
+    }
+
+    // Handles contact between player and power up.
+    private void handlePowerUpContact(Fixture fa, Fixture fb) {
+        if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof SpeedUp)
+                || (fa.getUserData() instanceof SpeedUp && fb.getUserData() instanceof Player)) {
+            Player p = (Player) (fa.getUserData() instanceof Player ? fa.getUserData() : fb.getUserData());
+            SpeedUp s = (SpeedUp) (fa.getUserData() instanceof SpeedUp ? fa.getUserData() : fb.getUserData());
+            s.doPowerupIfActive(p);
+        }
+
     }
 
     // Handles contact between player and door.
@@ -55,7 +67,7 @@ public class PlayerContactListener implements ContactListener {
                     p.addItemToInventory(item);
                 }
                 System.out.println(chest.getItem() + " added to the inventory!");
-                
+
             }
 
         }
@@ -106,7 +118,7 @@ public class PlayerContactListener implements ContactListener {
             f.doDamage(p);
             game.getModel().playSound(SoundEffect.HIT);
         }
-        if (!game.getModel().getPlayer().isAlive()){
+        if (!game.getModel().getPlayer().isAlive()) {
             game.getModel().playSound(SoundEffect.GAMEOVER);
         }
     }
