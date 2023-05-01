@@ -33,6 +33,7 @@ public class PlayerContactListener implements ContactListener {
             Player p = (Player) (fa.getUserData() instanceof Player ? fa.getUserData() : fb.getUserData());
             SpeedUp s = (SpeedUp) (fa.getUserData() instanceof SpeedUp ? fa.getUserData() : fb.getUserData());
             s.doPowerupIfActive(p);
+            game.getModel().playSound(SoundEffect.POWERUP);
         }
 
     }
