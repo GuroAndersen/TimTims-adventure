@@ -146,6 +146,8 @@ public class PlayerContactListener implements ContactListener {
         handleDeathzoneContact(fa, fb);
 
         handleEnemyContact(fa, fb);
+
+        handlePowerUpContact(fa, fb);
     }
 
     // Gets activated when two objects stop having contact with eachother.
