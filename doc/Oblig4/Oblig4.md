@@ -139,21 +139,44 @@ ___
 ## Krav og spesifikasjon
 
 ### **Strech goal**
-TODO
+Rapporten til Oblig 3 diskuterte at vi valgte å flytte "boss" level fra å være noe vi skulle implementere til å bli et strech goal. Vi har sett det som nødvendig å prioritere andre deler av koden, og har derfor ikke hatt kapasitet til å få til vårt stretch goal. Gjennom hele prosjektet har vi prioritert å skrive god kode, etter beste praksis. Dette har vi valgt å prioritere, fremfor å implementere mest mulig features. Dette gjør og at vi har valgt å ikke prioritere tid på å få til vårt stretch goal. <br>io. 
 ___
 ### **Prioriterte krav i Oblig 4**
-TODO
+I denne obligen har vi i hovedsak fokusert på følgende krav:
+5. Spiller skal interagere med terrenget
+6. Spiller kan hente ut gjenstander 
+7. Fiender/allierte vises i spillet
+8. Spiller kan miste liv/dø når den interagerer med terreng/fiender 
+12. Spillkarakteren kan foredres ved å få tak i en "PowerUp"
+
 ___
 ### **Nye MVP krav**
-TODO
+13. Spillet lager lyd når spillekarakteren gjør visse handlinger
 ___
 ### **Oversikt over brukerhistorier**
-TODO
+Brukerhistoriene er mye det samme som de har vært tidligere. Årsaken til dette er litt som diskutert under *stretch goal*, at vi heller ønsker å implementere det vi har påbegynt på en god måte, enn å legge til mange nye funksjoner. Likevel har vi laget en ny brukerhistorie knyttet til det nye MVP-kravet. 
+
+*Fullførte brukerhistorier*
+| Brukerhistorie | Akseptansekriterier | Arbeidsoppgaver | Krav |
+|:--------------:|:-------------------:|:---------------:|:-----|
+| Som spiller skal jeg se en meny når jeg starter spillet. Der skal jeg ha mulighet til å velge mellom å starte spille, eller se informasjon om spillet | Gitt at spillet startes skal: <br> -spilleren måte en meny med forskjellige valg <br>- Hvert valg skal ta spilleren til et nytt vindu | Metode som viser menyen når programet starter <br> Metode som kan kjøre andre klasser | 1 |
+| Som spiller skal jeg kunne se et spillbrett når jeg starter spillet. | Gitt at spilleren starter et spill: <br> -Bakken, taket være tydelig markert <br> -Hindringer være tydelig adskilt fra bakgrunnen | Metode som viser spillbrettet når spiller starter spillet fra menyen | 2 |
+| Som spiller skal jeg til enhver se en spiller-objekt og tydelig skille den fra andre objekter | Gitt at spillet spilles skal: <br> - spillfiguren til envher være synlig <br> -spillfiguren skille seg fra andre objekter | Lage en spillfigur som tydelig skiller seg fra bakgrunnen <br> Metode som viser spiller på spillbrettet | 3 |
+| Som spiller skal jeg kunne flytte på spilleren | Gitt at spilleren trykker “W”: <br> -skal spilleren hoppe <br> Gitt at spilleren trykker "A" skal: <br> -skal spilleren bevege seg til venstre <br> Gitt at spilleren trykker "D" <br> -skal spilleren bevege seg til høyre | Metode i controller som registrerer tastetrykk <br> Metode som beveger spilleren basert på tastetrykk | 4 |
+| Som spiller jeg kunne interagere med terenget | Gitt at spilleren går bort til et hinder skal: <br> - spillfiguren stoppe <br> Gitt at spilleren hopper på et objekt: <br> -skal spilleren kunne lande på et objekt | Metode som gjør gjør at spilleren stopper når den interagerer med terrenget | 5 |
+| Som spiller skal jeg kunne hente gjenstander fra kister | Gitt at spillfiguren åpner en kiste: <br> -skal enten spilleren få en "power-up" <br> -eller motta informasjon som senere kan byttes | Metode som gir spilleren gjenstander når den åpner en kiste <br> Metode som gir spilleren våpen når den åpner en kiste | 6 |
+| Som spiller skal jeg kunne se fiender og allierte | Gitt at spilleren er på et sted i spillbrettet der det er fiender eller alierte <br> -skal spilleren tydelig klare å skille fiender/alierte fra bakgrunnen <br> -skal spilleren vite forskjell på fiende og alliert | Metode som som lager fiender <br> Metode som lager allierte | 7 |
+| Som spiller skal jeg se at jeg mister liv når jeg jeg interagerer med en fiende | Gitt at spilleren interagerer med en fiende <br> -skal spilleren tydelig se hvor mye liv den mister <br> -skal spilleren tydelig se hvor mye liv den har igjen | Metode som gjør at spilleren mister liv ved kontakt med fiender <br> Metode som gjør at spilleren dør når den er tom for liv | 8 |
+| Som spiller skal jeg se den grafiske fremstillingen av spillfiguren | Gitt at spillet spilles <br> -skal spilleren se en figur som tydelig markerer seg som "hovedkarakteren" i spillet | Metode som implementerer spillfiguren | 9|
+| Som spiller skal jeg ikke se den sorte kanten rundt spillbrettet | Gitt at spilleren beveger seg til kanten av spillbrettet<br> -skal kameratet stoppe <br> -skal spilleren IKKE se den svarte kanten rundt spillbrettet | Metode som implementerer kamera | 11|
+| Som spiller skal jeg kunne plukke opp en "PowerUp" og forbedre spillekarakterens ferdigheter | Gitt at spilleren plukker opp en "PowerUp" <br> -skal spillkarakteren bevege seg raskere i en gitt tidsperiode | Metode som implementerer "PowerUp" | 12 |
+| Som spiller skal jeg høre lyder fra spillet når spillkarakteren gjør visse handlinger | Gitt spilleren dør <br> -skal spilleren høre en lyd som indikerer at spilleren har dødd <br> Gitt spilleren plukker opp en "PowerUp" <br> -skal spilleren høre en lyd som indikerer at spilleren har plukket opp en "PowerUp" | Metode som implementerer lyd | 13 | TODO Fix lyd
+
+*Ikke-påbegynte brukerhistorier*
+| Som spiller skal jeg se en siste "boss" på siste level | Gitt at spilleren kommer til siste level <br> -skal spilleren se en figur som tydelig er en "boss" <br> -skal spilleren kunne kjempe mot denne "bossen" | Metode som implementerer "boss" | 10|
 
 ### **Prioritering av oppgaver fremover**
-TODO
-Ingen oppgaver fremover
-Hva ville vi prioritert dersom vi hadde mer tid?
+Siden dette er endeling innlevering har vi ingen prioriterte oppgaver fremover. Likevel vil vi legge til at dersom vi skulle jobbet videre med dette prosjekter ville vi fremover prioritert å implementere vårt stretch goal. 
 
 ___
 ### **Bugs**
