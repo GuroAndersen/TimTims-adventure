@@ -20,7 +20,6 @@ Steps:
 12. check if press p to continue works.
 
 Result: 
-After several playthroughs of each level, the game does pause and the screen appears on each level.
+After several playthroughs of each level, the game does pause, the pausescrren appears and the screen appears on each level.
 
-Error: 
-Timtim is kinda shaking when he is paused, but staying in place. 
+
