@@ -23,6 +23,8 @@ For å spillet Team Team trenger man Java 17 eller senere. Dersom du ikke har de
 * Når spillet kjøres på mac, må man til tider trykke flere ganger på "space" før spillfiguren hopper
 
 ## Credits
+* TimTim - by Hilde Jordal <br>
+TimTimSprite & TimTimArt <br>
 * OpenGameArt credits Modified 32x32 Treasure chest - by Blarumyrran <br>
 Link: https://opengameart.org/content/modified-32x32-treasure-chest <br>
 * Generic Platformer Tiles - by Surt <br>
