@@ -47,10 +47,16 @@ ___
 **Referent: Mattias** <br>
 
 *Oppsummering:* <br>
-TODO <br>
+Innlevering for siste oblig er i morgen, og derfor har dagens møte gått ut på å ferdigstille prosjektet. Vi har brukt en del tid på få merget resterende brancher, slik at alt er på plass til endeling levering.  <br>
 
 *Diskusjoner:* <br>
-TODO <br>
+Diskusjonen i dag gikk mye ut på om vi har tilstrekkelig tester. Dette er et område vi har vært usikker på, da en stor andel av testene er manuelle. Etter samtale med gruppeleder ble vi enig om at testene vi har skal være tilstrekkelig. For ytterligere informasjon se avsnitt om *tester*. <br>
+
+*Neste møte* <br>
+11.05.2023 <br>
+
+*Oppgaver til neste gang:* <br>
+Siden vi til neste gang har levert spillet, vil vi nå fokusere på å lage presentasjonen.  <br>
 
 ___
 
@@ -103,7 +109,6 @@ Videre har vi blitt bedre og bedre på å bruke Projectboardet aktivt. Det har b
 **Hva kunne vi gjort annerledes:** <br>
 Det er flere ting vi føler vi kunne gjort annerledes, og mye av dette gjelder spesielt tidlig i prosjektet. Vi kunne nok i større grad i starten diksutert prosjektmetodikken mer. Etterhvert ble vi flinke på å bevisstgjøre hverandre på hvordan vi jobbet og brukte prosjektmetodikker, samt hvorfor vi gjorde det på denne måten. Dette er noe vi kunne startet med tidligere. I tillegg brukte vi kanskje ikke nok tid på velge ut hvilken prosjektmetodikk vi skulle ta i bruk. Nå har det fungert bra, men det kan være det finnes andre måter å jobbe som vi ikke vurderte. <br>
 
-
 Men alt i alt er vi fornøyd med både valg av prosjektmetodikk, og hvordan teamet har jobbet med det. 
 ____
 ### **Gruppedynamikk**
@@ -154,7 +159,7 @@ ___
 13. Spillet lager lyd når spillekarakteren gjør visse handlinger
 ___
 ### **Oversikt over brukerhistorier**
-Brukerhistoriene er mye det samme som de har vært tidligere. Årsaken til dette er litt som diskutert under *stretch goal*, at vi heller ønsker å implementere det vi har påbegynt på en god måte, enn å legge til mange nye funksjoner. Likevel har vi laget en ny brukerhistorie knyttet til det nye MVP-kravet. 
+Brukerhistoriene er mye det samme som de har vært tidligere. Årsaken til dette er litt som diskutert under *stretch goal*, at vi heller ønsker å implementere det vi har påbegynt på en god måte, enn å legge til mange nye funksjoner. Eneste endringen hører til bevegelse av spilleren. Tidligere brukte vi a, w, d, men har nå endre til piltastene. I tillegg har vi laget en ny brukerhistorie knyttet til det nye MVP-kravet. 
 
 *Fullførte brukerhistorier*
 | Brukerhistorie | Akseptansekriterier | Arbeidsoppgaver | Krav |
@@ -162,7 +167,7 @@ Brukerhistoriene er mye det samme som de har vært tidligere. Årsaken til dette
 | Som spiller skal jeg se en meny når jeg starter spillet. Der skal jeg ha mulighet til å velge mellom å starte spille, eller se informasjon om spillet | Gitt at spillet startes skal: <br> -spilleren måte en meny med forskjellige valg <br>- Hvert valg skal ta spilleren til et nytt vindu | Metode som viser menyen når programet starter <br> Metode som kan kjøre andre klasser | 1 |
 | Som spiller skal jeg kunne se et spillbrett når jeg starter spillet. | Gitt at spilleren starter et spill: <br> -Bakken, taket være tydelig markert <br> -Hindringer være tydelig adskilt fra bakgrunnen | Metode som viser spillbrettet når spiller starter spillet fra menyen | 2 |
 | Som spiller skal jeg til enhver se en spiller-objekt og tydelig skille den fra andre objekter | Gitt at spillet spilles skal: <br> - spillfiguren til envher være synlig <br> -spillfiguren skille seg fra andre objekter | Lage en spillfigur som tydelig skiller seg fra bakgrunnen <br> Metode som viser spiller på spillbrettet | 3 |
-| Som spiller skal jeg kunne flytte på spilleren | Gitt at spilleren trykker “W”: <br> -skal spilleren hoppe <br> Gitt at spilleren trykker "A" skal: <br> -skal spilleren bevege seg til venstre <br> Gitt at spilleren trykker "D" <br> -skal spilleren bevege seg til høyre | Metode i controller som registrerer tastetrykk <br> Metode som beveger spilleren basert på tastetrykk | 4 |
+| Som spiller skal jeg kunne flytte på spilleren | Gitt at spilleren trykker “pil opp”: <br> -skal spilleren hoppe <br> Gitt at spilleren trykker "pil venstre" skal: <br> -skal spilleren bevege seg til venstre <br> Gitt at spilleren trykker "pil høyre" <br> -skal spilleren bevege seg til høyre | Metode i controller som registrerer tastetrykk <br> Metode som beveger spilleren basert på tastetrykk | 4 |
 | Som spiller jeg kunne interagere med terenget | Gitt at spilleren går bort til et hinder skal: <br> - spillfiguren stoppe <br> Gitt at spilleren hopper på et objekt: <br> -skal spilleren kunne lande på et objekt | Metode som gjør gjør at spilleren stopper når den interagerer med terrenget | 5 |
 | Som spiller skal jeg kunne hente gjenstander fra kister | Gitt at spillfiguren åpner en kiste: <br> -skal enten spilleren få en "power-up" <br> -eller motta informasjon som senere kan byttes | Metode som gir spilleren gjenstander når den åpner en kiste <br> Metode som gir spilleren våpen når den åpner en kiste | 6 |
 | Som spiller skal jeg kunne se fiender og allierte | Gitt at spilleren er på et sted i spillbrettet der det er fiender eller alierte <br> -skal spilleren tydelig klare å skille fiender/alierte fra bakgrunnen <br> -skal spilleren vite forskjell på fiende og alliert | Metode som som lager fiender <br> Metode som lager allierte | 7 |
@@ -170,7 +175,7 @@ Brukerhistoriene er mye det samme som de har vært tidligere. Årsaken til dette
 | Som spiller skal jeg se den grafiske fremstillingen av spillfiguren | Gitt at spillet spilles <br> -skal spilleren se en figur som tydelig markerer seg som "hovedkarakteren" i spillet | Metode som implementerer spillfiguren | 9|
 | Som spiller skal jeg ikke se den sorte kanten rundt spillbrettet | Gitt at spilleren beveger seg til kanten av spillbrettet<br> -skal kameratet stoppe <br> -skal spilleren IKKE se den svarte kanten rundt spillbrettet | Metode som implementerer kamera | 11|
 | Som spiller skal jeg kunne plukke opp en "PowerUp" og forbedre spillekarakterens ferdigheter | Gitt at spilleren plukker opp en "PowerUp" <br> -skal spillkarakteren bevege seg raskere i en gitt tidsperiode | Metode som implementerer "PowerUp" | 12 |
-| Som spiller skal jeg høre lyder fra spillet når spillkarakteren gjør visse handlinger | Gitt spilleren dør <br> -skal spilleren høre en lyd som indikerer at spilleren har dødd <br> Gitt spilleren plukker opp en "PowerUp" <br> -skal spilleren høre en lyd som indikerer at spilleren har plukket opp en "PowerUp" | Metode som implementerer lyd | 13 | TODO Fix lyd
+| Som spiller skal jeg høre lyder fra spillet når spillkarakteren gjør visse handlinger | Gitt spilleren dør <br> -skal spilleren høre en lyd som indikerer at spilleren har dødd <br> <br> Gitt spilleren plukker opp en "PowerUp" <br> -skal spilleren høre en lyd som indikerer at spilleren har plukket opp en "PowerUp"  <br><br> Gitt at spilleren er i en konakt med en fiende <br> -skal spilleren høre en lyd som indikerer at spilleren mister liv <br><br> Gitt at spilleren er i kontakt med en kiste<br> -skal spilleren høre en lyd som indikerer at spilleren har plukket opp et objekt| Metode som implementerer lyd | 13 | 
 
 *Ikke-påbegynte brukerhistorier*
 | Som spiller skal jeg se en siste "boss" på siste level | Gitt at spilleren kommer til siste level <br> -skal spilleren se en figur som tydelig er en "boss" <br> -skal spilleren kunne kjempe mot denne "bossen" | Metode som implementerer "boss" | 10|
@@ -190,24 +195,21 @@ ___
 Tilbakemeldingen fra forrige oblig inkluderte ingen bugs eller feil. Derimot inneholdt tilbakmeldingen at vi manglet noen funksjoner i spillet for å få full score. Dette var en powerup og lyd/musikk. Dette har vi nå fått på plass. 
 
 Likevel har vi fikset en del bugs, som forrige innlevering inneholdt. Dette er både bugs som vi var klar over selv, og som vi har funnet ved hjelp av SpotBugsDette er blant annet:
-* TODO
-* TODO
-* TODO
-
+* Spilleren ikke dør når man faller utenfor kartet
+* Hopping på mac er mer konsistent
 
 ___
 ### **Kjøre koden**
 Se README for instruksjoner.
 
-Vi har nå testet spillet på windows, mac og Linux, og den fungerer på alle plattformer.
-TODO - sjekke Linux
+Vi har nå testet spillet på windows, mac og Linux, og den skal fungerer på alle plattformer.
 ___
 ### **Klassediagram**
 Se ClassDiagramOblig3.png.
 
 Etter tilbakemelding på oblig 3 har vi nå valgt å lage et mer strukturert klassediagram. 
 TODO - se tilbakemelding på oblig 3
-TODO - lage klasse diagram
+TODO - lage klassediagram
 
 ___
 ### **Tester**
@@ -217,12 +219,12 @@ Etter samtale med gruppeleder, fikk vi bekreftet at dette var en god løsning, o
 
 ___
 ### **Analyseverktøy**
-Under denne obligen har vi tatt i bruk analyseverktøy Spotbugs. Dette er et analyseverktøy som ....
+Under denne obligen har vi tatt i bruk analyseverktøy Spotbugs. 
 
 Vi har startet obligen med å ta dette i bruk. Resultat kan sees på SpotbugsStartOfOblig.png. 
 Den viser at vi hadde 43 bugs, under forskjellige kategorier. De fleste av disse var av det vi vil kategoriesere som mindre fatal for utfallet av spillet. Samt var det noen vi ikke helt forstod hva betytte. Vi vil prioritere å fikse dem som er mer kritiske for spillet.
 
-På slutten av obligen tok vi en ny runde med Spotbugs. Resultatet kan sees på ...png.
-
+På slutten av obligen tok vi en ny runde med Spotbugs. Resultatet kan sees på SpotbugsEndOfOblig.png.
+Her ser vi ...
 TODO
 ___
