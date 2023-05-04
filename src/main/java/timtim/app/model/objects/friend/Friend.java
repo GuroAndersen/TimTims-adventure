@@ -159,4 +159,8 @@ public abstract class Friend extends GameEntity implements IFriend {
         updateSprite(delta);
     }
 
+    public Item getItem() {
+        return this.item;
+    }
+
 }
