@@ -1,7 +1,6 @@
 package timtim.app.model;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -9,8 +8,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -37,6 +34,10 @@ public class GameModel implements IGameModel {
 	
 	private static Map<SoundEffect, Clip> soundClips = new HashMap<>();
 
+	/**
+	 * Creates a model using the given gameScreen.
+	 * @param gameScreen
+	 */
 	public GameModel(GameScreen gameScreen) {
 		this.gameScreen = gameScreen;
 		this.player = new Player(gameScreen);
@@ -90,6 +91,10 @@ public class GameModel implements IGameModel {
 		}
 	}
 
+	/**
+	 * Get the current map.
+	 * @return
+	 */
 	public GameMap getCurrentMap() {
 		return maps.get(currentMap);
 	}
@@ -131,6 +136,10 @@ public class GameModel implements IGameModel {
 		return this.getCurrentMap().getWorld();
 	}
 
+	/**
+	 * Get this model's GameScreen object.
+	 * @return
+	 */
 	public GameScreen getGameScreen() {
 		return this.gameScreen;
 	}

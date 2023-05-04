@@ -15,6 +15,8 @@ import timtim.app.model.objects.inventory.ItemFactory;
 
 public class Player extends CombatEntity implements IPlayer {
 
+	private final float playerSpeed = 4f;
+
 	private Sprite sprite;
 
 	private Animation<TextureRegion> runAnimation;
@@ -25,16 +27,15 @@ public class Player extends CombatEntity implements IPlayer {
 	private Inventory inventory;
 
 	/**
-	 * Testing constructor.
-	 * Does not set up the sprite.
-	 * @param health 
+	 * Testing constructor. Does not set up the sprite.
+	 * 
+	 * @param health
 	 * @param strength
 	 */
 	public Player(int health, int strength) {
 		super(health, strength);
 		baseSetup();
 	}
-
 
 	public Player(GameScreen gameScreen) {
 		super(100, 10);
@@ -44,10 +45,9 @@ public class Player extends CombatEntity implements IPlayer {
 		sprite.setBounds(0, 0, 32 / Const.PPM, Const.PPM);
 		sprite.setRegion(standing);
 	}
-	
 
 	private void baseSetup() {
-		this.speed = 4f;
+		this.setSpeed(playerSpeed);
 		this.inventory = new Inventory();
 	}
 
@@ -76,7 +76,8 @@ public class Player extends CombatEntity implements IPlayer {
 	@Override
 	public void update(float delta) {
 		updateMovement();
-		if (sprite != null) updateSprite(delta);
+		if (sprite != null)
+			updateSprite(delta);
 	}
 
 	private void updateSprite(float delta) {
@@ -141,7 +142,21 @@ public class Player extends CombatEntity implements IPlayer {
 		return this.inventory;
 	}
 
+	/**
+	 * Add the given item to the player's inventory. Returns true if item was added.
+	 * 
+	 * @param item
+	 * @return
+	 */
 	public boolean addItemToInventory(Item item) {
 		return inventory.placeInInventory(item);
+	}
+
+	/**
+	 * Reset the players values like health and speed.
+	 */
+	public void reset() {
+		this.resetHealth();
+		this.setSpeed(playerSpeed);
 	}
 }

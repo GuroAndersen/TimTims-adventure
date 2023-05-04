@@ -56,10 +56,10 @@ public class InstructionState implements StateHandler {
         // Draw the image and the text
         imgSprite.draw(batch);
         font.draw(batch, "How to play Timtim's adventure!", centerXtext + 35, centerYtext + 150, 0, Align.center, false);
-        font.draw(batch, "Press 'A' to move to the left and 'D' to move right." , centerXtext + 35, centerYtext + 100, 0, Align.center, false);
+        font.draw(batch, "Press 'LeftArrow' to move to the left and 'RightArrow' to move right." , centerXtext + 35, centerYtext + 100, 0, Align.center, false);
         font.draw(batch, "Press 'Space' to jump!", centerXtext + 35, centerYtext + 50, 0, Align.center, false);
         font.draw(batch, "If you ever want to give TimTim a break, just press 'P' in game!", centerXtext + 35, centerYtext, 0, Align.center, false);
-        font.draw(batch, "Press 'M' to return to Main Menu, and 'Escape' to exit the game", centerXtext + 35, centerYtext - 50, 0, Align.center, false);
+        font.draw(batch, "Press 'M' to return to Main Menu", centerXtext + 35, centerYtext - 50, 0, Align.center, false);
 
         batch.end();
     }
@@ -71,7 +71,7 @@ public class InstructionState implements StateHandler {
     }
 
     private void handleInput() {
-        if (Gdx.input.isKeyJustPressed(Input.Keys.M)){
+        if (Gdx.input.isKeyJustPressed(Input.Keys.M)) {
             returnToMenu();
         }
     }

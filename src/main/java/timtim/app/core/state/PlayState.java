@@ -52,30 +52,20 @@ public class PlayState implements StateHandler {
         // Horizontal movement
         boolean moveLeft = false;
         boolean moveRight = false;
-        if (Gdx.input.isKeyPressed(Input.Keys.D))
+        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT))
             moveRight = true;
-        if (Gdx.input.isKeyPressed(Input.Keys.A))
+        if (Gdx.input.isKeyPressed(Input.Keys.LEFT))
             moveLeft = true;
         game.playerMove(moveLeft, moveRight);
 
-        // Jump
         if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
             game.playerJump();
         }
-
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.P)) {
             game.switchState(State.PAUSE);
         }
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.M)) {
-            game.switchState(State.START);
-        }
-
-        //remember to edit this if statement when gameover is properly implemented
-        if (Gdx.input.isKeyJustPressed(Input.Keys.G)) {
-            game.switchState(State.GAMEOVER);
-        }
     }
 
     @Override
