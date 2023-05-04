@@ -16,11 +16,10 @@ For å spillet Team Team trenger man Java 17 eller senere. Dersom du ikke har de
 
 ## Kjente feil
 * I level 2 kan ikke spillkarakteren gå på den første broen, han må hoppe over den.
-* Game Over skjermen "flasher"
-* Man dør ikke eller begynner ikke på nytt når man faller i et hull
+* Noen broer på level 3 kan ikke spillkarakteren hoppe, man må gå videre for å kunne hoppe
 * Terrenget har inkonsistent kollisjon - fortsatt med noen broer
 * Kan dobbelhoppe når man er borti et tak
-* Når spillet kjøres på mac, må man til tider trykke flere ganger på "space" før spillfiguren hopper
+
 
 ## Credits
 * TimTim - by Hilde Jordal <br>
