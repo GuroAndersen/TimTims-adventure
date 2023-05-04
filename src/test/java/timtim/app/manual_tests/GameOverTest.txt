@@ -1,0 +1,30 @@
+Test: check that the gameOver screen appers when its gameOver
+
+Description:
+Start the game in Launcher, choose the level you want and press enter
+to get to the Start state screen. The GameOver screen should appear if you come in
+contact with either flower, mushroom or bunnies twenty times. This should happen on
+all levels, but at level 3 there is also possible to enter Game Over when
+TimTim falls in the water.
+
+Steps level 1, 2 and 3:
+1: Launch game
+2: move TimTim using A key for left movement or D key for right movement.
+3: move in the direction of a flower, mushroom or bunny
+4: make sure you are right next to them, this will make the healthbar decrease.
+5: to decrease the health bar again after contact with flower, mushroom or bunny you have
+to move away from it and then again come in contact with the same one or a different one.
+6: do this 19 times, the healthbar should now look almost black, only one green "life"
+remains.
+7: the next time (contact number 20) the Game Over screen should appear.
+
+Steps level 3:
+1: Launch game
+2: move TimTim using A key for left movement or D key for right movement.
+3: move TimTim in the direction of water and make him fall into it
+4: no matter what the healthbar is, the GameOver screen should appear when TimTim is into
+the water.
+
+Result:
+After several playthroughs of each level, the Game Over screen appears then entering the water
+at level 3 or when TimTim is in contact with flower, mushroom or bunnies 20 times on all levels.
