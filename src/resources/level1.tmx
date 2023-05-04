@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="100" height="50" tilewidth="32" tileheight="32" infinite="0" nextlayerid="16" nextobjectid="237">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="100" height="50" tilewidth="32" tileheight="32" infinite="0" nextlayerid="17" nextobjectid="237">
  <tileset firstgid="1" source="generic_platformer_tiles.tsx"/>
  <tileset firstgid="769" source="chest.tsx"/>
  <tileset firstgid="771" name="wood" tilewidth="32" tileheight="32" tilecount="180" columns="18">
@@ -385,18 +385,19 @@
    <polygon points="0,0 0,11.5 45.5,12.25 44.5,0.25"/>
   </object>
  </objectgroup>
+ <objectgroup id="16" name="powerup"/>
  <objectgroup id="10" name="player">
   <object id="196" x="34" y="1251.25" width="28" height="26.75"/>
  </objectgroup>
  <objectgroup id="11" name="enemies">
-  <object id="228" x="2530" y="1314.5" width="26.5" height="27"/>
-  <object id="229" x="2690.5" y="1057.5" width="26.5" height="27.5"/>
-  <object id="230" x="2338.5" y="705" width="27.5" height="28.5"/>
-  <object id="231" x="674" y="770.333" width="27.3333" height="28"/>
-  <object id="232" x="353" y="513.5" width="29.25" height="29.25"/>
-  <object id="233" x="1090" y="449.667" width="27.6667" height="28"/>
-  <object id="234" x="2402" y="450" width="27.6667" height="27.3333"/>
-  <object id="235" x="3041.67" y="545.667" width="28" height="28"/>
+  <object id="228" name="bunny" x="2530" y="1314.5" width="26.5" height="27"/>
+  <object id="229" name="bunny" x="2690.5" y="1057.5" width="26.5" height="27.5"/>
+  <object id="230" name="bunny" x="2338.5" y="705" width="27.5" height="28.5"/>
+  <object id="231" name="bunny" x="674" y="770.333" width="27.3333" height="28"/>
+  <object id="232" name="bunny" x="353" y="513.5" width="29.25" height="29.25"/>
+  <object id="233" name="bunny" x="1090" y="449.667" width="27.6667" height="28"/>
+  <object id="234" name="bunny" x="2402" y="450" width="27.6667" height="27.3333"/>
+  <object id="235" name="bunny" x="3041.67" y="545.667" width="28" height="28"/>
  </objectgroup>
  <objectgroup id="15" name="deathzone"/>
  <objectgroup id="12" name="friends">

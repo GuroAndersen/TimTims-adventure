@@ -8,8 +8,10 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 
@@ -18,26 +20,49 @@ import timtim.app.core.state.State;
 import timtim.app.model.map.GameMap;
 import timtim.app.model.objects.GameEntity;
 import timtim.app.model.objects.Player;
+import timtim.app.model.sound.SoundEffect;
 
 public class GameModel implements IGameModel {
 
 	private GameScreen gameScreen;
-	Player player;
+	private Player player;
 
 	// maps
 	private String currentMap;
-	Map<String, GameMap> maps;
+	private Map<String, GameMap> maps;
+	//sound hashmap
+	
+	private static Map<SoundEffect, Clip> soundClips = new HashMap<>();
 
+	/**
+	 * Creates a model using the given gameScreen.
+	 * @param gameScreen
+	 */
 	public GameModel(GameScreen gameScreen) {
 		this.gameScreen = gameScreen;
-		if (Gdx.files != null) this.player = new Player(gameScreen);
+		this.player = new Player(gameScreen);
 		this.maps = new HashMap<String, GameMap>();
-		if (Gdx.files != null) setup();
+		setup();
 	}
 
 	private void setup() {
+		loadSoundEffects();
 		loadMaps();
 		setMap("level2");
+	}
+
+	private void loadSoundEffects() {
+		try {
+			for (SoundEffect soundEffect : SoundEffect.values()) {
+				InputStream inputStream = GameModel.class.getClassLoader().getResourceAsStream(soundEffect.getFileName());
+				AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(inputStream);
+				Clip clip = AudioSystem.getClip();
+				clip.open(audioInputStream);
+				soundClips.put(soundEffect, clip);
+			}
+		} catch (Exception e) {
+			System.err.println("Error loading sound files: " + e.getMessage());
+		}
 	}
 
 	@Override
@@ -48,7 +73,6 @@ public class GameModel implements IGameModel {
 		if (!this.player.isAlive()) {
 			gameScreen.switchState(State.GAMEOVER);
 			getCurrentMap().restart();
-			player.resetHealth();
 		}
 	}
 
@@ -67,6 +91,10 @@ public class GameModel implements IGameModel {
 		}
 	}
 
+	/**
+	 * Get the current map.
+	 * @return
+	 */
 	public GameMap getCurrentMap() {
 		return maps.get(currentMap);
 	}
@@ -92,8 +120,9 @@ public class GameModel implements IGameModel {
 		return getCurrentMap().getMapRenderer();
 	}
 
+	
 	///////// GETTERS
-
+	
 	@Override
 	public List<GameEntity> getEntities() {
 		List<GameEntity> entities = getCurrentMap().getEntities();
@@ -107,6 +136,10 @@ public class GameModel implements IGameModel {
 		return this.getCurrentMap().getWorld();
 	}
 
+	/**
+	 * Get this model's GameScreen object.
+	 * @return
+	 */
 	public GameScreen getGameScreen() {
 		return this.gameScreen;
 	}
@@ -116,6 +149,7 @@ public class GameModel implements IGameModel {
 		return this.player;
 	}
 
+	
 	/////// PLAYER
 
 	@Override
@@ -127,5 +161,14 @@ public class GameModel implements IGameModel {
 	public void playerJump() {
 		this.player.jump();
 	}
+
+	///Sound
+	@Override
+	public void playSound(SoundEffect soundEffect) {
+		Clip clip = soundClips.get(soundEffect);
+		clip.setFramePosition(0);
+		clip.start();
+	}
+	
 
 }
