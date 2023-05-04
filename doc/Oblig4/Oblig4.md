@@ -205,7 +205,7 @@ Se README for instruksjoner.
 Vi har nå testet spillet på windows, mac og Linux, og den skal fungerer på alle plattformer.
 ___
 ### **Klassediagram**
-Se ClassDiagramOblig3.png.
+Se ClassDiagramOblig4.png.
 
 Etter tilbakemelding på oblig 3 har vi nå valgt å lage et mer strukturert klassediagram. 
 
