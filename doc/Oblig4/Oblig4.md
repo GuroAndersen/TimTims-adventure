@@ -208,8 +208,6 @@ ___
 Se ClassDiagramOblig3.png.
 
 Etter tilbakemelding på oblig 3 har vi nå valgt å lage et mer strukturert klassediagram. 
-TODO - se tilbakemelding på oblig 3
-TODO - lage klassediagram
 
 ___
 ### **Tester**
@@ -223,8 +221,4 @@ Under denne obligen har vi tatt i bruk analyseverktøy Spotbugs.
 
 Vi har startet obligen med å ta dette i bruk. Resultat kan sees på SpotbugsStartOfOblig.png. 
 Den viser at vi hadde 43 bugs, under forskjellige kategorier. De fleste av disse var av det vi vil kategoriesere som mindre fatal for utfallet av spillet. Samt var det noen vi ikke helt forstod hva betytte. Vi vil prioritere å fikse dem som er mer kritiske for spillet.
-
-På slutten av obligen tok vi en ny runde med Spotbugs. Resultatet kan sees på SpotbugsEndOfOblig.png.
-Her ser vi ...
-TODO
 ___
