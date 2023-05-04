@@ -44,46 +44,58 @@ public class PlayerContactListenerTest {
 
     @Test
     public void testHandleDoorContact() {
+        GameScreen gameScreen = mock(GameScreen.class);
+        GameMap gameMap = mock(GameMap.class);
+        PlayerContactListener playerContactListener = new PlayerContactListener(gameScreen, gameMap);
+
         Player player = mock(Player.class);
         Door door = mock(Door.class);
+
         when(fixtureA.getUserData()).thenReturn(player);
         when(fixtureB.getUserData()).thenReturn(door);
         when(gameMap.isComplete()).thenReturn(true);
+        playerContactListener.handleDoorContact(fixtureA, fixtureB);
 
-        listener.beginContact(contact);
-
-        verify(game).switchState(State.START);
+        verify(gameScreen).switchState(State.START);
     }
 
     @Test
     public void testChestContact() {
+        GameScreen gameScreen = mock(GameScreen.class);
+        GameMap gameMap = mock(GameMap.class);
+        PlayerContactListener playerContactListener = new PlayerContactListener(gameScreen, gameMap);
+
         Player player = mock(Player.class);
         Chest chest = mock(Chest.class);
-        Item item = new Item(null, null);
+        Item item = mock(Item.class);
+
         when(fixtureA.getUserData()).thenReturn(player);
         when(fixtureB.getUserData()).thenReturn(chest);
         when(chest.isOpen()).thenReturn(false);
-        when(chest.getItem()).thenReturn(item);
 
-        listener.beginContact(contact);
+        playerContactListener.handleChestContact(fixtureA, fixtureB);
 
         verify(chest).open();
+
         verify(player).addItemToInventory(item);
     }
 
     @Test
     public void testFriendContact() {
+        GameScreen gameScreen = mock(GameScreen.class);
+        GameMap gameMap = mock(GameMap.class);
+        PlayerContactListener playerContactListener = new PlayerContactListener(gameScreen, gameMap);
+
         Player player = mock(Player.class);
         Friend friend = mock(Friend.class);
-        Item item = new Item(null, null);
-        Inventory inventory = mock(Inventory.class);
-        when(player.getInventory()).thenReturn(inventory);
+        Item item = mock(Item.class);
+
         when(fixtureA.getUserData()).thenReturn(player);
         when(fixtureB.getUserData()).thenReturn(friend);
-        when(inventory.contains(friend.item)).thenReturn(true);
-        when(inventory.takeOutItem(friend.item)).thenReturn(item);
-
-        listener.beginContact(contact);
+        when(player.getInventory()).thenReturn(mock(Inventory.class));
+        when(player.getInventory().contains(item)).thenReturn(true);
+        when(friend.item).thenReturn(item);
+        playerContactListener.handleFriendContact(fixtureA, fixtureB);
 
         verify(friend).receiveGift(item);
         verify(friend).updateConversation();
@@ -91,37 +103,52 @@ public class PlayerContactListenerTest {
 
     @Test
     public void testFloraContact() {
+        GameScreen gameScreen = mock(GameScreen.class);
+        GameMap gameMap = mock(GameMap.class);
+        PlayerContactListener playerContactListener = new PlayerContactListener(gameScreen, gameMap);
+
         Player player = mock(Player.class);
         Flora flora = mock(Flora.class);
-        int damage = 10;
+
         when(fixtureA.getUserData()).thenReturn(player);
         when(fixtureB.getUserData()).thenReturn(flora);
-        when(flora.damage()).thenReturn(damage);
 
-        listener.beginContact(contact);
+        playerContactListener.handleFloraContact(fixtureA, fixtureB);
 
-        verify(player).takeDamage(damage);
+        verify(player).takeDamage(flora.damage());
     }
 
     @Test
     public void testDeathzoneContact() {
+        GameScreen gameScreen = mock(GameScreen.class);
+        GameMap gameMap = mock(GameMap.class);
+        PlayerContactListener playerContactListener = new PlayerContactListener(gameScreen, gameMap);
+
         Player player = mock(Player.class);
         DeathZone deathZone = mock(DeathZone.class);
+
         when(fixtureA.getUserData()).thenReturn(player);
         when(fixtureB.getUserData()).thenReturn(deathZone);
 
-        listener.beginContact(contact);
+        playerContactListener.handleDeathzoneContact(fixtureA, fixtureB);
 
         verify(player).takeDamage(400);
     }
 
     @Test
     public void testPowerUpContact() {
-        Player player = mock(Player.class);
-        Powerup powerUp = mock(Powerup.class);
-        when(fixtureA.getUserData()).thenReturn(player);
-        when(fixtureB.getUserData()).thenReturn(powerUp);
+        GameScreen gameScreen = mock(GameScreen.class);
+        GameMap gameMap = mock(GameMap.class);
+        PlayerContactListener playerContactListener = new PlayerContactListener(gameScreen, gameMap);
 
-        listener.beginContact(contact);
+        Player player = mock(Player.class);
+        SpeedUp speedUp = mock(SpeedUp.class);
+
+        when(fixtureA.getUserData()).thenReturn(player);
+        when(fixtureB.getUserData()).thenReturn(speedUp);
+        playerContactListener.handlePowerUpContact(fixtureA, fixtureB);
+
+        verify(speedUp).doPowerupIfActive(player);
+
     }
 }

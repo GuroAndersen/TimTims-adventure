@@ -27,7 +27,7 @@ public class PlayerContactListener implements ContactListener {
     }
 
     // Handles contact between player and power up.
-    private void handlePowerUpContact(Fixture fa, Fixture fb) {
+    public void handlePowerUpContact(Fixture fa, Fixture fb) {
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof SpeedUp)
                 || (fa.getUserData() instanceof SpeedUp && fb.getUserData() instanceof Player)) {
             Player p = (Player) (fa.getUserData() instanceof Player ? fa.getUserData() : fb.getUserData());
@@ -39,7 +39,7 @@ public class PlayerContactListener implements ContactListener {
     }
 
     // Handles contact between player and door.
-    private void handleDoorContact(Fixture fa, Fixture fb) {
+    public void handleDoorContact(Fixture fa, Fixture fb) {
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Door)
                 || (fa.getUserData() instanceof Door && fb.getUserData() instanceof Player)) {
 
@@ -50,7 +50,7 @@ public class PlayerContactListener implements ContactListener {
     }
 
     // Handles contact between player and chest.
-    private void handleChestContact(Fixture fa, Fixture fb) {
+    public void handleChestContact(Fixture fa, Fixture fb) {
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Chest)
                 || (fa.getUserData() instanceof Chest && fb.getUserData() instanceof Player)) {
 
@@ -75,7 +75,7 @@ public class PlayerContactListener implements ContactListener {
     }
 
     // Handles contact between player and friend.
-    private void handleFriendContact(Fixture fa, Fixture fb) {
+    public void handleFriendContact(Fixture fa, Fixture fb) {
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Friend)
                 || (fa.getUserData() instanceof Friend && fb.getUserData() instanceof Player)) {
             Friend f = (Friend) (fa.getUserData() instanceof Friend ? fa.getUserData() : fb.getUserData());
@@ -88,7 +88,7 @@ public class PlayerContactListener implements ContactListener {
         }
     }
 
-    private void handleFloraContact(Fixture fa, Fixture fb) {
+    public void handleFloraContact(Fixture fa, Fixture fb) {
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Flora)
                 || (fa.getUserData() instanceof Flora && fb.getUserData() instanceof Player)) {
             Flora f = (Flora) (fa.getUserData() instanceof Flora ? fa.getUserData() : fb.getUserData());
@@ -98,7 +98,7 @@ public class PlayerContactListener implements ContactListener {
         }
     }
 
-    private void handleDeathzoneContact(Fixture fa, Fixture fb) {
+    public void handleDeathzoneContact(Fixture fa, Fixture fb) {
         // Check if player has made contact with the deathzone
         // If true then player will take full damage
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof DeathZone)
@@ -110,7 +110,7 @@ public class PlayerContactListener implements ContactListener {
         }
     }
 
-    private void handleEnemyContact(Fixture fa, Fixture fb) {
+    public void handleEnemyContact(Fixture fa, Fixture fb) {
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Enemy)
                 || (fa.getUserData() instanceof Enemy && fb.getUserData() instanceof Player)) {
             Enemy f = (Enemy) (fa.getUserData() instanceof Enemy ? fa.getUserData() : fb.getUserData());
