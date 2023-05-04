@@ -139,7 +139,7 @@ ___
 ## Krav og spesifikasjon
 
 ### **Strech goal**
-Rapporten til Oblig 3 diskuterte at vi valgte å flytte "boss" level fra å være noe vi skulle implementere til å bli et strech goal. Vi har sett det som nødvendig å prioritere andre deler av koden, og har derfor ikke hatt kapasitet til å få til vårt stretch goal. Gjennom hele prosjektet har vi prioritert å skrive god kode, etter beste praksis. Dette har vi valgt å prioritere, fremfor å implementere mest mulig features. Dette gjør og at vi har valgt å ikke prioritere tid på å få til vårt stretch goal. <br>io. 
+Rapporten til Oblig 3 diskuterte at vi valgte å flytte "boss" level fra å være noe vi skulle implementere til å bli et strech goal. Vi har sett det som nødvendig å prioritere andre deler av koden, og har derfor ikke hatt kapasitet til å få til vårt stretch goal. Gjennom hele prosjektet har vi prioritert å skrive god kode, etter beste praksis. Dette har vi valgt å prioritere, fremfor å implementere mest mulig features. Dette gjør og at vi har valgt å ikke prioritere tid på å få til vårt stretch goal. <br>
 ___
 ### **Prioriterte krav i Oblig 4**
 I denne obligen har vi i hovedsak fokusert på følgende krav:
