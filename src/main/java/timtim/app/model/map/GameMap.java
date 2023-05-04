@@ -348,7 +348,7 @@ public class GameMap implements IGameMap {
 		clearObjects();
 		mapSetup();
 		this.player.setBody(this.playerBody);
-		this.player.resetHealth();
+		this.player.reset();
 	}
 
 	@Override
@@ -356,6 +356,10 @@ public class GameMap implements IGameMap {
 		return renderer;
 	}
 
+	/**
+	 * Update this map.
+	 * @param delta
+	 */
 	public void update(float delta) {
 		this.world.step(Const.FPS, 6, 2);
 		for (Friend f : friends)
@@ -382,14 +386,26 @@ public class GameMap implements IGameMap {
 		return this.playerBody;
 	}
 
+	/**
+	 * Returns the map name
+	 * @return
+	 */
 	public String getMapName() {
 		return mapName;
 	}
 
+	/**
+	 * Get the model which this map is part of.
+	 * @return
+	 */
 	public GameModel getModel() {
 		return model;
 	}
 
+	/**
+	 * Get the player associated with this map's model.
+	 * @return
+	 */
 	public Player getPlayer() {
 		return player;
 	}
