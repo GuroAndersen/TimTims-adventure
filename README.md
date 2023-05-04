@@ -6,9 +6,9 @@
 
 ## Om spillet
 I vårt spill tar vi deg inn i verden til Timtim. Timtim er en liten gutt som sliter litt med å skjønne hvordan verden fungerer. Han har ikke helt forstått hva som er godt og ondt i verden, og trenger hjelp!
-Han vil møte på venner på hans vei, hjelp vennene hans med å finne de gjemte skattene, slik at Timtim kan fortsette videre på eventyret. Men, Timtim må passe seg. For i hans jakt på å finne verdifull informasjon, truer det farer. Pass på!
+Han vil møte på venner på hans vei, hjelp vennene hans med å finne de gjemte skattene, slik at Timtim kan fortsette videre på eventyret. Men, Timtim må passe seg. For i hans jakt på å finne skatter, truer det farer. Pass på!
 
-I spillet beveger man seg til venstre med "A", høyre med "D" og hopper med "space". 
+I spillet beveger man seg til venstre med "pil venstre", høyre med "pil høyre" og hopper med "space". 
 
 
 ## Kjøring
@@ -16,13 +16,14 @@ For å spillet Team Team trenger man Java 17 eller senere. Dersom du ikke har de
 
 ## Kjente feil
 * I level 2 kan ikke spillkarakteren gå på den første broen, han må hoppe over den.
-* Game Over skjermen "flasher"
-* Man dør ikke eller begynner ikke på nytt når man faller i et hull
+* Noen broer på level 3 kan ikke spillkarakteren hoppe, man må gå videre for å kunne hoppe
 * Terrenget har inkonsistent kollisjon - fortsatt med noen broer
 * Kan dobbelhoppe når man er borti et tak
-* Når spillet kjøres på mac, må man til tider trykke flere ganger på "space" før spillfiguren hopper
+
 
 ## Credits
+* TimTim - by Hilde Jordal <br>
+TimTimSprite & TimTimArt <br>
 * OpenGameArt credits Modified 32x32 Treasure chest - by Blarumyrran <br>
 Link: https://opengameart.org/content/modified-32x32-treasure-chest <br>
 * Generic Platformer Tiles - by Surt <br>
