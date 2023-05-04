@@ -5,11 +5,8 @@
 * Trello: https://trello.com/b/NLuBrR7x/project-board
 
 ## Om spillet
-I vårt spill tar vi deg inn i verden til Timtim. Timtim er en liten gutt  som sliter litt med å skjønne hvordan verden fungerer. Han har ikke helt forstått hva som er godt og ondt i verden, og trenger hjelp!
-
-Timtim trenger å skaffe informasjon for å bli mer opplyst. Informasjonen kan han bytte til seg med forskjellige personer. For at disse personene skal være villig til å gi fra seg informasjon, ønsker de seg ting for innbytte. Derfor trenger Timtim hjelp til å finne disse tingene!
-
-Men, Timtim må passe seg. For i hans jakt på å finne verdifull informasjon, truer det farer. Pass på!
+I vårt spill tar vi deg inn i verden til Timtim. Timtim er en liten gutt som sliter litt med å skjønne hvordan verden fungerer. Han har ikke helt forstått hva som er godt og ondt i verden, og trenger hjelp!
+Han vil møte på venner på hans vei, hjelp vennene hans med å finne de gjemte skattene, slik at Timtim kan fortsette videre på eventyret. Men, Timtim må passe seg. For i hans jakt på å finne verdifull informasjon, truer det farer. Pass på!
 
 I spillet beveger man seg til venstre med "A", høyre med "D" og hopper med "space". 
 
