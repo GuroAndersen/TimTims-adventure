@@ -13,6 +13,7 @@ import timtim.app.model.objects.Player;
 import timtim.app.model.objects.enemy.Enemy;
 import timtim.app.model.objects.friend.Friend;
 import timtim.app.model.objects.inventory.Item;
+import timtim.app.model.objects.powerup.SpeedUp;
 import timtim.app.model.sound.SoundEffect;
 
 public class PlayerContactListener implements ContactListener {
@@ -25,8 +26,20 @@ public class PlayerContactListener implements ContactListener {
         this.gameMap = gameMap;
     }
 
+    // Handles contact between player and power up.
+    public void handlePowerUpContact(Fixture fa, Fixture fb) {
+        if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof SpeedUp)
+                || (fa.getUserData() instanceof SpeedUp && fb.getUserData() instanceof Player)) {
+            Player p = (Player) (fa.getUserData() instanceof Player ? fa.getUserData() : fb.getUserData());
+            SpeedUp s = (SpeedUp) (fa.getUserData() instanceof SpeedUp ? fa.getUserData() : fb.getUserData());
+            s.doPowerupIfActive(p);
+            game.getModel().playSound(SoundEffect.POWERUP);
+        }
+
+    }
+
     // Handles contact between player and door.
-    private void handleDoorContact(Fixture fa, Fixture fb) {
+    public void handleDoorContact(Fixture fa, Fixture fb) {
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Door)
                 || (fa.getUserData() instanceof Door && fb.getUserData() instanceof Player)) {
 
@@ -37,7 +50,7 @@ public class PlayerContactListener implements ContactListener {
     }
 
     // Handles contact between player and chest.
-    private void handleChestContact(Fixture fa, Fixture fb) {
+    public void handleChestContact(Fixture fa, Fixture fb) {
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Chest)
                 || (fa.getUserData() instanceof Chest && fb.getUserData() instanceof Player)) {
 
@@ -55,14 +68,14 @@ public class PlayerContactListener implements ContactListener {
                     p.addItemToInventory(item);
                 }
                 System.out.println(chest.getItem() + " added to the inventory!");
-                
+
             }
 
         }
     }
 
     // Handles contact between player and friend.
-    private void handleFriendContact(Fixture fa, Fixture fb) {
+    public void handleFriendContact(Fixture fa, Fixture fb) {
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Friend)
                 || (fa.getUserData() instanceof Friend && fb.getUserData() instanceof Player)) {
             Friend f = (Friend) (fa.getUserData() instanceof Friend ? fa.getUserData() : fb.getUserData());
@@ -75,7 +88,7 @@ public class PlayerContactListener implements ContactListener {
         }
     }
 
-    private void handleFloraContact(Fixture fa, Fixture fb) {
+    public void handleFloraContact(Fixture fa, Fixture fb) {
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Flora)
                 || (fa.getUserData() instanceof Flora && fb.getUserData() instanceof Player)) {
             Flora f = (Flora) (fa.getUserData() instanceof Flora ? fa.getUserData() : fb.getUserData());
@@ -85,7 +98,7 @@ public class PlayerContactListener implements ContactListener {
         }
     }
 
-    private void handleDeathzoneContact(Fixture fa, Fixture fb) {
+    public void handleDeathzoneContact(Fixture fa, Fixture fb) {
         // Check if player has made contact with the deathzone
         // If true then player will take full damage
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof DeathZone)
@@ -97,7 +110,7 @@ public class PlayerContactListener implements ContactListener {
         }
     }
 
-    private void handleEnemyContact(Fixture fa, Fixture fb) {
+    public void handleEnemyContact(Fixture fa, Fixture fb) {
         if ((fa.getUserData() instanceof Player && fb.getUserData() instanceof Enemy)
                 || (fa.getUserData() instanceof Enemy && fb.getUserData() instanceof Player)) {
             Enemy f = (Enemy) (fa.getUserData() instanceof Enemy ? fa.getUserData() : fb.getUserData());
@@ -106,7 +119,7 @@ public class PlayerContactListener implements ContactListener {
             f.doDamage(p);
             game.getModel().playSound(SoundEffect.HIT);
         }
-        if (!game.getModel().getPlayer().isAlive()){
+        if (!game.getModel().getPlayer().isAlive()) {
             game.getModel().playSound(SoundEffect.GAMEOVER);
         }
     }
@@ -134,6 +147,8 @@ public class PlayerContactListener implements ContactListener {
         handleDeathzoneContact(fa, fb);
 
         handleEnemyContact(fa, fb);
+
+        handlePowerUpContact(fa, fb);
     }
 
     // Gets activated when two objects stop having contact with eachother.

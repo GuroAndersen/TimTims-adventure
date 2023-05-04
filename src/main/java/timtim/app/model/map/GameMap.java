@@ -134,11 +134,11 @@ public class GameMap implements IGameMap {
 				Body body = BodyManager.createBody(rect.getX() + rect.getWidth() / 2,
 						rect.getY() + rect.getHeight() / 2, rect.getWidth(), rect.getHeight(), false, world);
 				switch (name) {
-				case "bunny":
-					enemy = new Enemy(this.gameScreen, EnemyType.BUNNY);
-					break;
-				default:
-					throw new IllegalArgumentException("This enemy type is not represented: " + name);
+					case "bunny":
+						enemy = new Enemy(this.gameScreen, EnemyType.BUNNY);
+						break;
+					default:
+						throw new IllegalArgumentException("This enemy type is not represented: " + name);
 				}
 				enemy.setBody(body);
 				Fixture fixture = body.getFixtureList().get(0);
@@ -157,17 +157,17 @@ public class GameMap implements IGameMap {
 				Body body = BodyManager.createBody(rect.getX() + rect.getWidth() / 2,
 						rect.getY() + rect.getHeight() / 2, rect.getWidth(), rect.getHeight(), true, world);
 				switch (name) {
-				case "skeleton":
-					friend = new Skeleton(gameScreen, this);
-					break;
-				case "wolf":
-					friend = new Wolf(gameScreen, this);
-					break;
-				case "snake":
-					friend = new Snake(gameScreen, this);
-					break;
-				default:
-					throw new IllegalArgumentException("This friend type is not represented " + name);
+					case "skeleton":
+						friend = new Skeleton(gameScreen, this);
+						break;
+					case "wolf":
+						friend = new Wolf(gameScreen, this);
+						break;
+					case "snake":
+						friend = new Snake(gameScreen, this);
+						break;
+					default:
+						throw new IllegalArgumentException("This friend type is not represented " + name);
 				}
 				friend.setBody(body);
 				Fixture fixture = body.getFixtureList().get(0);
@@ -279,11 +279,12 @@ public class GameMap implements IGameMap {
 		Powerup powerup = null;
 
 		switch (o.getName()) {
-		case "speed":
-			powerup = new SpeedUp();
-			break;
-		default:
-			throw new IllegalArgumentException("This powerup type is not represented or has a wrongly formatted name");
+			case "speed":
+				powerup = new SpeedUp();
+				break;
+			default:
+				throw new IllegalArgumentException(
+						"This powerup type is not represented or has a wrongly formatted name");
 		}
 
 		body.setUserData(powerup);
@@ -291,7 +292,7 @@ public class GameMap implements IGameMap {
 		chestFixture.setUserData(powerup);
 		chestFixture.setSensor(true);
 	}
-	
+
 	private void parsePowerupObjects(MapObjects objects) {
 		for (MapObject o : objects) {
 			if (o instanceof PolygonMapObject) {
