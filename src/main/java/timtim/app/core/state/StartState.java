@@ -35,7 +35,7 @@ public class StartState implements StateHandler {
         setupMapSelection();
     }
 
-    private void setupMapSelection() {
+    public void setupMapSelection() {
         this.mapSelection = new ArrayList<>();
         this.mapList = new ArrayList<>();
         boolean selected = true;
@@ -105,7 +105,7 @@ public class StartState implements StateHandler {
         return State.START;
     }
 
-    private void handleInput() {
+    public void handleInput() {
 
         // Exit
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) { // Closes game if escape is pressed
@@ -129,7 +129,7 @@ public class StartState implements StateHandler {
         }
     }
 
-    private void switchMap() {
+    public void switchMap() {
         for (int i = 0; i < mapSelection.size(); i++) {
             if (mapSelection.get(i))
                 game.getModel().swapLevel(mapList.get(i));
@@ -148,12 +148,12 @@ public class StartState implements StateHandler {
 
 
 
-    private void startGame(){
+    public void startGame(){
         game.switchState(State.PLAY);
 
     }
 
-    private void getInstructions(){
+    public void getInstructions(){
         game.switchState(State.INSTRUCTIONS);
 
     }

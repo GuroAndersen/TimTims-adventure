@@ -1,0 +1,20 @@
+Test: Check if enemies(bunnies) moves randomly through out the game levels
+
+Description:
+Launch the game  in Launcher and navigate to the level where the character is located by pressing enter at start screen. 
+Press the left arrow (left), right arrow (right) and space(jump) keys to move Timtim through the game,play through the game and observe if the enemies move
+Performed the testing scenario several times to ensure that bunnies move thorugh out the game levels 
+
+Steps:
+
+1. Launch the game and navigated to the level where Timtim is located on the first level.
+2. Play through each level and observe for enemies that moves around the map
+3. Repeat for each level several times
+
+Result:
+everything runs as expected, each level had moving enemies that moved randomly around each level 
+
+
+
+
+

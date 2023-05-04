@@ -11,7 +11,7 @@ public interface AccessibleGame {
      * Get the game's model
      * @return
      */
-    public IGameModel getModel();
+    IGameModel getModel();
 
     /**
      * Move the player left and or right.
@@ -19,32 +19,32 @@ public interface AccessibleGame {
      * @param left
      * @param right
      */
-    public void playerMove(boolean left, boolean right);
+    void playerMove(boolean left, boolean right);
 
     /**
      * Make the player jump
      */
-    public void playerJump();
+    void playerJump();
 
     /**
      * Update the camera
      */
-    public void updateCamera();
+    void updateCamera();
 
     /**
      * Renders the map in this game's model
      */
-    public void renderMap();
+    void renderMap();
 
     /**
      * Switches the state of the game
      * to the given state
      */
-    public void switchState(State state);
+    void switchState(State state);
 
     /**
      * Get the game's camera
      */
-    public OrthographicCamera getCamera();
+    OrthographicCamera getCamera();
 
 }

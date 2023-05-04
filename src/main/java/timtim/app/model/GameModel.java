@@ -25,11 +25,11 @@ import timtim.app.model.sound.SoundEffect;
 public class GameModel implements IGameModel {
 
 	private GameScreen gameScreen;
-	private Player player;
+	Player player;
 
 	// maps
 	private String currentMap;
-	private Map<String, GameMap> maps;
+	Map<String, GameMap> maps;
 	//sound hashmap
 	
 	private static Map<SoundEffect, Clip> soundClips = new HashMap<>();
