@@ -18,6 +18,7 @@ to move away from it and then again come in contact with the same one or a diffe
 remains.
 7: the next time (contact number 20) the Game Over screen should appear.
 
+
 Steps level 3:
 1: Launch game
 2: move TimTim using A key for left movement or D key for right movement.
