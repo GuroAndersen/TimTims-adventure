@@ -1,0 +1,14 @@
+Test: Loading of maps in main menu 
+
+description: check and see if the correct map loads every time for the different maps when loading the different maps
+
+Steps: 
+1. Launch the game and chose a level 
+2. Observe which level it is
+3. Return to main menu
+4. Enter the same level again, and check if it still the same level as before
+5. repeat for the other levels 
+
+Result: 
+
+Each level is correct when loading them several times.
