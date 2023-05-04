@@ -50,9 +50,6 @@ Mattias har tidligere erfaring med agil arbeidsmetodikk gjennom jobb og studier.
 
 Vi har valgt at alle skal forbedre testskriving ferdighetene sine med at hvert medlem jobber kontinuerlig med å skrive tester til sine egne metoder, samt hjelpe hverandre. 
 
-
-
-
 ## A1 - generelt
 
 ### **Project Board**

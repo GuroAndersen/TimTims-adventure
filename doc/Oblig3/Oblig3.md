@@ -14,7 +14,7 @@ Grunnet obligatoriske oppgaver i andre fag (blant annet INF222), ble møte i dag
 Det ble diskutert hvordan vi løser friends og enemies i Tiled. Her konkluderte vi med å lage et eget objektlag for friends og et eget objektlagt for enemies. 
 
 *Neste møte* <br>
-Mandag 20.03.2022 <br>
+Mandag 20.03.2023 <br>
 
 *Oppgaver til neste gang:* <br>
 Lage objektlag for friends og enemies i Tiled. 

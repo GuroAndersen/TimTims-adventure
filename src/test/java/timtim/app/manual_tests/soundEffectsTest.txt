@@ -1,0 +1,19 @@
+Test: Check Soundeffects when Timtim interacts with certain objects on the map 
+
+Description:
+Launch the game  in Launcher and navigate to the level where the character is located by pressing enter at start screen. 
+Press the left arrow(left), right arrow(right) and space(jump) keys and interact with flowers, mushroom, chests, power ups, enemies and deathzones. 
+Performed the testing scenario several times to ensure that the correct soundeffect is played for each object interacted with, on the different levels.
+
+Steps:
+
+1. Launch the game and navigated to the level where Timtim is located on the first level.
+2. Play each level and let Timtim interact with each object listed above.
+3. Repeated the tests several times to ensure that each soundeffect plays at the start of interaction from player to object.
+
+Result:
+The sound effects played as expected with each interaction from timtim to each object
+
+level 3: is the only level with the power up and deathzone object to interact with as excepted 
+- 
+

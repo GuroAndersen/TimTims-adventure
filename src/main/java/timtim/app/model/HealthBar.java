@@ -29,6 +29,10 @@ public class HealthBar {
         this.shapeRenderer = new ShapeRenderer();
     }
     
+    /**
+     * Draws the healthbar on the given batch.
+     * @param batch
+     */
     public void draw(SpriteBatch batch) {
         // Begin the SpriteBatch and ShapeRenderer
         batch.begin();

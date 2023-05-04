@@ -2,14 +2,14 @@ Test: Check if TimTim moves as expected when the correct keys are pressed (A, D,
 
 Description:
 Launch the game  in Launcher and navigate to the level where the character is located by pressing enter at start screen. 
-Press the A(left), D(right) and space(jump) keys and observed if Timtim moves as expected. 
-Performed the testing scenario several times to ensure that Timtim always moves correctly when the A, D and space keys are pressed.
+Press the left arrow(left), right arrow(right) and space(jump) keys and observed if Timtim moves as expected. 
+Performed the testing scenario several times to ensure that Timtim always moves correctly when the left arrow, right arrow and space keys are pressed.
 
 Steps:
 
 1. Launch the game and navigated to the level where Timtim is located on the first level.
-2. Press the A key and observed if Timtim moves to the left on the screen.
-3. Press the D key and observed if the TimTim moves to the right on the screen.
+2. Press the left arrow key and observed if Timtim moves to the left on the screen.
+3. Press the right arrow key and observed if the TimTim moves to the right on the screen.
 4. Press the space key and observe if Timtim jumps on the screen. 
 ¤. Repeated the tests several times to ensure that the character always moves when the correct keys are pressed.
 
@@ -20,19 +20,11 @@ The test was repeated several times.
 
 Errors: 
 Jumping, when in contact with "roof/underside of block" Timtim can continue jumping into that.
-Level 1 :
-- TimTim can push the friend forward if he walks into the wolf, 
-- if Timtim dies the wolf can be pushed again and there will be a second wolf that cannot be pushed. This happens in an endless scenario.
-- Door missing on level 1. 
 
 Level 2 :
-- Timtim cannot continue walking onto the first bridge, he has to jump onto it. Error in how object is drawn in tiled ?
-- Missing door. 
-- Same problem with friend as in level 1. 
-- Some of the flowers and mushrooms are too clustered making it impossible to move past. 
+- Some of the flowers and mushrooms are too clustered making it impossible to move past without taking damage. 
 
 level 3: 
-- same bug with interaction with friends
 - top left bridge is not possible to jump of from, seems like TimTim doesn't land on it 
-- dies from one interaction with a flower or mushroom 
+
 

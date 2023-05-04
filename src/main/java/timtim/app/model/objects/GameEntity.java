@@ -10,7 +10,8 @@ import com.badlogic.gdx.physics.box2d.Body;
 public abstract class GameEntity extends GameObject {
 
 	public int[] xMovementCases = { -1, 0, 1 };
-	protected float velX, velY, speed;
+	protected float velX, velY;
+	protected float speed;
 
 	protected boolean isJumping;
 	private final float maxJumpVel = 25;
@@ -88,7 +89,19 @@ public abstract class GameEntity extends GameObject {
 		resetVelocity();
 	}
 
+	/**
+	 * Get the speed of this enemy.
+	 * @return
+	 */
 	public float getSpeed() {
 		return speed;
+	}
+	
+	/**
+	 * Sets the speed to the given value if it is between 1 and 100 (both inclusive).
+	 * @param speed
+	 */
+	protected void setSpeed(float speed) {
+		this.speed = (speed < 1 || speed > 100) ? this.speed : speed;
 	}
 }

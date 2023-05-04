@@ -84,6 +84,9 @@ public class PauseState implements StateHandler {
         if (Gdx.input.isKeyJustPressed(Input.Keys.P)){
             resume();
         }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.M)) {
+        	game.switchState(State.START);
+        }
     }
 
     private void resume() {
