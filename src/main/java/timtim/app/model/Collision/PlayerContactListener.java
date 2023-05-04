@@ -81,8 +81,9 @@ public class PlayerContactListener implements ContactListener {
             Friend f = (Friend) (fa.getUserData() instanceof Friend ? fa.getUserData() : fb.getUserData());
             Player p = (Player) (fa.getUserData() instanceof Player ? fa.getUserData() : fb.getUserData());
 
-            if (p.getInventory().contains(f.item))
-                f.receiveGift(p.getInventory().takeOutItem(f.item));
+            Item friendItem = f.getItem();
+            if (p.getInventory().contains(friendItem))
+                f.receiveGift(p.getInventory().takeOutItem(friendItem));
 
             f.updateConversation();
         }

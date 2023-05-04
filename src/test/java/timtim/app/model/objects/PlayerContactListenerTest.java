@@ -16,15 +16,12 @@ import timtim.app.model.map.GameMap;
 import timtim.app.model.objects.friend.Friend;
 import timtim.app.model.objects.inventory.Inventory;
 import timtim.app.model.objects.inventory.Item;
-import timtim.app.model.objects.powerup.Powerup;
 import timtim.app.model.objects.powerup.SpeedUp;
 
 public class PlayerContactListenerTest {
 
     private GameScreen game;
-    private GameMap gameMap;
     private GameModel gameModel;
-    private PlayerContactListener listener;
     private Contact contact;
     private Fixture fixtureA;
     private Fixture fixtureB;
@@ -32,14 +29,13 @@ public class PlayerContactListenerTest {
     @BeforeEach
     public void setUp() {
         game = mock(GameScreen.class);
-        gameMap = mock(GameMap.class);
         gameModel = mock(GameModel.class);
-        listener = new PlayerContactListener(game, gameMap);
         contact = mock(Contact.class);
         fixtureA = mock(Fixture.class);
         fixtureB = mock(Fixture.class);
         when(contact.getFixtureA()).thenReturn(fixtureA);
         when(contact.getFixtureB()).thenReturn(fixtureB);
+        when(game.getModel()).thenReturn(gameModel);
     }
 
     @Test
@@ -61,9 +57,8 @@ public class PlayerContactListenerTest {
 
     @Test
     public void testChestContact() {
-        GameScreen gameScreen = mock(GameScreen.class);
         GameMap gameMap = mock(GameMap.class);
-        PlayerContactListener playerContactListener = new PlayerContactListener(gameScreen, gameMap);
+        PlayerContactListener playerContactListener = new PlayerContactListener(game, gameMap);
 
         Player player = mock(Player.class);
         Chest chest = mock(Chest.class);
@@ -72,6 +67,10 @@ public class PlayerContactListenerTest {
         when(fixtureA.getUserData()).thenReturn(player);
         when(fixtureB.getUserData()).thenReturn(chest);
         when(chest.isOpen()).thenReturn(false);
+        doAnswer(invocation -> {
+            when(chest.getItem()).thenReturn(item);
+            return null;
+        }).when(chest).open();
 
         playerContactListener.handleChestContact(fixtureA, fixtureB);
 
@@ -82,9 +81,8 @@ public class PlayerContactListenerTest {
 
     @Test
     public void testFriendContact() {
-        GameScreen gameScreen = mock(GameScreen.class);
         GameMap gameMap = mock(GameMap.class);
-        PlayerContactListener playerContactListener = new PlayerContactListener(gameScreen, gameMap);
+        PlayerContactListener playerContactListener = new PlayerContactListener(game, gameMap);
 
         Player player = mock(Player.class);
         Friend friend = mock(Friend.class);
@@ -94,7 +92,8 @@ public class PlayerContactListenerTest {
         when(fixtureB.getUserData()).thenReturn(friend);
         when(player.getInventory()).thenReturn(mock(Inventory.class));
         when(player.getInventory().contains(item)).thenReturn(true);
-        when(friend.item).thenReturn(item);
+        when(player.getInventory().takeOutItem(item)).thenReturn(item);
+        when(friend.getItem()).thenReturn(item);
         playerContactListener.handleFriendContact(fixtureA, fixtureB);
 
         verify(friend).receiveGift(item);
@@ -103,9 +102,8 @@ public class PlayerContactListenerTest {
 
     @Test
     public void testFloraContact() {
-        GameScreen gameScreen = mock(GameScreen.class);
         GameMap gameMap = mock(GameMap.class);
-        PlayerContactListener playerContactListener = new PlayerContactListener(gameScreen, gameMap);
+        PlayerContactListener playerContactListener = new PlayerContactListener(game, gameMap);
 
         Player player = mock(Player.class);
         Flora flora = mock(Flora.class);
@@ -120,9 +118,8 @@ public class PlayerContactListenerTest {
 
     @Test
     public void testDeathzoneContact() {
-        GameScreen gameScreen = mock(GameScreen.class);
         GameMap gameMap = mock(GameMap.class);
-        PlayerContactListener playerContactListener = new PlayerContactListener(gameScreen, gameMap);
+        PlayerContactListener playerContactListener = new PlayerContactListener(game, gameMap);
 
         Player player = mock(Player.class);
         DeathZone deathZone = mock(DeathZone.class);
@@ -137,9 +134,8 @@ public class PlayerContactListenerTest {
 
     @Test
     public void testPowerUpContact() {
-        GameScreen gameScreen = mock(GameScreen.class);
         GameMap gameMap = mock(GameMap.class);
-        PlayerContactListener playerContactListener = new PlayerContactListener(gameScreen, gameMap);
+        PlayerContactListener playerContactListener = new PlayerContactListener(game, gameMap);
 
         Player player = mock(Player.class);
         SpeedUp speedUp = mock(SpeedUp.class);
