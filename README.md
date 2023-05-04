@@ -6,9 +6,9 @@
 
 ## Om spillet
 I vårt spill tar vi deg inn i verden til Timtim. Timtim er en liten gutt som sliter litt med å skjønne hvordan verden fungerer. Han har ikke helt forstått hva som er godt og ondt i verden, og trenger hjelp!
-Han vil møte på venner på hans vei, hjelp vennene hans med å finne de gjemte skattene, slik at Timtim kan fortsette videre på eventyret. Men, Timtim må passe seg. For i hans jakt på å finne verdifull informasjon, truer det farer. Pass på!
+Han vil møte på venner på hans vei, hjelp vennene hans med å finne de gjemte skattene, slik at Timtim kan fortsette videre på eventyret. Men, Timtim må passe seg. For i hans jakt på å finne skatter, truer det farer. Pass på!
 
-I spillet beveger man seg til venstre med "A", høyre med "D" og hopper med "space". 
+I spillet beveger man seg til venstre med "pil venstre", høyre med "pil høyre" og hopper med "space". 
 
 
 ## Kjøring
