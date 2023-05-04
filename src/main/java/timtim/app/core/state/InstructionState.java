@@ -29,7 +29,6 @@ public class InstructionState implements StateHandler {
     public void render(float delta) {
         // render game in how to play state
         handleInput();
-
         batch.begin();
 
         // Load the image
@@ -55,7 +54,12 @@ public class InstructionState implements StateHandler {
 
         // Draw the image and the text
         imgSprite.draw(batch);
+        renderText(centerXtext,centerYtext);
 
+        batch.end();
+    }
+    
+    private void renderText(float centerXtext, float centerYtext) {
         font.draw(batch, "In our game, we take you into the world of Timtim.\nTimtim is a little boy who struggles a little to understand how the world works.\nHe has not fully understood what is good and evil in the world, and needs help!", centerXtext + 35, centerYtext +250, 0, Align.center, false);
         font.draw(batch, "He will meet friends on his way, help his friends find the hidden treasures so that Timtim can continue on his adventure.", centerXtext + 35, centerYtext +200 , 0, Align.center, false);
         font.draw(batch, "But, Timtim has to be careful. Because in his quest to find valuable information, dangers loom.\n Watch out!", centerXtext + 35, centerYtext +175 , 0, Align.center, false);
@@ -63,11 +67,7 @@ public class InstructionState implements StateHandler {
         font.draw(batch, "Press 'left arrow key' to move to the left and 'right arrow key' to move right.", centerXtext + 35, centerYtext +50, 0, Align.center, false);
         font.draw(batch, "Press 'Space' to jump!", centerXtext + 35, centerYtext , 0, Align.center, false);
         font.draw(batch, "If you ever want to give TimTim a break, just press 'P' in game!", centerXtext + 35, centerYtext -50, 0, Align.center, false);
-        font.draw(batch, "Press 'M' to return to Main Menu", centerXtext + 35, centerYtext - 50, 0, Align.center, false);
-
-        batch.end();
-        
-    
+        font.draw(batch, "Press 'M' to return to Main Menu", centerXtext + 35, centerYtext - 100, 0, Align.center, false);
     }
 
 

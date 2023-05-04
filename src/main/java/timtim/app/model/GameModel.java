@@ -12,6 +12,7 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 
@@ -40,15 +41,17 @@ public class GameModel implements IGameModel {
 	 */
 	public GameModel(GameScreen gameScreen) {
 		this.gameScreen = gameScreen;
-		this.player = new Player(gameScreen);
+		this.player = (gameScreen.getAtlas() != null ? new Player(gameScreen) : new Player(0,0));
 		this.maps = new HashMap<String, GameMap>();
 		setup();
 	}
 
 	private void setup() {
-		loadSoundEffects();
-		loadMaps();
-		setMap("level2");
+		if (Gdx.files != null) {
+			loadSoundEffects();
+			loadMaps();
+			setMap("level2");
+		}
 	}
 
 	private void loadSoundEffects() {

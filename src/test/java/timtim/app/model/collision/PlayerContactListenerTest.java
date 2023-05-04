@@ -1,4 +1,4 @@
-package timtim.app.model.objects;
+package timtim.app.model.collision;
 
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.Fixture;
@@ -11,8 +11,13 @@ import static org.mockito.Mockito.*;
 import timtim.app.core.GameScreen;
 import timtim.app.core.state.State;
 import timtim.app.model.GameModel;
-import timtim.app.model.Collision.PlayerContactListener;
+import timtim.app.model.collision.PlayerContactListener;
 import timtim.app.model.map.GameMap;
+import timtim.app.model.objects.Chest;
+import timtim.app.model.objects.DeathZone;
+import timtim.app.model.objects.Door;
+import timtim.app.model.objects.Flora;
+import timtim.app.model.objects.Player;
 import timtim.app.model.objects.friend.Friend;
 import timtim.app.model.objects.inventory.Inventory;
 import timtim.app.model.objects.inventory.Item;

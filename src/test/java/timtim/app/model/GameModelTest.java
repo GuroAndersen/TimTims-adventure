@@ -63,7 +63,6 @@ public class GameModelTest {
 		gameModel.player = playerMock;
 		gameModel.maps = mapsMock;
 		gameModel.swapLevel("level1");
-
 		gameModel.update(0.1f);
 
 		verify(playerMock).update(0.1f);

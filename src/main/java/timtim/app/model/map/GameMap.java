@@ -25,7 +25,7 @@ import timtim.app.manager.BodyManager;
 import timtim.app.manager.Const;
 import timtim.app.model.GameModel;
 import timtim.app.model.IGameMap;
-import timtim.app.model.Collision.PlayerContactListener;
+import timtim.app.model.collision.PlayerContactListener;
 import timtim.app.model.objects.Chest;
 import timtim.app.model.objects.DeathZone;
 import timtim.app.model.objects.Door;
