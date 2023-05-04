@@ -10,16 +10,20 @@ import static org.mockito.Mockito.*;
 
 import timtim.app.core.GameScreen;
 import timtim.app.core.state.State;
+import timtim.app.model.GameModel;
 import timtim.app.model.Collision.PlayerContactListener;
 import timtim.app.model.map.GameMap;
 import timtim.app.model.objects.friend.Friend;
 import timtim.app.model.objects.inventory.Inventory;
 import timtim.app.model.objects.inventory.Item;
+import timtim.app.model.objects.powerup.Powerup;
+import timtim.app.model.objects.powerup.SpeedUp;
 
-public class MyContactListenerTest {
+public class PlayerContactListenerTest {
 
     private GameScreen game;
     private GameMap gameMap;
+    private GameModel gameModel;
     private PlayerContactListener listener;
     private Contact contact;
     private Fixture fixtureA;
@@ -29,6 +33,7 @@ public class MyContactListenerTest {
     public void setUp() {
         game = mock(GameScreen.class);
         gameMap = mock(GameMap.class);
+        gameModel = mock(GameModel.class);
         listener = new PlayerContactListener(game, gameMap);
         contact = mock(Contact.class);
         fixtureA = mock(Fixture.class);
@@ -108,5 +113,15 @@ public class MyContactListenerTest {
         listener.beginContact(contact);
 
         verify(player).takeDamage(400);
+    }
+
+    @Test
+    public void testPowerUpContact() {
+        Player player = mock(Player.class);
+        Powerup powerUp = mock(Powerup.class);
+        when(fixtureA.getUserData()).thenReturn(player);
+        when(fixtureB.getUserData()).thenReturn(powerUp);
+
+        listener.beginContact(contact);
     }
 }
