@@ -8,7 +8,6 @@ import com.badlogic.gdx.utils.Array;
 import timtim.app.core.GameScreen;
 import timtim.app.manager.Const;
 import timtim.app.model.map.GameMap;
-import timtim.app.model.objects.inventory.Item;
 import timtim.app.model.objects.inventory.ItemFactory;
 
 public class Skeleton extends Friend {

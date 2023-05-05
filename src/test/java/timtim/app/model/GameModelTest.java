@@ -13,7 +13,6 @@ import com.badlogic.gdx.physics.box2d.World;
 import timtim.app.core.GameScreen;
 import timtim.app.core.state.State;
 import timtim.app.model.map.GameMap;
-import timtim.app.model.objects.GameEntity;
 import timtim.app.model.objects.Player;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -21,10 +20,8 @@ import static org.mockito.Mockito.*;
 
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class GameModelTest {
 
@@ -111,28 +108,6 @@ public class GameModelTest {
     }
     
     @Test
-    public void testGetCurrentWorld() {
-    	
-    	// given
-    	GameMap gameMapMock = mock(GameMap.class);
-		Map<String, GameMap> mapsMock = new HashMap<String, GameMap>();
-		mapsMock.put("level1", gameMapMock);
-
-		gameModel = new GameModel(gameScreenMock);
-		gameModel.player = playerMock;
-		gameModel.maps = mapsMock;
-		gameModel.swapLevel("level1");
-        World worldMock = new World(new Vector2(0,0), false);
-        when(gameMapMock.getWorld()).thenReturn(worldMock);
-
-        // when
-        World currentWorld = gameModel.getCurrentWorld();
-
-        // then
-        assertEquals(worldMock, currentWorld);
-    }
-    
-    @Test
     public void testGetMapNames() {
         // given
     	GameMap gameMapMock = mock(GameMap.class);
@@ -170,7 +145,6 @@ public class GameModelTest {
         gameModel.playerJump();
 
         verify(playerMock).jump();
-        assertEquals(worldMock, gameModel.getCurrentWorld());
     }
     
     

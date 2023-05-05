@@ -14,8 +14,6 @@ import javax.sound.sampled.Clip;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.physics.box2d.World;
-
 import timtim.app.core.GameScreen;
 import timtim.app.core.state.State;
 import timtim.app.model.map.GameMap;
@@ -132,11 +130,6 @@ public class GameModel implements IGameModel {
 		entities.add(getPlayer());
 		return entities;
 
-	}
-
-	@Override
-	public World getCurrentWorld() {
-		return this.getCurrentMap().getWorld();
 	}
 
 	/**

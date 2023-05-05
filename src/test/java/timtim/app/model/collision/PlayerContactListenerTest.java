@@ -11,7 +11,6 @@ import static org.mockito.Mockito.*;
 import timtim.app.core.GameScreen;
 import timtim.app.core.state.State;
 import timtim.app.model.GameModel;
-import timtim.app.model.collision.PlayerContactListener;
 import timtim.app.model.map.GameMap;
 import timtim.app.model.objects.Chest;
 import timtim.app.model.objects.DeathZone;

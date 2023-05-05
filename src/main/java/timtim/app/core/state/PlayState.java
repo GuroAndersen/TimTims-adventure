@@ -5,13 +5,9 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-
 import timtim.app.core.GameScreen;
 import timtim.app.core.StateHandler;
-import timtim.app.manager.Const;
 import timtim.app.model.HealthBar;
-import timtim.app.model.objects.Player;
 
 public class PlayState implements StateHandler {
 

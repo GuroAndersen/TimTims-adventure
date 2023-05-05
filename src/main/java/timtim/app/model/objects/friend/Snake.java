@@ -2,13 +2,11 @@ package timtim.app.model.objects.friend;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 
 import timtim.app.core.GameScreen;
 import timtim.app.model.map.GameMap;
-import timtim.app.model.objects.inventory.Item;
 import timtim.app.model.objects.inventory.ItemFactory;
 
 public class Snake extends Friend {

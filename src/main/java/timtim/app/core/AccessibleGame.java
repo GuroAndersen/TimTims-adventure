@@ -2,7 +2,6 @@ package timtim.app.core;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import timtim.app.core.state.State;
-import timtim.app.model.GameModel;
 import timtim.app.model.IGameModel;
 
 public interface AccessibleGame {

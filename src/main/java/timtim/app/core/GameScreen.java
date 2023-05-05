@@ -6,8 +6,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-
 import timtim.app.core.state.*;
 import timtim.app.manager.Const;
 import timtim.app.model.GameModel;
@@ -25,7 +23,6 @@ public class GameScreen extends ScreenAdapter implements AccessibleGame {
 
 	// Map rendering variables
 	private OrthographicCamera camera;
-	private Box2DDebugRenderer B2DDebugRenderer;
 	private float zoom = 0.5f;
 
 	// Sprite rendering variables
@@ -39,7 +36,6 @@ public class GameScreen extends ScreenAdapter implements AccessibleGame {
 		this.atlas = new TextureAtlas("gameSprites.pack");
 		this.camera = camera;
 		this.camera.zoom = zoom;
-		this.B2DDebugRenderer = new Box2DDebugRenderer();
 		this.model = new GameModel(this);
 		this.states = new HashMap<>();
 		
@@ -122,7 +118,6 @@ public class GameScreen extends ScreenAdapter implements AccessibleGame {
 		// render objects
 		for (GameEntity e : model.getEntities()) e.render(batch);
 		getBatch().end();
-		B2DDebugRenderer.render(model.getCurrentWorld(), camera.combined.scl(Const.PPM));
 	}
 
 	@Override

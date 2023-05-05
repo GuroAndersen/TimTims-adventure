@@ -180,8 +180,6 @@ public class GameMap implements IGameMap {
 	}
 
 	private Body createObject(PolygonMapObject o) {
-		float[] vertices = o.getPolygon().getTransformedVertices();
-
 		Rectangle bounds = o.getPolygon().getBoundingRectangle();
 		float x = bounds.x;
 		float y = bounds.y;
@@ -252,7 +250,6 @@ public class GameMap implements IGameMap {
 	private void createChestObject(PolygonMapObject o) {
 
 		Body body = createObject(o);
-		String imagePath = "chest2.png";
 		Chest chest = new Chest(body);
 
 		Item chestItem = ItemFactory.generateItem(mapName);
